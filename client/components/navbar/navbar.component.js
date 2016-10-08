@@ -8,9 +8,7 @@ export class NavbarComponent {
     title: 'Home',
     state: 'main'
   }];
-  isLoggedIn: Function;
-  isAdmin: Function;
-  getCurrentUser: Function;
+
   isCollapsed = true;
 
   constructor(Auth) {

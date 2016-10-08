@@ -118,12 +118,8 @@ module.exports = function makeWebpackConfig(options) {
 
     config.babel = {
         shouldPrintComment(commentContents) {
-            let regex = DEV
-                // keep `// @flow`, `/*@ngInject*/`, & flow type comments in dev
-                ? /(@flow|@ngInject|^:)/
-                // keep `/*@ngInject*/`
-                : /@ngInject/;
-            return regex.test(commentContents);
+            // keep `/*@ngInject*/`
+            return /@ngInject/.test(commentContents);
         }
     }
 

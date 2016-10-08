@@ -16,7 +16,7 @@
     "filters": {
       "js": true,
       "babel": true,
-      "flow": true,
+      "flow": false,
       "html": true,
       "css": true,
       "uirouter": true,
@@ -29,6 +29,8 @@
       "mongoose": true,
       "oauth": true,
       "googleAuth": true,
+      "facebookAuth": true,
+      "twitterAuth": true,
       "jasmine": true,
       "mocha": false,
       "should": false,

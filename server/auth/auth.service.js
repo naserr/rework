@@ -25,17 +25,17 @@ export function isAuthenticated() {
       if(req.query && typeof req.headers.authorization === 'undefined') {
         req.headers.authorization = `Bearer ${req.cookies.token}`;
       }
-      validateJwt(req, res, next);
+      return validateJwt(req, res, next);
     })
     // Attach user to request
     .use(function(req, res, next) {
-      User.findById(req.user._id).exec()
+      return User.findById(req.user._id).exec()
         .then(user => {
           if(!user) {
             return res.status(401).end();
           }
           req.user = user;
-          next();
+          return next();
         })
         .catch(err => next(err));
     });
@@ -78,5 +78,5 @@ export function setTokenCookie(req, res) {
   }
   var token = signToken(req.user._id, req.user.role);
   res.cookie('token', token);
-  res.redirect('/');
+  return res.redirect('/');
 }

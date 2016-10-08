@@ -24,9 +24,7 @@ function handleError(res, statusCode) {
  */
 export function index(req, res) {
   return User.find({}, '-salt -password').exec()
-    .then(users => {
-      res.status(200).json(users);
-    })
+    .then(users => res.status(200).json(users))
     .catch(handleError(res));
 }
 
@@ -37,12 +35,12 @@ export function create(req, res) {
   var newUser = new User(req.body);
   newUser.provider = 'local';
   newUser.role = 'user';
-  newUser.save()
+  return newUser.save()
     .then(function(user) {
-      var token = jwt.sign({ _id: user._id }, config.secrets.session, {
+      var token = jwt.sign({_id: user._id}, config.secrets.session, {
         expiresIn: 60 * 60 * 5
       });
-      res.json({ token });
+      return res.json({token});
     })
     .catch(validationError(res));
 }
@@ -58,9 +56,11 @@ export function show(req, res, next) {
       if(!user) {
         return res.status(404).end();
       }
-      res.json(user.profile);
+      return res.json(user.profile);
     })
-    .catch(err => next(err));
+    .catch(err => {
+      next(err);
+    });
 }
 
 /**
@@ -70,7 +70,7 @@ export function show(req, res, next) {
 export function destroy(req, res) {
   return User.findByIdAndRemove(req.params.id).exec()
     .then(function() {
-      res.status(204).end();
+      return res.status(204).end();
     })
     .catch(handleError(res));
 }
@@ -88,9 +88,7 @@ export function changePassword(req, res) {
       if(user.authenticate(oldPass)) {
         user.password = newPass;
         return user.save()
-          .then(() => {
-            res.status(204).end();
-          })
+          .then(() => res.status(204).end())
           .catch(validationError(res));
       } else {
         return res.status(403).end();
@@ -104,19 +102,21 @@ export function changePassword(req, res) {
 export function me(req, res, next) {
   var userId = req.user._id;
 
-  return User.findOne({ _id: userId }, '-salt -password').exec()
+  return User.findOne({_id: userId}, '-salt -password').exec()
     .then(user => { // don't ever give out the password or salt
       if(!user) {
         return res.status(401).end();
       }
-      res.json(user);
+      return res.json(user);
     })
-    .catch(err => next(err));
+    .catch(err => {
+      next(err);
+    });
 }
 
 /**
  * Authentication callback
  */
 export function authCallback(req, res) {
-  res.redirect('/');
+  return res.redirect('/');
 }

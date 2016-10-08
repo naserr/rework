@@ -1,14 +1,7 @@
 'use strict';
-// @flow
-
-type User = {
-  name: string;
-  email: string;
-  password: string;
-};
 
 export default class LoginController {
-  user: User = {
+  user = {
     name: '',
     email: '',
     password: ''
@@ -17,8 +10,7 @@ export default class LoginController {
     login: undefined
   };
   submitted = false;
-  Auth;
-  $state;
+
 
   /*@ngInject*/
   constructor(Auth, $state) {
