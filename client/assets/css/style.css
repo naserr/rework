@@ -1,0 +1,410 @@
+@font-face {
+    font-family: 'iran';
+    src: url('/assets/fonts/iran-sans/IRANSans-Bold-web.eot');
+    src: url('/assets/fonts/iran-sans/IRANSans-Bold-web.eot?#iefix') format('eot'),
+    url('/assets/fonts/iran-sans/IRANSans-Bold-web.woff') format('woff');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'iran';
+    src: url('/assets/fonts/iran-sans/IRANSans-Medium-web.eot');
+    src: url('/assets/fonts/iran-sans/IRANSans-Medium-web.eot?#iefix') format('eot'),
+    url('/assets/fonts/iran-sans/IRANSans-Medium-web.woff') format('woff');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'iran';
+    src: url('/assets/fonts/iran-sans/IRANSans-web.eot');
+    src: url('/assets/fonts/iran-sans/IRANSans-web.eot?#iefix') format('eot'),
+    url('/assets/fonts/iran-sans/IRANSans-web.woff') format('woff');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'iran';
+    src: url('/assets/fonts/iran-sans/IRANSans-Light-web.eot');
+    src: url('/assets/fonts/iran-sans/IRANSans-Light-web.eot?#iefix') format('eot'),
+    url('/assets/fonts/iran-sans/IRANSans-light-web.woff') format('woff');
+    font-weight: lighter;
+}
+
+/********************** StyleReset ***************************/
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: iran, tahoma;
+}
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, input, textarea, button, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, i, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, select {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    direction: rtl;
+    background: transparent;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse
+}
+
+article, aside, figure, footer, header, nav, section {
+    display: block;
+    text-align: right;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    list-style: none;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.clearfix:before, .clearfix:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/***************** GlobalStyle *******************/
+
+body {
+    background-color: #fff;
+    font: normal 12px iran, tahoma;
+    color: #2a2a2a;
+}
+
+.row [class^="col"], .row [class*="col"] {
+    float: right;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none !important;
+}
+
+div.container, section.container {
+    width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+button {
+    cursor: pointer;
+}
+
+.pull_right {
+    float: right;
+}
+
+.pull_left {
+    float: left;
+}
+
+.tabs_wrapper {
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.tabs_list li {
+    float: right;
+}
+
+.tabs_list li a {
+    color: #777;
+    font-size: 14px;
+    float: right;
+    padding: 20px 20px;
+    font-weight: 500;
+}
+
+.tabs_list li:first-child a {
+    padding: 20px 5px 20px 20px;
+}
+
+.tabs_list li a.active {
+    color: #494949;
+    border-bottom: 2px solid #00c853;
+}
+
+.tabs_list li a.active:hover {
+    color: #494949;
+    border-bottom: 2px solid #00c853;
+}
+
+.tabs_list li a:hover {
+    color: #00c853;
+}
+
+/**************** homePage **********************/
+
+/*******Header********/
+
+header.header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+/*******Navbar********/
+
+.navBar {
+    width: 67%;
+    float: right;
+    margin-top: 25px;
+}
+
+.menu li a {
+    color: #fff;
+    font-size: 14px;
+    float: right;
+    padding: 5px 0;
+    transition: all .3s;
+}
+
+.menu li {
+    float: right;
+    margin-left: 40px;
+}
+
+.menu li:last-child {
+    margin-left: 0;
+}
+
+div.logo {
+    margin-top: 30px;
+}
+
+/*******MainSection********/
+
+main.main_block {
+    position: relative;
+}
+
+div.main_bg {
+    background: url('/assets/images/mainBg.jpg');
+    height: 668px;
+    background-size: 100%;
+}
+
+div.main_context {
+    width: 55%;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+div.pargeraph_lead_container p.pargeraph_lead {
+    color: #fff;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+div.pargeraph_lead_container span.under_line_parageraph_lead {
+    width: 55px;
+    height: 1px;
+    background: #00e0d0;
+    display: inline-block;
+}
+
+div.lead_intro_container p.lead_intro {
+    margin: 60px 0 0 0;
+    color: #fff;
+    font-weight: lighter;
+    font-size: 17px;
+}
+
+div.lead_intro_container a.lead_link {
+    margin-top: 40px;
+    border: 1px solid #00e0d0;
+    color: #fff;
+    padding: 14px 25px;
+    font-size: 13px;
+    font-weight: lighter;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+footer.main_footer {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+footer.main_footer div.slider_controller {
+    display: inline-block;
+}
+
+div.slider_controller button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid white;
+}
+
+div.slider_controller button.active {
+    background-color: #00e0d0;
+    border-color: #00e0d0;
+}
+
+/*******ToolsSection********/
+
+section.main_page_section {
+    position: relative;
+}
+
+div.tools_section_bg {
+    background: url('/assets/images/mainToolsBG.jpg');
+    background-size: 100%;
+    height: 668px;
+}
+
+div.main_page_section_context div.pargeraph_lead_container span.under_line_parageraph_lead {
+    width: 55px;
+    height: 1px;
+    background: #00e0d0;
+    display: inline-block;
+}
+
+div.tools_section_context div.pargeraph_lead_container span.under_line_parageraph_lead, div.consolation_management_section_context div.pargeraph_lead_container span.under_line_parageraph_lead {
+    background: #000;
+}
+
+div.main_page_section_context {
+    width: 55%;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+div.tools_section_context div.pargeraph_lead_container p.pargeraph_lead, div.consolation_management_section_context div.pargeraph_lead_container p.pargeraph_lead {
+    color: #333;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+div.tools_section_context div.lead_intro_container p.lead_intro, div.consolation_management_section_context div.lead_intro_container p.lead_intro {
+    margin: 37px 0 0 0;
+    color: #000;
+    font-weight: lighter;
+    font-size: 22px;
+    line-height: 34px;
+}
+
+div.tools_section_context div.lead_intro_container a.lead_link, div.consolation_management_section_context div.lead_intro_container a.lead_link {
+    margin-top: 30px;
+    border: 1px solid #000;
+    color: #333;
+    padding: 15px 108px;
+    font-size: 13px;
+    font-weight: bold;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+/*******MakeVideo********/
+
+div.video_section_bg {
+    background: url('/assets/images/mainVideoBG.jpg');
+    background-size: 100%;
+    height: 668px;
+}
+
+section.video_section div.lead_intro_container p.lead_intro {
+    margin: 20px 0 0 0;
+    color: #fff;
+    font-weight: lighter;
+    font-size: 17px;
+}
+
+section.video_section div.lead_intro_container a.lead_link {
+    font-weight: bold;
+    color: #00e0d0;
+}
+
+section.video_section div.lead_intro_container a.lead_link.video_link_resume {
+    margin-right: 35px;
+    padding: 11px 14px 10px 35px;
+}
+
+section.video_section div.lead_intro_container a.lead_link.order_link {
+    padding: 12px 63px;
+}
+
+a.video_link_resume i {
+    width: 26px;
+    height: 26px;
+    background: url('/assets/icons/icons.png') -7px -5px;
+    display: inline-block;
+    float: right;
+    margin-left: 5px;
+}
+
+/*******consolationManagement********/
+
+div.consolation_management_section_bg {
+    background: url('/assets/images/consulationManagementBG.jpg');
+    background-size: 100%;
+    height: 668px;
+}
+
+div.consolation_management_section_context div.lead_intro_container p.lead_intro {
+    text-align: justify;
+    font-size: 21px;
+}
+
+div.consolation_management_section_context div.lead_intro_container a.lead_link {
+    padding: 15px 50px;
+}
+
+/*******footer********/
+footer {
+    color: white;
+}
+
+footer div.main_footer_BG {
+    background: url('/assets/images/footerBG.jpg');
+    background-size: 100%;
+    height: 336px;
+}
+
+footer div.container.footer_context {
+    margin-top: 95px;
+}
+
+/*******FooterComment********/
+
+footer div.comment_footer_container input, footer div.comment_footer_container textarea {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    width: 100%;
+    padding: 4px 10px;
+    margin-bottom: 6px;
+    color: white;
+}
