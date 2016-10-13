@@ -27,6 +27,7 @@ const serverPath = 'server';
 const paths = {
     client: {
         assets: `${clientPath}/assets/**/*`,
+        libs: [`${clientPath}/assets/vendor/**/*.js`],
         images: `${clientPath}/assets/images/**/*`,
         revManifest: `${clientPath}/assets/rev-manifest.json`,
         scripts: [
@@ -260,7 +261,8 @@ gulp.task('lint:scripts', cb => runSequence(['lint:scripts:client', 'lint:script
 gulp.task('lint:scripts:client', () => {
     return gulp.src(_.union(
         paths.client.scripts,
-        _.map(paths.client.test, blob => '!' + blob)
+        _.map(paths.client.test, blob => '!' + blob),
+        _.map(paths.client.libs, p => '!' + p)
     ))
         .pipe(lintClientScripts());
 });

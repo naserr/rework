@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/vendor/angular-toastr/dist/angular-toastr.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>REWORK</title>
 </head>
-<body>
+<body ng-app="reworkApp.landing" ng-controller="LandingController as vm">
 <!-- #page>div.logo+ul#navigation>li*5>a{Item $}          -->
 <main class="main_block clearfix">
     <header class="header clearfix">
@@ -135,11 +136,19 @@
         <div class="container footer_context clearfix">
             <div class="row">
                 <div class="comment_footer_container col-md-4">
-                    <input type="text" placeholder="نام">
-                    <input type="text" placeholder="نام خانوادگی">
-                    <input type="text" placeholder="تلفن">
-                    <textarea placeholder="پیام شما"></textarea>
-                    <button type="button" name="button">ارسال پیام</button>
+                    <form name="contactForm" novalidate ng-submit="vm.sendMessage(contactForm, vm.message)">
+                        <input type="text" name="name" placeholder="نام" ng-model="vm.message.name" required>
+                        <p ng-show="contactForm.name.$invalid && !contactForm.name.$pristine" class="help-block">نام را وارد کنید</p>
+
+                        <input type="email" name="email" placeholder="رایانامه" ng-model="vm.message.email" required>
+                        <p ng-show="contactForm.email.$invalid && !contactForm.email.$pristine" class="help-block">رایانه معتبر وارد کنید</p>
+
+                        <input type="tel" nae="phone" placeholder="تلفن" ng-model="vm.message.phone">
+                        <p ng-show="contactForm.phone.$invalid && !contactForm.phone.$pristine" class="help-block">شماره معتبر وارد کنید</p>
+
+                        <textarea placeholder="پیام شما" data-ng-model="vm.message.text" required ng-maxlength="1000"></textarea>
+                        <button type="submit" name="button" ng-disabled="contactForm.$invalid">ارسال پیام</button>
+                    </form>
                 </div>
                 <div class="contact_container col-md-4">
                     <h6>آدرس</h6>
@@ -156,7 +165,10 @@
         </div>
     </div>
 </footer>
-<script type="text/javascript" src="assets/lib/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="assets/lib/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/vendor/angular/angular.min.js"></script>
+<script type="text/javascript" src="assets/vendor/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
+<script type="text/javascript" src="app/landing/landing.app.js"></script>
 </body>
 </html>

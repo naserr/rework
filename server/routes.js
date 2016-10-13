@@ -9,10 +9,17 @@ import path from 'path';
 
 export default function(app) {
   // Insert routes below
+  app.use('/api/contacts', require('./api/contact'));
   app.use('/api/things', require('./api/thing'));
   app.use('/api/users', require('./api/user'));
 
   app.use('/auth', require('./auth').default);
+
+  app.route('/landing')
+    .get((req, res) => {
+      console.log('>>>>>>>> /landing');
+      res.sendFile(path.resolve(`${app.get('appPath')}/landing.html`));
+    });
 
   app.route('/')
     .get((req, res) => {
@@ -20,10 +27,10 @@ export default function(app) {
       res.redirect('/landing');
     });
 
-  app.route('/landing')
+  app.route('/main')
     .get((req, res) => {
-      console.log('>>>>>>>> /landing');
-      res.sendFile(path.resolve(`${app.get('appPath')}/landing.html`));
+      console.log('>>>>>>>> /main');
+      res.sendFile(path.resolve(`${app.get('appPath')}/main.html`));
     });
 
   // All undefined asset or api routes should return a 404
@@ -34,6 +41,6 @@ export default function(app) {
   app.route('/*')
     .get((req, res) => {
       console.log('>>>>>>>> /*');
-      res.sendFile(path.resolve(`${app.get('appPath')}/index.html`));
+      res.sendFile(path.resolve(`${app.get('appPath')}/main.html`));
     });
 }

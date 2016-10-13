@@ -3,5 +3,8 @@
     "env": {
         "browser": true,
         "commonjs": true
+    },
+    "globals": {
+        "angular": true
     }
 }
