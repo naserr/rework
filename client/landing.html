@@ -8,7 +8,6 @@
     <title>REWORK</title>
 </head>
 <body ng-app="reworkApp.landing" ng-controller="LandingController as vm">
-<!-- #page>div.logo+ul#navigation>li*5>a{Item $}          -->
 <main class="main_block clearfix">
     <header class="header clearfix">
         <div class="container clearfix">
@@ -126,7 +125,7 @@
                     فارسی ایجاد کرد. در این صورت می توان امید داشت که
                     تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به
                 </p>
-                <a class="lead_link" href="#">ارسال درخواست منیتورینگ</a>
+                <a class="lead_link" href="#">ارسال درخواست مانیتورینگ</a>
             </div>
         </div>
     </div>
@@ -150,16 +149,56 @@
                         <button type="submit" name="button" ng-disabled="contactForm.$invalid">ارسال پیام</button>
                     </form>
                 </div>
-                <div class="contact_container col-md-4">
-                    <h6>آدرس</h6>
-                    <p>
+                <div class="contact_container clearfix col-md-4">
+                    <h6 class="company_address header_footer">آدرس</h6>
+                    <p class="address_body">
                         <i></i>
                         لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
                         چاپگره
                     </p>
+                    <p class="phone_number">
+                        <i></i>
+                        ۰۹۱۲۷۷۶۶۲۴۲
+                    </p>
                 </div>
-                <div class="joinment_container col-md-4">
-
+                <div class="joinment_container clearfix col-md-4">
+                    <h6 class="company_address clearfix header_footer">مشترک شوید</h6>
+                    <div class="rss_email clearfix">
+                        <input type="text" placeholder="ایمیل برای اشتراک در خبرنامه">
+                        <button type="button" name="button">
+                            <span></span>
+                        </button>
+                    </div>
+                    <div class="list_social_network_wrapper clearfix">
+                        <ul class="list_social_network clearfix">
+                            <li class="social_network_item youTube">
+                                <a href="#"></a>
+                            </li>
+                            <li class="social_network_item google_plus">
+                                <a href="#"></a>
+                            </li>
+                            <li class="social_network_item instageram">
+                                <a href="#"></a>
+                            </li>
+                            <li class="social_network_item aparat">
+                                <a href="#"></a>
+                            </li>
+                            <li class="social_network_item tweiter">
+                                <a href="#"></a>
+                            </li>
+                            <li class="social_network_item facebook">
+                                <a href="#"></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="web_list_wrapper clearfix">
+                        <ul class="web_list clearfix">
+                            <li class="web_list_item"><a href="#">صفحه اصلی</a></li>
+                            <li class="web_list_item"><a href="#">تماس با ما</a></li>
+                            <li class="web_list_item"><a href="#">راهنما</a></li>
+                            <li class="web_list_item"><a href="#">ابزارها</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

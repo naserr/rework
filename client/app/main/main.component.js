@@ -5,11 +5,14 @@ import routing from './main.routes';
 export class MainController {
   awesomeThings = [];
   newThing = '';
+  timee = new Date();
 
   /*@ngInject*/
-  constructor($http, $scope, socket) {
+  constructor($http, $interval, $scope, socket) {
     this.$http = $http;
     this.socket = socket;
+
+    $interval(this.countUp.bind(this), 1000);
 
     $scope.$on('$destroy', function() {
       socket.unsyncUpdates('thing');
@@ -22,6 +25,10 @@ export class MainController {
         this.awesomeThings = response.data;
         this.socket.syncUpdates('thing', this.awesomeThings);
       });
+  }
+
+  countUp() {
+    this.timee = new Date();
   }
 
   addThing() {

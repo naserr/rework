@@ -71,8 +71,8 @@ module.exports = function makeWebpackConfig(options) {
 
       // Output path from the view of the page
       // Uses webpack-dev-server in development
-      publicPath: BUILD || DEV || E2E ? '/' : `http://localhost:${8080}/`,
-      // publicPath: BUILD || DEV || E2E ? `http://localhost:${3000}/` : `http://localhost:${8080}/`,
+      // publicPath: BUILD || DEV || E2E ? '/' : `http://localhost:${8080}/`,
+      publicPath: BUILD || DEV || E2E ? `http://localhost:${3000}/` : `http://localhost:${8080}/`,
       // publicPath: BUILD ? '/' : 'http://localhost:' + env.port + '/',
 
       // Filename for entry points
