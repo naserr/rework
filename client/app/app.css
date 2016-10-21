@@ -31,6 +31,10 @@
     font-style: normal;
 }
 
+/**
+ *Iran Fonts
+ */
+
 @font-face {
     font-family: 'iran';
     src: url('/assets/fonts/iran-sans/IRANSans-Bold-web.eot');
@@ -74,10 +78,10 @@
     padding: 0.2em 0;
 }
 
+@import '../assets/vendor/rdash-ui/dist/css/rdash.min.css';
+
 /* Component styles are injected through gulp */
 /* inject:css */
 @import 'admin/admin.css';
-@import 'main/main.css';
-@import '../components/footer/footer.css';
 @import '../components/oauth-buttons/oauth-buttons.css';
 /* endinject */
