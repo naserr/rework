@@ -84,4 +84,5 @@
 /* inject:css */
 @import 'admin/admin.css';
 @import '../components/oauth-buttons/oauth-buttons.css';
+@import '../components/sidebar/sidebar.css';
 /* endinject */

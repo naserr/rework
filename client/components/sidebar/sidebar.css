@@ -1,0 +1,6 @@
+ul.sidebar .sidebar-list a.active {
+    background: #2d3e63;
+    color: #fff;
+    border-left: 3px solid #bd1434;
+    text-indent: 22px;
+}
