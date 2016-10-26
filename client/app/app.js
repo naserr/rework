@@ -23,13 +23,13 @@ import constants from './app.constants';
 import util from '../components/util/util.module';
 import socket from '../components/socket/socket.service';
 import main from './main/index';
-import test from './test/index';
+import getStart from './getStart/getStart.component';
 
 import './app.css';
 
 angular.module('reworkApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io', uiRouter, _Auth,
     account, admin, constants, socket, util,
-    main, header, sidebar, test
+    main, header, sidebar, getStart
   ])
   .config(routeConfig)
   .config(routes)

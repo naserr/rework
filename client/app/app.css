@@ -83,6 +83,7 @@
 /* Component styles are injected through gulp */
 /* inject:css */
 @import 'admin/admin.css';
+@import 'getStart/getStart.css';
 @import '../components/oauth-buttons/oauth-buttons.css';
 @import '../components/sidebar/sidebar.css';
 /* endinject */

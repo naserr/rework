@@ -19,7 +19,7 @@ export function routerDecorator($rootScope, $state, Auth) {
           event.preventDefault();
           return Auth.isLoggedIn()
             .then(is => {
-              $state.go(is ? 'main' : 'login');
+              $state.go(is ? 'app.main' : 'login');
             });
         });
     } else {

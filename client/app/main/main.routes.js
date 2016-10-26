@@ -9,7 +9,13 @@ export default function routes($stateProvider) {
       authenticate: true,
       views: {
         '@': {
-          template: '<h1>Main</h1><a ui-sref="app.test">test</a>'
+          template: '<main user="$resolve.user"></main>',
+          resolve: {
+            /*@ngInject*/
+            user: Auth => {
+              return Auth.getCurrentUser();
+            }
+          }
         }
       }
     });

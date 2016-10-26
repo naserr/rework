@@ -2,19 +2,23 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import routing from './main.routes';
 
-export class MainController {
-  time = new Date();
+class MainController {
 
   /*@ngInject*/
-  constructor($interval) {
-    $interval(this.countUp.bind(this), 1000);
-  }
-
-  countUp() {
-    this.time = new Date();
+  constructor($state) {
+    if(this.user.isFresh) {
+      $state.go('app.getStart');
+    }
   }
 }
 
 export default angular.module('reworkApp.main', [uiRouter])
   .config(routing)
+  .component('main', {
+    template: '',
+    bindings: {
+      user: '<'
+    },
+    controller: MainController
+  })
   .name;

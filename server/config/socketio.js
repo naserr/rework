@@ -16,6 +16,7 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/project/project.socket').register(socket);
 }
 
 export default function(socketio) {

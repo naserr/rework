@@ -6,7 +6,7 @@ import mongoose, {Schema} from 'mongoose';
 
 const authTypes = ['github', 'twitter', 'facebook', 'google'];
 
-var UserSchema = new Schema({
+export var UserSchema = new Schema({
   name: String,
   email: {
     type: String,
@@ -38,7 +38,12 @@ var UserSchema = new Schema({
   facebook: {},
   twitter: {},
   google: {},
-  github: {}
+  github: {},
+  meta: {type: Schema.Types.Mixed, default: {}},
+  isFresh: {
+    type: Boolean,
+    default: true
+  }
 });
 
 /**
@@ -97,7 +102,7 @@ UserSchema
       return respond(true);
     }
 
-    return this.constructor.findOne({ email: value }).exec()
+    return this.constructor.findOne({email: value}).exec()
       .then(user => {
         if(user) {
           if(this.id === user.id) {

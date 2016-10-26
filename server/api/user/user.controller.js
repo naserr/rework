@@ -118,5 +118,5 @@ export function me(req, res, next) {
  * Authentication callback
  */
 export function authCallback(req, res) {
-  return res.redirect('/');
+  return res.redirect('/main');
 }
