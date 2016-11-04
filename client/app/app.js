@@ -6,13 +6,13 @@ import ngCookies from 'angular-cookies';
 import ngResource from 'angular-resource';
 import ngSanitize from 'angular-sanitize';
 import 'angular-socket-io';
-
+import toastr from 'angular-toastr';
 import uiRouter from 'angular-ui-router';
 
 // import ngMessages from 'angular-messages';
 // import ngValidationMatch from 'angular-validation-match';
 
-import {routeConfig} from './app.config';
+import * as appConfig from './app.config';
 
 import _Auth from '../components/auth/auth.module';
 import account from './account';
@@ -27,11 +27,14 @@ import getStart from './getStart/getStart.component';
 
 import './app.css';
 
-angular.module('reworkApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io', uiRouter, _Auth,
-    account, admin, constants, socket, util,
-    main, header, sidebar, getStart
+angular.module('reworkApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io',
+    uiRouter, toastr, _Auth, account, admin, constants, socket, util, main, header, sidebar,
+    getStart
   ])
-  .config(routeConfig)
+  .config(appConfig.routeConfig)
+  .config(appConfig.toastrConfig)
+  .config(appConfig.logDecorator)
+  .config(appConfig.interceptorConfig)
   .config(routes)
   .component('app', {
     template: require('./app.html'),

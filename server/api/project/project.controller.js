@@ -12,12 +12,14 @@
 
 import jsonpatch from 'fast-json-patch';
 import Project from './project.model';
+import User from '../user/user.model';
+import * as constants from '../../config/environment/shared';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {
     if(entity) {
-      return res.status(statusCode).json(entity);
+      res.status(statusCode).json(entity);
     }
     return null;
   };
@@ -59,7 +61,7 @@ function handleEntityNotFound(res) {
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
   return function(err) {
-    res.status(statusCode).send(err);
+    return res.status(statusCode).send(err);
   };
 }
 
@@ -80,19 +82,47 @@ export function show(req, res) {
 
 // Creates a new Project in the DB
 export function create(req, res) {
-  let newProject = {
+  let newProject = new Project({
     name: req.body.name,
     owner: req.user,
-    users: [req.body.user._id]
-  };
+    users: [{
+      _id: req.user._id,
+      role: constants.roleNames.admin
+    }]
+  });
 
-  if(!req.user.isFresh && (req.user.meta.projects || []).length > 0) {
-    return res.status(403).send('مجاز به ایجاد پروژه با پلن رایگن نیستید');
+  if(req.user.type === constants.plans.free.name && !req.user.isFresh) {
+    return res.status(403).send('مجاز به ایجاد بیش از یک پروژه با پلن رایگن نیستید');
   }
 
-  return Project.create(newProject)
-    .then(respondWithResult(res, 201))
-    .catch(handleError(res));
+  if(req.user.type === constants.plans.free.name && req.user.isFresh) {
+    return newProject.save()
+      .then(initFreeProject)
+      .then(setDefaultProject(req.user))
+      .then(respondWithResult(res, 201))
+      .catch(handleError(res));
+  }
+}
+
+// join a Project with a key
+export function join(req, res) {
+  /**
+   * find project with provided key and deactivated it
+   * if requested user isn't already a project member then
+   * add user to project members with provided role
+   **/
+
+  if(!req.body.key || req.body.key.length !== 37) {
+    return res.status(400).send('کلید وارد شده نامعتبر است! کلید معتبر تهیه کنید.');
+  }
+
+  return Project.findOne({
+    'keys.value': req.body.key
+  }).exec()
+    .then(joinProject(req.body.key, req.user._id))
+    .then(setDefaultProject(req.user))
+    .then(respondWithResult(res))
+    .catch(handleError(res, 400));
 }
 
 // Upserts the given Project in the DB at the specified ID
@@ -128,4 +158,48 @@ export function destroy(req, res) {
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));
+}
+
+function initFreeProject(newProject) {
+  newProject.keys.push(newProject.generateKey(constants.roleNames.user));
+  newProject.keys.push(newProject.generateKey(constants.roleNames.user));
+  newProject.keys.push(newProject.generateKey(constants.roleNames.guest));
+
+  return newProject.save();
+}
+
+function joinProject(key, userId) {
+  let projectId = key.slice(0, 24);
+  let role = key.slice(24, 25);
+  let token = key.slice(25, 37);
+
+  return function(project) {
+    let isValid = project.deactivateKey(key);
+    if(!isValid) {
+      return Promise.reject('کلید وارد شده نامعتبر است! کلید معتبر تهیه کنید.');
+    }
+
+    // project.users.find(u => u._id === userId);
+    let user = project.users.id(userId);
+    if(user) {
+      return Promise.reject('قبلا عضو شه اید.');
+    }
+
+    project.users.push({
+      _id: userId,
+      role
+    });
+    return project.save();
+  };
+}
+
+function setDefaultProject(user) {
+  return function(project) {
+    // return User.findByIdAndUpdate(userId, {defaultProject: project._id}).exec();
+    return User.update({_id: user._id}, {
+      defaultProject: project._id,
+      isFresh: false
+    }).exec()
+      .then(() => {return project;});
+  };
 }

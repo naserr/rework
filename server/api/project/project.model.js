@@ -2,9 +2,10 @@
 
 import mongoose from 'mongoose';
 import crypto from 'crypto';
-import User, {UserSchema} from '../user/user.model';
+import User from '../user/user.model';
 
 var KaySchema = new mongoose.Schema({
+  // value = projectId + role + 12 random chars
   value: String,
   active: {
     type: Boolean,
@@ -17,38 +18,50 @@ var ProjectSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  owner: UserSchema,
+  owner: {},
   created: {
     type: Date,
     default: Date.now
   },
   keys: [KaySchema],
-  plan: {},
-  users: [mongoose.Schema.Types.ObjectId],
+  users: [{
+    _id: mongoose.Schema.Types.ObjectId,
+    role: {
+      type: Number
+    }
+  }],
   boards: [{}]
 });
 
 ProjectSchema.post('save', function(doc) {
-  doc.keys.push({value: doc.generateKey(12)});
-  doc.keys.push({value: doc.generateKey(12)});
-  doc.keys.push({value: doc.generateKey(12)});
-
   User.findById(doc.owner._id).exec()
-    .then(function(user) {
+    .then(user => {
       user.isFresh = false;
       return user.save();
     });
-
-  doc.save();
 });
 
 ProjectSchema.methods = {
-  generateKey(len) {
+  generateKey(role, len = 12) {
     let token = crypto.randomBytes(Math.ceil(len / 2))
       .toString('hex') // convert to hexadecimal format
       .slice(0, len);   // return required number of characters
 
-    return this._id.toString().concat(token);
+    return {
+      value: this._id.toString()
+        .concat(role)
+        .concat(token)
+    };
+  },
+
+  deactivateKey(key) {
+    let theKey = this.keys.find(k => k.value === key);
+    if(!theKey || !theKey.active) {
+      return false;
+    }
+
+    theKey.active = false;
+    return true;
   }
 };
 

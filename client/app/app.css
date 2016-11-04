@@ -1,5 +1,6 @@
 @import '~bootstrap/dist/css/bootstrap.css';
 @import '~bootstrap-social/bootstrap-social.css';
+@import '~angular-toastr/dist/angular-toastr.min.css';
 
 /**
  * Bootstrap Fonts

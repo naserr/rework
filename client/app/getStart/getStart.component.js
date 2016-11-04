@@ -8,9 +8,22 @@ class GetStartComponent {
   projectKey = '';
 
   /*@ngInject*/
-  constructor() {
-    this.projectName = 'Hello';
-    this.projectKey = 123;
+  constructor($http) {
+    this.$http = $http;
+  }
+
+  createProject() {
+    this.$http.post('/api/projects', {
+      name: this.projectName
+    });
+    this.projectName = '';
+  }
+
+  joinProject() {
+    this.$http.post('/api/projects/join', {
+      key: this.projectKey
+    });
+    this.projectKey = '';
   }
 }
 

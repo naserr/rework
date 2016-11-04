@@ -38,19 +38,18 @@ module.exports = function makeWebpackConfig(options) {
     config.entry = {};
   } else {
     config.entry = {
-      app      : './client/app/app.js',
+      app: './client/app/app.js',
       polyfills: './client/polyfills.js',
-      vendor   : [
+      vendor: [
         'angular',
         'angular-animate',
         'angular-aria',
         'angular-cookies',
         'angular-resource',
-
         'angular-sanitize',
         'angular-socket-io',
-
         'angular-ui-router',
+        'angular-toastr',
         'lodash'
       ]
     };
@@ -90,7 +89,7 @@ module.exports = function makeWebpackConfig(options) {
       modulesDirectories: [
         'node_modules'
       ],
-      extensions        : ['', '.js', '.ts']
+      extensions: ['', '.js', '.ts']
     };
   }
 
@@ -125,13 +124,13 @@ module.exports = function makeWebpackConfig(options) {
   // Initialize module
   config.module = {
     preLoaders: [],
-    loaders   : [{
+    loaders: [{
       // JS LOADER
       // Reference: https://github.com/babel/babel-loader
       // Transpile .js files using babel-loader
       // Compiles ES6 and ES7 into ES5 code
-      test   : /\.js$/,
-      loader : 'babel',
+      test: /\.js$/,
+      loader: 'babel',
       include: [
         path.resolve(__dirname, 'client/'),
         path.resolve(__dirname, 'node_modules/lodash-es/')
@@ -140,9 +139,9 @@ module.exports = function makeWebpackConfig(options) {
       // TS LOADER
       // Reference: https://github.com/s-panferov/awesome-typescript-loader
       // Transpile .ts files using awesome-typescript-loader
-      test   : /\.ts$/,
-      loader : 'awesome-typescript-loader',
-      query  : {
+      test: /\.ts$/,
+      loader: 'awesome-typescript-loader',
+      query: {
         tsconfig: path.resolve(__dirname, 'tsconfig.client.json')
       },
       include: [
@@ -155,14 +154,14 @@ module.exports = function makeWebpackConfig(options) {
       // Rename the file using the asset hash
       // Pass along the updated reference to your code
       // You can add here any file extension you want to get copied to your output
-      test  : /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)([\?]?.*)$/,
+      test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)([\?]?.*)$/,
       loader: 'file'
     }, {
 
       // HTML LOADER
       // Reference: https://github.com/webpack/raw-loader
       // Allow loading html through js
-      test  : /\.html$/,
+      test: /\.html$/,
       loader: 'raw'
     }, {
       // CSS LOADER
@@ -171,7 +170,7 @@ module.exports = function makeWebpackConfig(options) {
       //
       // Reference: https://github.com/postcss/postcss-loader
       // Postprocess your css with PostCSS plugins
-      test  : /\.css$/,
+      test: /\.css$/,
       loader: !TEST
         // Reference: https://github.com/webpack/extract-text-webpack-plugin
         // Extract css files in production builds
@@ -186,7 +185,7 @@ module.exports = function makeWebpackConfig(options) {
   };
 
   config.module.postLoaders = [{
-    test  : /\.js$/,
+    test: /\.js$/,
     loader: 'ng-annotate?single_quotes'
   }];
 
@@ -197,10 +196,10 @@ module.exports = function makeWebpackConfig(options) {
   if(TEST) {
     config.module.preLoaders.push({
       //delays coverage til after tests are run, fixing transpiled source coverage error
-      test   : /\.js$/,
+      test: /\.js$/,
       exclude: /(node_modules|spec\.js|mock\.js)/,
-      loader : 'isparta-instrumenter',
-      query  : {
+      loader: 'isparta-instrumenter',
+      query: {
         babel: {
           // optional: ['runtime', 'es7.classProperties', 'es7.decorators']
         }
@@ -258,8 +257,8 @@ module.exports = function makeWebpackConfig(options) {
   // Reference: https://github.com/ampedandwired/html-webpack-plugin
   // Render index.html
   let htmlConfig = {
-    template         : 'client/_index.html',
-    filename         : '../client/main.html',
+    template: 'client/_index.html',
+    filename: '../client/main.html',
     alwaysWriteToDisk: true
   }
   config.plugins.push(
@@ -281,8 +280,8 @@ module.exports = function makeWebpackConfig(options) {
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
       // Minify all javascript, switch loaders to minimizing mode
       new webpack.optimize.UglifyJsPlugin({
-        mangle  : false,
-        output  : {
+        mangle: false,
+        output: {
           comments: false
         },
         compress: {
@@ -316,7 +315,7 @@ module.exports = function makeWebpackConfig(options) {
 
   if(TEST) {
     config.stats = {
-      colors : true,
+      colors: true,
       reasons: true
     };
     config.debug = false;
@@ -329,20 +328,20 @@ module.exports = function makeWebpackConfig(options) {
    */
   config.devServer = {
     contentBase: './client/',
-    stats      : {
+    stats: {
       modules: false,
-      cached : false,
-      colors : true,
-      chunk  : false
+      cached: false,
+      colors: true,
+      chunk: false
     }
   };
 
   config.node = {
-    global        : 'window',
-    process       : true,
-    crypto        : 'empty',
+    global: 'window',
+    process: true,
+    crypto: 'empty',
     clearImmediate: false,
-    setImmediate  : false
+    setImmediate: false
   };
 
   return config;

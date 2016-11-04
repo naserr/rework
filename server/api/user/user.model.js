@@ -3,6 +3,7 @@
 import crypto from 'crypto';
 mongoose.Promise = require('bluebird');
 import mongoose, {Schema} from 'mongoose';
+import * as constants from '../../config/environment/shared';
 
 const authTypes = ['github', 'twitter', 'facebook', 'google'];
 
@@ -39,7 +40,17 @@ export var UserSchema = new Schema({
   twitter: {},
   google: {},
   github: {},
-  meta: {type: Schema.Types.Mixed, default: {}},
+  defaultProject: {
+    type: Schema.Types.ObjectId
+  },
+  type: {
+    type: String,
+    default: constants.plans.free.name,
+    enum: [
+      constants.plans.free.name, constants.plans.basic.name,
+      constants.plans.professional.name, constants.plans.ultimate.name
+    ]
+  },
   isFresh: {
     type: Boolean,
     default: true
