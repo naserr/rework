@@ -52,8 +52,12 @@ export function interceptorConfig($httpProvider) {
       responseError(rejection) {
         let error = rejection.data;
         let errorMessage = error;
-        if(rejection.status === 401 && rejection.config.url === '/api/users/me') {
-          return $q.reject(rejection);
+        if(rejection.status === 401) {
+          if(rejection.config.url === '/api/users/me') {
+            return $q.reject(rejection);
+          } else {
+            errorMessage = 'دسترسی غیرمجاز';
+          }
         }
         if(typeof error === 'object' || _.isEmpty(error)) {
           errorMessage = 'درخواست با خطا مواجه شد';
@@ -77,7 +81,7 @@ export function logDecorator($provide) {
     $delegate.error = function(e, showToast = true) {
       let toastr = $injector.get('toastr');
       if(showToast) {
-        toastr.error(e);
+        toastr.error(`<div style="direction: rtl">${e}</div>`);
       }
       errorFn.apply(null, arguments);
     };
@@ -86,7 +90,7 @@ export function logDecorator($provide) {
     $delegate.warn = function(e, showToast = true) {
       let toastr = $injector.get('toastr');
       if(showToast) {
-        toastr.warning(e);
+        toastr.warning(`<div style="direction: rtl">${e}</div>`);
       }
       warnFn.apply(null, arguments);
     };
@@ -95,7 +99,7 @@ export function logDecorator($provide) {
     $delegate.info = function(e, showToast = true) {
       let toastr = $injector.get('toastr');
       if(showToast) {
-        toastr.info(e);
+        toastr.info(`<div style="direction: rtl">${e}</div>`);
       }
       infoFn.apply(null, arguments);
     };
@@ -103,9 +107,9 @@ export function logDecorator($provide) {
     $delegate.success = function(e, showToast = true) {
       let toastr = $injector.get('toastr');
       if(showToast) {
-        toastr.success(e);
+        toastr.success(`<div style="direction: rtl">${e}</div>`);
       }
-      $delegate.log(e);
+      $delegate.log(`<div style="direction: rtl">${e}</div>`);
     };
 
     return $delegate;

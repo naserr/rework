@@ -28,17 +28,25 @@ var ProjectSchema = new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     role: {
       type: Number
+    },
+    date: {
+      type: Date,
+      default: new Date()
     }
   }],
   boards: [{}]
 });
 
-ProjectSchema.post('save', function(doc) {
-  User.findById(doc.owner._id).exec()
-    .then(user => {
-      user.isFresh = false;
-      return user.save();
-    });
+// ProjectSchema.post('save', function(doc) {
+//   User.findById(doc.owner._id).exec()
+//     .then(user => {
+//       user.isFresh = false;
+//       return user.save();
+//     });
+// });
+
+ProjectSchema.post('remove', function(doc) {
+  User.update({defaultProject: doc._id}, {defaultProject: null}).exec();
 });
 
 ProjectSchema.methods = {

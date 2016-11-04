@@ -11,6 +11,7 @@
 'use strict';
 
 import jsonpatch from 'fast-json-patch';
+import _ from 'lodash';
 import Project from './project.model';
 import User from '../user/user.model';
 import * as constants from '../../config/environment/shared';
@@ -76,6 +77,14 @@ export function index(req, res) {
 export function show(req, res) {
   return Project.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
+    .then(setDefaultProject(req.user))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
+// Gets a list of user Projects
+export function me(req, res) {
+  return Project.find({'users._id': req.user._id}, '-keys').exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
@@ -84,7 +93,7 @@ export function show(req, res) {
 export function create(req, res) {
   let newProject = new Project({
     name: req.body.name,
-    owner: req.user,
+    owner: _.pick(req.user, ['_id', 'email', 'name', 'type']),
     users: [{
       _id: req.user._id,
       role: constants.roleNames.admin
@@ -156,8 +165,22 @@ export function patch(req, res) {
 export function destroy(req, res) {
   return Project.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
+    .then(handleAuthorization(res, req.user))
     .then(removeEntity(res))
     .catch(handleError(res));
+}
+
+function handleAuthorization(res, user) {
+  return function(project) {
+    if(!project) {
+      return null;
+    }
+    if(!user._id.equals(project.owner._id)) {
+      res.status(403).end('فقط مالک پروژه میتواند پروژه را حذف کند');
+      return null;
+    }
+    return project;
+  };
 }
 
 function initFreeProject(newProject) {
@@ -200,6 +223,6 @@ function setDefaultProject(user) {
       defaultProject: project._id,
       isFresh: false
     }).exec()
-      .then(() => {return project;});
+      .then(() => project);
   };
 }

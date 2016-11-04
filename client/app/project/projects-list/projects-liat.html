@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped table-hover ">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Owner</th>
+                <th>Members</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="pr in vm.projects">
+                <td><a class="btn btn-link" ui-sref="app.project.detail({id: pr._id})">{{pr.name}}</a></td>
+                <td>{{pr.owner.name}}</td>
+                <td>{{pr.users.length | number}}</td>
+                <td>
+                    <button class="btn btn-danger" ng-click="vm.delete(pr._id)">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

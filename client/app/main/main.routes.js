@@ -12,9 +12,7 @@ export default function routes($stateProvider) {
           template: '<main user="$resolve.user"></main>',
           resolve: {
             /*@ngInject*/
-            user: Auth => {
-              return Auth.getCurrentUser();
-            }
+            user: Auth => Auth.getCurrentUser()
           }
         }
       }

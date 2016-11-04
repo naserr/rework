@@ -24,12 +24,13 @@ import util from '../components/util/util.module';
 import socket from '../components/socket/socket.service';
 import main from './main/index';
 import getStart from './getStart/getStart.component';
+import project from './project/index';
 
 import './app.css';
 
 angular.module('reworkApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io',
     uiRouter, toastr, _Auth, account, admin, constants, socket, util, main, header, sidebar,
-    getStart
+    getStart, project
   ])
   .config(appConfig.routeConfig)
   .config(appConfig.toastrConfig)
