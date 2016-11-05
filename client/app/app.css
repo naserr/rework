@@ -1,0 +1,90 @@
+@import '~bootstrap/dist/css/bootstrap.css';
+@import '~bootstrap-social/bootstrap-social.css';
+@import '~angular-toastr/dist/angular-toastr.min.css';
+
+/**
+ * Bootstrap Fonts
+ */
+
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('/assets/fonts/bootstrap/glyphicons-halflings-regular.eot');
+    src: url('/assets/fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/bootstrap/glyphicons-halflings-regular.woff') format('woff'),
+    url('/assets/fonts/bootstrap/glyphicons-halflings-regular.ttf') format('truetype'),
+    url('/assets/fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+@import '~font-awesome/css/font-awesome.css';
+
+/**
+ *Font Awesome Fonts
+ */
+
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('/assets/fonts/font-awesome/fontawesome-webfont.eot?v=4.1.0');
+    src: url('/assets/fonts/font-awesome/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'),
+    url('/assets/fonts/font-awesome/fontawesome-webfont.woff?v=4.1.0') format('woff'),
+    url('/assets/fonts/font-awesome/fontawesome-webfont.ttf?v=4.1.0') format('truetype'),
+    url('/assets/fonts/font-awesome/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/**
+ *Iran Fonts
+ */
+
+@font-face {
+    font-family: 'iran';
+    src: url('/assets/fonts/iran-sans/IRANSans-Bold-web.eot');
+    src: url('/assets/fonts/iran-sans/IRANSans-Bold-web.eot?#iefix') format('eot'),
+    url('/assets/fonts/iran-sans/IRANSans-Bold-web.woff') format('woff');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'iran';
+    src: url('/assets/fonts/iran-sans/IRANSans-Medium-web.eot');
+    src: url('/assets/fonts/iran-sans/IRANSans-Medium-web.eot?#iefix') format('eot'),
+    url('/assets/fonts/iran-sans/IRANSans-Medium-web.woff') format('woff');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'iran';
+    src: url('/assets/fonts/iran-sans/IRANSans-web.eot');
+    src: url('/assets/fonts/iran-sans/IRANSans-web.eot?#iefix') format('eot'),
+    url('/assets/fonts/iran-sans/IRANSans-web.woff') format('woff');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'iran';
+    src: url('/assets/fonts/iran-sans/IRANSans-Light-web.eot');
+    src: url('/assets/fonts/iran-sans/IRANSans-Light-web.eot?#iefix') format('eot'),
+    url('/assets/fonts/iran-sans/IRANSans-light-web.woff') format('woff');
+    font-weight: lighter;
+}
+
+/**
+ * App-wide Styles
+ */
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+@import '../assets/vendor/rdash-ui/dist/css/rdash.min.css';
+
+/* Component styles are injected through gulp */
+/* inject:css */
+@import 'admin/admin.css';
+@import 'getStart/getStart.css';
+@import '../components/oauth-buttons/oauth-buttons.css';
+@import '../components/sidebar/sidebar.css';
+/* endinject */
