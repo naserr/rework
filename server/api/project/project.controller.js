@@ -75,7 +75,7 @@ export function index(req, res) {
 
 // Gets a single Project from the DB
 export function show(req, res) {
-  return Project.findById(req.params.id).exec()
+  return Project.findById(req.params.id, '-keys').exec()
     .then(handleEntityNotFound(res))
     .then(setDefaultProject(req.user))
     .then(respondWithResult(res))

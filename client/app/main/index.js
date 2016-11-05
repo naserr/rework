@@ -9,8 +9,7 @@ class MainController {
     this.$http = $http;
     if(this.user.isFresh) {
       $state.go('app.getStart');
-    }
-    else if(this.user.defaultProject) {
+    } else if(this.user.defaultProject) {
       $state.go('app.project.detail', {id: this.user.defaultProject});
     } else {
       $state.go('app.project.list');
