@@ -15,16 +15,12 @@ class MainController {
       $state.go('app.project.list');
     }
   }
-
-  delete() {
-    this.$http.delete(`/api/projects/${this.user.defaultProjec || '1'}`);
-  }
 }
 
 export default angular.module('reworkApp.main', [uiRouter])
   .config(routing)
-  .component('main', {
-    template: require('./main.html'),
+  .component('mainState', {
+    template: '',
     bindings: {
       user: '<'
     },

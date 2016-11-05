@@ -1,15 +1,5 @@
-<div id="page-wrapper" ng-class="{'open': app.toggle}" ng-cloak>
-    <!-- Sidebar -->
+<section class="desktop_work_section clearfix">
+    <div ui-view="header"></div>
     <div ui-view="sidebar"></div>
-
-    <div id="content-wrapper">
-        <div class="page-content">
-            <!-- Header Bar -->
-            <div ui-view="header"></div>
-
-            <!-- Main Content -->
-            <div ui-view></div>
-
-        </div><!-- End Page Content -->
-    </div><!-- End Content Wrapper -->
-</div><!-- End Page Wrapper -->
+    <div class="page_content_wrapper" ui-view></div>
+</section>

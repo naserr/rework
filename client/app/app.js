@@ -17,7 +17,7 @@ import * as appConfig from './app.config';
 import _Auth from '../components/auth/auth.module';
 import account from './account';
 import admin from './admin';
-import header from '../components/header/header.component';
+import header from '../components/header/top-header.component';
 import sidebar from '../components/sidebar/sidebar.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
@@ -65,7 +65,7 @@ function routes($stateProvider) {
       abstract: true,
       views: {
         'header@': {
-          template: '<header></header>'
+          template: '<top-header></top-header>'
         },
         'sidebar@': {
           template: '<sidebar></sidebar>'

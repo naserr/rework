@@ -7,8 +7,8 @@ class HeaderController {
 }
 
 export default angular.module('directives.header', [])
-  .component('header', {
-    template: require('./header.html'),
+  .component('topHeader', {
+    template: require('./top-header.html'),
     controller: HeaderController
   })
   .name;
