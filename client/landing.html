@@ -19,10 +19,10 @@
             <img src="assets/img/mainBG.jpg" class="cover_BG" alt="main_BG"/>
         </div>
         <div class="item">
-            <img src="assets/img/mainVideoBG.jpg" class="cover_BG alt=" main_BG"/>
+            <img src="assets/img/mainVideoBG.jpg" class="cover_BG" alt="main_BG"/>
         </div>
         <div class="item">
-            <img src="assets/img/mainVideoBG.jpg" class="cover_BG alt=" main_BG"/>
+            <img src="assets/img/mainVideoBG.jpg" class="cover_BG" alt="main_BG"/>
         </div>
     </div>
 
@@ -191,10 +191,15 @@
                 <div class="joinment_container clearfix col-md-4">
                     <h6 class="company_address clearfix header_footer">مشترک شوید</h6>
                     <div class="rss_email clearfix">
-                        <input type="text" placeholder="ایمیل برای اشتراک در خبرنامه">
-                        <button type="button" name="button">
-                            <span></span>
-                        </button>
+                        <form name="subscribeForm" ng-submit="vm.subscribe(subscribeForm, vm.subscribeEmail)" novalidate>
+                            <input type="email" name="email" ng-model="vm.subscribeEmail" placeholder="ایمیل برای اشتراک در خبرنامه" required>
+                            <button type="submit" ng-disabled="subscribeForm.$invalid">
+                                <span></span>
+                            </button>
+                            <span ng-show="subscribeForm.email.$invalid && !subscribeForm.email.$pristine"
+                               class="help-block pull-right">
+                                رایانه معتبر نیست</span>
+                        </form>
                     </div>
                     <div class="list_social_network_wrapper clearfix">
                         <ul class="list_social_network clearfix">

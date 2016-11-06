@@ -63,6 +63,16 @@ function handleError(res, statusCode) {
   };
 }
 
+function handleDuplicate(res, newEntity) {
+  return function(entity) {
+    if(entity) {
+      res.status(400).send('قبلا عضو شده اید');
+      return null;
+    }
+    return newEntity.save();
+  };
+}
+
 // Gets a list of Subscriptions
 export function index(req, res) {
   return Subscription.find().exec()
@@ -80,7 +90,12 @@ export function show(req, res) {
 
 // Creates a new Subscription in the DB
 export function create(req, res) {
-  return Subscription.create(req.body)
+  let newSubscription = new Subscription({
+    email: req.body.email
+  });
+
+  return Subscription.findOne({email: req.body.email})
+    .then(handleDuplicate(res, newSubscription))
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
@@ -90,7 +105,11 @@ export function upsert(req, res) {
   if(req.body._id) {
     delete req.body._id;
   }
-  return Subscription.findOneAndUpdate({_id: req.params.id}, req.body, {upsert: true, setDefaultsOnInsert: true, runValidators: true}).exec()
+  return Subscription.findOneAndUpdate({_id: req.params.id}, req.body, {
+    upsert: true,
+    setDefaultsOnInsert: true,
+    runValidators: true
+  }).exec()
 
     .then(respondWithResult(res))
     .catch(handleError(res));
