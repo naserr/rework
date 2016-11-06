@@ -7,12 +7,12 @@
         <p class="login_parageraph">
             تمام اعضای تیم با این اسم قبت نام می کنند البته شما می توانید نام آن را بعدا تغییر دهید.
         </p>
-        <form class="start_up_form_container"  name="newProjectForm" ng-submit="vm.createProject()" novalidate>
+        <form class="start_up_form_container" name="newProjectForm" ng-submit="vm.createProject()" novalidate>
             <div class="project_name_container clearfix">
                 <input type="text" placeholder="اسم انتخابی" id="projectName" type="text" ng-model="vm.projectName" required>
             </div>
             <div class="project_name_submit clearfix">
-                <button type="button" class="rework_btn submit_btn" name="button" ng-disabled="newProjectForm.$invalid">
+                <button type="submit" class="rework_btn submit_btn" name="button" ng-disabled="newProjectForm.$invalid">
                     <i></i>حله!</button>
             </div>
         </form>
@@ -27,7 +27,7 @@
                 <input placeholder="کلید را وارد کن" type="text" ng-model="vm.projectKey" required>
             </div>
             <div class="project_name_submit clearfix">
-                <button type="button" class="rework_btn submit_btn btn_danger" name="button" ng-disabled="projectKeyForm.$invalid">
+                <button type="submit" class="rework_btn submit_btn btn_danger" name="button" ng-disabled="projectKeyForm.$invalid">
                     <i></i>حله!</button>
             </div>
             <div class="signUp_past">

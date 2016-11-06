@@ -8,13 +8,17 @@ class GetStartComponent {
   projectKey = '';
 
   /*@ngInject*/
-  constructor($http) {
+  constructor($http, $state) {
     this.$http = $http;
+    this.$state = $state;
   }
 
   createProject() {
     this.$http.post('/api/projects', {
       name: this.projectName
+    }).then(p => {
+      console.log('prohect > ', p.data);
+      return this.$state.go('app.project.detail', {id: p.data.defaultProject});
     });
     this.projectName = '';
   }
@@ -22,6 +26,9 @@ class GetStartComponent {
   joinProject() {
     this.$http.post('/api/projects/join', {
       key: this.projectKey
+    }).then(p => {
+      console.log('prohect > ', p.data);
+      return this.$state.go('app.project.detail', {id: p.data.defaultProject});
     });
     this.projectKey = '';
   }
