@@ -1,0 +1,235 @@
+/********************** StyleReset ***************************/
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('/assets/fonts/bootstrap/glyphicons-halflings-regular.eot');
+    src: url('/assets/fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/bootstrap/glyphicons-halflings-regular.woff') format('woff'),
+    url('/assets/fonts/bootstrap/glyphicons-halflings-regular.ttf') format('truetype'),
+    url('/assets/fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('/assets/fonts/font-awesome/fontawesome-webfont.eot?v=4.1.0');
+    src: url('/assets/fonts/font-awesome/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'),
+    url('/assets/fonts/font-awesome/fontawesome-webfont.woff?v=4.1.0') format('woff'),
+    url('/assets/fonts/font-awesome/fontawesome-webfont.ttf?v=4.1.0') format('truetype'),
+    url('/assets/fonts/font-awesome/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'iran';
+    src: url('/assets/fonts/iran-sans/IRANSans-Bold-web.eot');
+    src: url('/assets/fonts/iran-sans/IRANSans-Bold-web.eot?#iefix') format('eot'), url('/assets/fonts/iran-sans/IRANSans-Bold-web.woff') format('woff');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'iran';
+    src: url('/assets/fonts/iran-sans/IRANSans-Medium-web.eot');
+    src: url('/assets/fonts/iran-sans/IRANSans-Medium-web.eot?#iefix') format('eot'), url('/assets/fonts/iran-sans/IRANSans-Medium-web.woff') format('woff');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'iran';
+    src: url('/assets/fonts/iran-sans/IRANSans-web.eot');
+    src: url('/assets/fonts/iran-sans/IRANSans-web.eot?#iefix') format('eot'), url('/assets/fonts/iran-sans/IRANSans-web.woff') format('woff');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'iran';
+    src: url('/assets/fonts/iran-sans/IRANSans-Light-web.eot');
+    src: url('/assets/fonts/iran-sans/IRANSans-Light-web.eot?#iefix') format('eot'), url('/assets/fonts/iran-sans/IRANSans-light-web.woff') format('woff');
+    font-weight: lighter;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: iran, tahoma;
+}
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, input, textarea, button, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, i, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, select {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    direction: rtl;
+    background: transparent;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse
+}
+
+article, aside, figure, footer, header, nav, section {
+    display: block;
+    text-align: right;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    list-style: none;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.clearfix:before, .clearfix:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/***************** GlobalStyle *******************/
+
+body {
+    background-color: #fff;
+    font: normal 12px iran, tahoma;
+    color: #2a2a2a;
+}
+
+.row [class^="col"], .row [class*="col"] {
+    float: right;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none !important;
+}
+
+div.container, section.container {
+    width: 900px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0;
+}
+
+button {
+    cursor: pointer;
+}
+
+.pull_right {
+    float: right;
+}
+
+.pull_left {
+    float: left;
+}
+
+.tabs_wrapper {
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.tabs_list li {
+    float: right;
+}
+
+.tabs_list li a {
+    color: #777;
+    font-size: 14px;
+    float: right;
+    padding: 20px 20px;
+    font-weight: 500;
+}
+
+.tabs_list li:first-child a {
+    padding: 20px 5px 20px 20px;
+}
+
+.tabs_list li a.active {
+    color: #494949;
+    border-bottom: 2px solid #00c853;
+}
+
+.tabs_list li a.active:hover {
+    color: #494949;
+    border-bottom: 2px solid #00c853;
+}
+
+.tabs_list li a:hover {
+    color: #00c853;
+}
+
+.rework_btn {
+    display: inline-block;
+    padding: 6px 16px;
+    margin-bottom: 0;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    color: #fff;
+}
+
+.rework_btn.btn_info {
+    background-color: #5584ff;
+}
+
+.rework_btn.btn_danger {
+    background-color: #f2443d;
+}
+
+button.btn_linkedIn i, button.btn_google_pluse i {
+    float: left;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    background: url(../icons/icons.png);
+}
+
+button.btn_linkedIn i {
+    background-position: -283px -14px;
+}
+
+button.btn_google_pluse i {
+    background-position: -308px -14px;
+}
+
+button.btn_linkedIn {
+    background: #0086b6;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+button.btn_google_pluse {
+    background: #dc4e41;
+    font-weight: bold;
+    font-size: 12px;
+    margin-right: 10px;
+}

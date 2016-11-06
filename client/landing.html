@@ -8,27 +8,42 @@
     <title>REWORK</title>
 </head>
 <body ng-app="reworkApp.landing" ng-controller="LandingController as vm">
-<main class="main_block clearfix">
+<main id="carousel_home" carousel class="main_block carousel clearfix" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carousel_home" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel_home" data-slide-to="1"></li>
+        <li data-target="#carousel_home" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="assets/img/mainBG.jpg" class="cover_BG" alt="main_BG"/>
+        </div>
+        <div class="item">
+            <img src="assets/img/mainVideoBG.jpg" class="cover_BG alt=" main_BG"/>
+        </div>
+        <div class="item">
+            <img src="assets/img/mainVideoBG.jpg" class="cover_BG alt=" main_BG"/>
+        </div>
+    </div>
+
     <header class="header clearfix">
         <div class="container clearfix">
             <nav class="navBar">
                 <ul class="menu pull_right">
                     <li>
-                        <a href="#/">
-                            صفحه اصلی
-                        </a>
+                        <a href="#/">صفحه اصلی</a>
                     </li>
                     <li>
-                        <a href="#">ابزارها</a>
+                        <a href="#tools" scroll-on-click>ابزارها</a>
                     </li>
                     <li>
-                        <a href="#">ساخت ویدیو</a>
+                        <a href="#makeVideo" scroll-on-click>ساخت ویدیو</a>
                     </li>
                     <li>
-                        <a href="#">مشاوره مدیریتی</a>
+                        <a href="#consult" scroll-on-click>مشاوره مدیریتی</a>
                     </li>
                     <li>
-                        <a href="#">تماس با ما</a>
+                        <a href="#contactUs" scroll-on-click>تماس با ما</a>
                     </li>
                 </ul>
                 <!-- <ul class="register_menu pull_left">
@@ -56,16 +71,17 @@
             </div>
         </div>
         <footer class="main_footer clearfix">
-            <div class="slider_controller">
+            <!-- <div class="slider_controller">
                 <button type="button" name="button"></button>
                 <button type="button" name="button"></button>
                 <button type="button" name="button"></button>
                 <button class="active" type="button" name="button"></button>
-            </div>
+            </div> -->
         </footer>
     </div>
 </main>
-<section class="main_page_section tools_section clearfix">
+<section id="tools" class="main_page_section tools_section clearfix">
+    <img class="cover_BG" src="assets/img/mainToolsBG.jpg" alt="mainToolsBG"/>
     <div class="main_page_section_bg tools_section_bg clearfix">
         <div class="main_page_section_context tools_section_context">
             <div class="pargeraph_lead_container">
@@ -84,7 +100,8 @@
         </div>
     </div>
 </section>
-<section class="main_page_section video_section clearfix">
+<section id='makeVideo' class="main_page_section video_section clearfix">
+    <img class="cover_BG" src="assets/img/mainVideoBG.jpg" alt="mainToolsBG"/>
     <div class="main_page_section_bg video_section_bg clearfix">
         <div class="main_page_section_context video_section_context">
             <div class="pargeraph_lead_container">
@@ -108,7 +125,8 @@
         </div>
     </div>
 </section>
-<section class="main_page_section consolation_management_section clearfix">
+<section id='consult' class="main_page_section consolation_management_section clearfix">
+    <img class="cover_BG" src="assets/img/consulationManagementBG.jpg" alt="mainToolsBG"/>
     <div class="main_page_section_bg consolation_management_section_bg clearfix">
         <div class="main_page_section_context consolation_management_section_context">
             <div class="pargeraph_lead_container">
@@ -130,23 +148,32 @@
         </div>
     </div>
 </section>
-<footer>
+<footer id='contactUs'>
     <div class="main_footer_BG clearfix">
         <div class="container footer_context clearfix">
             <div class="row">
                 <div class="comment_footer_container col-md-4">
                     <form name="contactForm" novalidate ng-submit="vm.sendMessage(contactForm, vm.message)">
                         <input type="text" name="name" placeholder="نام" ng-model="vm.message.name" required>
-                        <p ng-show="contactForm.name.$invalid && !contactForm.name.$pristine" class="help-block">نام را وارد کنید</p>
+                        <p ng-show="contactForm.name.$invalid && !contactForm.name.$pristine" class="help-block">نام را
+                            وارد
+                            کنید</p>
 
                         <input type="email" name="email" placeholder="رایانامه" ng-model="vm.message.email" required>
-                        <p ng-show="contactForm.email.$invalid && !contactForm.email.$pristine" class="help-block">رایانه معتبر وارد کنید</p>
+                        <p ng-show="contactForm.email.$invalid && !contactForm.email.$pristine" class="help-block">
+                            رایانه
+                            معتبر وارد کنید</p>
 
                         <input type="tel" nae="phone" placeholder="تلفن" ng-model="vm.message.phone">
-                        <p ng-show="contactForm.phone.$invalid && !contactForm.phone.$pristine" class="help-block">شماره معتبر وارد کنید</p>
+                        <p ng-show="contactForm.phone.$invalid && !contactForm.phone.$pristine" class="help-block">شماره
+                            معتبر وارد کنید</p>
 
-                        <textarea placeholder="پیام شما" data-ng-model="vm.message.text" required ng-maxlength="1000"></textarea>
-                        <button type="submit" name="button" ng-disabled="contactForm.$invalid">ارسال پیام</button>
+                        <textarea placeholder="پیام شما" data-ng-model="vm.message.text" required
+                                  ng-maxlength="1000"></textarea>
+                        <button type="submit" class="send_massage" name="button" ng-disabled="contactForm.$invalid">
+                            ارسال
+                            پیام
+                        </button>
                     </form>
                 </div>
                 <div class="contact_container clearfix col-md-4">
@@ -193,21 +220,63 @@
                     </div>
                     <div class="web_list_wrapper clearfix">
                         <ul class="web_list clearfix">
-                            <li class="web_list_item"><a href="#">صفحه اصلی</a></li>
-                            <li class="web_list_item"><a href="#">تماس با ما</a></li>
-                            <li class="web_list_item"><a href="#">راهنما</a></li>
-                            <li class="web_list_item"><a href="#">ابزارها</a></li>
+                            <li class="web_list_item">
+                                <a href="#">صفحه اصلی</a>
+                            </li>
+                            <li class="web_list_item">
+                                <a href="#">تماس با ما</a>
+                            </li>
+                            <li class="web_list_item">
+                                <a href="#">راهنما</a>
+                            </li>
+                            <li class="web_list_item">
+                                <a href="#">ابزارها</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <ul class="navigation_list">
+        <li>
+            <i></i>
+        </li>
+        <li class="navigation_list_item">
+            <a scroll-on-click title="خانه" href="#carousel_home">
+                <span></span>
+            </a>
+        </li>
+        <li class="navigation_list_item">
+            <a scroll-on-click title="ابزارها" href="#tools">
+                <span></span>
+            </a>
+        </li>
+        <li class="navigation_list_item">
+            <a scroll-on-click title="ساخت ویدئو" href="#makeVideo">
+                <span></span>
+            </a>
+        </li>
+        <li class="navigation_list_item">
+            <a scroll-on-click title="مشاوره مدیریتی" href="#consult">
+                <span></span>
+            </a>
+        </li>
+        <li class="navigation_list_item">
+            <a scroll-on-click title="تماس با ما" href="#contactUs">
+                <span></span>
+            </a>
+        </li>
+        <li>
+            <i></i>
+        </li>
+    </ul>
 </footer>
 <script type="text/javascript" src="assets/vendor/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="assets/vendor/angular/angular.min.js"></script>
 <script type="text/javascript" src="assets/vendor/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
 <script type="text/javascript" src="app/landing/landing.app.js"></script>
+<script type="text/javascript" src="app/landing/scroll-on-click.directive.js"></script>
 </body>
 </html>

@@ -5,6 +5,7 @@
         "commonjs": true
     },
     "globals": {
-        "angular": true
+        "angular": true,
+        "$": false
     }
 }

@@ -1,24 +1,38 @@
-<div class="row">
-    <div class="col-md-3 col-md-offset-3">
-        <form name="newProjectForm" ng-submit="vm.createProject()" novalidate>
-            <div class="form-group">
-                <label class="control-label" for="projectName">Project name</label>
-                <input class="form-control" id="projectName" type="text" ng-model="vm.projectName" required>
+<section class="start_up_section clearfix">
+    <header class="start_up_header clearfix">
+        <a class="sign_In_logo" href=""><img src="assets/icons/logoSignIn.png"></a>
+    </header>
+    <main class="main_start_up_section start_up_project_name clearfix">
+        <h1 class="main_start_up_header">اسم تیمت رو بگو...</h1>
+        <p class="login_parageraph">
+            تمام اعضای تیم با این اسم قبت نام می کنند البته شما می توانید نام آن را بعدا تغییر دهید.
+        </p>
+        <form class="start_up_form_container"  name="newProjectForm" ng-submit="vm.createProject()" novalidate>
+            <div class="project_name_container clearfix">
+                <input type="text" placeholder="اسم انتخابی" id="projectName" type="text" ng-model="vm.projectName" required>
             </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary" ng-disabled="newProjectForm.$invalid">Submit</button>
-            </div>
-        </form>
-    </div>
-    <div class="col-md-3">
-        <form name="projectKeyForm" ng-submit="vm.joinProject()" novalidate>
-            <div class="form-group">
-                <label class="control-label" for="projectKey">Project key</label>
-                <input class="form-control" id="projectKey" type="text" ng-model="vm.projectKey" required>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary" ng-disabled="projectKeyForm.$invalid">Submit</button>
+            <div class="project_name_submit clearfix">
+                <button type="button" class="rework_btn submit_btn" name="button" ng-disabled="newProjectForm.$invalid">
+                    <i></i>حله!</button>
             </div>
         </form>
-    </div>
-</div>
+    </main>
+    <main class="main_start_up_section start_up_project_key_name clearfix">
+        <h1 class="main_start_up_header start_up_key_header">کلید داری؟ اینجا وارد کن</h1>
+        <p class="login_parageraph">
+            در صورت داشتن کلید میتوانید آن را وارد کرده و مستقیما به تیم مورد نظر وارد شوید
+        </p>
+        <form class="start_up_form_container start_up_key_form_container"  ng-submit="vm.joinProject()" novalidate>
+            <div class="project_name_container clearfix">
+                <input placeholder="کلید را وارد کن" type="text" ng-model="vm.projectKey" required>
+            </div>
+            <div class="project_name_submit clearfix">
+                <button type="button" class="rework_btn submit_btn btn_danger" name="button" ng-disabled="projectKeyForm.$invalid">
+                    <i></i>حله!</button>
+            </div>
+            <div class="signUp_past">
+                <a href="#">کلید ندارید؟ از اینجا تهیه کنید</a>
+            </div>
+        </form>
+    </main>
+</section>
