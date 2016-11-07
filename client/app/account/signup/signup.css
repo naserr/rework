@@ -1,0 +1,101 @@
+/*******************SignUp*********************/
+
+header.sign_Up_header {
+    background-color: #f7faff;
+    border-bottom: 1px solid rgba(132, 146, 175, 0.3);
+    text-align: center;
+    padding: 28px 0 18px 0;
+}
+
+main.main_sign_Up_section {
+    width: 80%;
+    top: 53%;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 16px;
+    color: #838383;
+    padding-left: 24px;
+}
+
+figure.signUp_Image_container {
+    display: inline-block;
+    padding-right: 24px;
+    border-right: 1px solid #ededed;
+}
+
+figure.signUp_Image_container img {
+    float: left;
+}
+
+main.main_sign_Up_section div.sign_Up_container {
+    float: right;
+    width: 35%;
+}
+
+main.main_sign_Up_section h1.main_sign_Up_header {
+    color: #293b5a;
+    font-weight: bold;
+    font-size: 23px;
+    margin: 20px 0 13px 0;
+}
+
+main.main_sign_Up_section p.sign_Up_or_paregraph {
+    margin: 20px 0 38px 0;
+}
+
+main.main_sign_Up_section p.signUp_parageraph {
+    margin-bottom: 22px;
+}
+
+main.main_sign_Up_section p.sign_Up_or_paregraph {
+    margin-bottom: 18px;
+}
+
+div.user_name_container input, div.password_container input, div.email_container input {
+    background-color: #ededed;
+    color: #838383;
+    font-size: 13px;
+    text-align: center;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 17px;
+    padding: 7px 4px;
+    direction: rtl;
+}
+
+div.email_container input{
+    direction: ltr;
+}
+
+div.signUp_past {
+    margin: 14px 0;
+}
+
+div.signUp_past a {
+    display: block;
+    text-align: center;
+    color: #838383;
+}
+
+button.signUp_btn {
+    width: 100%;
+    background: #5584ff;
+    padding: 10px 16px;
+    border-radius: 22px;
+    font-size: 14px;
+    position: relative;
+}
+
+button.signUp_btn i {
+    float: left;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    position: absolute;
+    left: 20px;
+    background: url('../../../assets/icons/icons.png') -334px -14px;
+}

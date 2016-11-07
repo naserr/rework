@@ -1,53 +1,47 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <h1>Login</h1>
-      <p>Accounts are reset on server restart from <code>server/config/seed.js</code>. Default account is <code>test@example.com</code> / <code>test</code></p>
-      <p>Admin account is <code>admin@example.com</code> / <code>admin</code></p>
-    </div>
-    <div class="col-sm-12">
-      <form class="form" name="form" ng-submit="vm.login(form)" novalidate>
-
-        <div class="form-group">
-          <label>Email</label>
-
-          <input type="email" name="email" class="form-control" ng-model="vm.user.email" required>
-        </div>
-
-        <div class="form-group">
-          <label>Password</label>
-
-          <input type="password" name="password" class="form-control" ng-model="vm.user.password" required>
-        </div>
-
-        <div class="form-group has-error">
-          <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && vm.submitted">
-             Please enter your email and password.
-          </p>
-          <p class="help-block" ng-show="form.email.$error.email && vm.submitted">
-             Please enter a valid email.
-          </p>
-
-          <p class="help-block">{{ vm.errors.login }}</p>
-        </div>
-
-        <div>
-          <button class="btn btn-inverse btn-lg btn-login" type="submit">
-            Login
-          </button>
-          <a class="btn btn-default btn-lg btn-register" ui-sref="signup">
-            Register
-          </a>
-        </div>
-
-        <hr/>
-        <div class="row">
-          <div class="col-sm-4 col-md-3">
+<section class="sign_In_section clearfix">
+    <header class="sign_In_header clearfix">
+        <a class="sign_In_logo" href=""><img src="assets/icons/logoSignIn.png"></a>
+    </header>
+    <main class="main_sign_In_section clearfix">
+        <h1 class="main_sign_In_header">ورود به حساب</h1>
+        <p class="login_parageraph">
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
+        </p>
+        <div class="link_container clearfix">
             <oauth-buttons classes="btn-block"></oauth-buttons>
-          </div>
         </div>
-      </form>
-    </div>
-  </div>
-  <hr>
-</div>
+        <p class="sign_In_or_paregraph">
+            یا
+        </p>
+        <form class="form" name="form" ng-submit="vm.login(form)" novalidate>
+            <div class="user_name_container clearfix">
+                <input type="email" name="email" placeholder="رایانامه" ng-model="vm.user.email" required>
+            </div>
+            <div class="password_container clearfix">
+                <input type="password" placeholder="پسوورد" name="password" ng-model="vm.user.password" required>
+            </div>
+            <div class="form-group has-error">
+                <p class="help-block"
+                   ng-show="(form.email.$error.required || form.password.$error.required) && vm.submitted">
+                   لطفا رایانامه و کلمه عبور را وارد کنید.
+                </p>
+                <p class="help-block" ng-show="form.email.$error.email && vm.submitted">
+                   لطفا رایانامه معتبر وارد کنید.
+                </p>
+
+                <p class="help-block">{{ vm.errors.login }}</p>
+            </div>
+
+            <div class="signIn_tools">
+                <button type="submit" class="rework_btn login_btn" name="button">ورود</button>
+                <div class="remeber_container">
+                    <label for="remeber_me">مرا بخاطر بسپار</label><input id="remeber_me" type="checkbox"><i></i>
+                </div>
+            </div>
+            <div class="signIn_password_forgotten">
+
+                <a href="#">رمز عبور خود را فراموش کردید؟</a>
+            </div>
+        </form>
+    </main>
+</section>
