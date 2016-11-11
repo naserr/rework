@@ -1,86 +1,167 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <h1>Sign up</h1>
-    </div>
-    <div class="col-sm-12">
-      <form class="form" name="form" ng-submit="vm.register(form)" novalidate>
+<!--<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Sign up</h1>
+        </div>
+        <div class="col-sm-12">
+            <form class="form" name="form" ng-submit="vm.register(form)" novalidate>
 
-        <div class="form-group" ng-class="{ 'has-success': form.name.$valid && vm.submitted,
+                <div class="form-group" ng-class="{ 'has-success': form.name.$valid && vm.submitted,
                                             'has-error': form.name.$invalid && vm.submitted }">
-          <label>Name</label>
+                    <label>Name</label>
 
-          <input type="text" name="name" class="form-control" ng-model="vm.user.name"
-                 required/>
-          <p class="help-block" ng-show="form.name.$error.required && vm.submitted">
-            A name is required
-          </p>
-        </div>
+                    <input type="text" name="name" class="form-control" ng-model="vm.user.name"
+                           required/>
+                    <p class="help-block" ng-show="form.name.$error.required && vm.submitted">
+                        A name is required
+                    </p>
+                </div>
 
-        <div class="form-group" ng-class="{ 'has-success': form.email.$valid && vm.submitted,
+                <div class="form-group" ng-class="{ 'has-success': form.email.$valid && vm.submitted,
                                             'has-error': form.email.$invalid && vm.submitted }">
-          <label>Email</label>
+                    <label>Email</label>
 
-          <input type="email" name="email" class="form-control" ng-model="vm.user.email"
-                 required
-                 mongoose-error/>
-          <p class="help-block" ng-show="form.email.$error.email && vm.submitted">
-            Doesn't look like a valid email.
-          </p>
-          <p class="help-block" ng-show="form.email.$error.required && vm.submitted">
-            What's your email address?
-          </p>
-          <p class="help-block" ng-show="form.email.$error.mongoose">
-            {{ vm.errors.email }}
-          </p>
-        </div>
+                    <input type="email" name="email" class="form-control" ng-model="vm.user.email"
+                           required
+                           mongoose-error/>
+                    <p class="help-block" ng-show="form.email.$error.email && vm.submitted">
+                        Doesn't look like a valid email.
+                    </p>
+                    <p class="help-block" ng-show="form.email.$error.required && vm.submitted">
+                        What's your email address?
+                    </p>
+                    <p class="help-block" ng-show="form.email.$error.mongoose">
+                        {{ vm.errors.email }}
+                    </p>
+                </div>
 
-        <div class="form-group" ng-class="{ 'has-success': form.password.$valid && vm.submitted,
+                <div class="form-group" ng-class="{ 'has-success': form.password.$valid && vm.submitted,
                                             'has-error': form.password.$invalid && vm.submitted }">
-          <label>Password</label>
+                    <label>Password</label>
 
-          <input type="password" name="password" class="form-control" ng-model="vm.user.password"
-                 ng-minlength="3"
-                 required
-                 mongoose-error/>
-          <p class="help-block"
-             ng-show="(form.password.$error.minlength || form.password.$error.required) && vm.submitted">
-            Password must be at least 3 characters.
-          </p>
-          <p class="help-block" ng-show="form.password.$error.mongoose">
-            {{ vm.errors.password }}
-          </p>
-        </div>
+                    <input type="password" name="password" class="form-control" ng-model="vm.user.password"
+                           ng-minlength="3"
+                           required
+                           mongoose-error/>
+                    <p class="help-block"
+                       ng-show="(form.password.$error.minlength || form.password.$error.required) && vm.submitted">
+                        Password must be at least 3 characters.
+                    </p>
+                    <p class="help-block" ng-show="form.password.$error.mongoose">
+                        {{ vm.errors.password }}
+                    </p>
+                </div>
 
-        <div class="form-group" ng-class="{ 'has-success': form.confirmPassword.$valid && vm.submitted,
+                <div class="form-group" ng-class="{ 'has-success': form.confirmPassword.$valid && vm.submitted,
                                             'has-error': form.confirmPassword.$invalid && vm.submitted }">
-          <label>Confirm Password</label>
-          <input type="password" name="confirmPassword" class="form-control" ng-model="vm.user.confirmPassword"
-                 match="vm.user.password"
-                 ng-minlength="3" required/>
-          <p class="help-block"
-             ng-show="form.confirmPassword.$error.match && vm.submitted">
-            Passwords must match.
-          </p>
-        </div>
+                    <label>Confirm Password</label>
+                    <input type="password" name="confirmPassword" class="form-control"
+                           ng-model="vm.user.confirmPassword"
+                           match="vm.user.password"
+                           ng-minlength="3" required/>
+                    <p class="help-block"
+                       ng-show="form.confirmPassword.$error.match && vm.submitted">
+                        Passwords must match.
+                    </p>
+                </div>
 
-        <div>
-          <button class="btn btn-inverse btn-lg btn-register" type="submit">
-            Sign up
-          </button>
-          <a class="btn btn-default btn-lg btn-login" ui-sref="login">
-            Login
-          </a>
-        </div>
+                <div>
+                    <button class="btn btn-inverse btn-lg btn-register" type="submit">
+                        Sign up
+                    </button>
+                    <a class="btn btn-default btn-lg btn-login" ui-sref="login">
+                        Login
+                    </a>
+                </div>
 
-        <hr/>
-        <div class="row">
-          <div class="col-sm-4 col-md-3">
-            <oauth-buttons classes="btn-block"></oauth-buttons>
-          </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-sm-4 col-md-3">
+                        <oauth-buttons classes="btn-block"></oauth-buttons>
+                    </div>
+                </div>
+            </form>
         </div>
-      </form>
     </div>
-  </div>
-  <hr>
-</div>
+    <hr>
+</div>-->
+<section class="sign_Up_section clearfix">
+    <header class="sign_Up_header clearfix">
+        <a class="sign_In_logo" href=""><img src="assets/icons/logoSignIn.png"></a>
+    </header>
+    <main class="main_sign_Up_section container main_sign_In_section clearfix">
+        <div class="sign_Up_container clearfix">
+            <h1 class="main_sign_Up_header">ثبت نام</h1>
+            <p class="signUp_parageraph">
+                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
+            </p>
+            <div class="link_container clearfix">
+                <oauth-buttons classes="btn-block"></oauth-buttons>
+            </div>
+            <p class="sign_Up_or_paregraph">
+                یا
+            </p>
+            <form class="form" name="form" ng-submit="vm.register(form)" novalidate>
+                <div class="user_name_container clearfix" ng-class="{ 'has-success': form.name.$valid && vm.submitted,
+                                            'has-error': form.name.$invalid && vm.submitted }">
+                    <input type="text" name="name" placeholder="نام کاربری" ng-model="vm.user.name" required/>
+                    <p class="help-block" ng-show="form.name.$error.required && vm.submitted">
+                        نام کاربری ضروری است.
+                    </p>
+                </div>
+                <div class="email_container clearfix" ng-class="{ 'has-success': form.email.$valid && vm.submitted,
+                                            'has-error': form.email.$invalid && vm.submitted }">
+                    <input type="text" placeholder="ایمیل" name="email" ng-model="vm.user.email"
+                           required
+                           mongoose-error />
+                    <p class="help-block" ng-show="form.email.$error.email && vm.submitted">
+                       ایمیل معتبر وارد کنید.
+                    </p>
+                    <p class="help-block" ng-show="form.email.$error.required && vm.submitted">
+                        ایمیل خود را وارد کنید.
+                    </p>
+                    <p class="help-block" ng-show="form.email.$error.mongoose">
+                        {{ vm.errors.email }}
+                    </p>
+                </div>
+                <div class="password_container clearfix" ng-class="{ 'has-success': form.password.$valid && vm.submitted,
+                                            'has-error': form.password.$invalid && vm.submitted }">
+                    <input type="password" placeholder="کلمه عبور" name="password" ٌٌٌٌٌng-model="vm.user.password"
+                           ng-minlength="3"
+                           required
+                           mongoose-error />
+                    <p class="help-block"
+                       ng-show="(form.password.$error.minlength || form.password.$error.required) && vm.submitted">
+                        کلمه عبور حداقل 3 کاراکتر باشد.
+                    </p>
+                    <p class="help-block" ng-show="form.password.$error.mongoose">
+                        {{ vm.errors.password }}
+                    </p>
+                </div>
+                <div class="password_container clearfix" ng-class="{ 'has-success': form.confirmPassword.$valid && vm.submitted,
+                                            'has-error': form.confirmPassword.$invalid && vm.submitted }">
+                    <input type="password" placeholder="تایید کلمه عبور" name="confirmPassword"
+                           ng-model="vm.user.confirmPassword"
+                           match="vm.user.password"
+                           ng-minlength="3" required />
+                    <p class="help-block"
+                    ng-show="form.confirmPassword.$error.match && vm.submitted">
+                  پسورد یکسان نیست.
+                    </p>
+                </div>
+                <div class="signUp_tools">
+                    <button type="submit" class="rework_btn signUp_btn" name="button">
+                        <i></i>ثبت نام
+                    </button>
+                </div>
+                <div class="signUp_past">
+                    <a href="#" ui-sref="login">پیشتر ثبت نام کردید؟ وارد شوید</a>
+                </div>
+            </form>
+        </div>
+        <figure class="signUp_Image_container clearfix">
+            <img src="assets/img/signUp.jpg" alt="signUpImage"/>
+        </figure>
+    </main>
+
+</section>

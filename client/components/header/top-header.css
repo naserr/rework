@@ -3,7 +3,7 @@ section.desktop_work_section header.sign_Up_header {
     border-bottom: 1px solid rgba(132, 146, 175, 0.3);
     text-align: center;
     padding: 30px 0 20px 0;
-    margin-right: 200px;
+    /*margin-right: 200px;*/
 }
 
 ul.navbar_nav_list li.nvabar_item {

@@ -13,6 +13,8 @@
 
 /* Component styles are injected through gulp */
 /* inject:css */
+@import 'account/login/login.css';
+@import 'account/signup/signup.css';
 @import 'admin/admin.css';
 @import 'getStart/getStart.css';
 @import '../components/header/top-header.css';
