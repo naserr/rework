@@ -3,10 +3,8 @@ import uiRouter from 'angular-ui-router';
 import routing from './main.routes';
 
 class MainController {
-
   /*@ngInject*/
-  constructor($state, $http) {
-    this.$http = $http;
+  constructor($state) {
     if(this.user.isFresh) {
       $state.go('app.getStart');
     } else if(this.user.defaultProject) {

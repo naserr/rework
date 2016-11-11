@@ -56,6 +56,10 @@ angular.module('reworkApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-i
     });
   });
 
+class AppComponent {
+  toggle = true;
+}
+
 function routes($stateProvider) {
   'ngInject';
 
@@ -71,14 +75,11 @@ function routes($stateProvider) {
           template: '<sidebar></sidebar>'
         },
         '@': {
+          //template: '<main-state user="$resolve.user"></main-state>',
           template: ''
         }
       }
     });
-}
-
-class AppComponent {
-  toggle = true;
 }
 
 angular.element(document)

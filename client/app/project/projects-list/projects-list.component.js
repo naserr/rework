@@ -3,9 +3,16 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
 export class projectsListComponent {
-  constructor($http) {
+  constructor($scope, $http, $state, socket) {
     'ngInject';
     this.$http = $http;
+    this.$state = $state;
+
+    socket.syncUpdates('project', this.projects);
+
+    $scope.$on('$destroy', function() {
+      socket.unsyncUpdates('project');
+    });
   }
 
   delete(id) {
@@ -15,7 +22,7 @@ export class projectsListComponent {
 
 export default angular.module('reworkApp.project.list', [uiRouter])
   .component('projectsList', {
-    template: require('./projects-liat.html'),
+    template: require('./projects-list.html'),
     bindings: {projects: '<'},
     controller: projectsListComponent,
     controllerAs: 'vm'
@@ -28,7 +35,7 @@ function routes($stateProvider) {
 
   $stateProvider
     .state('app.project.list', {
-      url: '',
+      url: '/list',
       authenticate: true,
       views: {
         '@': {

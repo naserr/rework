@@ -16,21 +16,20 @@ class GetStartComponent {
   createProject() {
     this.$http.post('/api/projects', {
       name: this.projectName
-    }).then(p => {
-      console.log('prohect > ', p.data);
-      return this.$state.go('app.project.detail', {id: p.data.defaultProject});
-    });
+    }).then(this.redirectToProject);
     this.projectName = '';
   }
 
   joinProject() {
     this.$http.post('/api/projects/join', {
       key: this.projectKey
-    }).then(p => {
-      console.log('prohect > ', p.data);
-      return this.$state.go('app.project.detail', {id: p.data.defaultProject});
-    });
+    }).then(this.redirectToProject);
     this.projectKey = '';
+  }
+
+  redirectToProject = project => {
+    project = project.data;
+    return this.$state.go('app.project.detail', {id: project._id});
   }
 }
 

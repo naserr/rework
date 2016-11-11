@@ -1,0 +1,1 @@
+handle delete project - redirect to list of user projects on project deleted

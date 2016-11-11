@@ -3,9 +3,18 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
 export class projectDetailComponent {
-  constructor($http) {
+  constructor($http, $scope, $state, $stateParams, socket) {
     'ngInject';
     this.$http = $http;
+    socket.socket.on('project:remove', item => {
+      if(item && item._id === $stateParams.id) {
+        return $state.go('app.project.list');
+      }
+    });
+
+    $scope.$on('$destroy', function() {
+      socket.unsyncUpdates('project');
+    });
   }
 }
 

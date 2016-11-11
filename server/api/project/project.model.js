@@ -46,7 +46,7 @@ var ProjectSchema = new mongoose.Schema({
 // });
 
 ProjectSchema.post('remove', function(doc) {
-  User.update({defaultProject: doc._id}, {defaultProject: null}).exec();
+  User.update({defaultProject: doc._id}, {defaultProject: null}, { multi: true }).exec();
 });
 
 ProjectSchema.methods = {
