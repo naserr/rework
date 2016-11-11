@@ -29,8 +29,7 @@ export default class SignupController {
       })
         .then(() => {
           // Account created, redirect to home
-          console.log('>>> signup');
-          this.$state.go('app.main');
+          this.$state.go('project');
         })
         .catch(err => {
           err = err.data;

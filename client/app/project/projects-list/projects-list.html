@@ -11,7 +11,7 @@
             </thead>
             <tbody>
             <tr ng-repeat="pr in vm.projects">
-                <td><a class="btn btn-link" ui-sref="app.project.detail({id: pr._id})">{{pr.name}}</a></td>
+                <td><a class="btn btn-link" ui-sref="project.detail({id: pr._id})">{{pr.name}}</a></td>
                 <td>{{pr.owner.name}}</td>
                 <td>{{pr.users.length | number}}</td>
                 <td>

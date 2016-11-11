@@ -22,26 +22,19 @@ import sidebar from '../components/sidebar/sidebar.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
 import socket from '../components/socket/socket.service';
-import main from './main/index';
 import getStart from './getStart/getStart.component';
 import project from './project/index';
 
 import './app.css';
 
 angular.module('reworkApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io',
-    uiRouter, toastr, _Auth, account, admin, constants, socket, util, main, header, sidebar,
+    uiRouter, toastr, _Auth, account, admin, constants, socket, util, header, sidebar,
     getStart, project
   ])
   .config(appConfig.routeConfig)
   .config(appConfig.toastrConfig)
   .config(appConfig.logDecorator)
   .config(appConfig.interceptorConfig)
-  .config(routes)
-  .component('app', {
-    template: require('./app.html'),
-    controller: AppComponent,
-    controllerAs: 'app'
-  })
   .run(function($rootScope, $location, Auth) {
     'ngInject';
     // Redirect to login if route requires auth and you're not logged in
@@ -55,32 +48,6 @@ angular.module('reworkApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-i
       });
     });
   });
-
-class AppComponent {
-  toggle = true;
-}
-
-function routes($stateProvider) {
-  'ngInject';
-
-  $stateProvider
-    .state('app', {
-      url: '/',
-      abstract: true,
-      views: {
-        'header@': {
-          template: '<top-header></top-header>'
-        },
-        'sidebar@': {
-          template: '<sidebar></sidebar>'
-        },
-        '@': {
-          //template: '<main-state user="$resolve.user"></main-state>',
-          template: ''
-        }
-      }
-    });
-}
 
 angular.element(document)
   .ready(() => {

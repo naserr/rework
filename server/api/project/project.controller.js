@@ -77,6 +77,7 @@ export function index(req, res) {
 export function show(req, res) {
   return Project.findById(req.params.id, '-keys').exec()
     .then(handleEntityNotFound(res))
+    .then(hasGetAuthorization(res, req.user._id))
     .then(setDefaultProject(req.user))
     .then(respondWithResult(res))
     .catch(handleError(res));
@@ -165,18 +166,30 @@ export function patch(req, res) {
 export function destroy(req, res) {
   return Project.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
-    .then(handleAuthorization(res, req.user))
+    .then(hasDestroyAuthorization(res, req.user))
     .then(removeEntity(res))
     .catch(handleError(res));
 }
 
-function handleAuthorization(res, user) {
+function hasGetAuthorization(res, userId) {
   return function(project) {
-    if(!project) {
-      return null;
+    if(project) {
+      let user = project.users.id(userId);
+
+      if(!user) {
+        res.status(403).end('شما عضو این پروژه نیستید');
+        return null;
+      }
+      return project;
     }
-    if(!user._id.equals(project.owner._id)) {
-      res.status(403).end('فقط مالک پروژه میتواند پروژه را حذف کند');
+    return project;
+  };
+}
+
+function hasDestroyAuthorization(res, user) {
+  return function(project) {
+    if(project && !user._id.equals(project.owner._id)) {
+      res.status(403).end('فقط مالک پروژه میتواند آنرا حذف کند');
       return null;
     }
     return project;
@@ -218,11 +231,13 @@ function joinProject(key, userId) {
 
 function setDefaultProject(user) {
   return function(project) {
-    // return User.findByIdAndUpdate(userId, {defaultProject: project._id}).exec();
-    return User.update({_id: user._id}, {
-      defaultProject: project._id,
-      isFresh: false
-    }).exec()
-      .then(() => project);
+    if(project) {
+      return User.update({_id: user._id}, {
+        defaultProject: project._id,
+        isFresh: false
+      }).exec()
+        .then(() => project);
+    }
+    return project;
   };
 }

@@ -8,7 +8,7 @@ export class projectDetailComponent {
     this.$http = $http;
     socket.socket.on('project:remove', item => {
       if(item && item._id === $stateParams.id) {
-        return $state.go('app.project.list');
+        return $state.go('project.list');
       }
     });
 
@@ -32,8 +32,8 @@ function routes($stateProvider) {
   'ngInject';
 
   $stateProvider
-    .state('app.project.detail', {
-      url: '/:id',
+    .state('project.detail', {
+      url: '{id:[0-9a-fA-F]{24}}',
       authenticate: true,
       views: {
         '@': {

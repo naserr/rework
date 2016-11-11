@@ -34,8 +34,8 @@ function routes($stateProvider) {
   'ngInject';
 
   $stateProvider
-    .state('app.project.list', {
-      url: '/list',
+    .state('project.list', {
+      url: 'list',
       authenticate: true,
       views: {
         '@': {
