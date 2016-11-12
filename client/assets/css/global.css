@@ -116,6 +116,29 @@ body {
     float: right;
 }
 
+#content_wrapper {
+    padding-left: 0;
+    margin-left: 0;
+    width: 100%;
+    height: auto;
+}
+
+#page_wrapper {
+    /*padding-right: 50px;*/
+    height: 100%;
+}
+
+#page_wrapper.open {
+    padding-right: 230px;
+}
+
+#page-wrapper, #sidebar-wrapper {
+    transition: all .4s ease 0s;
+}
+#page_wrapper.open #sidebar_wrapper {
+    right: 150px;
+}
+
 [ng\:cloak], [ng-cloak], .ng-cloak {
     display: none !important;
 }
@@ -233,3 +256,4 @@ button.btn_google_pluse {
     font-size: 12px;
     margin-right: 10px;
 }
+

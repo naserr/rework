@@ -26,13 +26,13 @@
   ga('send', 'pageview');
 </script>-->
 
-<div class="row">
-    <div ui-view="header"></div>
-</div>
-<section class="desktop_work_section clearfix container-fluid">
-    <div class="row">
-        <div class="col-sm-3 col-md-2" ui-view="sidebar"></div>
-        <div  class="row" ui-view></div>
+<section id="page_wrapper" class="desktop_work_section open clearfix">
+    <div id="sidebar_wrapper" ui-view="sidebar"></div>
+    <div id="content_wrapper">
+        <div class="page_content">
+            <div ui-view="header"></div>
+            <div ui-view></div>
+        </div>
     </div>
 </section>
 
