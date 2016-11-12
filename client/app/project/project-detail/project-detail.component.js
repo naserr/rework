@@ -37,7 +37,7 @@ function routes($stateProvider) {
       authenticate: true,
       views: {
         '@': {
-          template: '<project-detail project="$resolve.project.data"></project-detail>',
+          template: '<project-detail class="col-sm-9 col-sm-pull-3 col-md-10 col-md-pull-2" project="$resolve.project.data"></project-detail>',
           resolve: {
             /*@ngInject*/
             project: ($http, $stateParams) => $http.get(`/api/projects/${$stateParams.id}`)
