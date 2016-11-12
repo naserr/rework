@@ -6,6 +6,8 @@ export function routeConfig($urlRouterProvider, $locationProvider) {
 
   $urlRouterProvider.otherwise('/');
 
+  $urlRouterProvider.when('/', '/projects');
+
   $locationProvider.html5Mode(true);
 }
 

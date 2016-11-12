@@ -33,7 +33,7 @@ function routes($stateProvider) {
 
   $stateProvider
     .state('project.detail', {
-      url: '{id:[0-9a-fA-F]{24}}',
+      url: '/{id:[0-9a-fA-F]{24}}',
       authenticate: true,
       views: {
         '@': {

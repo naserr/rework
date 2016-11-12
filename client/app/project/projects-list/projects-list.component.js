@@ -35,7 +35,7 @@ function routes($stateProvider) {
 
   $stateProvider
     .state('project.list', {
-      url: 'list',
+      url: '/',
       authenticate: true,
       views: {
         '@': {
