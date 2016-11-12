@@ -2,30 +2,28 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
-import projectsList from './projects-list/projects-list.component';
-import projectDetail from './project-detail/project-detail.component';
+import boardList from './board-list/board-list.component';
+import boardDetail from './board-detail/board-detail.component';
 
-class ProjectComponent {
+class BoardComponent {
   /*@ngInject*/
   constructor($state) {
-    if(this.user.isFresh) {
-      $state.go('getStart');
-    } else if(this.user.defaultProject) {
-      $state.go('project.boards', {id: this.user.defaultProject});
+    if(this.project.defaultBoard) {
+      $state.go('project.desktop', {id: this.project.defaultBoard});
     } else {
-      $state.go('project.list');
+      $state.go('project.board.list');
     }
   }
 }
 
-export default angular.module('reworkApp.project', [uiRouter, projectsList, projectDetail])
+export default angular.module('reworkApp.project.board', [uiRouter, boardList, boardDetail])
   .config(routes)
-  .component('project', {
+  .component('board', {
     template: '',
     bindings: {
-      user: '<'
+      project: '<'
     },
-    controller: ProjectComponent
+    controller: BoardComponent
   })
   .name;
 
@@ -33,23 +31,16 @@ function routes($stateProvider) {
   'ngInject';
 
   $stateProvider
-    .state('project', {
-      url: '/projects',
-      // abstract: true,
+    .state('project.board', {
+      url: '/{id:[0-9a-fA-F]{24}}/boards',
       authenticate: true,
+      resolve: {
+        /*@ngInject*/
+        project: ($http, $stateParams) => $http.get(`/api/projects/${$stateParams.id}`)
+      },
       views: {
-        'header@': {
-          template: '<top-header></top-header>'
-        },
-        'sidebar@': {
-          template: '<sidebar></sidebar>'
-        },
         '@': {
-          template: '<project user="$resolve.user"></project>',
-          resolve: {
-            /*@ngInject*/
-            user: Auth => Auth.getCurrentUser()
-          }
+          template: '<board project="$resolve.project"></board>'
         }
       }
     });

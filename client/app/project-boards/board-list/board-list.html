@@ -1,24 +1,12 @@
-<div>
-    <div>
-        <table class="table table-striped table-hover ">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Owner</th>
-                <th>Members</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="pr in vm.projects">
-                <td><a class="btn btn-link" ui-sref="project.boards({id: pr._id})">{{pr.name}}</a></td>
-                <td>{{pr.owner.name}}</td>
-                <td>{{pr.users.length | number}}</td>
-                <td>
-                    <button class="btn btn-danger" ng-click="vm.delete(pr._id)">Delete</button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+<div class="row">
+    <div class="col-md-12">
+        <h1>{{vm.project.name}}</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-3" ng-repeat="b in vm.allBoards track by $index">
+            <a ui-sref="project.board.detail({boardName: b.name})" class="thumbnail">
+                <h1>{{b.name}}</h1>
+            </a>
+        </div>
     </div>
 </div>

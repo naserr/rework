@@ -29,7 +29,7 @@ class GetStartComponent {
 
   redirectToProject = project => {
     project = project.data;
-    return this.$state.go('project.detail', {id: project._id});
+    return this.$state.go('project.boards', {id: project._id});
   }
 }
 
