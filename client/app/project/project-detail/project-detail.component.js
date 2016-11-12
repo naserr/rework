@@ -3,9 +3,10 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
 export class projectDetailComponent {
-  constructor($http, $scope, $state, $stateParams, socket) {
+  constructor($scope, $state, $stateParams, socket, appConfig) {
     'ngInject';
-    this.$http = $http;
+    this.allBoards = appConfig.boards;
+
     socket.socket.on('project:remove', item => {
       if(item && item._id === $stateParams.id) {
         return $state.go('project.list');
