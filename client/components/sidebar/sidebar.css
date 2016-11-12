@@ -4,13 +4,13 @@ section.desktop_work_section div.page_sidebar_wrapper {
     top: 0;
     background-color: #293b5a;
     right: 0;
-    width: 220px;
+    width: 260px;
 }
 
 div.page_sidebar_wrapper a.desktop_work_logo {
     position: relative;
     display: block;
-    margin: 34px 10px 34px 0;
+    margin: 34px 40px 34px 0;
 }
 
 ul.list_menu_desktop li.list_menu_desktop_item a {
@@ -19,7 +19,7 @@ ul.list_menu_desktop li.list_menu_desktop_item a {
     font-weight: lighter;
     font-size: 15px;
     width: 100%;
-    padding: 8px 30px 8px 0;
+    padding: 8px 35px 8px 0;
 }
 
 ul.list_menu_desktop li.list_menu_desktop_item a i {

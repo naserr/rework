@@ -11,7 +11,6 @@ export default class LoginController {
   };
   submitted = false;
 
-
   /*@ngInject*/
   constructor(Auth, $state) {
     this.Auth = Auth;
