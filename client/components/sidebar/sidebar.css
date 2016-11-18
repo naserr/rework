@@ -1,16 +1,17 @@
-section.desktop_work_section div.page_sidebar_wrapper {
+section.desktop_work_section #sidebar_wrapper {
     position: fixed;
+    margin-right: -150px;
     bottom: 0;
     top: 0;
     background-color: #293b5a;
-    right: 0;
-    width: 260px;
+    right: -80px;
+    width: 230px;
 }
 
-div.page_sidebar_wrapper a.desktop_work_logo {
+#sidebar_wrapper a.desktop_work_logo {
     position: relative;
     display: block;
-    margin: 34px 40px 34px 0;
+    margin: 34px 30px 34px 0;
 }
 
 ul.list_menu_desktop li.list_menu_desktop_item a {
