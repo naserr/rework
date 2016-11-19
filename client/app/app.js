@@ -55,3 +55,4 @@ angular.element(document)
       strictDi: true
     });
   });
+
