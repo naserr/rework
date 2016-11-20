@@ -26,3 +26,8 @@ a.board_link_start i {
     left: 20px;
     background: url(http://localhost:3000/5a2f1d84fb724f262f1cd672f999ffe2.png) -334px -15px;
 }
+
+div.board_preview img {
+    float: right;
+    width: 100%;
+}
