@@ -7,7 +7,7 @@ h3.tools_link {
 }
 
 h3.tools_link p {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     color: #293b5a;
     border: 1px solid #dbe8ff;
@@ -24,7 +24,7 @@ h3.tools_link p i{
     height: 24px;
     margin-left: 6px;
     display: inline-block;
-    background: url(http://localhost:3000/5a2f1d84fb724f262f1cd672f999ffe2.png) -547px -38px;
+    background: url(http://localhost:3000/5a2f1d84fb724f262f1cd672f999ffe2.png) -547px -42px;
 }
 
 ul.projects_list li.projects_list_item {
@@ -32,11 +32,11 @@ ul.projects_list li.projects_list_item {
     margin-left: 22px;
 }
 
-ul.projects_list li.projects_list_item:last-child {
+ul.projects_list li.projects_list_item:nth-child(3) {
     margin-left: 0;
 }
 
-a.project_board_link {
+article.project_board_link {
     display: inline-block;
 }
 
@@ -73,7 +73,7 @@ figcaption.board_hover_wrapper p {
     text-align: right;
 }
 
-figcaption.board_hover_wrapper button {
+figcaption.board_hover_wrapper a {
     color: #fff;
     border: 1px solid #fff;
     border-radius: 5px;
