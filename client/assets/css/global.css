@@ -128,13 +128,15 @@ body {
     height: 100%;
 }
 
-#page_wrapper.open {
+#content_wrapper.open {
     padding-right: 230px;
 }
+
 
 #page-wrapper, #sidebar-wrapper {
     transition: all .4s ease 0s;
 }
+
 #page_wrapper.open #sidebar_wrapper {
     right: 150px;
 }
