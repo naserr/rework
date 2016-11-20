@@ -18,7 +18,7 @@ h3.tools_link p {
     line-height: 1;
 }
 
-h3.tools_link p i{
+h3.tools_link p i {
     float: right;
     width: 20px;
     height: 24px;
@@ -83,7 +83,8 @@ figcaption.board_hover_wrapper a {
     position: absolute;
     transform: translate(-50%, -50%);
 }
-div.board_details{
+
+div.board_details {
     padding: 5px 10px 0 10px;
 }
 div.board_details p {
