@@ -44,7 +44,7 @@
     font-family: 'iran';
     src: url('../fonts/iran-sans/IRANSans-Light-web.eot');
     src: url('../fonts/iran-sans/IRANSans-Light-web.eot?#iefix') format('eot'), url('../fonts/iran-sans/IRANSans-light-web.woff') format('woff');
-    font-weight: 200;
+    font-weight: lighter;
 }
 
 * {
@@ -112,7 +112,7 @@ body {
     color: #2a2a2a;
 }
 
-.row [class^="col"], .row [class*="col"] {
+[class^="col"], [class*="col"] {
     float: right;
 }
 
@@ -206,7 +206,7 @@ button {
 
 .rework_btn {
     display: inline-block;
-    padding: 6px 16px;
+    padding: 8px 16px;
     margin-bottom: 0;
     font-weight: 400;
     line-height: 1.42857143;

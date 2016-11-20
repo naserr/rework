@@ -1,10 +1,23 @@
-<div class="row">
-    <div class="col-md-12">
-        <h1>{{vm.boardName}}</h1>
+<section class="section_board_details_wrapper clearfix">
+    <div class="col-md-5 clearfix">
+        <div class="board_title">
+            <!--<h1>{{vm.boardName}}</h1>-->
+            <h1>لورم ایپسوم یا طرح‌نما</h1>
+        </div>
+        <div class="project_description_wrapper clearfix">
+            <p class="project_description">
+                لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و
+                طراحی
+                گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحه و ارایه اولیه
+                شکل
+                ظاهری و کلی طرح سفارش گرفته شده
+            </p>
+            <a ng-click="vm.selectBoard()" class="rework_btn btn-success board_link_start">شروع کار این بوم<i></i></a>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-3">
-        <a ng-click="vm.selectBoard()" class="btn btn-success">شروع کار</a>
+    <div class="col-md-4 col-md-offset-1">
+        <figure>
+            <img src="assets/img/project_4.jpg" width="800" height="600"/>
+        </figure>
     </div>
-</div>
+</section>
