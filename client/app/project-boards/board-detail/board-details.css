@@ -1,0 +1,28 @@
+section.section_board_details_wrapper {
+    margin: 40px 60px;
+}
+
+div.board_title {
+    margin: 18px 0;
+}
+
+div.board_title h1 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+div.project_description_wrapper p.project_description {
+    font-weight: lighter;
+    line-height: 2.5;
+    margin-bottom: 40px;
+}
+
+a.board_link_start i {
+    float: left;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    left: 20px;
+    background: url(http://localhost:3000/5a2f1d84fb724f262f1cd672f999ffe2.png) -334px -15px;
+}
