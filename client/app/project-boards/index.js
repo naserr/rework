@@ -40,7 +40,7 @@ function routes($stateProvider) {
       },
       views: {
         '@': {
-          template: '<board project="$resolve.project"></board>'
+          template: '<board project="$resolve.project.data"></board>'
         }
       }
     });

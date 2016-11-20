@@ -3,15 +3,29 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
 export class BoardDetailComponent {
-  constructor($stateParams) {
+  constructor($stateParams, $http) {
     'ngInject';
     this.boardName = $stateParams.boardName;
+    this.$http = $http;
+  }
+
+  selectBoard() {
+    this.project.defaultBoard = this.boardName;
+    let patches = [{
+      op: 'replace',
+      path: '/defaultBoard',
+      value: this.boardName
+    }];
+    this.$http.patch(`api/projects/${this.project._id}`, patches);
   }
 }
 
 export default angular.module('reworkApp.project.board.detail', [uiRouter])
   .component('boardDetail', {
     template: require('./board-detail.html'),
+    bindings: {
+      project: '<'
+    },
     controller: BoardDetailComponent,
     controllerAs: 'vm'
   })
@@ -27,7 +41,7 @@ function routes($stateProvider) {
       authenticate: true,
       views: {
         '@': {
-          template: '<board-detail></board-detail>'
+          template: '<board-detail project="$resolve.project.data"></board-detail>'
         }
       }
     });
