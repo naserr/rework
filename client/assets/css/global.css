@@ -152,6 +152,11 @@ div.container, section.container {
     padding: 0;
 }
 
+a:hover, a:focus {
+    text-decoration: none;
+    cursor: pointer;
+}
+
 button {
     cursor: pointer;
 }
