@@ -17,7 +17,7 @@
 @import 'account/signup/signup.css';
 @import 'admin/admin.css';
 @import 'getStart/getStart.css';
-@import 'project/project-tools/projectTools.css';
+@import 'project-boards/board-list/board-list.css';
 @import '../components/header/top-header.css';
 @import '../components/oauth-buttons/oauth-buttons.css';
 @import '../components/sidebar/sidebar.css';

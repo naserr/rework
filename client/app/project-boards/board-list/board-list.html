@@ -1,88 +1,40 @@
 <section class="projectToolsWrapper clearfix">
-    <div class="tools_link idea clearfix">
-        <h3>
-            <a class="">ایده یابی<i></i></a>
+    <section class="idea_section clearfix" ng-repeat="(cat, boards) in vm.allBoards">
+        <h3 class="tools_link clearfix">
+            <p>{{cat}}<i></i></p>
         </h3>
         <ul class="projects_list">
-            <li class="projects_list_item">
-                <a>
-                    <figure>
-                        <img src="assets/img/project_1.jpg" width="300" height="200">
-                        <figcaption>
-                            <div>
-
-                            </div>
-                        </figcaption>
-                    </figure>
-                </a>
-            </li>
-            <li class="projects_list_item">
-                <a>
-                    <figure>
-                        <img src="assets/img/project_3.jpg" width="300" height="200">
-                        <figcaption>
-                            <div>
-
-                            </div>
-                        </figcaption>
-                    </figure>
-                </a>
-            </li>
-            <li class="projects_list_item">
-                <a>
-                    <figure>
-                        <img src="assets/img/project_2.jpg" width="300" height="200">
-                        <figcaption>
-                            <div>
-
-                            </div>
-                        </figcaption>
-                    </figure>
+            <li class="projects_list_item" ng-repeat="b in boards">
+                <a class="project_board_link clearfix">
+                    <div class="img_board_wrapper">
+                        <figure class="figure_board_wrapper">
+                            <img ng-src="{{b.iconPath}}" width="300" height="200">
+                            <figcaption class="board_hover_wrapper">
+                                <p>{{b.description | limitTo: 60}}</p>
+                                <a ui-sref="project.board.detail({boardName: b.name})" class="board_view">نمایش برد</a>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="board_details clearfix">
+                        <div class="clearfix">
+                            <p>
+                                آخرین تغییر:
+                            </p>
+                            <p>
+                                25 دقیقه پیش
+                            </p>
+                        </div>
+                        <div class="clearfix">
+                            <p>
+                                توسط
+                            </p>
+                            <p>
+                                محسن
+                            </p>
+                        </div>
+                    </div>
                 </a>
             </li>
         </ul>
-    </div>
-    <div class="tools_link progressing clearfix">
-        <h3>
-            <a>در حال رشد<i></i></a>
-        </h3>
-        <ul class="projects_list">
-            <li class="projects_list_item">
-                <a>
-                    <figure>
-                        <img src="assets/img/project_1.jpg" width="300" height="200">
-                        <figcaption>
-                            <div>
-
-                            </div>
-                        </figcaption>
-                    </figure>
-                </a>
-            </li>
-            <li class="projects_list_item">
-                <a>
-                    <figure>
-                        <img src="assets/img/project_3.jpg" width="300" height="200">
-                        <figcaption>
-                            <div>
-
-                            </div>
-                        </figcaption>
-                    </figure>
-                </a>
-            </li>
-            <li class="projects_list_item">
-                <a>
-                    <figure>
-                        <img src="assets/img/project_2.jpg" width="300" height="200">
-                        <figcaption>
-                            <div>
-
-                            </div>
-                        </figcaption>
-                    </figure>
-                </a>
-            </li>
-        </ul>
-    </div>
+    </section>
 </section>

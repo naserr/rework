@@ -5,7 +5,7 @@ import uiRouter from 'angular-ui-router';
 export class boardListComponent {
   constructor(appConfig) {
     'ngInject';
-    this.allBoards = appConfig.boards;
+    this.allBoards = _.groupBy(appConfig.boards, b => b.category);
   }
 }
 
