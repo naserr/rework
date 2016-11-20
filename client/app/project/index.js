@@ -3,7 +3,7 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
 import projectsList from './projects-list/projects-list.component';
-import projectDetail from './project-detail/project-detail.component';
+// import projectDetail from './project-detail/project-detail.component';
 
 class ProjectComponent {
   /*@ngInject*/
@@ -11,14 +11,14 @@ class ProjectComponent {
     if(this.user.isFresh) {
       $state.go('getStart');
     } else if(this.user.defaultProject) {
-      $state.go('project.detail', {id: this.user.defaultProject});
+      $state.go('project.board', {id: this.user.defaultProject});
     } else {
       $state.go('project.list');
     }
   }
 }
 
-export default angular.module('reworkApp.project', [uiRouter, projectsList, projectDetail])
+export default angular.module('reworkApp.project', [uiRouter, projectsList])
   .config(routes)
   .component('project', {
     template: '',

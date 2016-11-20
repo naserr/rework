@@ -24,13 +24,13 @@ import util from '../components/util/util.module';
 import socket from '../components/socket/socket.service';
 import getStart from './getStart/getStart.component';
 import project from './project/index';
-import projectTools from './project/project-tools/project-tools.component';
+import projectBoards from './project-boards/index';
 
 import './app.css';
 
 angular.module('reworkApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io',
     uiRouter, toastr, _Auth, account, admin, constants, socket, util, header, sidebar,
-    getStart, project, projectTools
+    getStart, project, projectBoards
   ])
   .config(appConfig.routeConfig)
   .config(appConfig.toastrConfig)
@@ -56,4 +56,3 @@ angular.element(document)
       strictDi: true
     });
   });
-

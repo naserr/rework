@@ -34,6 +34,7 @@ var ProjectSchema = new mongoose.Schema({
       default: new Date()
     }
   }],
+  defaultBoard: {},
   boards: [{}]
 });
 
