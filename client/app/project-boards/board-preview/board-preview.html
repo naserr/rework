@@ -1,0 +1,16 @@
+<section class="section_board_details_wrapper clearfix">
+    <div class="col-md-5 clearfix">
+        <div class="board_title">
+            <h1>{{vm.board.name}}</h1>
+        </div>
+        <div class="project_description_wrapper clearfix">
+            <p class="project_description">{{vm.board.description}}</p>
+            <a ng-click="vm.selectBoard()" class="rework_btn btn-success board_link_start">شروع کار این بوم<i></i></a>
+        </div>
+    </div>
+    <div class="board_preview col-md-6">
+        <figure class="clearfix">
+            <img ng-src="{{vm.board.iconPath}}" height="400"/>
+        </figure>
+    </div>
+</section>

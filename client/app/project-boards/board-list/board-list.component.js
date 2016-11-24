@@ -9,7 +9,7 @@ export class boardListComponent {
   }
 }
 
-export default angular.module('reworkApp.project.board.list', [uiRouter])
+export default angular.module('reworkApp.project.boards.list', [uiRouter])
   .component('boardList', {
     template: require('./board-list.html'),
     bindings: {
@@ -25,7 +25,7 @@ function routes($stateProvider) {
   'ngInject';
 
   $stateProvider
-    .state('project.board.list', {
+    .state('project.boards.list', {
       url: '/',
       authenticate: true,
       views: {

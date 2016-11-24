@@ -3,20 +3,23 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
 import boardList from './board-list/board-list.component';
-import boardDetail from './board-detail/board-detail.component';
+import boardPreview from './board-preview/board-preview.component';
 
 class BoardComponent {
   /*@ngInject*/
   constructor($state) {
     if(this.project.defaultBoard) {
-      $state.go('project.desktop', {id: this.project.defaultBoard});
+      $state.go('project.desktop', {
+        id: this.project._id,
+        boardName: this.project.defaultBoard
+      });
     } else {
-      $state.go('project.board.list');
+      $state.go('project.boards.list');
     }
   }
 }
 
-export default angular.module('reworkApp.project.board', [uiRouter, boardList, boardDetail])
+export default angular.module('reworkApp.project.boards', [uiRouter, boardList, boardPreview])
   .config(routes)
   .component('board', {
     template: '',
@@ -31,7 +34,7 @@ function routes($stateProvider) {
   'ngInject';
 
   $stateProvider
-    .state('project.board', {
+    .state('project.boards', {
       url: '/{id:[0-9a-fA-F]{24}}/boards',
       authenticate: true,
       resolve: {

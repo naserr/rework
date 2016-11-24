@@ -51,6 +51,9 @@ export var UserSchema = new Schema({
       constants.plans.professional.name, constants.plans.ultimate.name
     ]
   },
+  expire: {
+    type: Date
+  },
   isFresh: {
     type: Boolean,
     default: true
