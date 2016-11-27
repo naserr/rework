@@ -5,13 +5,13 @@ import angular from 'angular';
 
 class SidebarComponent {
 
-  // $onInit() {
-  //   this.parent.toggle = true;
-  // }
-  //
-  // toggleSidebar() {
-  //   this.parent.toggle = !this.parent.toggle;
-  // }
+//   $onInit() {
+//     this.parent.toggle = true;
+//   }
+//
+//   toggleSidebar() {
+//     this.parent.toggle = !this.parent.toggle;
+//   }
 }
 
 export default angular.module('directives.sidebar', [])

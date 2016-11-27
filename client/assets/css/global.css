@@ -204,7 +204,9 @@ body {
   height: 100%;
 }
 
-#content_wrapper.open {
+
+/*
+#page_wrapper.open {
   padding-right: 230px;
 }
 
@@ -215,6 +217,41 @@ body {
 
 #page_wrapper.open #sidebar_wrapper {
   right: 150px;
+}
+*/
+
+
+/*#page_wrapper.open #sidebar_wrapper{
+  right: 150px!important;
+}
+#page_wrapper.open #content_wrapper{
+  padding-right: 230px;
+}*/
+
+
+/*
+#sidebar_wrapper{
+  right: 150px!important;
+}
+#content_wrapper{
+  padding-right: 230px;
+}
+*/
+
+/*#sidebar_wrapper {
+  right: 150px!important;
+}
+
+#content_wrapper {
+  padding-right: 230px;
+}*/
+
+#sidebar_wrapper.open {
+  right: 150px!important;
+}
+
+#sidebar_wrapper.open~#content_wrapper {
+  padding-right: 230px;
 }
 
 [ng\:cloak],
@@ -419,7 +456,7 @@ table.rework-table tbody tr td {
 td.cell_img_container img {
   float: right;
   margin-left: 7px;
-  border-radius:50%;
+  border-radius: 50%;
   width: 36px;
   height: 36px;
 }
