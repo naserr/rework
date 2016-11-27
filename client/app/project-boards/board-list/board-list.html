@@ -11,29 +11,29 @@
                             <img ng-src="{{b.iconPath}}" width="300" height="200">
                             <figcaption class="board_hover_wrapper">
                                 <p>{{b.description | limitTo: 93}}</p>
-                                <a ui-sref="project.board.detail({boardName: b.name})" class="board_view">نمایش برد</a>
+                                <a ui-sref="project.boards.preview({boardName: b.name})" class="board_view">نمایش برد</a>
                             </figcaption>
                         </figure>
                     </div>
-                    <!--<div class="board_details clearfix">-->
-                    <!--<div class="clearfix">-->
-                    <!--<p>-->
-                    <!--آخرین تغییر:-->
-                    <!--</p>-->
-                    <!--<p>-->
-                    <!--25 دقیقه پیش-->
-                    <!--</p>-->
-                    <!--</div>-->
-                    <!--<div class="clearfix">-->
-                    <!--<p>-->
-                    <!--توسط-->
-                    <!--</p>-->
-                    <!--<p>-->
-                    <!--محسن-->
-                    <!--</p>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                </article>
+                    <!--<div class="board_details clearfix">
+                        <div class="clearfix">
+                            <p>
+                                آخرین تغییر:
+                            </p>
+                            <p>
+                                25 دقیقه پیش
+                            </p>
+                        </div>
+                        <div class="clearfix">
+                            <p>
+                                توسط
+                            </p>
+                            <p>
+                                محسن
+                            </p>
+                        </div>
+                    </div>-->
+                </a>
             </li>
         </ul>
     </section>

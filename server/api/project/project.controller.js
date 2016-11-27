@@ -78,6 +78,7 @@ export function show(req, res) {
   return Project.findById(req.params.id, '-keys').exec()
     .then(handleEntityNotFound(res))
     .then(hasGetAuthorization(res, req.user._id))
+    .then(hasExpired(res))
     .then(setDefaultProject(req.user))
     .then(respondWithResult(res))
     .catch(handleError(res));
@@ -94,7 +95,7 @@ export function me(req, res) {
 export function create(req, res) {
   let newProject = new Project({
     name: req.body.name,
-    owner: _.pick(req.user, ['_id', 'email', 'name', 'type']),
+    owner: _.pick(req.user, ['_id', 'email', 'name', 'type', 'expire']),
     users: [{
       _id: req.user._id,
       role: constants.roleNames.admin
@@ -131,6 +132,17 @@ export function join(req, res) {
   }).exec()
     .then(joinProject(req.body.key, req.user._id))
     .then(setDefaultProject(req.user))
+    .then(respondWithResult(res))
+    .catch(handleError(res, 400));
+}
+
+// add a board to a Project
+export function selectBoard(req, res) {
+  return Project.findById(req.body.id).exec()
+    .then(handleEntityNotFound(res))
+    .then(hasGetAuthorization(res, req.user._id))
+    .then(setDefaultBoard(req.body.board))
+    .then(addBoard(req.body.board))
     .then(respondWithResult(res))
     .catch(handleError(res, 400));
 }
@@ -181,6 +193,18 @@ function hasGetAuthorization(res, userId) {
         return null;
       }
       return project;
+    }
+    return project;
+  };
+}
+
+function hasExpired(res) {
+  return function(project) {
+    if(project) {
+      if(project.owner.type !== constants.plans.free.name && project.owner.expire.getTime() >= Date.now()) {
+        res.status(403).end('این پروژه منقضی شده است');
+        return null;
+      }
     }
     return project;
   };
@@ -237,6 +261,32 @@ function setDefaultProject(user) {
         isFresh: false
       }).exec()
         .then(() => project);
+    }
+    return project;
+  };
+}
+
+function setDefaultBoard(board) {
+  return function(project) {
+    if(project) {
+      project.defaultBoard = board;
+      return project.save();
+    }
+    return project;
+  };
+}
+
+function addBoard(board) {
+  return function(project) {
+    if(project) {
+      let theBoard = project.boards.find(b => b.name === board);
+      if(theBoard) {
+        project.boards.push({
+          name: board,
+          added: new Date()
+        });
+        return project.save();
+      }
     }
     return project;
   };
