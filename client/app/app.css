@@ -19,6 +19,7 @@
 @import 'getStart/getStart.css';
 @import 'project-boards/board-detail/board-details.css';
 @import 'project-boards/board-list/board-list.css';
+@import 'team-management/team-mangement.css';
 @import '../components/header/top-header.css';
 @import '../components/oauth-buttons/oauth-buttons.css';
 @import '../components/sidebar/sidebar.css';

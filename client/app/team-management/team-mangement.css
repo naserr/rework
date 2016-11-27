@@ -1,0 +1,106 @@
+section.team_management_section {
+  margin: 25px 20px 35px;
+}
+
+label.label_team_management {
+  display: block;
+  color: #293b5a;
+  font-weight: lighter;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+a.expired_icon,
+a.key_icon {
+  border-radius: 20px;
+}
+
+a.expired_icon i,
+a.key_icon i {
+  float: left;
+  width: 3px;
+  height: 15px;
+  margin-right: 40px;
+}
+
+a.expired_icon i {
+  background: url('../../assets/icons/icons.png') -593px -42px;
+}
+
+a.expired_icon:hover i {
+  background: url('../../assets/icons/icons.png') -602px -42px;
+}
+
+a.key_icon i {
+  width: 10px;
+  float: right;
+  margin-right: 0;
+  margin-left: 6px;
+  background: url('../../assets/icons/icons.png') -612px -42px;
+}
+
+a.key_icon:hover i {
+  background: url('../../assets/icons/icons.png') -622px -42px;
+}
+
+.add_btn {
+  margin: 10px 0 0 10px;
+}
+
+
+/*aside*/
+
+.aside_team_management {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 210px;
+  background-color: #f4f8ff;
+}
+
+h3.header_aside_team_management {
+  font-size: 14px;
+  font-weight: lighter;
+  margin-top: 20px;
+}
+
+
+/*workList*/
+
+ul.work_list {
+  padding: 0 10px;
+  margin-top: 18px;
+}
+
+li.work_list_item {
+  margin: 4px;
+}
+
+li.work_list_item img {
+  float: right;
+  width: 20%;
+  margin-top: 4px;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+}
+
+li.work_list_item p {
+  float: right;
+  width: 77%;
+  margin: 0px 4px 4px 0;
+}
+
+div.work_link_more_wrapper {
+  text-align: center;
+  margin-top: 22px;
+}
+
+a.work_link_more {
+  color: #5584ff;
+  line-height: 2;
+  border-radius: 14px;
+  background-color: #fff;
+  padding: 6px 18px;
+}
