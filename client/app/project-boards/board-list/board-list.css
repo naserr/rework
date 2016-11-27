@@ -24,7 +24,7 @@ h3.tools_link p i {
     height: 24px;
     margin-left: 6px;
     display: inline-block;
-    background: url('/client/assets/icons/icons.png') -547px -42px;
+    background: url('../../../assets/icons/icons.png') -547px -42px;
 }
 
 ul.projects_list li.projects_list_item {
