@@ -2,6 +2,7 @@
 *redirect to project desktop on default route => app.config.js:9
 *make sidebar and topHeader menu thinner
 *compress images and icons
+*animate sidebar toggling
 
 tips:
 { type : String, required : true , unique : true, dropDups: true }
