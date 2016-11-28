@@ -11,23 +11,20 @@ export default function($stateProvider) {
         /*@ngInject*/
         projects: $http => $http.get('/api/projects/me')
       },
-      views: {
-        'header@': {
-          template: '<top-header></top-header>'
-        },
-        'sidebar@': {
-          template: ''
-        }
-      }
+      template: '<div ui-view></div>'
+      // views: {
+      //   'header@': {
+      //     template: '<top-header></top-header>'
+      //   },
+      //   'sidebar@': {
+      //     template: ''
+      //   }
+      // }
     })
     .state('projects.list', {
       url: '/list',
       authenticate: true,
-      views: {
-        '@': {
-          template: '<projects-list projects="$resolve.projects.data"></projects-list>'
-        }
-      }
+      template: '<projects-list projects="$resolve.projects.data"></projects-list>'
     })
   ;
 }

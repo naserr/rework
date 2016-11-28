@@ -7,17 +7,10 @@ export default function($stateProvider) {
       url: '/{id:[0-9a-fA-F]{24}}',
       abstract: true,
       authenticate: true,
+      template: require('./project.html'),
       resolve: {
         /*@ngInject*/
         project: ($http, $stateParams) => $http.get(`/api/projects/${$stateParams.id}`)
-      },
-      views: {
-        'header@': {
-          template: '<top-header></top-header>'
-        },
-        'sidebar@': {
-          template: '<sidebar></sidebar>'
-        }
       }
     })
     .state('project.boards', {
@@ -29,7 +22,7 @@ export default function($stateProvider) {
       url: '/list',
       authenticate: true,
       views: {
-        '@': {
+        '@project': {
           template: '<board-list project="$resolve.project.data"></board-list>'
         }
       }
@@ -38,7 +31,7 @@ export default function($stateProvider) {
       url: '/preview/:board',
       authenticate: true,
       views: {
-        '@': {
+        '@project': {
           template: '<board-preview project="$resolve.project.data"></board-preview>'
         }
       }
@@ -47,7 +40,7 @@ export default function($stateProvider) {
       url: '/{board:[a-fA-F]{1}}',
       authenticate: true,
       views: {
-        '@': {
+        '@project': {
           template: '<project-desktop project="$resolve.project.data"></project-desktop>'
         }
       }
@@ -56,7 +49,7 @@ export default function($stateProvider) {
       url: '/manage',
       authenticate: true,
       views: {
-        '@': {
+        '@project': {
           template: '<project-manage project="$resolve.project.data"></project-manage>'
         }
       }
