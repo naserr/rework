@@ -40,9 +40,9 @@ export function AuthService($location, $http, $cookies, $q, appConfig, Util, Use
       password
     }, callback) {
       return $http.post('/auth/local', {
-        email,
-        password
-      })
+          email,
+          password
+        })
         .then(res => {
           $cookies.put('token', res.data.token);
           currentUser = User.get();

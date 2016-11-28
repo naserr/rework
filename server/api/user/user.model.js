@@ -43,6 +43,7 @@ export var UserSchema = new Schema({
   defaultProject: {
     type: Schema.Types.ObjectId
   },
+  defaultBoard: {},
   type: {
     type: String,
     default: constants.plans.free.name,

@@ -18,20 +18,4 @@ export default angular.module('reworkApp.project.boards.list', [uiRouter])
     controller: boardListComponent,
     controllerAs: 'vm'
   })
-  .config(routes)
   .name;
-
-function routes($stateProvider) {
-  'ngInject';
-
-  $stateProvider
-    .state('project.boards.list', {
-      url: '/',
-      authenticate: true,
-      views: {
-        '@': {
-          template: '<board-list project="$resolve.project.data"></board-list>'
-        }
-      }
-    });
-}

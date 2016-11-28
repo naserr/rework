@@ -141,7 +141,7 @@ export function selectBoard(req, res) {
   return Project.findById(req.body.id).exec()
     .then(handleEntityNotFound(res))
     .then(hasGetAuthorization(res, req.user._id))
-    .then(setDefaultBoard(req.body.board))
+    .then(setDefaultBoard(req.user, req.body.board))
     .then(addBoard(req.body.board))
     .then(respondWithResult(res))
     .catch(handleError(res, 400));
@@ -258,6 +258,7 @@ function setDefaultProject(user) {
     if(project) {
       return User.update({_id: user._id}, {
         defaultProject: project._id,
+        defaultBoard: null,
         isFresh: false
       }).exec()
         .then(() => project);
@@ -266,11 +267,13 @@ function setDefaultProject(user) {
   };
 }
 
-function setDefaultBoard(board) {
+function setDefaultBoard(user, board) {
   return function(project) {
     if(project) {
-      project.defaultBoard = board;
-      return project.save();
+      return User.update({_id: user._id}, {
+        defaultBoard: board
+      }).exec()
+        .then(() => project);
     }
     return project;
   };
@@ -280,7 +283,7 @@ function addBoard(board) {
   return function(project) {
     if(project) {
       let theBoard = project.boards.find(b => b.name === board);
-      if(theBoard) {
+      if(!theBoard) {
         project.boards.push({
           name: board,
           added: new Date()

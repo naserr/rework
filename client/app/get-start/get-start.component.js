@@ -1,9 +1,11 @@
 'use strict';
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import routes from './getStart.routes';
+import routes from './get-start.routes';
 
 class GetStartComponent {
+  $http;
+  $state;
   projectName = '';
   projectKey = '';
 
@@ -29,14 +31,15 @@ class GetStartComponent {
 
   redirectToProject = project => {
     project = project.data;
-    return this.$state.go('project.boards', {id: project._id});
+    //noinspection Eslint
+    return this.$state.go('project.boards.list', {id: project._id});
   }
 }
 
 export default angular.module('reworkApp.getStart', [uiRouter])
   .config(routes)
   .component('getStart', {
-    template: require('./getStart.html'),
+    template: require('./get-start.html'),
     controller: GetStartComponent,
     controllerAs: 'vm'
   })

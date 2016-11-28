@@ -113,9 +113,9 @@
                                             'has-error': form.email.$invalid && vm.submitted }">
                     <input type="text" placeholder="ایمیل" name="email" ng-model="vm.user.email"
                            required
-                           mongoose-error />
+                           mongoose-error/>
                     <p class="help-block" ng-show="form.email.$error.email && vm.submitted">
-                       ایمیل معتبر وارد کنید.
+                        ایمیل معتبر وارد کنید.
                     </p>
                     <p class="help-block" ng-show="form.email.$error.required && vm.submitted">
                         ایمیل خود را وارد کنید.
@@ -126,10 +126,10 @@
                 </div>
                 <div class="password_container clearfix" ng-class="{ 'has-success': form.password.$valid && vm.submitted,
                                             'has-error': form.password.$invalid && vm.submitted }">
-                    <input type="password" placeholder="کلمه عبور" name="password" ٌٌٌٌٌng-model="vm.user.password"
+                    <input type="password" placeholder="کلمه عبور" name="password" ng-model="vm.user.password"
                            ng-minlength="3"
                            required
-                           mongoose-error />
+                           mongoose-error/>
                     <p class="help-block"
                        ng-show="(form.password.$error.minlength || form.password.$error.required) && vm.submitted">
                         کلمه عبور حداقل 3 کاراکتر باشد.
@@ -143,10 +143,10 @@
                     <input type="password" placeholder="تایید کلمه عبور" name="confirmPassword"
                            ng-model="vm.user.confirmPassword"
                            match="vm.user.password"
-                           ng-minlength="3" required />
+                           ng-minlength="3" required/>
                     <p class="help-block"
-                    ng-show="form.confirmPassword.$error.match && vm.submitted">
-                  پسورد یکسان نیست.
+                       ng-show="form.confirmPassword.$error.match && vm.submitted">
+                        پسورد یکسان نیست.
                     </p>
                 </div>
                 <div class="signUp_tools">
@@ -163,5 +163,4 @@
             <img src="assets/img/signUp.jpg" alt="signUpImage"/>
         </figure>
     </main>
-
 </section>

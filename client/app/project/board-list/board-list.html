@@ -11,7 +11,8 @@
                             <img ng-src="{{b.iconPath}}" width="300" height="200">
                             <figcaption class="board_hover_wrapper">
                                 <p>{{b.description | limitTo: 93}}</p>
-                                <a ui-sref="project.boards.preview({boardName: b.name})" class="board_view">نمایش برد</a>
+                                <a ui-sref="project.boards.list.preview({board: b.name})" class="board_view">نمایش
+                                    برد</a>
                             </figcaption>
                         </figure>
                     </div>
@@ -33,7 +34,7 @@
                             </p>
                         </div>
                     </div>-->
-                </a>
+                    </a>
             </li>
         </ul>
     </section>

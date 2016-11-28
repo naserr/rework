@@ -6,7 +6,7 @@ export function routeConfig($urlRouterProvider, $locationProvider) {
 
   $urlRouterProvider.otherwise('/');
 
-  $urlRouterProvider.when('/', '/projects');
+  $urlRouterProvider.when('/', '/login');
 
   $locationProvider.html5Mode(true);
 }
@@ -61,8 +61,8 @@ export function interceptorConfig($httpProvider) {
             errorMessage = 'دسترسی غیرمجاز';
           }
         }
-        if(typeof error === 'object' || _.isEmpty(error)) {
-          errorMessage = 'درخواست با خطا مواجه شد';
+        if(typeof error === 'object' && !_.isEmpty(error)) {
+          errorMessage = error.message || 'درخواست با خطا مواجه شد';
         }
         $log.error(errorMessage);
         return $q.reject(rejection);

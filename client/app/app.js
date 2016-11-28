@@ -22,29 +22,28 @@ import sidebar from '../components/sidebar/sidebar.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
 import socket from '../components/socket/socket.service';
-import getStart from './getStart/getStart.component';
+import getStart from './get-start/get-start.component';
 import project from './project/index';
-import projectBoards from './project-boards/index';
-import teamManagement from './team-management/team-management.component';
+import projectsList from './projects-list/projects-list.component';
 
 import './app.css';
 
 angular.module('reworkApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io',
     uiRouter, toastr, _Auth, account, admin, constants, socket, util, header, sidebar,
-                             getStart, project, projectBoards,teamManagement
+    getStart, project, projectsList
   ])
   .config(appConfig.routeConfig)
   .config(appConfig.toastrConfig)
   .config(appConfig.logDecorator)
   .config(appConfig.interceptorConfig)
-  .run(function ($rootScope, $location, Auth) {
+  .run(function($rootScope, $location, Auth) {
     'ngInject';
     // Redirect to login if route requires auth and you're not logged in
 
-    $rootScope.$on('$stateChangeStart', function (event, next) {
-      Auth.isLoggedIn(function (loggedIn) {
+    $rootScope.$on('$stateChangeStart', function(event, next) {
+      Auth.isLoggedIn(function(loggedIn) {
         //noinspection JSUnresolvedVariable
-        if (next.authenticate && !loggedIn) {
+        if(next.authenticate && !loggedIn) {
           $location.path('/login');
         }
       });

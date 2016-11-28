@@ -1,6 +1,7 @@
 'use strict';
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
+import routes from './projects-list.routes';
 
 export class projectsListComponent {
   constructor($scope, $http, $state, socket) {
@@ -20,7 +21,7 @@ export class projectsListComponent {
   }
 }
 
-export default angular.module('reworkApp.project.list', [uiRouter])
+export default angular.module('reworkApp.projects.list', [uiRouter])
   .component('projectsList', {
     template: require('./projects-list.html'),
     bindings: {projects: '<'},
@@ -29,22 +30,3 @@ export default angular.module('reworkApp.project.list', [uiRouter])
   })
   .config(routes)
   .name;
-
-function routes($stateProvider) {
-  'ngInject';
-
-  $stateProvider
-    .state('project.list', {
-      url: '/',
-      authenticate: true,
-      views: {
-        '@': {
-          template: '<projects-list projects="$resolve.projects.data"></projects-list>',
-          resolve: {
-            /*@ngInject*/
-            projects: $http => $http.get('/api/projects/me')
-          }
-        }
-      }
-    });
-}

@@ -72,7 +72,7 @@ div.signIn_tools input {
     display: none;
 }
 
-div.signIn_tools input~i {
+div.signIn_tools input ~ i {
     float: right;
     margin-left: 3px;
     display: inline-block;
@@ -81,9 +81,11 @@ div.signIn_tools input~i {
     margin-right: 8px;
     background: url('../../../assets/icons/icons.png') -349px -12px;
 }
-div.signIn_tools input:checked~i {
+
+div.signIn_tools input:checked ~ i {
     background-position: -375px -12px;
 }
+
 div.remeber_container {
     display: inline-block;
 }

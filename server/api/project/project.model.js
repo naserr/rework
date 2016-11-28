@@ -27,7 +27,8 @@ var ProjectSchema = new mongoose.Schema({
   users: [{
     _id: mongoose.Schema.Types.ObjectId,
     role: {
-      type: Number
+      type: Number,
+      enum: [0, 1, 2]
     },
     date: {
       type: Date,
@@ -47,7 +48,7 @@ var ProjectSchema = new mongoose.Schema({
 // });
 
 ProjectSchema.post('remove', function(doc) {
-  User.update({defaultProject: doc._id}, {defaultProject: null}, { multi: true }).exec();
+  User.update({defaultProject: doc._id}, {defaultProject: null}, {multi: true}).exec();
 });
 
 ProjectSchema.methods = {

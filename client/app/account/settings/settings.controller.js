@@ -12,7 +12,6 @@ export default class SettingsController {
   message = '';
   submitted = false;
 
-
   /*@ngInject*/
   constructor(Auth) {
     this.Auth = Auth;

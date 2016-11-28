@@ -3,6 +3,8 @@
 import angular from 'angular';
 
 export default class SignupController {
+  Auth;
+  $state;
   user = {
     name: '',
     email: '',
@@ -10,7 +12,6 @@ export default class SignupController {
   };
   errors = {};
   submitted = false;
-
 
   /*@ngInject*/
   constructor(Auth, $state) {
@@ -22,14 +23,24 @@ export default class SignupController {
     this.submitted = true;
 
     if(form.$valid) {
-      return this.Auth.createUser({
-        name: this.user.name,
-        email: this.user.email,
-        password: this.user.password
-      })
+      return this.Auth.createUser(
+        {
+          name: this.user.name,
+          email: this.user.email,
+          password: this.user.password
+        }, null)
         .then(() => {
-          // Account created, redirect to home
-          this.$state.go('project');
+          this.Auth.getCurrentUser().then(user => {
+            if(user.isFresh) {
+              this.$state.go('getStart');
+            } else if(user.defaultBoard) {
+              this.$state.go('project.desktop', {id: user.defaultProject, board: user.defaultBoard});
+            } else if(user.defaultProject) {
+              this.$state.go('project.boards.list', {id: user.defaultProject});
+            } else {
+              this.$state.go('projects.list');
+            }
+          });
         })
         .catch(err => {
           err = err.data;
