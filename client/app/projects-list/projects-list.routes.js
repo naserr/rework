@@ -7,19 +7,11 @@ export default function($stateProvider) {
       url: '/projects',
       abstract: true,
       authenticate: true,
+      template: '<div ui-view></div>',
       resolve: {
         /*@ngInject*/
         projects: $http => $http.get('/api/projects/me')
-      },
-      template: '<div ui-view></div>'
-      // views: {
-      //   'header@': {
-      //     template: '<top-header></top-header>'
-      //   },
-      //   'sidebar@': {
-      //     template: ''
-      //   }
-      // }
+      }
     })
     .state('projects.list', {
       url: '/list',

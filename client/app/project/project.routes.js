@@ -7,7 +7,7 @@ export default function($stateProvider) {
       url: '/{id:[0-9a-fA-F]{24}}',
       abstract: true,
       authenticate: true,
-      template: require('./project.html'),
+      template: '<project></project>',
       resolve: {
         /*@ngInject*/
         project: ($http, $stateParams) => $http.get(`/api/projects/${$stateParams.id}`)
