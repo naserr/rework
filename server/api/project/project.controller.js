@@ -258,7 +258,7 @@ function setDefaultProject(user) {
     if(project) {
       return User.update({_id: user._id}, {
         defaultProject: project._id,
-        defaultBoard: null,
+        // defaultBoard: null,
         isFresh: false
       }).exec()
         .then(() => project);

@@ -4,19 +4,16 @@
 import angular from 'angular';
 
 class HeaderController {
-
-  $onInit() {
-    // this.parent.toggle = true;
-  }
-
   toggleSidebar() {
-    console.log(12);
-    // this.parent.toggle = !this.parent.toggle;
+    this.project.isOpen = !this.project.isOpen;
   }
 }
 
 export default angular.module('directives.header', [])
   .component('topHeader', {
+    require: {
+      project: '^^project'
+    },
     template: require('./top-header.html'),
     controller: HeaderController
   })
