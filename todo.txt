@@ -1,5 +1,6 @@
 *handle delete project - redirect to list of user projects on project deleted
 *redirect to project desktop on default route => app.config.js:9
+*active menu item
 *make sidebar and topHeader menu thinner
 *compress images and icons
 *animate sidebar toggling

@@ -1,0 +1,40 @@
+<!--<style>
+    .draggabilly {
+        width: 200px;
+        height: 200px;
+        border: 1px solid #888;
+        border-radius: 5px;
+        margin: 50px;
+        background-color: #9FCF72;
+    }
+</style>
+<h1>B</h1>
+
+<div ng-draggabilly="" class="draggabilly simple ng-isolate-scope" style="position: relative;"><p>Simple
+    drag-and-drop</p></div>-->
+<style>
+    #target {
+        width: 500px;
+        height: 400px;
+        background-color: gray;
+    }
+
+    #child1 {
+        width: 200px;
+        height: 200px;
+        background-color: greenyellow;
+    }
+</style>
+
+<div zoom-html='{{vm.zoomOptions}}'>
+    <button class="rework_btn btn_info" ng-click='zoom.in()' ng-class='{ disabled: zoom.isMaxedIn() }'>Zoom In</button>
+    <button class="rework_btn btn_info" ng-click='zoom.out()' ng-class='{ disabled: zoom.isMaxedOut() }'> Zoom out</button>
+</div>
+
+<div id='target'>
+    <div id="child1">
+        <p style="direction: rtl; text-align: right">
+            محسن ملکان
+        </p>
+    </div>
+</div>

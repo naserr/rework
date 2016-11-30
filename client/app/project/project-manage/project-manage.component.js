@@ -3,9 +3,8 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
 export class projectManageComponent {
-  constructor($stateParams) {
+  constructor() {
     'ngInject';
-    console.log(`project manage ${this.project}`);
   }
 }
 

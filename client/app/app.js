@@ -1,14 +1,15 @@
 'use strict';
 
 import angular from 'angular';
-// import ngAnimate from 'angular-animate';
 import ngCookies from 'angular-cookies';
 import ngResource from 'angular-resource';
 import ngSanitize from 'angular-sanitize';
 import 'angular-socket-io';
 import toastr from 'angular-toastr';
 import uiRouter from 'angular-ui-router';
+// import 'oclazyload';
 
+// import ngAnimate from 'angular-animate';
 // import ngMessages from 'angular-messages';
 // import ngValidationMatch from 'angular-validation-match';
 
@@ -28,7 +29,7 @@ import projectsList from './projects-list/projects-list.component';
 
 import './app.css';
 
-angular.module('reworkApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io',
+angular.module('reworkApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io', /*'oc.lazyLoad',*/
     uiRouter, toastr, _Auth, account, admin, constants, socket, util, header, sidebar,
     getStart, project, projectsList
   ])
