@@ -5,5 +5,8 @@
 *compress images and icons
 *animate sidebar toggling
 
+***change main property in draggabilly.package.json***
+***add 'window.Draggabilly = Draggabilly;' at line 1474***
+
 tips:
 { type : String, required : true , unique : true, dropDups: true }

@@ -50,6 +50,8 @@ module.exports = function makeWebpackConfig(options) {
         'angular-socket-io',
         'angular-ui-router',
         'angular-toastr',
+        'draggabilly',
+        'angular-draggabilly',
         // 'oclazyload',
         'lodash'
       ]

@@ -8,7 +8,7 @@ export class projectDesktopComponent {
     target: '#target',
     minWidth: 80,
     minHeight: 100,
-    maxWidth: 700,
+    maxWidth: 1600,
     maxHeight: 2000,
     animationFn: '.1s ease-out',
     transformOrigin: 'right top'

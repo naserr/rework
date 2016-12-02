@@ -49,14 +49,14 @@ export default angular.module('reworkApp.zoomHtml', [])
           var minHeight = options.minHeight;
           var minWidth = options.minWidth;
           var maxHeight = options.maxHeight;
-          var maxWidth = options.maxHeight;
-          var min = options.min;
-          var max = options.max;
+          var maxWidth = options.maxWidth;
+          // var min = options.min;
+          // var max = options.max;
           var minWidthOffset = options.minWidthOffset || 0;
           var minHeightOffset = options.minHeightOffset || 0;
           var maxWidthOffset = options.maxWidthOffset || 0;
           var maxHeightOffset = options.maxHeightOffset || 0;
-          var offsetX = options.offsetX || 0;
+          // var offsetX = options.offsetX || 0;
 
           if(minWidth === 'initial') {
             minWidth = eleTarget.clientWidth;
@@ -67,37 +67,38 @@ export default angular.module('reworkApp.zoomHtml', [])
           }
 
           if(minWidth === 'window') {
-            minWidth = $window.innerWidth
+            minWidth = $window.innerWidth;
           }
 
           if(minHeight === 'window') {
-            minHeight = $window.innerHeight
+            minHeight = $window.innerHeight;
           }
 
           if(maxWidth === 'initial') {
-            maxWidth = eleTarget.clientWidth
+            maxWidth = eleTarget.clientWidth;
           }
 
           if(maxHeight === 'initial') {
-            maxHeight = eleTarget.clientHeight
+            maxHeight = eleTarget.clientHeight;
           }
 
           if(maxWidth === 'window') {
-            maxWidth = $window.innerWidth
+            maxWidth = $window.innerWidth;
           }
 
           if(maxHeight === 'window') {
-            maxHeight = $window.innerHeight
+            maxHeight = $window.innerHeight;
           }
 
-          minHeight += minWidthOffset;
+          // minHeight += minWidthOffset;
+          minWidth += minWidthOffset;
           minHeight += minHeightOffset;
           maxWidth += maxWidthOffset;
           maxHeight += maxHeightOffset;
 
           transclude($scope, function(nodes) {
-            angular.element(eleControls).html('').append(nodes);
-            // angular.element(eleControls)
+            angular.element(eleControls).html('')
+              .append(nodes);
           });
 
           $scope.currentStep = calculateSteps();
@@ -126,18 +127,16 @@ export default angular.module('reworkApp.zoomHtml', [])
             if(minScale > 1 || maxScale < 1) {
               steps.push(1);
             } else {
-              var x = stepCnt * minLog / (maxLog - minLog);
+              // var x = stepCnt * minLog / (maxLog - minLog);
               var initalStep = Math.round(stepCnt * -minLog / (maxLog - minLog));
 
               for(var i = 0; i <= stepCnt; i++) {
                 var step;
                 if(i < initalStep) {
                   step = -minLog / initalStep * i + minLog;
-                }
-                else if(i > initalStep) {
-                  step = maxLog * ( i - initalStep ) / (stepCnt - initalStep);
-                }
-                else {
+                } else if(i > initalStep) {
+                  step = maxLog * (i - initalStep) / (stepCnt - initalStep);
+                } else {
                   step = 0;
                 }
                 steps.push(Math.pow(Math.E, step));
@@ -151,23 +150,27 @@ export default angular.module('reworkApp.zoomHtml', [])
             element.style.webkitTransformOrigin = cssValue;
             element.style.mozTransformOrigin = cssValue;
             element.style.msTransformOrigin = cssValue;
-            return element.style.oTransformOrigin = cssValue;
+            element.style.oTransformOrigin = cssValue;
+            return element.style.oTransformOrigin;
           }
 
           function applyTransform(element, value) {
-            var cssValue = "scale(" + value + "," + value + ")";
+            // var cssValue = 'scale(' + value + ',' + value + ')';
+            var cssValue = `scale(${value}, ${value})`;
             element.style.transform = cssValue;
             element.style.webkitTransform = cssValue;
             element.style.mozTransform = cssValue;
             element.style.msTransform = cssValue;
-            return element.style.oTransform = cssValue;
+            element.style.oTransform = cssValue;
+            return element.style.oTransform;
           }
 
           function applyAnimation(element, cssValue) {
             element.style.transition = cssValue;
             element.style.webkitTransition = cssValue;
             element.style.mozTransition = cssValue;
-            return element.style.oTransition = cssValue;
+            element.style.oTransition = cssValue;
+            return element.style.oTransition;
           }
         }
       }

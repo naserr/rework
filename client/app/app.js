@@ -29,7 +29,7 @@ import projectsList from './projects-list/projects-list.component';
 
 import './app.css';
 
-angular.module('reworkApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io', /*'oc.lazyLoad',*/
+angular.module('reworkApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io', 'draggabilly', /*'oc.lazyLoad',*/
     uiRouter, toastr, _Auth, account, admin, constants, socket, util, header, sidebar,
     getStart, project, projectsList
   ])
