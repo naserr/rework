@@ -1,0 +1,35 @@
+section.settings_wrapper{
+  margin: 25px 20px 35px;
+}
+div.profile_settings div.form_one_line input {
+  width:60%;
+}
+div.btn_save_wrapper{
+  margin: 10px 0;
+}
+
+.btn_save i{
+  float: right;
+  width: 15px;
+  height: 15px;
+  margin-left: 8px;
+  background: url('../../../assets/icons/icons.png') -723px -44px;
+}
+
+.rework_btn.btn_success{
+  color: #fff;
+}
+
+p.expiration_date i{
+  float: right;
+  width: 20px;
+  height: 20px;
+  margin-left: 3px;
+  background: url('../../../assets/icons/icons.png') -697px -44px;
+}
+a.change_profile_img{
+  color: #5584ff;
+  border: 1px solid #5584ff;
+  border-radius: 30px;
+  padding: 4px 11px;
+}

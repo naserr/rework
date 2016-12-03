@@ -14,6 +14,7 @@
 /* Component styles are injected through gulp */
 /* inject:css */
 @import 'account/login/login.css';
+@import 'account/settings/settings.css';
 @import 'account/signup/signup.css';
 @import 'admin/admin.css';
 @import 'get-start/get-start.css';
