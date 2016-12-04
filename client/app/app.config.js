@@ -62,6 +62,15 @@ export function interceptorConfig($httpProvider) {
           }
         }
         if(typeof error === 'object' && !_.isEmpty(error)) {
+          if(error.errors && typeof error.errors === 'object' && !_.isEmpty(error.errors)) {
+            for(var errKey in error.errors) {
+              if(error.errors.hasOwnProperty(errKey)) {
+                let err = error.errors[errKey];
+                $log.error(err.message);
+              }
+            }
+            return $q.reject(rejection);
+          }
           errorMessage = error.message || 'درخواست با خطا مواجه شد';
         }
         $log.error(errorMessage);
