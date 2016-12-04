@@ -209,6 +209,13 @@ export function AuthService($location, $http, $cookies, $q, appConfig, Util, Use
     },
 
     /**
+     * change deafultBoard for currentUser
+     */
+    setDefaultBoard(board) {
+      currentUser.defaultBoard = board;
+    },
+
+    /**
      * Get auth token
      *
      * @return {String} - a token string used for authenticating
