@@ -1,35 +1,53 @@
-section.settings_wrapper{
-  margin: 25px 20px 35px;
-}
-div.profile_settings div.form_one_line input {
-  width:60%;
-}
-div.btn_save_wrapper{
-  margin: 10px 0;
+section.settings_wrapper {
+    margin: 25px 20px 35px;
 }
 
-.btn_save i{
-  float: right;
-  width: 15px;
-  height: 15px;
-  margin-left: 8px;
-  background: url('../../../assets/icons/icons.png') -723px -44px;
+.profile_settings div.form_one_line input {
+    width: 60%;
 }
 
-.rework_btn.btn_success{
-  color: #fff;
+div.btn_save_wrapper {
+    margin: 10px 0;
 }
 
-p.expiration_date i{
-  float: right;
-  width: 20px;
-  height: 20px;
-  margin-left: 3px;
-  background: url('../../../assets/icons/icons.png') -697px -44px;
+.btn_save i {
+    float: right;
+    width: 15px;
+    height: 15px;
+    margin-left: 8px;
+    background: url('../../../assets/icons/icons.png') -723px -44px;
 }
-a.change_profile_img{
-  color: #5584ff;
-  border: 1px solid #5584ff;
-  border-radius: 30px;
-  padding: 4px 11px;
+
+.rework_btn.btn_success {
+    color: #fff;
+}
+
+p.expiration_date i {
+    float: right;
+    width: 20px;
+    height: 20px;
+    margin-left: 3px;
+    background: url('../../../assets/icons/icons.png') -697px -44px;
+}
+
+.change_profile_img {
+    color: #5584ff;
+    border: 1px solid #5584ff;
+    border-radius: 30px;
+    padding: 4px 11px;
+    font-weight: normal;
+}
+
+.change_profile_img:hover {
+    cursor: pointer;
+    color: #23527c;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
 }

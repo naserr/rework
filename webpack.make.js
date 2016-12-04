@@ -55,6 +55,7 @@ module.exports = function makeWebpackConfig(options) {
         // 'oclazyload',
         'moment',
         'moment-jalaali',
+        'angular-base64-upload',
         'lodash'
       ]
     };

@@ -23,11 +23,11 @@ export default class SettingsController {
     merge(this.user, Auth.getCurrentUserSync());
   }
 
-  changePassword(form) {
+  saveSettings(form) {
     this.submitted = true;
 
     if(form.$valid) {
-      this.Auth.changePassword(this.user.oldPassword, this.user.newPassword)
+      this.Auth.saveSettings(this.user)
         .then(() => {
           this.message = 'Password successfully changed.';
         })
