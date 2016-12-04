@@ -130,7 +130,7 @@ UserSchema
       .catch(function(err) {
         throw err;
       });
-  }, 'The specified email address is already in use.');
+  }, 'این رایانامه قبلا استفاده شده است');
 
 var validatePresenceOf = function(value) {
   return value && value.length;

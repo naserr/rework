@@ -1,5 +1,8 @@
 'use strict';
 
+import merge from 'lodash/merge';
+import moment from 'moment-jalaali';
+
 export default class SettingsController {
   user = {
     oldPassword: '',
@@ -15,6 +18,9 @@ export default class SettingsController {
   /*@ngInject*/
   constructor(Auth) {
     this.Auth = Auth;
+    moment.loadPersian();
+    this.user.expire = moment(this.user.expire).fromNow();
+    merge(this.user, Auth.getCurrentUserSync());
   }
 
   changePassword(form) {

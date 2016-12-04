@@ -53,6 +53,8 @@ module.exports = function makeWebpackConfig(options) {
         'draggabilly',
         'angular-draggabilly',
         // 'oclazyload',
+        'moment',
+        'moment-jalaali',
         'lodash'
       ]
     };
