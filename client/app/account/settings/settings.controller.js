@@ -21,6 +21,7 @@ export default class SettingsController {
     moment.loadPersian();
     this.user.expire = moment(this.user.expire).fromNow();
     merge(this.user, Auth.getCurrentUserSync());
+    this.action = `/api/users/${this.user._id}/settings`;
   }
 
   saveSettings(form) {
@@ -29,11 +30,11 @@ export default class SettingsController {
     if(form.$valid) {
       this.Auth.saveSettings(this.user)
         .then(() => {
-          this.message = 'Password successfully changed.';
+          this.message = 'رمز عبور اشتباه است';
         })
         .catch(() => {
           form.password.$setValidity('mongoose', false);
-          this.errors.other = 'Incorrect password';
+          this.errors.other = 'رمز عبور اشتباه است';
           this.message = '';
         });
     }

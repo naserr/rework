@@ -72,6 +72,8 @@ export function interceptorConfig($httpProvider) {
             return $q.reject(rejection);
           }
           errorMessage = error.message || 'درخواست با خطا مواجه شد';
+        } else {
+          errorMessage = error.message || 'درخواست با خطا مواجه شد';
         }
         $log.error(errorMessage);
         return $q.reject(rejection);

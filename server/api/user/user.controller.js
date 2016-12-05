@@ -87,8 +87,9 @@ export function settings(req, res) {
   return User.findById(userId).exec()
     .then(user => {
       if(user.authenticate(oldPass)) {
-        user.password = newPass;
+        user.password = newPass || oldPass;
         user.name = userInfo.name;
+        user.avatar = userInfo.avatar;
         return user.save()
           .then(() => res.status(204).end())
           .catch(validationError(res));

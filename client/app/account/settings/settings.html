@@ -1,53 +1,58 @@
 <section class="settings_wrapper">
-    <form class="form col-md-3 profile_settings" name="form" ng-submit="vm.saveSettings(form)" novalidate>
-        <div class="form_one_line clearfix">
-            <label for="name">نام</label>
-            <input type="text" name="name" id="name" placeholder="نام انتخابی" ng-model="vm.user.name" required/>
-            <p class="help-block"
-               ng-show="(form.name.$error.required) && (form.name.$dirty || vm.submitted)">
-                نام را وارد کنید
-            </p>
+    <form class="form" name="form" ng-submit="vm.saveSettings(form)" novalidate>
+        <div class="col-md-4 profile_settings">
+            <div class="form_one_line clearfix">
+                <label for="name">نام</label>
+                <input type="text" name="name" id="name" placeholder="نام انتخابی" ng-model="vm.user.name" required/>
+                <p class="help-block"
+                   ng-show="(form.name.$error.required) && (form.name.$dirty || vm.submitted)">
+                    نام را وارد کنید
+                </p>
+            </div>
+            <div class="form_one_line clearfix">
+                <label for="email">رایانامه</label>
+                <input type="email" name="email" id="email" placeholder="رایانامه" ng-model="vm.user.email" disabled/>
+            </div>
+            <div class="form_one_line clearfix">
+                <label for="password">رمز عبور فعلی</label>
+                <input type="password" name="password" id="password" placeholder="رمز عبور فعلی"
+                       ng-model="vm.user.oldPassword" mongoose-error/>
+                <p class="help-block" ng-show="form.password.$error.mongoose">
+                    {{ vm.errors.other }}
+                </p>
+            </div>
+            <div class="form_one_line clearfix">
+                <label for="newPassword">رمز عبور جدید</label>
+                <input type="text" name="newPassword" id="newPassword" placeholder="رمز عبور جدید"
+                       ng-model="vm.user.newPassword" ng-minlength="3"/>
+                <p class="help-block"
+                   ng-show="(form.newPassword.$error.minlength) && (form.newPassword.$dirty || vm.submitted)">
+                    حداقل سه کاراکتر وارد کنید
+                </p>
+            </div>
+            <div class="form_one_line clearfix">
+                <label for="key">پلن</label>
+                <input type="text" name="key" id="key" placeholder="پلن" value="{{vm.user.type}}"
+                       disabled/>
+            </div>
+            <p class="expiration_date" ng-show="vm.user.type !== 'free'">انقضا
+                {{::vm.user.expire}}
+                <i></i></p>
+            <div class="btn_save_wrapper">
+                <button type="submit" class="rework_btn btn_success btn_save">ذخیره<i></i></button>
+            </div>
         </div>
-        <div class="form_one_line clearfix">
-            <label for="email">رایانامه</label>
-            <input type="email" name="email" id="email" placeholder="رایانامه" ng-model="vm.user.email" disabled/>
-        </div>
-        <div class="form_one_line clearfix">
-            <label for="oldPassword">رمز عبور فعلی</label>
-            <input type="password" name="password" id="oldPassword" placeholder="رمز عبور فعلی"
-                   ng-model="vm.user.oldPassword" mongoose-error/>
-            <p class="help-block" ng-show="form.password.$error.mongoose">
-                {{ vm.errors.other }}
-        </div>
-        <div class="form_one_line clearfix">
-            <label for="newPassword">رمز عبور جدید</label>
-            <input type="text" name="newPassword" id="newPassword" placeholder="رمز عبور جدید"
-                   ng-model="vm.user.newPassword" ng-minlength="3" required/>
-            <p class="help-block"
-               ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || vm.submitted)">
-                حداقل سه کاراکتر وارد کنید
-            </p>
-        </div>
-        <div class="form_one_line clearfix">
-            <label for="key">پلن</label>
-            <input type="text" name="key" id="key" placeholder="پلن" value="{{vm.user.type}}"
-                   disabled/>
-        </div>
-        <p class="expiration_date" ng-show="vm.user.type !== 'free'">انقضا
-            {{::vm.user.expire}}
-            <i></i></p>
-        <div class="btn_save_wrapper">
-            <button class="rework_btn btn_success btn_save">ذخیره<i></i></button>
+        <div class="col-md-3">
+            <figure>
+                <img ng-hide="vm.user.avatar" src="./assets/img/defualtProfile.jpg">
+                <img ng-show="vm.user.avatar" ng-src="data:image/jpeg;base64,{{vm.user.avatar.base64}}" width="117">
+            </figure>
+            <label for="file" class="change_profile_img">تغییر تصویر پروفایل</label>
+            <input type="file" name="file" id="file" class="inputfile" ng-model="vm.user.avatar" base-sixty-four-input
+                   accept="image/*, .zip" maxsize="200"/>
+            <p class="help-block" ng-show="form.file.$error.maxsize">حجم فایل انتخابی بیشتر از 200KB است</p>
         </div>
     </form>
-    <div class="col-md-2">
-        <figure>
-            <!--<img src="assets/img/defualtProfile.jpg">-->
-            <img ng-src="data:image/jpeg;base64,{{vm.user.avatar.base64}}">
-        </figure>
-        <label for="file" class="change_profile_img">تغییر تصویر پروفایل</label>
-        <input type="file" name="file" id="file" class="inputfile" ng-model="vm.user.avatar" base-sixty-four-input />
-    </div>
 </section>
 
 <!--<div class="container">
