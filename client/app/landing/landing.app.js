@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('reworkApp.landing', ['toastr'])
+angular.module('reworkApp.landing', ['toastr','duScroll'])
   .config(function(toastrConfig) {
     angular.extend(toastrConfig, {
       positionClass: 'toast-top-full-width',
