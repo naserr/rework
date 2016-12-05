@@ -54,5 +54,17 @@ export default function($stateProvider) {
         }
       }
     })
+    .state('project.profile', {
+      url: '^/profile',
+      authenticate: true,
+      views: {
+        '@project': {
+          // template: '<project-manage project="$resolve.project.data"></project-manage>'
+          template: require('../account/settings/settings.html'),
+          controller: 'SettingsController',
+          controllerAs: 'vm'
+        }
+      }
+    })
   ;
 }

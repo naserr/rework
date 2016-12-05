@@ -3,11 +3,12 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
 export class BoardPreviewComponent {
-  constructor($stateParams, $http, $state, appConfig) {
+  constructor($stateParams, $http, $state, Auth, appConfig) {
     'ngInject';
     this.board = _.find(appConfig.boards, {name: $stateParams.board});
     this.$http = $http;
     this.$state = $state;
+    this.Auth = Auth;
   }
 
   selectBoard() {
@@ -20,10 +21,13 @@ export class BoardPreviewComponent {
     this.$http.post('api/projects/selectBoard', {
       id: this.project._id,
       board: this.board.name
-    }).then(() => this.$state.go('project.desktop', {
-      id: this.project._id,
-      board: this.board.name
-    }));
+    }).then(() => {
+      this.Auth.setDefaultBoard(this.board.name);
+      this.$state.go('project.desktop', {
+        id: this.project._id,
+        board: this.board.name
+      });
+    });
   }
 }
 

@@ -1,5 +1,8 @@
 'use strict';
 
+import merge from 'lodash/merge';
+import moment from 'moment-jalaali';
+
 export default class SettingsController {
   user = {
     oldPassword: '',
@@ -15,19 +18,23 @@ export default class SettingsController {
   /*@ngInject*/
   constructor(Auth) {
     this.Auth = Auth;
+    moment.loadPersian();
+    this.user.expire = moment(this.user.expire).fromNow();
+    merge(this.user, Auth.getCurrentUserSync());
+    this.action = `/api/users/${this.user._id}/settings`;
   }
 
-  changePassword(form) {
+  saveSettings(form) {
     this.submitted = true;
 
     if(form.$valid) {
-      this.Auth.changePassword(this.user.oldPassword, this.user.newPassword)
+      this.Auth.saveSettings(this.user)
         .then(() => {
-          this.message = 'Password successfully changed.';
+          this.message = 'رمز عبور اشتباه است';
         })
         .catch(() => {
           form.password.$setValidity('mongoose', false);
-          this.errors.other = 'Incorrect password';
+          this.errors.other = 'رمز عبور اشتباه است';
           this.message = '';
         });
     }

@@ -6,10 +6,10 @@ export function UserResource($resource) {
   return $resource('/api/users/:id/:controller', {
     id: '@_id'
   }, {
-    changePassword: {
+    saveSettings: {
       method: 'PUT',
       params: {
-        controller: 'password'
+        controller: 'settings'
       }
     },
     get: {

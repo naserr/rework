@@ -7,6 +7,7 @@ import * as constants from '../../config/environment/shared';
 
 const authTypes = ['github', 'twitter', 'facebook', 'google'];
 
+//noinspection Eslint
 export var UserSchema = new Schema({
   name: String,
   email: {
@@ -58,7 +59,8 @@ export var UserSchema = new Schema({
   isFresh: {
     type: Boolean,
     default: true
-  }
+  },
+  avatar: {}
 });
 
 /**
@@ -130,7 +132,7 @@ UserSchema
       .catch(function(err) {
         throw err;
       });
-  }, 'The specified email address is already in use.');
+  }, 'این رایانامه قبلا استفاده شده است');
 
 var validatePresenceOf = function(value) {
   return value && value.length;

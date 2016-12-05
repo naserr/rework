@@ -87,20 +87,16 @@ export function AuthService($location, $http, $cookies, $q, appConfig, Util, Use
     },
 
     /**
-     * Change password
+     * save settings
      *
-     * @param  {String}   oldPassword
-     * @param  {String}   newPassword
+     * @param  {Object}   _user
      * @param  {Function} callback    - function(error, user)
      * @return {Promise}
      */
-    changePassword(oldPassword, newPassword, callback) {
-      return User.changePassword({
+    saveSettings(_user, callback) {
+      return User.saveSettings({
         id: currentUser._id
-      }, {
-        oldPassword,
-        newPassword
-      }, function() {
+      }, _user, function() {
         return safeCb(callback)(null);
       }, function(err) {
         return safeCb(callback)(err);
@@ -206,6 +202,13 @@ export function AuthService($location, $http, $cookies, $q, appConfig, Util, Use
      */
     isAdminSync() {
       return Auth.hasRoleSync('admin');
+    },
+
+    /**
+     * change deafultBoard for currentUser
+     */
+    setDefaultBoard(board) {
+      currentUser.defaultBoard = board;
     },
 
     /**
