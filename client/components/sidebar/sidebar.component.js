@@ -1,17 +1,20 @@
 'use strict';
-/* eslint no-sync: 0 */
 
 import angular from 'angular';
 
 class SidebarComponent {
-  constructor($state, Auth) {
+  user;
+
+  constructor($state, Auth, ProjectAuth) {
     'ngInject';
     this.Auth = Auth;
     this.$state = $state;
+    this.user = this.Auth.getCurrentUserSync();
+    console.log('>>> ', ProjectAuth.getUserRole(this.project));
   }
 
   goToDesktop() {
-    this.boardName = this.Auth.getCurrentUserSync().defaultBoard;
+    this.boardName = this.user.defaultBoard;
     this.$state.go('project.desktop', {
       id: this.project._id,
       board: this.boardName

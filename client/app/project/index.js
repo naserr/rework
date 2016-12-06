@@ -6,6 +6,7 @@ import boardList from './board-list/board-list.component';
 import boardPreview from './board-preview/board-preview.component';
 import projectDesktop from './project-desktop/project-desktop.component';
 import projectManage from './project-manage/project-manage.component';
+import ProjectAuthService from './project-auth.service';
 
 import routes from './project.routes';
 
@@ -21,5 +22,6 @@ export default angular.module('reworkApp.project', [uiRouter, boardList, boardPr
     },
     controller: projectComponent
   })
+  .factory('ProjectAuth', ProjectAuthService)
   .config(routes)
   .name;
