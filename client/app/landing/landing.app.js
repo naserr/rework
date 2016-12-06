@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('reworkApp.landing', ['toastr','duScroll'])
+angular.module('reworkApp.landing', ['toastr', 'duScroll'])
   .config(function(toastrConfig) {
+    //noinspection ES6ModulesDependencies
     angular.extend(toastrConfig, {
       positionClass: 'toast-top-full-width',
       timeOut: 2000,
@@ -11,6 +12,7 @@ angular.module('reworkApp.landing', ['toastr','duScroll'])
   .controller('LandingController', LandingController);
 
 function LandingController($http, toastr) {
+  //noinspection Eslint
   var vm = this;
   vm.message = {};
   vm.sendMessage = sendMessage;
@@ -29,6 +31,7 @@ function LandingController($http, toastr) {
   }
 
   function subscribe(form, email) {
+    //noinspection Eslint
     $http.post('api/subscriptions', {email: email}).then(function() {
       form.$setPristine(true);
       vm.subscribeEmail = '';
