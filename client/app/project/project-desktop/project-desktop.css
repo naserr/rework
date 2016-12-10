@@ -1,0 +1,74 @@
+div.board_container {
+  height: 80vh;
+  width: 100%;
+  overflow: auto;
+}
+
+div.board {
+  width: 70%;
+  float: right;
+  overflow: visible;
+}
+
+div.cart {
+  float: left;
+}
+
+div.board {
+  width: 84%;
+  height: 80vh;
+  border: 4px solid #000;
+  position: relative;
+}
+
+#child1 {
+  width: 200px;
+  height: 200px;
+  background-color: greenyellow;
+}
+
+.board_cell {
+  border-left: 1px solid #000;
+  min-height: 60vh;
+  width: 20%;
+  float: right;
+}
+
+.board_cell:last-child {
+  border-left: none;
+}
+
+h5.header_board_cell {
+  float: left;
+  width: 45%;
+  text-align: left;
+  margin: 14px 0 0 4px;
+}
+
+.board_cell_img {
+  width: 56px;
+  height: 56px;
+  display: inline-block;
+}
+
+.customer_segments_img {
+  background: url(../../../assets/icons/icons.png) 0px -62px;
+}
+
+.customer_relationship_img {
+  width: 40px;
+  background: url(../../../assets/icons/icons.png) -60px -62px;
+}
+
+.value_positions_img {
+  background: url(../../../assets/icons/icons.png) -90px -62px;
+}
+
+.key_activities_img {
+  background: url(../../../assets/icons/icons.png) -150px -62px;
+  width: 40px;
+}
+
+.key_partners_img {
+  background: url(../../../assets/icons/icons.png) -184px -62px;
+}
