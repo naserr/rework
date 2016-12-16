@@ -62,6 +62,7 @@
   src: url('../fonts/roboto/Roboto-Bold-webfont.eot?#iefix') format('eot'), /* IE6–8 */ url('../fonts/roboto/Roboto-Bold-webfont.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url('../fonts/roboto/Roboto-Bold-webfont.ttf') format('ttf');
   font-weight: bold;
 }
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -197,7 +198,6 @@ ul li {
 .clearfix:after {
   clear: both;
 }
-
 
 /***************** GlobalStyle *******************/
 
@@ -354,9 +354,11 @@ button {
 .rework_btn.btn_danger {
   background-color: #f2443d;
 }
-.rework_btn.btn_success{
-  background-color:#2fc67d;
+
+.rework_btn.btn_success {
+  background-color: #2fc67d;
 }
+
 button.btn_linkedIn i,
 button.btn_google_pluse i {
   float: left;
@@ -410,7 +412,6 @@ input {
   font-size: 13px;
 }
 
-
 /*reworkTable*/
 
 table.rework-table thead th {
@@ -449,7 +450,6 @@ td.cell_img_container p {
   line-height: 3;
 }
 
-
 /*div.form_one_line*/
 
 div.form_one_line {
@@ -470,13 +470,11 @@ div.form_one_line input {
   padding: 2px 6px;
 }
 
-
 /*textAlign*/
 
 .text_center {
   text-align: center !important;
 }
-
 
 /*selectOption*/
 
@@ -495,7 +493,6 @@ select {
   width: 120px;
 }
 
-
 /*listStripped*/
 
 ul.list_striiped {
@@ -513,4 +510,41 @@ ul.list_striiped li:nth-of-type(even) {
   background-color: #f7f9ff;
   border-bottom: 1px solid #dbe2ed;
   border-top: 1px solid #dbe2ed;
+}
+
+/*HeightGrid*/
+.four_cells {
+  height: 100%;
+}
+
+.three_cells {
+  height: 66.66666667%;
+}
+
+.two_cells {
+  height: 50%;
+}
+
+.one_cell {
+  height: 33.33333333%;
+}
+
+.reworks-cols-5 {
+  width: 100%;
+}
+
+.reworks-cols-1 {
+  width: 20%;
+}
+
+.border_b {
+  border-bottom: 1px solid #000;
+}
+
+.no_border {
+  border: none;
+}
+
+.border_l {
+  border-left: 1px solid #000;
 }

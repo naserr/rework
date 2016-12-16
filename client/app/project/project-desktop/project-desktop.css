@@ -16,7 +16,7 @@ div.cart {
 
 div.board {
   width: 84%;
-  height: 80vh;
+  height: 500px;
   border: 4px solid #000;
   position: relative;
 }
@@ -28,16 +28,13 @@ div.board {
 }
 
 .board_cell {
-  border-left: 1px solid #000;
-  min-height: 60vh;
-  width: 20%;
   float: right;
 }
 
-.board_cell:last-child {
-  border-left: none;
+.board_column {
+  float: right;
+  display: inline-block;
 }
-
 h5.header_board_cell {
   float: left;
   width: 45%;
@@ -60,6 +57,10 @@ h5.header_board_cell {
   background: url(../../../assets/icons/icons.png) -60px -62px;
 }
 
+.channels_img {
+  width: 45px;
+  background: url(../../../assets/icons/icons.png) -242px -62px;
+}
 .value_positions_img {
   background: url(../../../assets/icons/icons.png) -90px -62px;
 }
@@ -71,4 +72,12 @@ h5.header_board_cell {
 
 .key_partners_img {
   background: url(../../../assets/icons/icons.png) -184px -62px;
+}
+
+.cost_structure_img {
+  background: url(../../../assets/icons/icons.png) -330px -62px;
+}
+
+.revenue_streams_img {
+  background: url(../../../assets/icons/icons.png) -400px -65px;
 }
