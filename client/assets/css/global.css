@@ -548,3 +548,8 @@ ul.list_striiped li:nth-of-type(even) {
 .border_l {
   border-left: 1px solid #000;
 }
+
+/*dropDown*/
+.dropdown-menu {
+  text-align: right;
+}
