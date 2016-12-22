@@ -411,7 +411,6 @@ footer.main_footer div.slider_controller {
   display: inline-block;
 }
 
-
 /*div.slider_controller button {
     width: 10px;
     height: 10px;
@@ -498,6 +497,13 @@ div.consolation_management_section_context div.lead_intro_container a.lead_link 
   border-radius: 4px;
 }
 
+.myCarousel_tools {
+  bottom: -90px;
+}
+
+.myCarousel_tools li {
+  border: 1px solid #00e0d0;
+}
 
 /*******MakeVideo********/
 
