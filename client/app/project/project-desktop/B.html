@@ -1,87 +1,82 @@
 <div class="tools clearfix">
-  <div zoom-html='{{vm.zoomOptions}}'>
-    <button class="rework_btn btn_info pull-left" ng-click="zoom.in()" ng-class="{ disabled: zoom.isMaxedIn() }">Zoom
-      In
-    </button>
-    <button class="rework_btn btn_info pull-left" ng-click='zoom.out()' ng-class='{ disabled: zoom.isMaxedOut() }'> Zoom
-      out
-    </button>
-  </div>
+    <button class="rework_btn btn_info pull-left" ng-click="vm.zoomOut()">-</button>
+    <button class="rework_btn btn_info pull-left" ng-click="vm.zoomIn()">+</button>
+    <button class="rework_btn btn_info pull-left" ng-click="vm.newCard()">new</button>
 </div>
-<div class="board_container clearfix">
-  <div class="board" id='target'>
-    <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
-      <div class="title_board_cell clearfix">
-        <i class="customer_segments_img board_cell_img"></i>
-        <h5 class="customer_segments_header header_board_cell">
-          Customer Segments
-        </h5>
-      </div>
-    </div>
-    <div class="board_column reworks-cols-1 border_l three_cells clearfix">
-      <div class="board_cell col-md-12 border_b two_cells clearfix">
-        <div class="title_board_cell clearfix">
-          <i class="customer_relationship_img board_cell_img"></i>
-          <h5 class="customer_relationship_header header_board_cell">
-            Customer Relationships
-          </h5>
+<div class="board_container clearfix" style="transform-origin: left top 0; transition: 0.1s ease-out;"
+     ng-style="{'transform': 'scale(' + vm.zoom + ', ' + vm.zoom + ')'}">
+    <div class="board" id="target">
+        <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
+            <div class="title_board_cell clearfix">
+                <i class="customer_segments_img board_cell_img"></i>
+                <h5 class="customer_segments_header header_board_cell">
+                    Customer Segments
+                </h5>
+            </div>
         </div>
-      </div>
-      <div class="board_cell col-md-12 border_b two_cells clearfix">
-        <div class="title_board_cell clearfix">
-          <i class="channels_img board_cell_img"></i>
-          <h5 class="channels_header header_board_cell">
-            Channels
-          </h5>
+        <div class="board_column reworks-cols-1 border_l three_cells clearfix">
+            <div class="board_cell col-md-12 border_b two_cells clearfix">
+                <div class="title_board_cell clearfix">
+                    <i class="customer_relationship_img board_cell_img"></i>
+                    <h5 class="customer_relationship_header header_board_cell">
+                        Customer Relationships
+                    </h5>
+                </div>
+            </div>
+            <div class="board_cell col-md-12 border_b two_cells clearfix">
+                <div class="title_board_cell clearfix">
+                    <i class="channels_img board_cell_img"></i>
+                    <h5 class="channels_header header_board_cell">
+                        Channels
+                    </h5>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
-      <div class="title_board_cell clearfix">
-        <i class="value_positions_img board_cell_img"></i>
-        <h5 class="value_positions_header header_board_cell">
-          Value Positions
-        </h5>
-      </div>
-    </div>
-    <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
-      <div class="title_board_cell clearfix">
-        <i class="key_activities_img board_cell_img"></i>
-        <h5 class="key_activities_header header_board_cell">
-          Key Activities
-        </h5>
-      </div>
-    </div>
-    <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
-      <div class="title_board_cell clearfix">
-        <i class="key_partners_img board_cell_img"></i>
-        <h5 class="key_partners_header header_board_cell">
-          Key Partners
-        </h5>
-      </div>
-    </div>
-    <div class="one_cell clearfix">
-      <div class="board_cell col-md-6 border_l four_cells clearfix">
-        <div class="title_board_cell clearfix">
-          <i class="revenue_streams_img board_cell_img"></i>
-          <h5 class="revenue_streams_header header_board_cell">
-            Revenue Streams
-          </h5>
+        <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
+            <div class="title_board_cell clearfix">
+                <i class="value_positions_img board_cell_img"></i>
+                <h5 class="value_positions_header header_board_cell">
+                    Value Positions
+                </h5>
+            </div>
         </div>
-      </div>
-      <div class="board_cell col-md-6 border_l four_cells clearfix">
-        <div class="title_board_cell clearfix">
-          <i class="cost_structure_img board_cell_img"></i>
-          <h5 class="cost_structure_header header_board_cell">
-            Cost Structure
-          </h5>
+        <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
+            <div class="title_board_cell clearfix">
+                <i class="key_activities_img board_cell_img"></i>
+                <h5 class="key_activities_header header_board_cell">
+                    Key Activities
+                </h5>
+            </div>
         </div>
-      </div>
+        <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
+            <div class="title_board_cell clearfix">
+                <i class="key_partners_img board_cell_img"></i>
+                <h5 class="key_partners_header header_board_cell">
+                    Key Partners
+                </h5>
+            </div>
+        </div>
+        <div class="one_cell clearfix">
+            <div class="board_cell col-md-6 border_l four_cells clearfix">
+                <div class="title_board_cell clearfix">
+                    <i class="revenue_streams_img board_cell_img"></i>
+                    <h5 class="revenue_streams_header header_board_cell">
+                        Revenue Streams
+                    </h5>
+                </div>
+            </div>
+            <div class="board_cell col-md-6 border_l four_cells clearfix">
+                <div class="title_board_cell clearfix">
+                    <i class="cost_structure_img board_cell_img"></i>
+                    <h5 class="cost_structure_header header_board_cell">
+                        Cost Structure
+                    </h5>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div draggabilly class="cart" id="child1">
-    <p style="direction: rtl; text-align: right">
-      محسن ملکان
-    </p>
-  </div>
+    <div ng-repeat="card in vm.project.cards" draggabilly class="cart" id="{{card._id}}" style="position: absolute;"
+         ng-style="{'left': card.left, 'top': card.top}" draggie-events="end">
+        <p style="direction: rtl; text-align: right" ng-bind-html="card.content"></p>
+    </div>
 </div>

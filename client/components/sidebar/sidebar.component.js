@@ -10,7 +10,6 @@ class SidebarComponent {
     this.Auth = Auth;
     this.$state = $state;
     this.user = this.Auth.getCurrentUserSync();
-    console.log('>>> ', ProjectAuth.getUserRole(this.project));
   }
 
   goToDesktop() {

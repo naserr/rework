@@ -7,8 +7,8 @@ import ngSanitize from 'angular-sanitize';
 import 'angular-socket-io';
 import toastr from 'angular-toastr';
 import uiRouter from 'angular-ui-router';
-import ngAnimate from 'angular-animate';
 import angularstrap from 'angular-strap';
+// import ngAnimate from 'angular-animate';
 // import 'oclazyload';
 
 // import ngMessages from 'angular-messages';

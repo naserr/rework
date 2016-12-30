@@ -36,7 +36,19 @@ var ProjectSchema = new mongoose.Schema({
     }
   }],
   defaultBoard: {},
-  boards: [{}]
+  boards: [{}],
+  cards: [{
+    _id: String,
+    user: {},
+    added: {
+      type: Date,
+      default: new Date()
+    },
+    board: String,
+    left: String,
+    top: String,
+    content: String
+  }]
 });
 
 // ProjectSchema.post('save', function(doc) {
