@@ -13,10 +13,11 @@ export class projectDesktopComponent {
     this.board = this.project.boards.find(b => b.name.toUpperCase() === this.boardName);
     if(!this.board) {
       $log.error('دسترسی غیر مجاز');
-      $state.go('project.boards.list');
+      // $state.go('project.boards.list');
     }
 
     socket.syncUpdates('project', [], (event, item, array) => {
+      console.log('synced');
       this.project.cards = item.cards;
     });
 
@@ -44,18 +45,6 @@ export class projectDesktopComponent {
     });
   }
 
-  zoomIn() {
-    if(this.zoom <= 5) {
-      this.zoom += 0.25;
-    }
-  }
-
-  zoomOut() {
-    if(this.zoom > 0.5) {
-      this.zoom -= 0.25;
-    }
-  }
-
   newCard() {
     let currUser = this.Auth.getCurrentUserSync();
     let user = {
@@ -80,6 +69,18 @@ export class projectDesktopComponent {
       }
     ];
     this.$http.patch(`api/projects/${this.project._id}`, addCard);
+  }
+
+  zoomIn() {
+    if(this.zoom <= 5) {
+      this.zoom += 0.25;
+    }
+  }
+
+  zoomOut() {
+    if(this.zoom > 0.5) {
+      this.zoom -= 0.25;
+    }
   }
 }
 

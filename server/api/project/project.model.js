@@ -38,7 +38,7 @@ var ProjectSchema = new mongoose.Schema({
   defaultBoard: {},
   boards: [{}],
   cards: [{
-    _id: String,
+    /*_id: String,
     user: {},
     added: {
       type: Date,
@@ -47,7 +47,7 @@ var ProjectSchema = new mongoose.Schema({
     board: String,
     left: String,
     top: String,
-    content: String
+    content: String*/
   }]
 });
 
