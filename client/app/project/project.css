@@ -1,0 +1,16 @@
+div.tools_wrapper {
+    margin: 5px 10px;
+}
+
+.board_wrapper {
+    height: calc(90vh - 65px) !important;
+    width: 100% !important;
+    overflow: auto;
+    padding-right: 40px;
+}
+
+/*section.project_wrapper_section{*/
+/*height: 80vh !important;*/
+/*width: 100% !important;*/
+/*overflow: auto;*/
+/*}*/
