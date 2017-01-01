@@ -174,6 +174,27 @@ export function patch(req, res) {
     .catch(handleError(res));
 }
 
+// Updates an existing Project in the DB
+export function updateCards(req, res) {
+  if(req.body._id) {
+    delete req.body._id;
+  }
+  return Project.findById(req.params.id).exec()
+    .then(handleEntityNotFound(res))
+    .then(update())
+    .catch(handleError(res));
+
+  function update() {
+    return function(project) {
+      _.set(project, `cards[${req.body.index}].position`, req.body.position);
+      project.markModified('cards');
+      return project.save().then(function() {
+        return res.status(200).json(project);
+      });
+    };
+  }
+}
+
 // Deletes a Project from the DB
 export function destroy(req, res) {
   return Project.findById(req.params.id).exec()

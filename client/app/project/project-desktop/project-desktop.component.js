@@ -13,11 +13,10 @@ export class projectDesktopComponent {
     this.board = this.project.boards.find(b => b.name.toUpperCase() === this.boardName);
     if(!this.board) {
       $log.error('دسترسی غیر مجاز');
-      // $state.go('project.boards.list');
+      $state.go('project.boards.list');
     }
 
     socket.syncUpdates('project', [], (event, item, array) => {
-      console.log('synced');
       this.project.cards = item.cards;
     });
 
@@ -28,20 +27,14 @@ export class projectDesktopComponent {
     let project = this.project;
     $scope.$on('draggie.end', function($event, instance, originalEvent, pointer) {
       let index = _.findIndex(project.cards, {_id: instance.element.id});
-      let updateCard = [
-        {
-          op: 'replace',
-          path: `/cards/${index}/left`,
-          value: `${instance.position.x}px`
-        },
-        {
-          op: 'replace',
-          path: `/cards/${index}/top`,
-          value: `${instance.position.y}px`
+      let updateCard = {
+        index: `${index}`,
+        position: {
+          left: `${instance.position.x}px`,
+          top: `${instance.position.y}px`
         }
-      ];
-      $http.patch(`api/projects/${project._id}`, updateCard);
-      // }
+      };
+      $http.put(`api/projects/updateCards/${project._id}`, updateCard);
     });
   }
 
@@ -53,7 +46,7 @@ export class projectDesktopComponent {
       email: currUser.email,
       role: currUser.role
     };
-    let addCard = [
+    let patches = [
       {
         op: 'add',
         path: '/cards/-',
@@ -62,13 +55,15 @@ export class projectDesktopComponent {
           user,
           added: new Date(),
           board: this.boardName,
-          left: '1px',
-          top: '1px',
+          position: {
+            left: '1px',
+            top: '1px'
+          },
           content: '<h3>title</h3><p>stupid content...</p>'
         }
       }
     ];
-    this.$http.patch(`api/projects/${this.project._id}`, addCard);
+    this.$http.patch(`api/projects/${this.project._id}`, patches);
   }
 
   zoomIn() {

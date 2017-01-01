@@ -76,7 +76,7 @@
         </div>
     </div>
     <div ng-repeat="card in vm.project.cards" draggabilly class="cart" id="{{card._id}}" style="position: absolute;"
-         ng-style="{'left': card.left, 'top': card.top}" draggie-events="end">
+         ng-style="{'left': card.position.left, 'top': card.position.top}" draggie-events="end">
         <p style="direction: rtl; text-align: right" ng-bind-html="card.content"></p>
     </div>
 </div>
