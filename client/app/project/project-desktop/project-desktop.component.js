@@ -39,7 +39,11 @@ export class projectDesktopComponent {
     });
 
     $rootScope.$on('NEW_TASK', function() {
-      ngDialog.open({ template: 'my templateee', plain: true, width: 600 });
+      ngDialog.open({
+        template: '<new-task project="project"></new-task>',
+        plain: true,
+        width: 600
+      });
     });
   }
 

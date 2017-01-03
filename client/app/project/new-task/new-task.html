@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-12">
+        <label>مسئولان این وظیفه</label>
+        {{vm.project}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <a href="" class="btn btn-default">{{vm.project.name}} <i class="fa fa-tag" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <input type="text" class="form-control" ng-model="selectedState" bs-options="state for state in states"
+                   placeholder="Enter state" bs-typeahead>
+        </div>
+    </div>
+</div>
