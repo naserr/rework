@@ -5,11 +5,19 @@ import angular from 'angular';
 class SidebarComponent {
   user;
 
-  constructor($state, Auth, ProjectAuth) {
+  constructor($rootScope, $state, Auth, ProjectAuth) {
     'ngInject';
     this.Auth = Auth;
+    this.ProjectAuth = ProjectAuth;
     this.$state = $state;
+    this.$rootScope = $rootScope;
     this.user = this.Auth.getCurrentUserSync();
+
+    this.isOwner = this.ProjectAuth.hasAccess(this.project, 'admin');
+  }
+
+  newTask() {
+    this.$rootScope.$broadcast('NEW_TASK');
   }
 
   goToDesktop() {

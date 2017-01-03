@@ -12,7 +12,7 @@ class HeaderController {
 export default angular.module('directives.header', [])
   .component('topHeader', {
     require: {
-      project: '^^project'
+      project: '^project'
     },
     template: require('./top-header.html'),
     controller: HeaderController

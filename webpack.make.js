@@ -56,6 +56,7 @@ module.exports = function makeWebpackConfig(options) {
         'moment',
         'moment-jalaali',
         'angular-base64-upload',
+        'ng-dialog',
         'lodash'
       ]
     };

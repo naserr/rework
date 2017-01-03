@@ -1,11 +1,12 @@
 'use strict';
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
+import ngDialog from 'ng-dialog';
 
 export class projectDesktopComponent {
   zoom = 1;
 
-  constructor($scope, $state, $stateParams, $http, Auth, socket, $log) {
+  constructor($scope, $rootScope, $state, $stateParams, $http, Auth, socket, ngDialog, $log) {
     'ngInject';
     this.$http = $http;
     this.Auth = Auth;
@@ -35,6 +36,10 @@ export class projectDesktopComponent {
         }
       };
       $http.put(`api/projects/updateCards/${project._id}`, updateCard);
+    });
+
+    $rootScope.$on('NEW_TASK', function() {
+      ngDialog.open({ template: 'my template', plain: true, width: 600 });
     });
   }
 
@@ -79,7 +84,7 @@ export class projectDesktopComponent {
   }
 }
 
-export default angular.module('reworkApp.project.desktop', [uiRouter])
+export default angular.module('reworkApp.project.desktop', [uiRouter, ngDialog])
   .component('projectDesktop', {
     template: require('./project-desktop.html'),
     bindings: {project: '<'},
