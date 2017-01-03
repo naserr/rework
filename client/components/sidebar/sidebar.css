@@ -6,6 +6,8 @@ section.desktop_work_section #sidebar_wrapper {
   background-color: #293b5a;
   right: -80px;
   width: 230px;
+  overflow: auto;
+  direction: ltr;
 }
 
 #sidebar_wrapper a.desktop_work_logo {
@@ -163,8 +165,8 @@ ul.list_menu_desktop li.list_menu_desktop_item.exit_item a:hover i {
 }
 
 ul.sub_menu_desktop li {
+  position: relative;
   padding-right: 63px;
-  width: 70%;
   margin-bottom: 2px;
 }
 
@@ -174,12 +176,20 @@ ul.sub_menu_desktop li.sub_menu_desktop_item label {
 }
 
 ul.sub_menu_desktop li.sub_menu_desktop_item input[type=radio] {
-  display: none;
+  /*  display: none;*/
+  position: absolute;
+  left: 23%;
+  z-index: 2;
+  width: 14px;
+  height: 16px;
+  top: -3px;
+  opacity: 0;
 }
 
 ul.sub_menu_desktop li.sub_menu_desktop_item input[type=radio] + i {
   float: left;
-  margin-left: 3px;
+  position: relative;
+  margin-left: 30%;
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -198,6 +208,57 @@ ul.sub_menu_desktop li.sub_menu_desktop_item input[type=radio]:checked + i {
 ul.sub_menu_desktop li.sub_menu_desktop_item input[type=radio]:disabled + i {
   background-position: -627px -80px;
 }
-ul.sub_menu_desktop li.sub_menu_desktop_item a{
+
+ul.sub_menu_desktop.download_art_item li.sub_menu_desktop_item {
+  padding-left: 40%;
+}
+
+ul.sub_menu_desktop.download_art_item li.sub_menu_desktop_item>a {
+  width: auto;
+  float: left;
+}
+
+ul.sub_menu_desktop li.sub_menu_desktop_item a.link_pdf {
+  border-right: 1px solid;
+  padding-right: 4px;
+}
+
+ul.sub_menu_desktop li.sub_menu_desktop_item a.link_jpg {
+  padding-left: 4px;
+}
+
+ul.sub_menu_desktop li.sub_menu_desktop_item a {
   padding: 0;
+}
+
+ul.sub_menu_desktop.resize_art_item li.sub_menu_desktop_item {
+  padding-left: 30%;
+}
+
+button.zoom_in,
+button.zoom_out,
+button.move {
+  float: left;
+}
+
+button.zoom_in i.icon_zoom_in,
+button.zoom_out i.icon_zoom_out,
+button.move i.icon_move {
+  width: 27px;
+  height: 27px;
+  display: inline-block;
+  float: left;
+  background: url('../../assets/icons/icons.png');
+}
+
+button.zoom_in i.icon_zoom_in {
+  background-position: -655px -75px;
+}
+
+button.move i.icon_move {
+  background-position: -691px -75px;
+}
+
+button.zoom_out i.icon_zoom_out {
+  background-position: -728px -75px;
 }
