@@ -13,7 +13,7 @@ export default angular.module('reworkApp.project.boards.list', [uiRouter])
   .component('boardList', {
     template: require('./board-list.html'),
     bindings: {
-      project: '<'
+      project: '='
     },
     controller: boardListComponent,
     controllerAs: 'vm'

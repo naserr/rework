@@ -33,7 +33,7 @@ export default angular.module('directives.sidebar', [])
   .component('sidebar', {
     template: require('./sidebar.html'),
     bindings: {
-      project: '<'
+      project: '='
     },
     controller: SidebarComponent
   })

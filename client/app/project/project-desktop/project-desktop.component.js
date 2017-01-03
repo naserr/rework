@@ -39,7 +39,7 @@ export class projectDesktopComponent {
     });
 
     $rootScope.$on('NEW_TASK', function() {
-      ngDialog.open({ template: 'my template', plain: true, width: 600 });
+      ngDialog.open({ template: 'my templateee', plain: true, width: 600 });
     });
   }
 
@@ -87,7 +87,7 @@ export class projectDesktopComponent {
 export default angular.module('reworkApp.project.desktop', [uiRouter, ngDialog])
   .component('projectDesktop', {
     template: require('./project-desktop.html'),
-    bindings: {project: '<'},
+    bindings: {project: '='},
     controller: projectDesktopComponent,
     controllerAs: 'vm'
   })

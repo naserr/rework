@@ -11,7 +11,7 @@ export class projectManageComponent {
 export default angular.module('reworkApp.project.manage', [uiRouter])
   .component('projectManage', {
     template: require('./project-manage.html'),
-    bindings: {project: '<'},
+    bindings: {project: '='},
     controller: projectManageComponent,
     controllerAs: 'vm'
   })

@@ -18,7 +18,7 @@ export default angular.module('reworkApp.project', [uiRouter, boardList, boardPr
   .component('project', {
     template: require('./project.html'),
     bindings: {
-      project: '<'
+      project: '='
     },
     controller: projectComponent
   })
