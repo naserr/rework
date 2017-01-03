@@ -33,7 +33,7 @@ ul.list_menu_desktop li.list_menu_desktop_item a i {
   margin: 2px 0 0 5px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item:hover a {
+ul.list_menu_desktop li.list_menu_desktop_item a:hover {
   color: #fff;
 }
 
@@ -50,7 +50,7 @@ ul.list_menu_desktop li.list_menu_desktop_item.desktop_item a.active i {
   background-position: -427px -12px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.desktop_item:hover a i {
+ul.list_menu_desktop li.list_menu_desktop_item.desktop_item a:hover i {
   background-position: -453px -12px;
 }
 
@@ -62,7 +62,7 @@ ul.list_menu_desktop li.list_menu_desktop_item.tools_item a.active i {
   background-position: -505px -11px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.tools_item:hover a i {
+ul.list_menu_desktop li.list_menu_desktop_item.tools_item a:hover i {
   background-position: -533px -11px;
 }
 
@@ -74,7 +74,7 @@ ul.list_menu_desktop li.list_menu_desktop_item.managment_team_item a.active i {
   background-position: -587px -11px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.managment_team_item:hover a i {
+ul.list_menu_desktop li.list_menu_desktop_item.managment_team_item a:hover i {
   background-position: -613px -11px;
 }
 
@@ -86,7 +86,7 @@ ul.list_menu_desktop li.list_menu_desktop_item.settings_profile_item a.active i 
   background-position: -669px -14px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.settings_profile_item:hover a i {
+ul.list_menu_desktop li.list_menu_desktop_item.settings_profile_item a:hover i {
   background-position: -696px -14px;
 }
 
@@ -98,7 +98,7 @@ ul.list_menu_desktop li.list_menu_desktop_item.cart_filter_item a.active i {
   background-position: -751px -14px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.cart_filter_item:hover a i {
+ul.list_menu_desktop li.list_menu_desktop_item.cart_filter_item a:hover i {
   background-position: -776px -14px;
 }
 
@@ -110,7 +110,7 @@ ul.list_menu_desktop li.list_menu_desktop_item.duties_item a.active i {
   background-position: -38px -34px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.duties_item:hover a i {
+ul.list_menu_desktop li.list_menu_desktop_item.duties_item a:hover i {
   background-position: -66px -34px;
 }
 
@@ -122,7 +122,7 @@ ul.list_menu_desktop li.list_menu_desktop_item.download_art_item a.active i {
   background-position: -122px -34px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.download_art_item:hover a i {
+ul.list_menu_desktop li.list_menu_desktop_item.download_art_itemx a:hover i {
   background-position: -149px -34px;
 }
 
@@ -134,7 +134,7 @@ ul.list_menu_desktop li.list_menu_desktop_item.resize_art_item a.active i {
   background-position: -200px -36px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.resize_art_item:hover a i {
+ul.list_menu_desktop li.list_menu_desktop_item.resize_art_item a:hover i {
   background-position: -225px -36px;
 }
 
@@ -146,7 +146,7 @@ ul.list_menu_desktop li.list_menu_desktop_item.remove_art_item a.active i {
   background-position: -272px -37px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.remove_art_item:hover a i {
+ul.list_menu_desktop li.list_menu_desktop_item.remove_art_item a:hover i {
   background-position: -294px -37px;
 }
 
@@ -158,7 +158,7 @@ ul.list_menu_desktop li.list_menu_desktop_item.exit_item a.active i {
   background-position: -341px -38px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.exit_item:hover a i {
+ul.list_menu_desktop li.list_menu_desktop_item.exit_item a:hover i {
   background-position: -364px -38px;
 }
 
@@ -197,4 +197,7 @@ ul.sub_menu_desktop li.sub_menu_desktop_item input[type=radio]:checked + i {
 
 ul.sub_menu_desktop li.sub_menu_desktop_item input[type=radio]:disabled + i {
   background-position: -627px -80px;
+}
+ul.sub_menu_desktop li.sub_menu_desktop_item a{
+  padding: 0;
 }
