@@ -197,15 +197,15 @@ ul.sub_menu_desktop li.sub_menu_desktop_item input[type=radio] + i {
   background: url('../../assets/icons/icons.png');
 }
 
-ul.sub_menu_desktop li.sub_menu_desktop_item input[type=radio] + i {
+ul.sub_menu_desktop li.sub_menu_desktop_item input[type='radio'] + i {
   background-position: -602px -80px;
 }
 
-ul.sub_menu_desktop li.sub_menu_desktop_item input[type=radio]:checked + i {
+ul.sub_menu_desktop li.sub_menu_desktop_item input[type='radio']:checked + i {
   background-position: -576px -80px;
 }
 
-ul.sub_menu_desktop li.sub_menu_desktop_item input[type=radio]:disabled + i {
+ul.sub_menu_desktop li.sub_menu_desktop_item input[type='radio']:disabled + i {
   background-position: -627px -80px;
 }
 
