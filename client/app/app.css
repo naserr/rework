@@ -4,6 +4,7 @@
 @import '~angular-toastr/dist/angular-toastr.min.css';
 @import '~ng-dialog/css/ngDialog.min.css';
 @import '~ng-dialog/css/ngDialog-theme-default.min.css';
+@import '/assets/css/animate.min.css';
 @import '/assets/css/global.css';
 
 .browserupgrade {

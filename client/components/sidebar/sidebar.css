@@ -35,10 +35,6 @@ ul.list_menu_desktop li.list_menu_desktop_item a i {
   margin: 2px 0 0 5px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item a:hover {
-  color: #fff;
-}
-
 ul.list_menu_desktop li.list_menu_desktop_item a.active {
   color: #55e4d4;
   background-color: #354664;
@@ -124,6 +120,10 @@ ul.list_menu_desktop li.list_menu_desktop_item.download_art_item a.active i {
   background-position: -122px -34px;
 }
 
+ul.list_menu_desktop li.list_menu_desktop_item.download_art_item a:hover i {
+  background-position: -151px -34px;
+}
+
 ul.list_menu_desktop li.list_menu_desktop_item.download_art_itemx a:hover i {
   background-position: -149px -34px;
 }
@@ -164,6 +164,15 @@ ul.list_menu_desktop li.list_menu_desktop_item.exit_item a:hover i {
   background-position: -364px -38px;
 }
 
+ul.list_menu_desktop li.list_menu_desktop_item a:hover {
+  color: #fff;
+}
+
+ul.sub_menu_desktop {
+  display: none;
+  margin: 10px 0;
+}
+
 ul.sub_menu_desktop li {
   position: relative;
   padding-right: 63px;
@@ -197,15 +206,15 @@ ul.sub_menu_desktop li.sub_menu_desktop_item input[type=radio] + i {
   background: url('../../assets/icons/icons.png');
 }
 
-ul.sub_menu_desktop li.sub_menu_desktop_item input[type=radio] + i {
+ul.sub_menu_desktop li.sub_menu_desktop_item input[type='radio'] + i {
   background-position: -602px -80px;
 }
 
-ul.sub_menu_desktop li.sub_menu_desktop_item input[type=radio]:checked + i {
+ul.sub_menu_desktop li.sub_menu_desktop_item input[type='radio']:checked + i {
   background-position: -576px -80px;
 }
 
-ul.sub_menu_desktop li.sub_menu_desktop_item input[type=radio]:disabled + i {
+ul.sub_menu_desktop li.sub_menu_desktop_item input[type='radio'`]:disabled + i {
   background-position: -627px -80px;
 }
 

@@ -18,6 +18,63 @@ div.cart {
   background-color: greenyellow;
 }
 
+div.cart_wrapper .cart {
+  margin-left: 1%;
+}
+
+div.cart.blue {
+  background-color: #93b3f1;
+}
+
+div.cart.orange {
+  background-color: #ffcd6a;
+}
+
+div.cart.pink {
+  background-color: #fe909b;
+}
+
+div.cart.green {
+  background-color: #88efe4;
+}
+
+div.cart textarea {
+  resize: none;
+  height: 90%;
+  width: 100%;
+  padding: 5px 10px;
+  color: #222;
+}
+
+div.cart input[type='text'] {
+  color: #222;
+  border: none;
+  font-size: 25px;
+  width: 100%;
+  font-family: roboto, iran, tahoma, sans-serif;
+}
+
+div.cart input[type='text']::-webkit-input-placeholder,
+div.cart textarea::-webkit-input-placeholder {
+  color: #222;
+}
+
+div.cart input[type='text']:-moz-placeholder
+div.cart textarea:-moz-placeholder,
+{ /* Firefox 18- */
+  color: #222;
+}
+
+div.cart input[type='text']::-moz-placeholder,
+div.cart textarea::-moz-placeholder { /* Firefox 19+ */
+  color: #222;
+}
+
+div.cart input[type='text']:-ms-input-placeholder,
+div.cart textarea:-ms-input-placeholder {
+  color: #222;
+}
+
 /*cart_menu*/
 
 ul.cart_menu {

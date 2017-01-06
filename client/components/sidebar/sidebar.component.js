@@ -1,5 +1,5 @@
 'use strict';
-
+import $ from 'jquery';
 import angular from 'angular';
 
 class SidebarComponent {
@@ -26,6 +26,23 @@ class SidebarComponent {
       id: this.project._id,
       board: this.boardName
     });
+  }
+
+  accordion(event){
+    var parent = null;
+    if($(event.target).is('i')) {
+      parent = $(event.target).parent();
+    }
+    var parent=$(event.target);
+    if(parent.hasClass('active')) {
+      parent.removeClass('active');
+      parent.siblings('ul.sub_menu_desktop').slideUp();
+    } else {
+      $('ul.sub_menu_desktop.active').removeClass('active');
+      $('ul.sub_menu_desktop.active').slideUp(700);
+      parent.addClass('active');
+      parent.siblings('ul.sub_menu_desktop').slideDown();
+    }
   }
 }
 

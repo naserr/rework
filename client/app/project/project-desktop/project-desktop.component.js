@@ -55,6 +55,10 @@ export class projectDesktopComponent {
     });
   }
 
+  focus() {
+    console.log(1213);
+  }
+
   newCard() {
     let currUser = this.Auth.getCurrentUserSync();
     let user = {
