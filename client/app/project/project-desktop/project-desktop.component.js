@@ -5,7 +5,6 @@ import ngDialog from 'ng-dialog';
 
 export class projectDesktopComponent {
   zoom = 1;
-
   constructor($scope, $rootScope, $state, $stateParams, $http, Auth, socket, ngDialog, $log) {
     'ngInject';
     this.$http = $http;
