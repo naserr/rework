@@ -11,7 +11,7 @@ export class projectDesktopComponent {
     this.Auth = Auth;
     this.boardName = $stateParams.board.toUpperCase();
     this.board = this.project.boards.find(b => b.name.toUpperCase() === this.boardName);
-    if(!this.board) {
+    if (!this.board) {
       $log.error('دسترسی غیر مجاز');
       $state.go('project.boards.list');
     }
@@ -20,13 +20,15 @@ export class projectDesktopComponent {
       this.project.cards = item.cards;
     });
 
-    $scope.$on('$destroy', function() {
+    $scope.$on('$destroy', function () {
       socket.unsyncUpdates('project');
     });
 
     let project = this.project;
-    $scope.$on('draggie.end', function($event, instance, originalEvent, pointer) {
-      let index = _.findIndex(project.cards, {_id: instance.element.id});
+    $scope.$on('draggie.end', function ($event, instance, originalEvent, pointer) {
+      let index = _.findIndex(project.cards, {
+        _id: instance.element.id
+      });
       let updateCard = {
         index: `${index}`,
         position: {
@@ -37,15 +39,19 @@ export class projectDesktopComponent {
       $http.put(`api/projects/updateCards/${project._id}`, updateCard);
     });
 
-    $rootScope.$on('NEW_TASK', function() {
+    $rootScope.$on('NEW_TASK', function () {
       ngDialog.open({
         template: '<new-task project="project"></new-task>',
         plain: true,
         width: 600
       });
     });
-  }
 
+
+  }
+  focus() {
+    console.log(1213);
+  }
   newCard() {
     let currUser = this.Auth.getCurrentUserSync();
     let user = {
@@ -75,13 +81,13 @@ export class projectDesktopComponent {
   }
 
   zoomIn() {
-    if(this.zoom <= 5) {
+    if (this.zoom <= 5) {
       this.zoom += 0.25;
     }
   }
 
   zoomOut() {
-    if(this.zoom > 0.5) {
+    if (this.zoom > 0.5) {
       this.zoom -= 0.25;
     }
   }
@@ -90,7 +96,9 @@ export class projectDesktopComponent {
 export default angular.module('reworkApp.project.desktop', [uiRouter, ngDialog])
   .component('projectDesktop', {
     template: require('./project-desktop.html'),
-    bindings: {project: '='},
+    bindings: {
+      project: '='
+    },
     controller: projectDesktopComponent,
     controllerAs: 'vm'
   })
