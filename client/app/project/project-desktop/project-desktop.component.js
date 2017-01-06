@@ -2,6 +2,8 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngDialog from 'ng-dialog';
+import 'ng-tags-input';
+import NewTaskController from '../new-task/new-task.controller';
 
 export class projectDesktopComponent {
   zoom = 1;
@@ -39,10 +41,16 @@ export class projectDesktopComponent {
     });
 
     $rootScope.$on('NEW_TASK', function() {
-      ngDialog.open({
-        template: '<new-task project="project"></new-task>',
+      ngDialog.openConfirm({
+        template: require('../new-task/new-task.html'),
         plain: true,
-        width: 600
+        controller: 'NewTaskController',
+        controllerAs: 'vm',
+        showClose: false,
+        data: project,
+        closeByDocument: false,
+        closeByEscape: false/*,
+        width: 600*/
       });
     });
   }
@@ -88,11 +96,12 @@ export class projectDesktopComponent {
   }
 }
 
-export default angular.module('reworkApp.project.desktop', [uiRouter, ngDialog])
+export default angular.module('reworkApp.project.desktop', [uiRouter, ngDialog, 'ngTagsInput'])
   .component('projectDesktop', {
     template: require('./project-desktop.html'),
     bindings: {project: '='},
     controller: projectDesktopComponent,
     controllerAs: 'vm'
   })
+  .controller('NewTaskController', NewTaskController)
   .name;
