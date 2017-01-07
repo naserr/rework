@@ -48,7 +48,8 @@ var ProjectSchema = new mongoose.Schema({
     left: String,
     top: String,
     content: String*/
-  }]
+  }],
+  tasks: [{}]
 });
 
 // ProjectSchema.post('save', function(doc) {

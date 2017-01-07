@@ -98,6 +98,7 @@ export function create(req, res) {
     owner: _.pick(req.user, ['_id', 'email', 'name', 'type', 'expire']),
     users: [{
       _id: req.user._id,
+      name: req.user.name,
       role: constants.roleNames.admin
     }]
   });
@@ -268,6 +269,7 @@ function joinProject(key, userId) {
 
     project.users.push({
       _id: userId,
+      name: user.name,
       role
     });
     return project.save();
