@@ -1,13 +1,13 @@
 div.board_container {
-  height: 80vh;
+  height: 700px;
   width: 100%;
   overflow: auto;
 }
 
 div.board {
   width: 70%;
-  float: left;
-  margin-left: 20px;
+  float: right;
+  margin-right: 20px;
   overflow: visible;
 }
 
