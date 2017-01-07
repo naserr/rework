@@ -4,6 +4,7 @@ import uiRouter from 'angular-ui-router';
 import ngDialog from 'ng-dialog';
 import 'ng-tags-input';
 import NewTaskController from '../new-task/new-task.controller';
+import $ from 'jquery';
 
 export class projectDesktopComponent {
   zoom = 1;
@@ -53,6 +54,20 @@ export class projectDesktopComponent {
         width: 600*/
       });
     });
+  }
+
+  focus(event) {
+    var parent = null;
+    if ($(event.target).is('input')) {
+      parent = $(event.target).parent();
+    }
+    else if ($(event.target).is('textarea')) {
+      parent = $(event.target).parent();
+    }
+    else {
+      parent = $(event.target);
+    }
+    parent.toggleClass('animated bounceInUp');
   }
 
   newCard() {

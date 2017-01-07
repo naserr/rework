@@ -52,6 +52,7 @@ div.cart input[type='text'] {
   font-size: 25px;
   width: 100%;
   font-family: roboto, iran, tahoma, sans-serif;
+  padding: 0 10px;
 }
 
 div.cart input[type='text']::-webkit-input-placeholder,

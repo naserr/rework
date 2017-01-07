@@ -1,11 +1,13 @@
 'use strict';
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
+import $ from 'jquery';
 
 export class projectManageComponent {
   constructor() {
     'ngInject';
   }
+
 }
 
 export default angular.module('reworkApp.project.manage', [uiRouter])
