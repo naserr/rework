@@ -118,11 +118,11 @@ export class projectDesktopComponent {
       parent = $(event.target);
     }
     if(parent.css('bottom') == '0px') {
-      parent.animate({bottom: '-105px'});
+      parent.animate({bottom: '-105px'}, 'fast');
     }
     else {
-      $('.new_cart_wrapper .cart').animate({bottom: '-105px'});
-      parent.animate({bottom: 0});
+      $('.new_cart_wrapper .cart').animate({bottom: '-105px'}, 'fast');
+      parent.animate({bottom: 0}, 'fast');
     }
   }
 }
