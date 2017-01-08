@@ -1,18 +1,15 @@
 'use strict';
-import 'ng-tags-input/build/ng-tags-input.min.css';
-import 'ng-tags-input/build/ng-tags-input.bootstrap.min.css';
 import '../../../assets/vendor/bootstrap-jalali-datepicker/bootstrap-datepicker.min.css';
 import '../../../assets/vendor/bootstrap-jalali-datepicker/bootstrap-datepicker.min';
 import '../../../assets/vendor/bootstrap-jalali-datepicker/bootstrap-datepicker.fa.min';
 
-class TaskController {
+export default class TaskController {
   project;
   newTask = {
     users: [],
     startDate: new Date(),
     endDate: new Date()
   };
-  newUser;
   errors = {};
 
   constructor($scope, $q) {
@@ -58,6 +55,3 @@ class TaskController {
     this.$scope.confirm(this.project);
   }
 }
-
-angular.module('reworkApp.project.task')
-  .controller('TaskController', TaskController);

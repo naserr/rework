@@ -1,4 +1,7 @@
 'use strict';
+import 'ng-tags-input/build/ng-tags-input.min.css';
+import 'ng-tags-input/build/ng-tags-input.bootstrap.min.css';
+
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngDialog from 'ng-dialog';
@@ -26,7 +29,6 @@ export class projectDesktopComponent {
     $scope.$on('$destroy', function() {
       socket.unsyncUpdates('project');
       newTaskListener();
-      showTaskListener();
     });
 
     let project = this.project;

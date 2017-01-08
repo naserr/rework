@@ -14,7 +14,9 @@ import routes from './project.routes';
 export class projectComponent {
   isOpen = true;
 
-  constructor() {
+  constructor($rootScope) {
+    'ngInject';
+    
     if(_.isArray(this.project)) {
       this.project = this.project[0];
     }

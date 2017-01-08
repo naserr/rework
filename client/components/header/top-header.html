@@ -32,9 +32,11 @@
             <a href="#" class="notification_item clearfix" placement="bottom-right" data-animation="am-flip-x"
                bs-dropdown
                aria-haspopup="true" aria-expanded="false">
-                <span class="notification_num">{{vm.isOwner ? vm.project.tasks.length : vm.myTasksCount()}}</span>
+                <span class="notification_num" ng-show="(vm.isOwner ? vm.project.tasks.length : vm.myTasksCount())">
+                    {{vm.isOwner ? vm.project.tasks.length : vm.myTasksCount()}}</span>
             </a>
-            <ul class="profile_menu dropdown-menu" role="menu">
+            <ul class="profile_menu dropdown-menu" role="menu"
+                ng-show="(vm.isOwner ? vm.project.tasks.length : vm.myTasksCount())">
                 <!--<li class="profile_menu_item">
                     <a class="clearfix"><i class="added_user"></i>
                         علی به تیم اضافه شد
