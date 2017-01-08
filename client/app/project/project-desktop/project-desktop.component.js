@@ -70,6 +70,20 @@ export class projectDesktopComponent {
     });
   }
 
+  focus(event) {
+    var parent = null;
+    if ($(event.target).is('input')) {
+      parent = $(event.target).parent();
+    }
+    else if ($(event.target).is('textarea')) {
+      parent = $(event.target).parent();
+    }
+    else {
+      parent = $(event.target);
+    }
+    parent.toggleClass('animated bounceInUp');
+  }
+
   newCard() {
     let user = _.pick(this.Auth.getCurrentUserSync(), ['_id', 'name', 'email', 'role']);
     let patches = [

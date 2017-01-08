@@ -1,13 +1,13 @@
 div.board_container {
-  height: 80vh;
+  height: 79vh;
   width: 100%;
   overflow: auto;
 }
 
 div.board {
   width: 70%;
-  float: left;
-  margin-left: 20px;
+  float: right;
+  margin-right: 20px;
   overflow: visible;
 }
 
@@ -52,6 +52,7 @@ div.cart input[type='text'] {
   font-size: 25px;
   width: 100%;
   font-family: roboto, iran, tahoma, sans-serif;
+  padding: 0 10px;
 }
 
 div.cart input[type='text']::-webkit-input-placeholder,
