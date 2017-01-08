@@ -25,7 +25,9 @@
 @import 'project/board-preview/board-preview.css';
 @import 'project/project-desktop/project-desktop.css';
 @import 'project/project-manage/project-manage.css';
+@import 'project/project.css';
 @import '../components/header/top-header.css';
 @import '../components/oauth-buttons/oauth-buttons.css';
 @import '../components/sidebar/sidebar.css';
+@import '../components/zoom-html/zoom-html.css';
 /* endinject */
