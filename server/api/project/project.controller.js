@@ -62,6 +62,7 @@ function handleEntityNotFound(res) {
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
   return function(err) {
+    console.log('***error*** > ', statusCode, err);
     return res.status(statusCode).send(err);
   };
 }
@@ -98,6 +99,7 @@ export function create(req, res) {
     owner: _.pick(req.user, ['_id', 'email', 'name', 'type', 'expire']),
     users: [{
       _id: req.user._id,
+      name: req.user.name,
       role: constants.roleNames.admin
     }]
   });
@@ -130,7 +132,7 @@ export function join(req, res) {
   return Project.findOne({
     'keys.value': req.body.key
   }).exec()
-    .then(joinProject(req.body.key, req.user._id))
+    .then(joinProject(req.body.key, req.user))
     .then(setDefaultProject(req.user))
     .then(respondWithResult(res))
     .catch(handleError(res, 400));
@@ -172,6 +174,27 @@ export function patch(req, res) {
     .then(patchUpdates(req.body))
     .then(respondWithResult(res))
     .catch(handleError(res));
+}
+
+// Updates an existing Project in the DB
+export function updateCards(req, res) {
+  if(req.body._id) {
+    delete req.body._id;
+  }
+  return Project.findById(req.params.id).exec()
+    .then(handleEntityNotFound(res))
+    .then(update())
+    .catch(handleError(res));
+
+  function update() {
+    return function(project) {
+      _.set(project, `cards[${req.body.index}].position`, req.body.position);
+      project.markModified('cards');
+      return project.save().then(function() {
+        return res.status(200).json(project);
+      });
+    };
+  }
 }
 
 // Deletes a Project from the DB
@@ -228,7 +251,7 @@ function initFreeProject(newProject) {
   return newProject.save();
 }
 
-function joinProject(key, userId) {
+function joinProject(key, user) {
   let projectId = key.slice(0, 24);
   let role = key.slice(24, 25);
   let token = key.slice(25, 37);
@@ -239,14 +262,15 @@ function joinProject(key, userId) {
       return Promise.reject('کلید وارد شده نامعتبر است! کلید معتبر تهیه کنید.');
     }
 
-    // project.users.find(u => u._id === userId);
-    let user = project.users.id(userId);
-    if(user) {
+    // project.users.find(u => u._id === user);
+    let tempUser = project.users.id(user._id);
+    if(tempUser) {
       return Promise.reject('قبلا عضو شه اید.');
     }
 
     project.users.push({
-      _id: userId,
+      _id: user._id,
+      name: user.name,
       role
     });
     return project.save();

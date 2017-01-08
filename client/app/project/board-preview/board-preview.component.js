@@ -35,7 +35,7 @@ export default angular.module('reworkApp.project.boards.preview', [uiRouter])
   .component('boardPreview', {
     template: require('./board-preview.html'),
     bindings: {
-      project: '<'
+      project: '='
     },
     controller: BoardPreviewComponent,
     controllerAs: 'vm'

@@ -2,7 +2,8 @@
 <ul class="list_menu_desktop">
     <li class="list_menu_desktop_item desktop_item clearfix" ui-sref-active="active">
         <a href="" ng-click="$ctrl.goToDesktop()">
-            <i></i>میزکار</a>
+            <i></i>میزکار
+        </a>
     </li>
     <li class="list_menu_desktop_item tools_item clearfix" ui-sref-active="active">
         <a ui-sref="project.boards.list({id: $ctrl.project._id})"><i></i>ابزارها</a>
@@ -14,13 +15,59 @@
         <a ui-sref="project.profile({id: $ctrl.project._id})"><i></i>تنظیمات پروفایل</a>
     </li>
     <li class="list_menu_desktop_item cart_filter_item clearfix" ui-sref-active="active">
-        <a href=""><i></i>فیلتر کارت ها</a>
+        <a href="" ng-click="$ctrl.accordion($event)"><i></i>فیلتر کارت ها</a>
+        <ul class="sub_menu_desktop">
+            <li class="sub_menu_desktop_item clearfix">
+                <label for="green">سبز</label>
+                <input type="radio" name="filter" id="green" value="green">
+                <i class="check_icon"></i>
+            </li>
+            <li class="sub_menu_desktop_item clearfix">
+                <label for="golden">طلایی</label>
+                <input name="filter" type="radio" id="golden" value="golden">
+                <i class="check_icon"></i>
+            </li>
+            <li class="sub_menu_desktop_item clearfix">
+                <label for="red">قرمز</label>
+                <input name="filter" type="radio" id="red" value="red">
+                <i class="check_icon"></i>
+            </li>
+            <li class="sub_menu_desktop_item clearfix">
+                <label for="blue">آبی</label>
+                <input name="filter" type="radio" id="blue" value="blue">
+                <i class="check_icon"></i>
+            </li>
+        </ul>
     </li>
     <li class="list_menu_desktop_item duties_item clearfix" ui-sref-active="active">
-        <a href=""><i></i>وظایف</a>
+        <a href="" ng-click="$ctrl.accordion($event)"><i></i>وظایف</a>
+        <ul class="sub_menu_desktop">
+            <li class="sub_menu_desktop_item clearfix" ng-show="$ctrl.isOwner">
+                <a href="" ng-click="$ctrl.newTask()">ایجاد وظیفه</a>
+            </li>
+            <li class="sub_menu_desktop_item clearfix">
+                <a href="">نمایش وظایف</a>
+            </li>
+        </ul>
     </li>
-    <li class="list_menu_desktop_item download_art_item clearfix"><a href=""><i></i>دانلود بوم</a></li>
-    <li class="list_menu_desktop_item resize_art_item clearfix"><a href=""><i></i>تغییر اندازه بوم</a></li>
+    <li class="list_menu_desktop_item download_art_item clearfix">
+        <a href="" ng-click="$ctrl.accordion($event)"><i></i>دانلود بوم</a>
+        <ul class="sub_menu_desktop download_art_item">
+            <li class="sub_menu_desktop_item clearfix">
+                <a class="link_pdf" href="">PDF</a><a class="link_jpg" href="">JPG</a>
+            </li>
+        </ul>
+    </li>
+    <li class="list_menu_desktop_item resize_art_item clearfix">
+        <a href="" ng-click="$ctrl.accordion($event)"><i></i>تغییر اندازه بوم</a>
+        <ul class="sub_menu_desktop resize_art_item">
+            <li class="sub_menu_desktop_item clearfix">
+                <button class="zoom_in"><i class="icon_zoom_in"></i></button>
+                <button class="move"><i class="icon_move"></i></button>
+                <button class="zoom_out"><i class="icon_zoom_out"></i></button>
+            </li>
+        </ul>
+    </li>
     <li class="list_menu_desktop_item remove_art_item clearfix"><a href=""><i></i>حذف بوم</a></li>
     <li class="list_menu_desktop_item exit_item clearfix">
         <a ui-sref="logout"><i></i>خروج</a>

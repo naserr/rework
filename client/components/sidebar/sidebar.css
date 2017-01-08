@@ -6,6 +6,8 @@ section.desktop_work_section #sidebar_wrapper {
   background-color: #293b5a;
   right: -80px;
   width: 230px;
+  overflow: auto;
+  direction: ltr;
 }
 
 #sidebar_wrapper a.desktop_work_logo {
@@ -33,11 +35,7 @@ ul.list_menu_desktop li.list_menu_desktop_item a i {
   margin: 2px 0 0 5px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item:hover a {
-  color: #fff;
-}
-
-ul.list_menu_desktop li.list_menu_desktop_item.active a {
+ul.list_menu_desktop li.list_menu_desktop_item a.active {
   color: #55e4d4;
   background-color: #354664;
 }
@@ -46,11 +44,11 @@ ul.list_menu_desktop li.list_menu_desktop_item.desktop_item a i {
   background-position: -401px -12px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.desktop_item.active a i {
+ul.list_menu_desktop li.list_menu_desktop_item.desktop_item a.active i {
   background-position: -427px -12px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.desktop_item:hover a i {
+ul.list_menu_desktop li.list_menu_desktop_item.desktop_item a:hover i {
   background-position: -453px -12px;
 }
 
@@ -58,11 +56,11 @@ ul.list_menu_desktop li.list_menu_desktop_item.tools_item a i {
   background-position: -477px -11px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.tools_item.active a i {
+ul.list_menu_desktop li.list_menu_desktop_item.tools_item a.active i {
   background-position: -505px -11px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.tools_item:hover a i {
+ul.list_menu_desktop li.list_menu_desktop_item.tools_item a:hover i {
   background-position: -533px -11px;
 }
 
@@ -70,11 +68,11 @@ ul.list_menu_desktop li.list_menu_desktop_item.managment_team_item a i {
   background-position: -561px -11px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.managment_team_item.active a i {
+ul.list_menu_desktop li.list_menu_desktop_item.managment_team_item a.active i {
   background-position: -587px -11px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.managment_team_item:hover a i {
+ul.list_menu_desktop li.list_menu_desktop_item.managment_team_item a:hover i {
   background-position: -613px -11px;
 }
 
@@ -82,11 +80,11 @@ ul.list_menu_desktop li.list_menu_desktop_item.settings_profile_item a i {
   background-position: -642px -14px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.settings_profile_item.active a i {
+ul.list_menu_desktop li.list_menu_desktop_item.settings_profile_item a.active i {
   background-position: -669px -14px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.settings_profile_item:hover a i {
+ul.list_menu_desktop li.list_menu_desktop_item.settings_profile_item a:hover i {
   background-position: -696px -14px;
 }
 
@@ -94,11 +92,11 @@ ul.list_menu_desktop li.list_menu_desktop_item.cart_filter_item a i {
   background-position: -724px -14px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.cart_filter_item.active a i {
+ul.list_menu_desktop li.list_menu_desktop_item.cart_filter_item a.active i {
   background-position: -751px -14px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.cart_filter_item:hover a i {
+ul.list_menu_desktop li.list_menu_desktop_item.cart_filter_item a:hover i {
   background-position: -776px -14px;
 }
 
@@ -106,11 +104,11 @@ ul.list_menu_desktop li.list_menu_desktop_item.duties_item a i {
   background-position: -10px -34px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.active.duties_item a i {
+ul.list_menu_desktop li.list_menu_desktop_item.duties_item a.active i {
   background-position: -38px -34px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.duties_item:hover a i {
+ul.list_menu_desktop li.list_menu_desktop_item.duties_item a:hover i {
   background-position: -66px -34px;
 }
 
@@ -118,11 +116,15 @@ ul.list_menu_desktop li.list_menu_desktop_item.download_art_item a i {
   background-position: -95px -34px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.download_art_item.active a i {
+ul.list_menu_desktop li.list_menu_desktop_item.download_art_item a.active i {
   background-position: -122px -34px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.download_art_item:hover a i {
+ul.list_menu_desktop li.list_menu_desktop_item.download_art_item a:hover i {
+  background-position: -151px -34px;
+}
+
+ul.list_menu_desktop li.list_menu_desktop_item.download_art_itemx a:hover i {
   background-position: -149px -34px;
 }
 
@@ -130,11 +132,11 @@ ul.list_menu_desktop li.list_menu_desktop_item.resize_art_item a i {
   background-position: -175px -36px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.resize_art_item.active a i {
+ul.list_menu_desktop li.list_menu_desktop_item.resize_art_item a.active i {
   background-position: -200px -36px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.resize_art_item:hover a i {
+ul.list_menu_desktop li.list_menu_desktop_item.resize_art_item a:hover i {
   background-position: -225px -36px;
 }
 
@@ -142,11 +144,11 @@ ul.list_menu_desktop li.list_menu_desktop_item.remove_art_item a i {
   background-position: -250px -37px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.remove_art_item.active a i {
+ul.list_menu_desktop li.list_menu_desktop_item.remove_art_item a.active i {
   background-position: -272px -37px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.remove_art_item:hover a i {
+ul.list_menu_desktop li.list_menu_desktop_item.remove_art_item a:hover i {
   background-position: -294px -37px;
 }
 
@@ -154,10 +156,119 @@ ul.list_menu_desktop li.list_menu_desktop_item.exit_item a i {
   background-position: -318px -38px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.exit_item.active a i {
+ul.list_menu_desktop li.list_menu_desktop_item.exit_item a.active i {
   background-position: -341px -38px;
 }
 
-ul.list_menu_desktop li.list_menu_desktop_item.exit_item:hover a i {
+ul.list_menu_desktop li.list_menu_desktop_item.exit_item a:hover i {
   background-position: -364px -38px;
+}
+
+ul.list_menu_desktop li.list_menu_desktop_item a:hover {
+  color: #fff;
+}
+
+ul.sub_menu_desktop {
+  display: none;
+  margin: 10px 0;
+}
+
+ul.sub_menu_desktop li {
+  position: relative;
+  padding-right: 63px;
+  margin-bottom: 2px;
+}
+
+ul.sub_menu_desktop li.sub_menu_desktop_item label {
+  color: #fff;
+  cursor: pointer;
+}
+
+ul.sub_menu_desktop li.sub_menu_desktop_item input[type=radio] {
+  /*  display: none;*/
+  position: absolute;
+  left: 23%;
+  z-index: 2;
+  width: 14px;
+  height: 16px;
+  top: -3px;
+  opacity: 0;
+}
+
+ul.sub_menu_desktop li.sub_menu_desktop_item input[type=radio] + i {
+  float: left;
+  position: relative;
+  margin-left: 30%;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  background: url('../../assets/icons/icons.png');
+}
+
+ul.sub_menu_desktop li.sub_menu_desktop_item input[type='radio'] + i {
+  background-position: -602px -80px;
+}
+
+ul.sub_menu_desktop li.sub_menu_desktop_item input[type='radio']:checked + i {
+  background-position: -576px -80px;
+}
+
+ul.sub_menu_desktop li.sub_menu_desktop_item input[type='radio']:disabled + i {
+  background-position: -627px -80px;
+}
+
+ul.sub_menu_desktop.download_art_item li.sub_menu_desktop_item {
+  padding-left: 40%;
+}
+
+ul.sub_menu_desktop.download_art_item li.sub_menu_desktop_item > a {
+  width: auto;
+  float: left;
+}
+
+ul.sub_menu_desktop li.sub_menu_desktop_item a.link_pdf {
+  border-right: 1px solid;
+  padding-right: 4px;
+}
+
+ul.sub_menu_desktop li.sub_menu_desktop_item a.link_jpg {
+  padding-left: 4px;
+}
+
+ul.sub_menu_desktop li.sub_menu_desktop_item a {
+  padding: 0;
+}
+
+ul.sub_menu_desktop.resize_art_item li.sub_menu_desktop_item {
+  padding-left: 30%;
+}
+
+button.zoom_in,
+button.zoom_out,
+button.move {
+  float: left;
+}
+
+button.zoom_in i.icon_zoom_in,
+button.zoom_out i.icon_zoom_out,
+button.move i.icon_move {
+  width: 27px;
+  height: 27px;
+  display: inline-block;
+  float: left;
+  background: url('../../assets/icons/icons.png');
+}
+
+button.zoom_in i.icon_zoom_in {
+  background-position: -655px -75px;
+  width: 25px;
+}
+
+button.move i.icon_move {
+  background-position: -691px -75px;
+}
+
+button.zoom_out i.icon_zoom_out {
+  background-position: -727px -75px;
 }

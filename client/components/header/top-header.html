@@ -1,45 +1,62 @@
 <header class="sign_Up_header clearfix">
-  <ul class="navbar_nav_list clearfix">
-    <li class="menu_toggler sidebar_toggler nvabar_item clearfix" ng-click="$ctrl.toggleSidebar()">
-      <!--<i></i>-->
-      <a href=""></a>
-    </li>
-    <li class="nvabar_item profile_image_wrapper clearfix">
-      <a href="#" class="profile_image clearfix" placement="bottom-right" data-animation="am-flip-x" bs-dropdown
-         aria-haspopup="true" aria-expanded="false">
-        <img src="assets/img/profile.jpg" alt="profile_image" title="profile_image"/>
-      </a>
-      <ul class="profile_menu dropdown-menu" role="menu">
-        <li class="profile_menu_item"><a class="clearfix"><i class="profile_settings"></i>تنظیمات پروفایل</a></li>
-        <li class="profile_menu_item"><a class="clearfix"><i class="project_management"></i>مدیریت پروژه<span>(نام پروژه ساخته شده)</span></a>
+    <ul class="navbar_nav_list clearfix">
+        <li class="menu_toggler sidebar_toggler nvabar_item clearfix" ng-click="vm.toggleSidebar()">
+            <!--<i></i>-->
+            <a href=""></a>
         </li>
-        <li class="profile_menu_item"><a class="clearfix"><i class="exit"></i>خروج</a></li>
-      </ul>
-    </li>
-    <li class="nvabar_item notification clearfix">
-      <a href="#" class="notification_item clearfix" placement="bottom-right" data-animation="am-flip-x" bs-dropdown
-         aria-haspopup="true" aria-expanded="false">
-        <span class="notification_num">2</span>
-      </a>
-      <ul class="profile_menu dropdown-menu" role="menu">
-        <li class="profile_menu_item"><a class="clearfix"><i class="added_user"></i>
-          علی به تیم اضافه شد
-        </a></li>
-        <li class="profile_menu_item"><a class="clearfix"><i class="write_task"></i>
-          نوید وظیفه تعریف
-          <span>
-           ارزش را اضافه کرد
-          </span></a></li>
-      </ul>
-    </li>
-    <li class="nvabar_item massage clearfix">
-      <a href="#"></a>
-    </li>
-    <li class="nvabar_item project_name">
-      <button class="rework_btn btn_info" href="#"><i></i>نام پروژه</button>
-    </li>
-    <li class="nvabar_item perfessional_settings">
-      <button class="rework_btn btn_danger" href="#">حرفه ای کار کنید!</button>
-    </li>
-  </ul>
+        <li class="nvabar_item profile_image_wrapper clearfix">
+            <a href="#" class="profile_image clearfix" placement="bottom-right" data-animation="am-flip-x" bs-dropdown
+               aria-haspopup="true" aria-expanded="false">
+                <img ng-src="data:image/jpeg;base64,{{vm.currUser.avatar.base64}}" alt="profile_image"
+                     title="profile_image"/>
+            </a>
+            <ul class="profile_menu dropdown-menu" role="menu">
+                <li class="profile_menu_item">
+                    <a class="clearfix">
+                        <i class="profile_settings"></i>تنظیمات پروفایل
+                    </a>
+                </li>
+                <li class="profile_menu_item">
+                    <a class="clearfix">
+                        <i class="project_management"></i>مدیریت پروژه<span>(نام پروژه ساخته شده)</span>
+                    </a>
+                </li>
+                <li class="profile_menu_item">
+                    <a class="clearfix">
+                        <i class="exit"></i>خروج
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nvabar_item notification clearfix">
+            <a href="#" class="notification_item clearfix" placement="bottom-right" data-animation="am-flip-x"
+               bs-dropdown
+               aria-haspopup="true" aria-expanded="false">
+                <span class="notification_num">{{vm.isOwner ? vm.project.tasks.length : vm.myTasksCount()}}</span>
+            </a>
+            <ul class="profile_menu dropdown-menu" role="menu">
+                <!--<li class="profile_menu_item">
+                    <a class="clearfix"><i class="added_user"></i>
+                        علی به تیم اضافه شد
+                    </a>
+                </li>-->
+                <li class="profile_menu_item" ng-repeat="task in vm.project.tasks"
+                    ng-show="vm.isOwner || vm.isAssigned(task)">
+                    <a class="clearfix">
+                        <i class="write_task"></i>
+                        {{task.createdBy.name}} وظیفه {{task.title}} را اضافه کرد
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nvabar_item massage clearfix">
+            <a href="#"></a>
+        </li>
+        <li class="nvabar_item project_name">
+            <button class="rework_btn btn_info" href="#"><i></i>{{vm.project.name}}</button>
+        </li>
+        <li class="nvabar_item perfessional_settings">
+            <button class="rework_btn btn_danger" href="#">حرفه ای کار کنید!</button>
+        </li>
+    </ul>
 </header>

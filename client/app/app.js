@@ -7,7 +7,8 @@ import ngSanitize from 'angular-sanitize';
 import 'angular-socket-io';
 import toastr from 'angular-toastr';
 import uiRouter from 'angular-ui-router';
-import angularstrap from 'angular-strap';
+import 'angular-strap';
+// import 'angular-strap/dist/angular-strap.tpl.min';
 // import ngAnimate from 'angular-animate';
 // import 'oclazyload';
 
@@ -36,6 +37,7 @@ angular.module('reworkApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-i
   ])
   .config(appConfig.routeConfig)
   .config(appConfig.toastrConfig)
+  .config(appConfig.ngDialogConfig)
   .config(appConfig.logDecorator)
   .config(appConfig.interceptorConfig)
   .run(function($rootScope, $location, Auth) {

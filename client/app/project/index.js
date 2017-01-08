@@ -6,19 +6,26 @@ import boardList from './board-list/board-list.component';
 import boardPreview from './board-preview/board-preview.component';
 import projectDesktop from './project-desktop/project-desktop.component';
 import projectManage from './project-manage/project-manage.component';
+import projectTask from './project-tasks/list-task.component';
 import ProjectAuthService from './project-auth.service';
 
 import routes from './project.routes';
 
 export class projectComponent {
   isOpen = true;
+
+  constructor() {
+    if(_.isArray(this.project)) {
+      this.project = this.project[0];
+    }
+  }
 }
 
-export default angular.module('reworkApp.project', [uiRouter, boardList, boardPreview, projectDesktop, projectManage])
+export default angular.module('reworkApp.project', [uiRouter, boardList, boardPreview, projectDesktop, projectManage, projectTask])
   .component('project', {
     template: require('./project.html'),
     bindings: {
-      project: '<'
+      project: '='
     },
     controller: projectComponent
   })

@@ -51,3 +51,8 @@ p.expiration_date i {
     position: absolute;
     z-index: -1;
 }
+
+figure.profile_image img.img_uploaded {
+  border-radius: 50%;
+  border: 1px solid #5584ff;
+}

@@ -1,14 +1,13 @@
 export default function ProjectAuthService(Auth, appConfig) {
   'ngInject';
 
-  let user = Auth.getCurrentUserSync();
-
   return {
     getUserRole,
     hasAccess
   };
 
   function getUserRole(project) {
+    let user = Auth.getCurrentUserSync();
     return _.find(project.users, {_id: user._id}).role || 0;
   }
 

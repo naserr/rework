@@ -19,6 +19,7 @@ export default function routes($stateProvider) {
         var referrer = $state.params.referrer || $state.current.referrer || 'login';
         Auth.logout();
         $state.go(referrer);
+        // window.location.href = $state.href();
       }
     })
     .state('signup', {
