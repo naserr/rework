@@ -38,8 +38,6 @@ class SidebarComponent {
       parent.removeClass('active');
       parent.siblings('ul.sub_menu_desktop').slideUp();
     } else {
-      $('ul.sub_menu_desktop.active').removeClass('active');
-      $('ul.sub_menu_desktop.active').slideUp(700);
       parent.addClass('active');
       parent.siblings('ul.sub_menu_desktop').slideDown();
     }

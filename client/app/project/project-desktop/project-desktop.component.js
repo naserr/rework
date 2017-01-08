@@ -26,7 +26,6 @@ export class projectDesktopComponent {
     $scope.$on('$destroy', function() {
       socket.unsyncUpdates('project');
       newTaskListener();
-      showTaskListener();
     });
 
     let project = this.project;
@@ -44,16 +43,16 @@ export class projectDesktopComponent {
 
     let newTaskListener = $rootScope.$on('NEW_TASK', function() {
       ngDialog.openConfirm({
-          template: require('../project-tasks/new-task.html'),
-          plain: true,
-          controller: 'TaskController',
-          controllerAs: 'vm',
-          showClose: false,
-          data: project,
-          closeByDocument: false,
-          closeByEscape: false/*,
+        template: require('../project-tasks/new-task.html'),
+        plain: true,
+        controller: 'TaskController',
+        controllerAs: 'vm',
+        showClose: false,
+        data: project,
+        closeByDocument: false,
+        closeByEscape: false/*,
         width: 600*/
-        })
+      })
         .then(result => {
           let newTask = _.last(result.tasks);
           newTask.created = new Date();
@@ -104,7 +103,7 @@ export class projectDesktopComponent {
     }
   }
 
-  static focus(event) {
+  focus(event) {
     var parent = null;
     if($(event.target).is('input')) {
       parent = $(event.target).parent();
@@ -115,7 +114,13 @@ export class projectDesktopComponent {
     else {
       parent = $(event.target);
     }
-    parent.toggleClass('animated bounceInUp');
+    if(parent.css('bottom') == '0px') {
+      parent.animate({bottom: '-105px'});
+    }
+    else {
+      $('.new_cart_wrapper .cart').animate({bottom: '-105px'});
+      parent.animate({bottom: 0});
+    }
   }
 }
 

@@ -49,13 +49,18 @@ a.key_icon:hover i {
 
 /*aside*/
 
-.aside_team_management {
+aside.aside_team_management_wrapper {
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     width: 210px;
     background-color: #f4f8ff;
+    z-index: -1;
+}
+
+div.last_tasks_team_management {
+    margin-top: 80px;
 }
 
 h3.header_aside_team_management {
