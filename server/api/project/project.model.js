@@ -26,6 +26,7 @@ var ProjectSchema = new mongoose.Schema({
   keys: [KaySchema],
   users: [{
     _id: mongoose.Schema.Types.ObjectId,
+    name: String,
     role: {
       type: Number,
       enum: [0, 1, 2]

@@ -62,6 +62,7 @@ function handleEntityNotFound(res) {
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
   return function(err) {
+    console.log('***error*** > ', statusCode, err);
     return res.status(statusCode).send(err);
   };
 }
@@ -131,7 +132,7 @@ export function join(req, res) {
   return Project.findOne({
     'keys.value': req.body.key
   }).exec()
-    .then(joinProject(req.body.key, req.user._id))
+    .then(joinProject(req.body.key, req.user))
     .then(setDefaultProject(req.user))
     .then(respondWithResult(res))
     .catch(handleError(res, 400));
@@ -250,7 +251,7 @@ function initFreeProject(newProject) {
   return newProject.save();
 }
 
-function joinProject(key, userId) {
+function joinProject(key, user) {
   let projectId = key.slice(0, 24);
   let role = key.slice(24, 25);
   let token = key.slice(25, 37);
@@ -261,14 +262,14 @@ function joinProject(key, userId) {
       return Promise.reject('کلید وارد شده نامعتبر است! کلید معتبر تهیه کنید.');
     }
 
-    // project.users.find(u => u._id === userId);
-    let user = project.users.id(userId);
-    if(user) {
+    // project.users.find(u => u._id === user);
+    let tempUser = project.users.id(user._id);
+    if(tempUser) {
       return Promise.reject('قبلا عضو شه اید.');
     }
 
     project.users.push({
-      _id: userId,
+      _id: user._id,
       name: user.name,
       role
     });

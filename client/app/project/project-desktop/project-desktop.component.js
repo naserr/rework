@@ -21,10 +21,12 @@ export class projectDesktopComponent {
 
     socket.syncUpdates('project', [], (event, item, array) => {
       this.project.cards = item.cards;
+      this.project.tasks = item.tasks;
     });
 
     $scope.$on('$destroy', function() {
       socket.unsyncUpdates('project');
+      newTaskListener();
     });
 
     let project = this.project;
@@ -40,33 +42,36 @@ export class projectDesktopComponent {
       $http.put(`api/projects/updateCards/${project._id}`, updateCard);
     });
 
-    $rootScope.$on('NEW_TASK', function() {
+    let newTaskListener = $rootScope.$on('NEW_TASK', function() {
       ngDialog.openConfirm({
-        template: require('../new-task/new-task.html'),
-        plain: true,
-        controller: 'NewTaskController',
-        controllerAs: 'vm',
-        showClose: false,
-        data: project,
-        closeByDocument: false,
-        closeByEscape: false/*,
+          template: require('../new-task/new-task.html'),
+          plain: true,
+          controller: 'NewTaskController',
+          controllerAs: 'vm',
+          showClose: false,
+          data: project,
+          closeByDocument: false,
+          closeByEscape: false/*,
         width: 600*/
-      });
+        })
+        .then(result => {
+          let newTask = _.last(result.tasks);
+          newTask.created = new Date();
+          newTask.createdBy = _.pick(Auth.getCurrentUserSync(), ['_id', 'name', 'email', 'role']);
+          let patches = [
+            {
+              op: 'add',
+              path: '/tasks/-',
+              value: newTask
+            }
+          ];
+          $http.patch(`api/projects/${project._id}`, patches);
+        });
     });
   }
 
-  focus() {
-    console.log(1213);
-  }
-
   newCard() {
-    let currUser = this.Auth.getCurrentUserSync();
-    let user = {
-      _id: currUser._id,
-      name: currUser.name,
-      email: currUser.email,
-      role: currUser.role
-    };
+    let user = _.pick(this.Auth.getCurrentUserSync(), ['_id', 'name', 'email', 'role']);
     let patches = [
       {
         op: 'add',

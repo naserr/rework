@@ -42,11 +42,11 @@
     <li class="list_menu_desktop_item duties_item clearfix" ui-sref-active="active">
       <a href="" ng-click="$ctrl.accordion($event)"><i></i>وظایف</a>
         <ul class="sub_menu_desktop">
-            <li class="sub_menu_desktop_item clearfix">
-                <a href="" ng-click="$ctrl.newTask()" ng-show="$ctrl.isOwner">ایجاد وظیفه</a>
+            <li class="sub_menu_desktop_item clearfix" ng-show="$ctrl.isOwner">
+                <a href="" ng-click="$ctrl.newTask()">ایجاد وظیفه</a>
             </li>
           <li class="sub_menu_desktop_item clearfix">
-            <a href="" ng-click="$ctrl.newTask()" ng-show="$ctrl.isOwner">نمایش وظایف</a>
+            <a href="" ng-click="$ctrl.newTask()">نمایش وظایف</a>
           </li>
         </ul>
     </li>

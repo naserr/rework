@@ -38,15 +38,17 @@ export default angular.module('reworkApp.util', [])
           scope.$apply(function(scope) {
             modelAccessor.assign(scope, date);
           });
+          element.blur();
         };
 
         element.datepicker({
+          dateFormat: 'dd MM',
           onClose: processChange,
           onSelect: processChange
         });
         scope.$watch(modelAccessor, function(val) {
           var date = new Date(val);
-          element.datepicker('setDate', 'mohsen');
+          element.datepicker('setDate', date);
         });
       }
     };

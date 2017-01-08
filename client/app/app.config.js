@@ -45,6 +45,12 @@ export function toastrConfig(toastrConfig) {
   });
 }
 
+export function ngDialogConfig(ngDialogProvider) {
+  'ngInject';
+
+  ngDialogProvider.setOpenOnePerName(true);
+}
+
 export function interceptorConfig($httpProvider) {
   'ngInject';
 

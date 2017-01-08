@@ -37,6 +37,7 @@ angular.module('reworkApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-i
   ])
   .config(appConfig.routeConfig)
   .config(appConfig.toastrConfig)
+  .config(appConfig.ngDialogConfig)
   .config(appConfig.logDecorator)
   .config(appConfig.interceptorConfig)
   .run(function($rootScope, $location, Auth) {

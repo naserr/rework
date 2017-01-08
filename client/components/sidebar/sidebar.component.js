@@ -1,5 +1,5 @@
 'use strict';
-import $ from 'jquery';
+// import $ from 'jquery';
 import angular from 'angular';
 
 class SidebarComponent {
