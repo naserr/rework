@@ -7,14 +7,25 @@
         <li class="nvabar_item profile_image_wrapper clearfix">
             <a href="#" class="profile_image clearfix" placement="bottom-right" data-animation="am-flip-x" bs-dropdown
                aria-haspopup="true" aria-expanded="false">
-                <img src="assets/img/profile.jpg" alt="profile_image" title="profile_image"/>
+                <img ng-src="data:image/jpeg;base64,{{vm.currUser.avatar.base64}}" alt="profile_image"
+                     title="profile_image"/>
             </a>
             <ul class="profile_menu dropdown-menu" role="menu">
-                <li class="profile_menu_item"><a class="clearfix"><i class="profile_settings"></i>تنظیمات پروفایل</a>
+                <li class="profile_menu_item">
+                    <a class="clearfix">
+                        <i class="profile_settings"></i>تنظیمات پروفایل
+                    </a>
                 </li>
-                <li class="profile_menu_item"><a class="clearfix"><i class="project_management"></i>مدیریت پروژه<span>(نام پروژه ساخته شده)</span></a>
+                <li class="profile_menu_item">
+                    <a class="clearfix">
+                        <i class="project_management"></i>مدیریت پروژه<span>(نام پروژه ساخته شده)</span>
+                    </a>
                 </li>
-                <li class="profile_menu_item"><a class="clearfix"><i class="exit"></i>خروج</a></li>
+                <li class="profile_menu_item">
+                    <a class="clearfix">
+                        <i class="exit"></i>خروج
+                    </a>
+                </li>
             </ul>
         </li>
         <li class="nvabar_item notification clearfix">

@@ -1,21 +1,21 @@
 <div class="content_wrapper">
-  <div ng-include="'/app/project/project-desktop/' + vm.boardName + '.html'"></div>
-  <div class="cart_wrapper clearfix">
-    <div class="cart blue" ng-click="vm.focus($event)">
-      <input type="text" placeholder="title">
-      <textarea placeholder="Describe your task..." rows="6"></textarea>
+    <div ng-include="'/app/project/project-desktop/' + vm.boardName + '.html'"></div>
+    <div class="cart_wrapper clearfix">
+        <div class="cart blue" ng-click="vm.focus($event)">
+            <input type="text" placeholder="title">
+            <textarea placeholder="Describe your task..." rows="6"></textarea>
+        </div>
+        <div class="cart pink">
+            <input type="text" placeholder="title" ng-click="vm.focus($event)">
+            <textarea placeholder="Describe your task..." rows="6"></textarea>
+        </div>
+        <div class="cart orange">
+            <input type="text" placeholder="title" ng-click="vm.focus($event)">
+            <textarea placeholder="Describe your task..." rows="6"></textarea>
+        </div>
+        <div class="cart green">
+            <input type="text" placeholder="title" ng-click="vm.focus($event)">
+            <textarea placeholder="Describe your task..." rows="6"></textarea>
+        </div>
     </div>
-    <div class="cart pink">
-      <input type="text" placeholder="title" ng-click="vm.focus($event)">
-      <textarea placeholder="Describe your task..." rows="6"></textarea>
-    </div>
-    <div class="cart orange">
-      <input type="text" placeholder="title" ng-click="vm.focus($event)">
-      <textarea placeholder="Describe your task..." rows="6"></textarea>
-    </div>
-    <div class="cart green">
-      <input type="text" placeholder="title" ng-click="vm.focus($event)">
-      <textarea placeholder="Describe your task..." rows="6"></textarea>
-    </div>
-  </div>
 </div>

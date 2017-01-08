@@ -45,6 +45,15 @@ export default function($stateProvider) {
         }
       }
     })
+    .state('project.tasks', {
+      url: '/tasks',
+      authenticate: true,
+      views: {
+        '@project': {
+          template: '<list-task project="$resolve.project.data"></list-task>'
+        }
+      }
+    })
     .state('project.manage', {
       url: '/manage',
       authenticate: true,

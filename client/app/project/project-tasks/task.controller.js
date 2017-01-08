@@ -5,7 +5,7 @@ import '../../../assets/vendor/bootstrap-jalali-datepicker/bootstrap-datepicker.
 import '../../../assets/vendor/bootstrap-jalali-datepicker/bootstrap-datepicker.min';
 import '../../../assets/vendor/bootstrap-jalali-datepicker/bootstrap-datepicker.fa.min';
 
-export default class NewTaskController {
+class TaskController {
   project;
   newTask = {
     users: [],
@@ -58,3 +58,6 @@ export default class NewTaskController {
     this.$scope.confirm(this.project);
   }
 }
+
+angular.module('reworkApp.project.task')
+  .controller('TaskController', TaskController);

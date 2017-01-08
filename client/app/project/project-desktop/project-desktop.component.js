@@ -3,7 +3,6 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngDialog from 'ng-dialog';
 import 'ng-tags-input';
-import NewTaskController from '../new-task/new-task.controller';
 
 export class projectDesktopComponent {
   zoom = 1;
@@ -27,6 +26,7 @@ export class projectDesktopComponent {
     $scope.$on('$destroy', function() {
       socket.unsyncUpdates('project');
       newTaskListener();
+      showTaskListener();
     });
 
     let project = this.project;
@@ -44,9 +44,9 @@ export class projectDesktopComponent {
 
     let newTaskListener = $rootScope.$on('NEW_TASK', function() {
       ngDialog.openConfirm({
-          template: require('../new-task/new-task.html'),
+          template: require('../project-tasks/new-task.html'),
           plain: true,
-          controller: 'NewTaskController',
+          controller: 'TaskController',
           controllerAs: 'vm',
           showClose: false,
           data: project,
@@ -68,20 +68,6 @@ export class projectDesktopComponent {
           $http.patch(`api/projects/${project._id}`, patches);
         });
     });
-  }
-
-  focus(event) {
-    var parent = null;
-    if ($(event.target).is('input')) {
-      parent = $(event.target).parent();
-    }
-    else if ($(event.target).is('textarea')) {
-      parent = $(event.target).parent();
-    }
-    else {
-      parent = $(event.target);
-    }
-    parent.toggleClass('animated bounceInUp');
   }
 
   newCard() {
@@ -117,6 +103,20 @@ export class projectDesktopComponent {
       this.zoom -= 0.25;
     }
   }
+
+  static focus(event) {
+    var parent = null;
+    if($(event.target).is('input')) {
+      parent = $(event.target).parent();
+    }
+    else if($(event.target).is('textarea')) {
+      parent = $(event.target).parent();
+    }
+    else {
+      parent = $(event.target);
+    }
+    parent.toggleClass('animated bounceInUp');
+  }
 }
 
 export default angular.module('reworkApp.project.desktop', [uiRouter, ngDialog, 'ngTagsInput'])
@@ -126,5 +126,4 @@ export default angular.module('reworkApp.project.desktop', [uiRouter, ngDialog, 
     controller: projectDesktopComponent,
     controllerAs: 'vm'
   })
-  .controller('NewTaskController', NewTaskController)
   .name;

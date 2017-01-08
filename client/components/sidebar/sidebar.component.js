@@ -11,7 +11,7 @@ class SidebarComponent {
     this.ProjectAuth = ProjectAuth;
     this.$state = $state;
     this.$rootScope = $rootScope;
-    this.user = this.Auth.getCurrentUserSync();
+    this.user = Auth.getCurrentUserSync();
 
     this.isOwner = this.ProjectAuth.hasAccess(this.project, 'admin');
   }
