@@ -42,9 +42,9 @@
                         علی به تیم اضافه شد
                     </a>
                 </li>-->
-                <li class="profile_menu_item" ng-repeat="task in vm.project.tasks"
+                <li class="profile_menu_item" ng-repeat="task in vm.project.tasks | filter:{visited: false}"
                     ng-show="vm.isOwner || vm.isAssigned(task)">
-                    <a class="clearfix">
+                    <a class="clearfix" ui-sref="project.tasks({id: vm.project._id})" ng-click="vm.setVisited(task)">
                         <i class="write_task"></i>
                         {{task.createdBy.name}} وظیفه {{task.title}} را اضافه کرد
                     </a>

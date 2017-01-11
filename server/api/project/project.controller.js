@@ -197,6 +197,27 @@ export function updateCards(req, res) {
   }
 }
 
+// Updates an existing Project in the DB
+export function toggleTaskVisited(req, res) {
+  if(req.body._id) {
+    delete req.body._id;
+  }
+  return Project.findById(req.params.id).exec()
+    .then(handleEntityNotFound(res))
+    .then(update())
+    .catch(handleError(res));
+
+  function update() {
+    return function(project) {
+      _.set(project, `task[${req.body.index}].visited`, req.body.visited);
+      project.markModified('tasks');
+      return project.save().then(function() {
+        return res.status(200).json(project);
+      });
+    };
+  }
+}
+
 // Deletes a Project from the DB
 export function destroy(req, res) {
   return Project.findById(req.params.id).exec()
