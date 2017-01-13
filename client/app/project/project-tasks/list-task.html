@@ -1,18 +1,22 @@
 <section>
-    <div class="row" style="margin-top: 50px;">
+    <div style="margin-top: 50px;">
         <div class="col-md-offset-1">&nbsp;</div>
         <div class="col-md-10">
             <h2>وظیفه ها</h2>
         </div>
     </div>
-    <div class="row" style="margin-top: 20px;">
+    <div style="margin-top: 20px;">
         <div class="col-md-offset-1">&nbsp;</div>
         <div class="col-md-5">
             <div class="list-group">
                 <a href="#" class="list-group-item" ng-repeat="task in vm.project.tasks"
-                   ng-click="vm.selectedTask = task" ng-class="{'active': task == vm.selectedTask}">
+                   ng-class="{'active': task == vm.selectedTask, 'list-group-item-success': vm.isVisited(task)}"
+                   ng-click="vm.onTaskClicked(task)" ng-show="vm.isOwner || vm.isVisible(task)">
                     <h4 class="list-group-item-heading">{{task.title}}</h4>
-                    <p class="list-group-item-text">{{task.description}}</p>
+                    <p class="list-group-item-text">ایجاد شده در تاریخ
+                        <b>{{task.created | jalaaliDate: 'jYYYY/jMM/jDD'}}</b> توسط
+                        <small><b>{{task.createdBy.name}}</b></small>
+                    </p>
                 </a>
             </div>
         </div>
@@ -52,7 +56,7 @@
                                     <small class="help-block" ng-show="vm.errors.description">شرح وظیفه را بنویسید
                                     </small>
                                 </div>
-                                <div class="checkbox">
+                                <div class="checkbox" ng-show="vm.isOwner">
                                     <label>
                                         <input type="checkbox" ng-model="vm.selectedTask.hasDate"
                                                ng-disabled="!vm.isOwner">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -89,11 +93,7 @@
                         </div>
                     </form>
                 </div>
-                <!--<div class="panel-body">
-                    Panel content
-                </div>-->
             </div>
-
         </div>
     </div>
 </section>
