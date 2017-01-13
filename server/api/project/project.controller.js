@@ -177,6 +177,31 @@ export function patch(req, res) {
 }
 
 // Updates an existing Project in the DB
+export function patchTasks(req, res) {
+  if(req.body._id) {
+    delete req.body._id;
+  }
+  return Project.findById(req.params.id).exec()
+    .then(handleEntityNotFound(res))
+    .then(patchTaskUpdates(req.body))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+
+  function patchTaskUpdates(patches) {
+    return function(entity) {
+      try {
+        jsonpatch.apply(entity, patches, /*validate*/ true);
+      } catch(err) {
+        return Promise.reject(err);
+      }
+
+      entity.markModified('tasks');
+      return entity.save();
+    };
+  }
+}
+
+// Updates an existing Project in the DB
 export function updateCards(req, res) {
   if(req.body._id) {
     delete req.body._id;
@@ -209,7 +234,7 @@ export function toggleTaskVisited(req, res) {
 
   function update() {
     return function(project) {
-      _.set(project, `task[${req.body.index}].visited`, req.body.visited);
+      _.set(project, `tasks[${req.body.taskIndex}].users[${req.body.userIndex}].isVisited`, req.body.isVisited);
       project.markModified('tasks');
       return project.save().then(function() {
         return res.status(200).json(project);

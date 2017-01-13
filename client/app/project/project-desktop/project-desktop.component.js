@@ -29,6 +29,7 @@ export class projectDesktopComponent {
     $scope.$on('$destroy', function() {
       socket.unsyncUpdates('project');
       newTaskListener();
+      zoomListener();
     });
 
     let project = this.project;
@@ -42,6 +43,10 @@ export class projectDesktopComponent {
         }
       };
       $http.put(`api/projects/updateCards/${project._id}`, updateCard);
+    });
+
+    let zoomListener = $rootScope.$on('ZOOM_CHANGED', (e, zoomType) => {
+      this.onZoomChanged(zoomType);
     });
 
     let newTaskListener = $rootScope.$on('NEW_TASK', function() {
@@ -73,7 +78,7 @@ export class projectDesktopComponent {
     });
   }
 
-  newCard() {
+  newCard(type) {
     let user = _.pick(this.Auth.getCurrentUserSync(), ['_id', 'name', 'email', 'role']);
     let patches = [
       {
@@ -88,22 +93,28 @@ export class projectDesktopComponent {
             left: '1px',
             top: '1px'
           },
-          content: '<h3>title</h3><p>stupid content...</p>'
+          type,
+          content: `<p>${this.newCardContent}</p>`
         }
       }
     ];
-    this.$http.patch(`api/projects/${this.project._id}`, patches);
+    this.$http.patch(`api/projects/${this.project._id}`, patches)
+      .then(() => this.newCardContent = '');
   }
 
-  zoomIn() {
-    if(this.zoom <= 5) {
-      this.zoom += 0.25;
+  onZoomChanged(zoomType) {
+    if(zoomType === 'ZOOM_IN') {
+      if(this.zoom <= 5) {
+        this.zoom += 0.25;
+      }
     }
-  }
-
-  zoomOut() {
-    if(this.zoom > 0.5) {
-      this.zoom -= 0.25;
+    else if(zoomType === 'ZOOM_OUT') {
+      if(this.zoom > 0.5) {
+        this.zoom -= 0.25;
+      }
+    }
+    else if(zoomType === 'ZOOM_RES') {
+      this.zoom = 1;
     }
   }
 
@@ -128,11 +139,30 @@ export class projectDesktopComponent {
   }
 }
 
-export default angular.module('reworkApp.project.desktop', [uiRouter, ngDialog, 'ngTagsInput'])
-  .component('projectDesktop', {
-    template: require('./project-desktop.html'),
-    bindings: {project: '='},
-    controller: projectDesktopComponent,
-    controllerAs: 'vm'
-  })
+export
+default
+angular
+  .module(
+    'reworkApp.project.desktop'
+    ,
+    [uiRouter
+      ,
+      ngDialog
+      ,
+      'ngTagsInput'
+    ])
+  .component(
+    'projectDesktop'
+    , {
+      template: require
+      (
+        './project-desktop.html'
+      ),
+      bindings: {project: '='}
+      ,
+      controller: projectDesktopComponent
+      ,
+      controllerAs: 'vm'
+    }
+  )
   .name;

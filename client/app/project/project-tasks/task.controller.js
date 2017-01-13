@@ -46,6 +46,9 @@ export default class TaskController {
       return;
     }
     this.errors = {};
+    _.forEach(this.newTask.users, function(user) {
+      user.isVisited = false;
+    });
     this.project.tasks.push(this.newTask);
     this.newTask = {
       users: [],

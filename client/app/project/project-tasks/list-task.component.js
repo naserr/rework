@@ -4,11 +4,6 @@ import TaskController from './task.controller';
 
 class ListTaskComponent {
   project;
-  newTask = {
-    users: [],
-    startDate: new Date(),
-    endDate: new Date()
-  };
   errors = {};
 
   constructor($scope, $q, $http, Auth, ProjectAuth) {
@@ -35,26 +30,56 @@ class ListTaskComponent {
   }
 
   saveTask() {
-    if(!this.newTask.users.length) {
+    if(!this.selectedTask.users.length) {
       this.errors.users = true;
       return;
     }
-    if(!this.newTask.description) {
+    if(!this.selectedTask.description) {
       this.errors.description = true;
       return;
     }
-    if(!this.newTask.title) {
+    if(!this.selectedTask.title) {
       this.errors.title = true;
       return;
     }
     this.errors = {};
-    this.project.tasks.push(this.newTask);
-    this.newTask = {
-      users: [],
-      startDate: new Date(),
-      endDate: new Date()
-    };
-    this.$scope.confirm(this.project);
+
+    let taskIndex = _.findIndex(this.project.tasks, t => t == this.selectedTask);
+    let patches = [
+      {
+        op: 'replace',
+        path: `/tasks/${taskIndex}`,
+        value: this.selectedTask
+      }
+    ];
+    this.$http.patch(`api/projects/patchTasks/${this.project._id}`, patches);
+  }
+
+  onTaskClicked(task) {
+    this.selectedTask = task;
+    let taskIndex = _.findIndex(this.project.tasks, t => t == task);
+    let userIndex = _.findIndex(task.users, u => u._id == this.user._id);
+    if(task.users[userIndex] && !task.users[userIndex].isVisited) {
+      this.$http.put(`api/projects/toggleTaskVisited/${this.project._id}`, {
+        taskIndex: taskIndex,
+        userIndex: userIndex,
+        isVisited: true
+      });
+    }
+  }
+
+  isVisible(task) {
+    return !!_.find(task.users, {
+      _id: this.user._id
+    });
+  }
+
+  isVisited(task) {
+    let user = _.find(task.users, {_id: this.user._id});
+    if(user) {
+      return !user.isVisited;
+    }
+    return false;
   }
 
   deleteTask(task) {

@@ -28,12 +28,16 @@ class SidebarComponent {
     });
   }
 
-  accordion(event){
+  chaneZoom(zoom) {
+    this.$rootScope.$broadcast('ZOOM_CHANGED', zoom);
+  }
+
+  accordion(event) {
     var parent = null;
     if($(event.target).is('i')) {
       parent = $(event.target).parent();
     }
-    var parent=$(event.target);
+    var parent = $(event.target);
     if(parent.hasClass('active')) {
       parent.removeClass('active');
       parent.siblings('ul.sub_menu_desktop').slideUp();
