@@ -4,12 +4,14 @@
 import angular from 'angular';
 
 class HeaderController {
-  constructor($http, Auth, ProjectAuth) {
+  constructor($http, $rootScope, Auth, ProjectAuth) {
     'ngInject';
     this.Auth = Auth;
     this.$http = $http;
     this.currUser = Auth.getCurrentUserSync();
     this.isOwner = ProjectAuth.hasAccess(this.project, 'admin');
+
+    $rootScope.$on('AVATAR_CHANGED', (e, u) => this.currUser.avatar = u.avatar);
   }
 
   isAssigned(task) {
@@ -26,7 +28,10 @@ class HeaderController {
 
   setVisited(task) {
     let index = _.findIndex(this.project.tasks, t => t == task);
-    this.$http.put(`api/projects/toggleTaskVisited/${this.project._id}`, {index: index, visited: true})
+    this.$http.put(`api/projects/toggleTaskVisited/${this.project._id}`, {
+        index: index,
+        visited: true
+      })
       .then(pr => {
         this.project.tasks = pr.data.tasks;
         task.visited = true;
