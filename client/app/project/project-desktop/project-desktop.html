@@ -1,5 +1,5 @@
 <div class="content_wrapper">
-    <div ng-include="'/app/project/project-desktop/' + vm.boardName + '.html'"></div>
+    <div ng-include="'/boards/' + vm.boardName + '.html'"></div>
     <div class="new_cart_wrapper clearfix">
         <div class="cart blue" ng-click="vm.focus($event)" ng-enter="vm.newCard('blue')">
             <textarea placeholder="Describe your task..." rows="6" ng-model="vm.newCardContent"></textarea>
