@@ -78,8 +78,8 @@ module.exports = function makeWebpackConfig(options) {
       // Output path from the view of the page
       // Uses webpack-dev-server in development
       // publicPath: BUILD || DEV || E2E ? '/' : `http://localhost:${8080}/`,
-      publicPath: BUILD || DEV || E2E ? `http://localhost:${3000}/` : `http://localhost:${8080}/`,
-      // publicPath: BUILD ? '/' : 'http://localhost:' + env.port + '/',
+      // publicPath: BUILD || DEV || E2E ? `http://localhost:${3000}/` : `http://localhost:${8080}/`,
+      publicPath: BUILD ? '/' : 'http://localhost:3000/',
 
       // Filename for entry points
       // Only adds hash in build mode
@@ -184,7 +184,8 @@ module.exports = function makeWebpackConfig(options) {
         //
         // Reference: https://github.com/webpack/style-loader
         // Use style-loader in development for hot-loading
-        ? ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
+        // ? ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
+        ? ExtractTextPlugin.extract('style', 'css!postcss')
         // Reference: https://github.com/webpack/null-loader
         // Skip loading css in test mode
         : 'null'
