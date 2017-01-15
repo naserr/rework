@@ -1,17 +1,34 @@
 <div class="content_wrapper">
-    <div ng-include="'/app/project/project-desktop/' + vm.boardName + '.html'"></div>
+<<<<<<< HEAD
+  <div ng-include="'/app/project/project-desktop/' + vm.boardName + '.html'"></div>
+  <div class="new_cart_wrapper clearfix">
+    <div class="cart blue" contentEditable ng-focus="vm.focus($event)" ng-blur="vm.blur()" ng-enter="vm.newCard('blue')">
+      <textarea placeholder="Describe your task..." rows="6" ng-focus="vm.focus($event)" ng-blur="vm.blur()" ng-model="vm.newCardContent"></textarea>
+=======
+    <div ng-include="'/boards/' + vm.boardName + '.html'"></div>
     <div class="new_cart_wrapper clearfix">
-        <div class="cart blue" ng-click="vm.focus($event)">
-            <textarea placeholder="Describe your task..." rows="6"></textarea>
+        <div class="cart blue" ng-click="vm.focus($event)" ng-enter="vm.newCard('blue')">
+            <textarea placeholder="Describe your task..." rows="6" ng-model="vm.newCardContent"></textarea>
         </div>
-        <div class="cart pink" ng-click="vm.focus($event)">
-            <textarea placeholder="Describe your task..." rows="6"></textarea>
+        <div class="cart pink" ng-click="vm.focus($event)" ng-enter="vm.newCard('pink')">
+            <textarea placeholder="Describe your task..." rows="6" ng-model="vm.newCardContent"></textarea>
         </div>
-        <div class="cart orange" ng-click="vm.focus($event)">
-            <textarea placeholder="Describe your task..." rows="6"></textarea>
+        <div class="cart orange" ng-click="vm.focus($event)" ng-enter="vm.newCard('orange')">
+            <textarea placeholder="Describe your task..." rows="6" ng-model="vm.newCardContent"></textarea>
         </div>
-        <div class="cart green" ng-click="vm.focus($event)">
-            <textarea placeholder="Describe your task..." rows="6"></textarea>
+        <div class="cart green" ng-click="vm.focus($event)" ng-enter="vm.newCard('green')">
+            <textarea placeholder="Describe your task..." rows="6" ng-model="vm.newCardContent"></textarea>
         </div>
+>>>>>>> origin/master
     </div>
+    <div class="cart pink" contentEditable ng-focus="vm.focus($event)" ng-blur="vm.blur()" ng-enter="vm.newCard('pink')">
+      <textarea placeholder="Describe your task..." rows="6" ng-focus="vm.focus($event)" ng-blur="vm.blur()" ng-model="vm.newCardContent"></textarea>
+    </div>
+    <div class="cart orange" contentEditable ng-focus="vm.focus($event)" ng-blur="vm.blur()" ng-enter="vm.newCard('orange')">
+      <textarea placeholder="Describe your task..." rows="6" ng-focus="vm.focus($event)" ng-blur="vm.blur()" ng-model="vm.newCardContent"></textarea>
+    </div>
+    <div class="cart green" contentEditable ng-focus="vm.focus($event)" ng-blur="vm.blur()" ng-enter="vm.newCard('green')">
+      <textarea placeholder="Describe your task..." rows="6" ng-focus="vm.focus($event)" ng-blur="vm.blur()" ng-model="vm.newCardContent"></textarea>
+    </div>
+  </div>
 </div>

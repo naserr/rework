@@ -46,7 +46,7 @@
                 <a href="" ng-click="$ctrl.newTask()">ایجاد وظیفه</a>
             </li>
             <li class="sub_menu_desktop_item clearfix">
-                <a href="">نمایش وظایف</a>
+                <a ui-sref="project.tasks({id: $ctrl.project._id})">نمایش وظایف</a>
             </li>
         </ul>
     </li>
@@ -59,12 +59,12 @@
         </ul>
     </li>
     <li class="list_menu_desktop_item resize_art_item clearfix">
-        <a href="" ng-click="$ctrl.accordion($event)"><i></i>تغییر اندازه بوم</a>
-        <ul class="sub_menu_desktop resize_art_item">
+        <a href="" ng-click="$ctrl.accordion($event)" class="active"><i></i>تغییر اندازه بوم</a>
+        <ul class="sub_menu_desktop resize_art_item" style="display: block">
             <li class="sub_menu_desktop_item clearfix">
-                <button class="zoom_in"><i class="icon_zoom_in"></i></button>
-                <button class="move"><i class="icon_move"></i></button>
-                <button class="zoom_out"><i class="icon_zoom_out"></i></button>
+                <button ng-click="$ctrl.chaneZoom('ZOOM_IN')" class="zoom_in"><i class="icon_zoom_in"></i></button>
+                <button ng-click="$ctrl.chaneZoom('ZOOM_RES')" class="move"><i class="icon_move"></i></button>
+                <button ng-click="$ctrl.chaneZoom('ZOOM_OUT')" class="zoom_out"><i class="icon_zoom_out"></i></button>
             </li>
         </ul>
     </li>

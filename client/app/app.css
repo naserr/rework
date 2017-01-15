@@ -4,14 +4,13 @@
 @import '~angular-toastr/dist/angular-toastr.min.css';
 @import '~ng-dialog/css/ngDialog.min.css';
 @import '~ng-dialog/css/ngDialog-theme-default.min.css';
-@import '/assets/css/animate.min.css';
-@import '/assets/css/global.css';
+@import '/assets/css/mainStyle.css';
 
 .browserupgrade {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
 }
 
 /* Component styles are injected through gulp */

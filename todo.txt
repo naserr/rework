@@ -8,5 +8,8 @@
 ***change main property in draggabilly.package.json***
 ***add 'window.Draggabilly = Draggabilly;' at line 1474***
 
+bootstrap-rtl
+<link rel="stylesheet" href="//cdn.rawgit.com/morteza/bootstrap-rtl/v3.3.4/dist/css/bootstrap-rtl.min.css">
+
 tips:
 { type : String, required : true , unique : true, dropDups: true }

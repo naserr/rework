@@ -1,4 +1,7 @@
 'use strict';
+import 'ng-tags-input/build/ng-tags-input.min.css';
+import 'ng-tags-input/build/ng-tags-input.bootstrap.min.css';
+
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngDialog from 'ng-dialog';
@@ -26,6 +29,7 @@ export class projectDesktopComponent {
     $scope.$on('$destroy', function() {
       socket.unsyncUpdates('project');
       newTaskListener();
+      zoomListener();
     });
 
     let project = this.project;
@@ -41,22 +45,27 @@ export class projectDesktopComponent {
       $http.put(`api/projects/updateCards/${project._id}`, updateCard);
     });
 
+    let zoomListener = $rootScope.$on('ZOOM_CHANGED', (e, zoomType) => {
+      this.onZoomChanged(zoomType);
+    });
+
     let newTaskListener = $rootScope.$on('NEW_TASK', function() {
       ngDialog.openConfirm({
-        template: require('../project-tasks/new-task.html'),
-        plain: true,
-        controller: 'TaskController',
-        controllerAs: 'vm',
-        showClose: false,
-        data: project,
-        closeByDocument: false,
-        closeByEscape: false/*,
+          template: require('../project-tasks/new-task.html'),
+          plain: true,
+          controller: 'TaskController',
+          controllerAs: 'vm',
+          showClose: false,
+          data: project,
+          closeByDocument: false,
+          closeByEscape: false/*,
         width: 600*/
-      })
+        })
         .then(result => {
           let newTask = _.last(result.tasks);
           newTask.created = new Date();
           newTask.createdBy = _.pick(Auth.getCurrentUserSync(), ['_id', 'name', 'email', 'role']);
+          newTask.visited = false;
           let patches = [
             {
               op: 'add',
@@ -69,7 +78,7 @@ export class projectDesktopComponent {
     });
   }
 
-  newCard() {
+  newCard(type) {
     let user = _.pick(this.Auth.getCurrentUserSync(), ['_id', 'name', 'email', 'role']);
     let patches = [
       {
@@ -84,22 +93,28 @@ export class projectDesktopComponent {
             left: '1px',
             top: '1px'
           },
-          content: '<h3>title</h3><p>stupid content...</p>'
+          type,
+          content: `<p>${this.newCardContent}</p>`
         }
       }
     ];
-    this.$http.patch(`api/projects/${this.project._id}`, patches);
+    this.$http.patch(`api/projects/${this.project._id}`, patches)
+      .then(() => this.newCardContent = '');
   }
 
-  zoomIn() {
-    if(this.zoom <= 5) {
-      this.zoom += 0.25;
+  onZoomChanged(zoomType) {
+    if(zoomType === 'ZOOM_IN') {
+      if(this.zoom <= 5) {
+        this.zoom += 0.25;
+      }
     }
-  }
-
-  zoomOut() {
-    if(this.zoom > 0.5) {
-      this.zoom -= 0.25;
+    else if(zoomType === 'ZOOM_OUT') {
+      if(this.zoom > 0.5) {
+        this.zoom -= 0.25;
+      }
+    }
+    else if(zoomType === 'ZOOM_RES') {
+      this.zoom = 1;
     }
   }
 
@@ -115,20 +130,42 @@ export class projectDesktopComponent {
       parent = $(event.target);
     }
     if(parent.css('bottom') == '0px') {
-      parent.animate({bottom: '-105px'});
+      parent.animate({bottom: '100px'}, 'fast');
     }
     else {
-      $('.new_cart_wrapper .cart').animate({bottom: '-105px'});
-      parent.animate({bottom: 0});
+//      $('.new_cart_wrapper .cart').animate({bottom: '0'}, 'fast');
+      parent.animate({bottom: 0}, 'fast');
     }
+  }
+  blur(){
+    $('.new_cart_wrapper .cart').animate({bottom: '0'}, 'fast');
   }
 }
 
-export default angular.module('reworkApp.project.desktop', [uiRouter, ngDialog, 'ngTagsInput'])
-  .component('projectDesktop', {
-    template: require('./project-desktop.html'),
-    bindings: {project: '='},
-    controller: projectDesktopComponent,
-    controllerAs: 'vm'
-  })
+export
+default
+angular
+  .module(
+    'reworkApp.project.desktop'
+    ,
+    [uiRouter
+      ,
+      ngDialog
+      ,
+      'ngTagsInput'
+    ])
+  .component(
+    'projectDesktop'
+    , {
+      template: require
+      (
+        './project-desktop.html'
+      ),
+      bindings: {project: '='}
+      ,
+      controller: projectDesktopComponent
+      ,
+      controllerAs: 'vm'
+    }
+  )
   .name;

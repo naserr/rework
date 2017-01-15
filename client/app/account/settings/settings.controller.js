@@ -16,8 +16,9 @@ export default class SettingsController {
   submitted = false;
 
   /*@ngInject*/
-  constructor(Auth) {
+  constructor(Auth, $rootScope) {
     this.Auth = Auth;
+    this.$rootScope = $rootScope;
     moment.loadPersian();
     this.user.expire = moment(this.user.expire).fromNow();
     merge(this.user, Auth.getCurrentUserSync());
@@ -30,6 +31,7 @@ export default class SettingsController {
     if(form.$valid) {
       this.Auth.saveSettings(this.user)
         .then(() => {
+          this.$rootScope.$broadcast('AVATAR_CHANGED', this.user);
           this.message = 'رمز عبور اشتباه است';
         })
         .catch(() => {

@@ -2,10 +2,8 @@
     <form>
         <div class="row">
             <div class="col-md-12">
-                <div class="form-group">
-                    <label>کاربران این وظیفه</label>
-                </div>
                 <div class="form-group" ng-class="{'has-error': vm.errors.users}">
+                    <label>کاربران این وظیفه</label>
                     <tags-input ng-model="vm.newTask.users" display-property="name" on-tag-adding="vm.addUser($tag)"
                                 ng-disabled="!vm.projectUsers.length"
                                 placeholder="{{vm.projectUsers.length ? 'کاربر' : 'کاربری وجود ندارد'}}"
@@ -14,7 +12,7 @@
                     </tags-input>
                     <small class="help-block" ng-show="vm.errors.users">کاربر (های) مسئول این وظیفه را انتخاب کنید</small>
                 </div>
-                <div class="form-group" ng-class="{'has-error': vm.errors.description}">
+                <div class="form-group" ng-class="{'has-error': vm.errors.title}">
                     <!--<label for="desc">&nbsp;</label>-->
                     <input type="text" class="form-control" ng-model="vm.newTask.title"
                               placeholder="عنوان" ng-change="vm.errors.title = false"></input>

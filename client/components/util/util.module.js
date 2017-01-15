@@ -53,6 +53,19 @@ export default angular.module('reworkApp.util', [])
       }
     };
   })
+  .directive('ngEnter', function() {
+    return function(scope, element, attrs) {
+      element.bind("keydown keypress", function(event) {
+        if(event.which === 13) {
+          scope.$apply(function() {
+            scope.$eval(attrs.ngEnter);
+          });
+
+          event.preventDefault();
+        }
+      });
+    };
+  })
   .filter('jalaaliDate', function filter() {
     return function(inputDate, format) {
       var date = moment(inputDate);

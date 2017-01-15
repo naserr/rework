@@ -1,59 +1,99 @@
 <section>
-    <form>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>کاربران این وظیفه</label>
-                </div>
-                <div class="form-group" ng-class="{'has-error': vm.errors.users}">
-                    <tags-input ng-model="vm.newTask.users" display-property="name" on-tag-adding="vm.addUser($tag)"
-                                ng-disabled="!vm.projectUsers.length"
-                                placeholder="{{vm.projectUsers.length ? 'کاربر' : 'کاربری وجود ندارد'}}"
-                                add-from-autocomplete-only="true">
-                        <auto-complete source="vm.users()" min-length="1"></auto-complete>
-                    </tags-input>
-                    <small class="help-block" ng-show="vm.errors.users">کاربر (های) مسئول این وظیفه را انتخاب کنید</small>
-                </div>
-                <div class="form-group" ng-class="{'has-error': vm.errors.description}">
-                    <!--<label for="desc">&nbsp;</label>-->
-                    <input type="text" class="form-control" ng-model="vm.newTask.title"
-                              placeholder="عنوان" ng-change="vm.errors.title = false"></input>
-                    <small class="help-block" ng-show="vm.errors.title">عنوان وظیفه را بنویسید</small>
-                </div>
-                <div class="form-group" ng-class="{'has-error': vm.errors.description}">
-                    <!--<label for="desc">&nbsp;</label>-->
-                    <textarea class="form-control" id="desc" ng-model="vm.newTask.description"
-                              placeholder="شرح وظیفه" ng-change="vm.errors.description = false"></textarea>
-                    <small class="help-block" ng-show="vm.errors.description">شرح وظیفه را بنویسید</small>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" ng-model="vm.newTask.hasDate">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        انتخاب تاریخ
-                    </label>
-                </div>
-                <div class="row" ng-show="vm.newTask.hasDate">
-                    <div class="form-group col-md-4">
-                        <span>از </span>
-                        <input date-picker="vm.newTask.startDate" type="text" class="form-control input-sm"
-                               id="startDate" readonly placeholder="از تاریخ">
-                        <!--{{vm.newTask.startDate | jalaaliDate: 'jDD jMMMM'}}-->
-                    </div>
-                    <div class="form-group col-md-4">
-                        <span>تا </span>
-                        <input date-picker="vm.newTask.endDate" type="text" class="form-control input-sm"
-                               id="endDate" readonly placeholder="تا تاریخ">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group text-center">
-                            <button type="button" class="btn btn-primary" ng-click="closeThisDialog()">انصراف</button>
-                            <button type="button" class="btn btn-success" ng-click="vm.saveTask()">ذخیره</button>
+    <div style="margin-top: 50px;">
+        <div class="col-md-offset-1">&nbsp;</div>
+        <div class="col-md-10">
+            <h2>وظیفه ها</h2>
+        </div>
+    </div>
+    <div style="margin-top: 20px;">
+        <div class="col-md-offset-1">&nbsp;</div>
+        <div class="col-md-5">
+            <div class="list-group">
+                <a href="#" class="list-group-item" ng-repeat="task in vm.project.tasks"
+                   ng-class="{'active': task == vm.selectedTask, 'list-group-item-success': vm.isVisited(task)}"
+                   ng-click="vm.onTaskClicked(task)" ng-show="vm.isOwner || vm.isVisible(task)">
+                    <h4 class="list-group-item-heading">{{task.title}}</h4>
+                    <p class="list-group-item-text">ایجاد شده در تاریخ
+                        <b>{{task.created | jalaaliDate: 'jYYYY/jMM/jDD'}}</b> توسط
+                        <small><b>{{task.createdBy.name}}</b></small>
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-offset-1">&nbsp;</div>
+        <div class="col-md-4" ng-show="vm.selectedTask">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" ng-class="{'has-error': vm.errors.users}">
+                                    <label>کاربران این وظیفه</label>
+                                    <tags-input ng-model="vm.selectedTask.users" display-property="name"
+                                                on-tag-adding="vm.addUser($tag)"
+                                                ng-disabled="!vm.projectUsers.length || !vm.isOwner"
+                                                placeholder="{{vm.projectUsers.length ? 'کاربر' : 'کاربری وجود ندارد'}}"
+                                                add-from-autocomplete-only="true">
+                                        <auto-complete source="vm.users()" min-length="1"></auto-complete>
+                                    </tags-input>
+                                    <small class="help-block" ng-show="vm.errors.users">کاربر (های) مسئول این وظیفه را
+                                        انتخاب
+                                        کنید
+                                    </small>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': vm.errors.title}">
+                                    <!--<label for="desc">&nbsp;</label>-->
+                                    <input type="text" class="form-control" ng-model="vm.selectedTask.title"
+                                           ng-disabled="!vm.isOwner"
+                                           placeholder="عنوان" ng-change="vm.errors.title = false">
+                                    <small class="help-block" ng-show="vm.errors.title">عنوان وظیفه را بنویسید</small>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': vm.errors.description}">
+                                    <textarea class="form-control" id="desc" ng-model="vm.selectedTask.description"
+                                              placeholder="شرح وظیفه" ng-change="vm.errors.description = false"
+                                              ng-disabled="!vm.isOwner">
+                                    </textarea>
+                                    <small class="help-block" ng-show="vm.errors.description">شرح وظیفه را بنویسید
+                                    </small>
+                                </div>
+                                <div class="checkbox" ng-show="vm.isOwner">
+                                    <label>
+                                        <input type="checkbox" ng-model="vm.selectedTask.hasDate"
+                                               ng-disabled="!vm.isOwner">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        انتخاب تاریخ
+                                    </label>
+                                </div>
+                                <div class="row" ng-show="vm.selectedTask.hasDate">
+                                    <div class="form-group col-md-4">
+                                        <span>از </span>
+                                        <input date-picker="vm.selectedTask.startDate" type="text"
+                                               class="form-control input-sm" ng-disabled="!vm.isOwner"
+                                               id="startDate" readonly placeholder="از تاریخ">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <span>تا </span>
+                                        <input date-picker="vm.selectedTask.endDate" type="text"
+                                               class="form-control input-sm" ng-disabled="!vm.isOwner"
+                                               id="endDate" readonly placeholder="تا تاریخ">
+                                    </div>
+                                </div>
+                                <div class="row" ng-show="vm.isOwner">
+                                    <div class="col-md-12">
+                                        <div class="form-group text-center">
+                                            <button type="button" class="btn btn-danger"
+                                                    ng-click="vm.deleteTask(vm.selectedTask)">
+                                                حذف
+                                            </button>
+                                            <button type="button" class="btn btn-success" ng-click="vm.saveTask()">ذخیره
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
 </section>
