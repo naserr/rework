@@ -29,18 +29,20 @@ div.cart {
   position: relative;
   bottom: 0;
   z-index: 50;
-  display: table;
+    display: flex;
+    display: -webkit-flex;
 }
 
-div.cart p{
-  display: table-cell;
-  vertical-align: top;
-  text-align: center;
+div.cart p {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
 }
 
 div.new_cart_wrapper {
   position: absolute;
-  bottom: -70x;
+    bottom: -70px;
   left: 0;
   right: 0;
 }
@@ -114,7 +116,7 @@ div.cart textarea:-ms-input-placeholder {
 ul.cart_menu {
   background-color: #21324f;
   position: absolute;
-  left: 152px;
+    left: 105px;
   top: 0;
   padding: 0 7px;
   border-radius: 10px;
@@ -214,7 +216,8 @@ h5.header_board_cell {
   div.content_wrapper {
     height: 85.5vh;
   }
-  div.board {
+
+    div.board {
     margin: 15px 15px 0 0;
   }
 }

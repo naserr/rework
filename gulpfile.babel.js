@@ -517,25 +517,25 @@ gulp.task('revReplaceWebpack', function() {
 
 gulp.task('copy:extras', () => {
   return gulp.src([
-      `${clientPath}/favicon.ico`,
-      `${clientPath}/robots.txt`,
-      `${clientPath}/.htaccess`,
-      `${clientPath}/landing.html`
-    ], {dot: true})
+    `${clientPath}/favicon.ico`,
+    `${clientPath}/robots.txt`,
+    `${clientPath}/.htaccess`,
+    `${clientPath}/landing.html`
+  ], {dot: true})
     .pipe(gulp.dest(`${paths.dist}/${clientPath}`));
 });
 
 gulp.task('copy:boards', () => {
   return gulp.src([
-      `${clientPath}/boards/*`
-    ], {dot: true})
+    `${clientPath}/boards/*`
+  ], {dot: true})
     .pipe(gulp.dest(`${paths.dist}/${clientPath}/boards`));
 });
 
 gulp.task('copy:landing', () => {
   return gulp.src([
-      `${clientPath}/app/landing/*`
-    ], {dot: true})
+    `${clientPath}/app/landing/*`
+  ], {dot: true})
     .pipe(gulp.dest(`${paths.dist}/${clientPath}/app/landing`))
     ;
 });
@@ -576,7 +576,7 @@ gulp.task('copy:assets', () => {
 
 gulp.task('copy:server', () => {
   return gulp.src([
-      'package.json'
+    'package.json'
     ], {cwdbase: true})
     .pipe(gulp.dest(paths.dist));
 });

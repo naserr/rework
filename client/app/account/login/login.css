@@ -57,6 +57,10 @@ div.user_name_container input, div.password_container input, div.email_container
     direction: rtl;
 }
 
+main.main_sign_In_section div.password_container input {
+    margin-bottom: 0;
+}
+
 main.main_sign_In_section p.sign_In_or_paregraph {
     margin-bottom: 20px;
 }
@@ -94,8 +98,24 @@ div.signIn_password_forgotten {
     margin: 14px 0;
 }
 
-div.signIn_password_forgotten a {
+div.password_container a.signIn_password_forgotten {
     display: block;
-    text-align: center;
+    text-align: left;
+    font-size: 10px;
     color: #838383;
+}
+
+div.register_link_wrapper {
+    margin: 20px 0 17px 0;
+}
+
+a.register_link {
+    margin-right: 5px;
+    color: #5584ff;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #5584ff;
+}
+
+div.register_link p {
+    float: right;
 }

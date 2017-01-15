@@ -51,10 +51,11 @@
         </ul>
     </li>
     <li class="list_menu_desktop_item download_art_item clearfix">
-        <a href="" ng-click="$ctrl.accordion($event)"><i></i>دانلود بوم</a>
-        <ul class="sub_menu_desktop download_art_item">
+        <a href="" ng-click="$ctrl.accordion($event)" class="active"><i></i>دانلود بوم</a>
+        <ul class="sub_menu_desktop download_art_item" style="display: block">
             <li class="sub_menu_desktop_item clearfix">
-                <a class="link_pdf" href="">PDF</a><a class="link_jpg" href="">JPG</a>
+                <a class="link_pdf" href="" ng-click="$ctrl.saveBoard('pdf')">PDF</a>
+                <a class="link_jpg" href="" ng-click="$ctrl.saveBoard('jpg')">JPG</a>
             </li>
         </ul>
     </li>
