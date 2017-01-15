@@ -139,6 +139,7 @@ export class projectDesktopComponent {
           doc.save(`board-${bName}`);
         }
         else if(saveAs === 'jpg') {
+          var context = canvas.getContext('2d');
           var a = document.createElement('a');
           a.href = canvas.toDataURL('image/png');
           a.download = `board-${bName}`;
