@@ -66,6 +66,16 @@ class ListTaskComponent {
         isVisited: true
       });
     }
+    if(userIndex === -1) {
+      let patches = [
+        {
+          op: 'replace',
+          path: `/tasks/${taskIndex}/isVisited`,
+          value: true
+        }
+      ];
+      this.$http.patch(`api/projects/patchTasks/${this.project._id}`, patches);
+    }
   }
 
   isVisible(task) {

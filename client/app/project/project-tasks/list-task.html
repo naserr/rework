@@ -9,13 +9,14 @@
         <div class="col-md-offset-1">&nbsp;</div>
         <div class="col-md-5">
             <div class="list-group">
-                <a href="#" class="list-group-item" ng-repeat="task in vm.project.tasks"
+                <a href="" class="list-group-item" ng-repeat="task in vm.project.tasks"
                    ng-class="{'active': task == vm.selectedTask, 'list-group-item-success': vm.isVisited(task)}"
                    ng-click="vm.onTaskClicked(task)" ng-show="vm.isOwner || vm.isVisible(task)">
                     <h4 class="list-group-item-heading">{{task.title}}</h4>
                     <p class="list-group-item-text">ایجاد شده در تاریخ
                         <b>{{task.created | jalaaliDate: 'jYYYY/jMM/jDD'}}</b> توسط
                         <small><b>{{task.createdBy.name}}</b></small>
+                        <i class="glyphicon glyphicon-chevron-left pull-left"></i>
                     </p>
                 </a>
             </div>

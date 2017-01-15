@@ -65,7 +65,7 @@ export class projectDesktopComponent {
           let newTask = _.last(result.tasks);
           newTask.created = new Date();
           newTask.createdBy = _.pick(Auth.getCurrentUserSync(), ['_id', 'name', 'email', 'role']);
-          newTask.visited = false;
+          newTask.isVisited = false;
           let patches = [
             {
               op: 'add',

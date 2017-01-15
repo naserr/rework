@@ -21,8 +21,9 @@ export class BoardPreviewComponent {
     this.$http.post('api/projects/selectBoard', {
       id: this.project._id,
       board: this.board.name
-    }).then(() => {
+    }).then(result => {
       this.Auth.setDefaultBoard(this.board.name);
+      this.project.boards = result.data.boards;
       this.$state.go('project.desktop', {
         id: this.project._id,
         board: this.board.name
