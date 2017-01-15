@@ -19,7 +19,8 @@ class HeaderController {
     return _.filter(this.project.tasks, task => !!_.find(task.users, {_id: this.currUser._id})).length;
   }
 
-  toggleSidebar() {
+  toggleSidebar(event) {
+    $(event.target).parent().toggleClass('open');
     this.projectComponent.isOpen = !this.projectComponent.isOpen;
   }
 }
