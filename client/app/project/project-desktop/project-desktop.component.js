@@ -11,6 +11,12 @@ import jsPDF from 'jspdf';
 
 export class projectDesktopComponent {
   zoom = 1;
+  newContent = {
+    blue: '',
+    pink: '',
+    orange: '',
+    green: ''
+  };
 
   constructor($scope, $rootScope, $state, $stateParams, $http, Auth, socket, ngDialog, $log) {
     'ngInject';
@@ -58,16 +64,16 @@ export class projectDesktopComponent {
 
     let newTaskListener = $rootScope.$on('NEW_TASK', function() {
       ngDialog.openConfirm({
-        template: require('../project-tasks/new-task.html'),
-        plain: true,
-        controller: 'TaskController',
-        controllerAs: 'vm',
-        showClose: false,
-        data: project,
-        closeByDocument: false,
-        closeByEscape: false/*,
+          template: require('../project-tasks/new-task.html'),
+          plain: true,
+          controller: 'TaskController',
+          controllerAs: 'vm',
+          showClose: false,
+          data: project,
+          closeByDocument: false,
+          closeByEscape: false/*,
         width: 600*/
-      })
+        })
         .then(result => {
           let newTask = _.last(result.tasks);
           newTask.created = new Date();
@@ -101,12 +107,12 @@ export class projectDesktopComponent {
             top: '1px'
           },
           type,
-          content: `<p>${this.newCardContent}</p>`
+          content: `${this.newContent[type]}`
         }
       }
     ];
     this.$http.patch(`api/projects/${this.project._id}`, patches)
-      .then(() => this.newCardContent = '');
+      .then(() => this.newContent[type] = '');
   }
 
   onZoomChanged(zoomType) {
@@ -127,20 +133,30 @@ export class projectDesktopComponent {
 
   onSaveBoard(saveAs) {
     let bName = this.boardName;
+    let zoom = this.zoom;
     html2canvas(angular.element('#board'), {
       onrendered: function(canvas) {
+        let width = canvas.width * zoom;
+        let height = canvas.height * zoom;
+        let canvas2 = document.createElement('canvas');
+        let ctx = canvas2.getContext('2d');
+        ctx.canvas.width = width;
+        ctx.canvas.height = height;
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, width, height);
+        ctx.drawImage(canvas, 0, 0, width, height);
+        let img = canvas2.toDataURL('image/png');
         if(saveAs === 'pdf') {
-          var img = canvas.toDataURL("image/png"),
-            doc = new jsPDF({
-              unit: 'px',
-              format: 'a3'
-            });
+          let doc = new jsPDF({
+            unit: 'px',
+            format: 'a3'
+          });
           doc.addImage(img, 'JPEG', 0, 0);
           doc.save(`board-${bName}`);
         }
         else if(saveAs === 'jpg') {
           var a = document.createElement('a');
-          a.href = canvas.toDataURL('image/png');
+          a.href = img;
           a.download = `board-${bName}`;
           a.click();
         }
