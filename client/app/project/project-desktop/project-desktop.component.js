@@ -101,7 +101,8 @@ export class projectDesktopComponent {
             top: '1px'
           },
           type,
-          content: `${this.newCardContent}`
+          content: `${this.newCardContent}
+`
         }
       }
     ];
