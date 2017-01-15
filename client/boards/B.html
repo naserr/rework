@@ -3,7 +3,7 @@
   <button class="rework_btn btn_info pull-left" ng-click="vm.zoomIn()">+</button>
   <button class="rework_btn btn_info pull-left" ng-click="vm.newCard()">new</button>
 </div>-->
-<div class="board_container clearfix">
+<div class="board_container clearfix" id="board">
     <div class="zoom_content" style="transform-origin: right top 0; transition: 0.1s ease-out;"
          ng-style="{'transform': 'scale(' + vm.zoom + ', ' + vm.zoom + ')'}">
         <div class="board" id="target">
