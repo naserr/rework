@@ -101,7 +101,7 @@ export class projectDesktopComponent {
             top: '1px'
           },
           type,
-          content: `<p>${this.newCardContent}</p>`
+          content: `${this.newCardContent}`
         }
       }
     ];
@@ -161,7 +161,7 @@ export class projectDesktopComponent {
       parent = $(event.target);
     }
     if(parent.css('bottom') == '0px') {
-      parent.animate({bottom: '100px'}, 'fast');
+      parent.animate({bottom: '70px'}, 'fast');
     }
     else {
       //      $('.new_cart_wrapper .cart').animate({bottom: '0'}, 'fast');
