@@ -6,6 +6,8 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngDialog from 'ng-dialog';
 import 'ng-tags-input';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 export class projectDesktopComponent {
   zoom = 1;
@@ -30,6 +32,7 @@ export class projectDesktopComponent {
       socket.unsyncUpdates('project');
       newTaskListener();
       zoomListener();
+      saveListener();
     });
 
     let project = this.project;
@@ -49,18 +52,22 @@ export class projectDesktopComponent {
       this.onZoomChanged(zoomType);
     });
 
+    let saveListener = $rootScope.$on('SAVE_BOARD', (e, saveAs) => {
+      this.onSaveBoard(saveAs);
+    });
+
     let newTaskListener = $rootScope.$on('NEW_TASK', function() {
       ngDialog.openConfirm({
-          template: require('../project-tasks/new-task.html'),
-          plain: true,
-          controller: 'TaskController',
-          controllerAs: 'vm',
-          showClose: false,
-          data: project,
-          closeByDocument: false,
-          closeByEscape: false/*,
+        template: require('../project-tasks/new-task.html'),
+        plain: true,
+        controller: 'TaskController',
+        controllerAs: 'vm',
+        showClose: false,
+        data: project,
+        closeByDocument: false,
+        closeByEscape: false/*,
         width: 600*/
-        })
+      })
         .then(result => {
           let newTask = _.last(result.tasks);
           newTask.created = new Date();
@@ -118,6 +125,29 @@ export class projectDesktopComponent {
     }
   }
 
+  onSaveBoard(saveAs) {
+    let bName = this.boardName;
+    html2canvas(angular.element('#board'), {
+      onrendered: function(canvas) {
+        if(saveAs === 'pdf') {
+          var img = canvas.toDataURL("image/png"),
+            doc = new jsPDF({
+              unit: 'px',
+              format: 'a3'
+            });
+          doc.addImage(img, 'JPEG', 0, 0);
+          doc.save(`board-${bName}`);
+        }
+        else if(saveAs === 'jpg') {
+          var a = document.createElement('a');
+          a.href = canvas.toDataURL('image/png');
+          a.download = `board-${bName}`;
+          a.click();
+        }
+      }
+    });
+  }
+
   focus(event) {
     var parent = null;
     if($(event.target).is('input')) {
@@ -130,39 +160,24 @@ export class projectDesktopComponent {
       parent = $(event.target);
     }
     if(parent.css('bottom') == '0px') {
-      parent.animate({bottom: '-105px'}, 'fast');
+      parent.animate({bottom: '100px'}, 'fast');
     }
     else {
-      $('.new_cart_wrapper .cart').animate({bottom: '-105px'}, 'fast');
+      //      $('.new_cart_wrapper .cart').animate({bottom: '0'}, 'fast');
       parent.animate({bottom: 0}, 'fast');
     }
   }
+
+  blur() {
+    $('.new_cart_wrapper .cart').animate({bottom: '0'}, 'fast');
+  }
 }
 
-export
-default
-angular
-  .module(
-    'reworkApp.project.desktop'
-    ,
-    [uiRouter
-      ,
-      ngDialog
-      ,
-      'ngTagsInput'
-    ])
-  .component(
-    'projectDesktop'
-    , {
-      template: require
-      (
-        './project-desktop.html'
-      ),
-      bindings: {project: '='}
-      ,
-      controller: projectDesktopComponent
-      ,
-      controllerAs: 'vm'
-    }
-  )
+export default angular.module('reworkApp.project.desktop', [uiRouter, ngDialog, 'ngTagsInput'])
+  .component('projectDesktop', {
+    template: require('./project-desktop.html'),
+    bindings: {project: '='},
+    controller: projectDesktopComponent,
+    controllerAs: 'vm'
+  })
   .name;

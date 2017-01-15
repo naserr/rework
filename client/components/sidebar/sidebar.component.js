@@ -32,6 +32,10 @@ class SidebarComponent {
     this.$rootScope.$broadcast('ZOOM_CHANGED', zoom);
   }
 
+  saveBoard(saveAs) {
+    this.$rootScope.$broadcast('SAVE_BOARD', saveAs);
+  }
+
   accordion(event) {
     var parent = null;
     if($(event.target).is('i')) {
