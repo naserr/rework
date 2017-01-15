@@ -76,14 +76,14 @@
                 </div>
             </div>
         </div>
-        <div ng-repeat="card in vm.project.cards" draggabilly
-             class="cart {{card.type}}" id="{{card._id}}" style="position: absolute;"
-             ng-style="{'left': card.position.left, 'top': card.position.top}" ng-bind-html="card.content" draggie-events="end">
-         <!-- <div style="direction: rtl; text-align: right;position:absolute;right:0;left:0;top:0;bottom:0;" ></div>-->
-           <!-- <ul class="cart_menu">
+        <div ng-repeat="card in vm.project.cards" draggabilly class="cart {{card.type}}" id="{{card._id}}"
+             style="position: absolute;"
+             ng-style="{'left': card.position.left, 'top': card.position.top}" draggie-events="end">
+            <!--<p style="direction: rtl; text-align: right" ng-bind-html="card.content"></p>-->
+            <textarea>{{card.content}}</textarea>
+            <ul class="cart_menu">
                 <li class="cart_menu_item">
-                    <a class="color_cart" href="#" placement="right" data-animation="am-flip-x" bs-dropdown
-                       aria-haspopup="true" aria-expanded="false"></a>
+                    <a class="color_cart" href="#" ng-click=""></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="">5%</a></li>
                         <li><a href="">25%</a></li>
@@ -102,7 +102,7 @@
                         <i class="remove_icon"></i>
                     </a>
                 </li>
-            </ul>-->
+            </ul>
         </div>
     </div>
 </div>

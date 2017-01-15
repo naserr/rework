@@ -28,7 +28,8 @@ class HeaderController {
     })).length;
   }
 
-  toggleSidebar() {
+  toggleSidebar(event) {
+    $(event.target).parent().toggleClass('open');
     this.projectComponent.isOpen = !this.projectComponent.isOpen;
   }
 
@@ -36,10 +37,10 @@ class HeaderController {
     let taskIndex = _.findIndex(this.project.tasks, t => t == task);
     let userIndex = _.findIndex(task.users, u => u._id == this.currUser._id);
     this.$http.put(`api/projects/toggleTaskVisited/${this.project._id}`, {
-        taskIndex: taskIndex,
-        userIndex: userIndex,
-        isVisited: true
-      })
+      taskIndex: taskIndex,
+      userIndex: userIndex,
+      isVisited: true
+    })
       .then(pr => {
         this.project.tasks = pr.data.tasks;
       });

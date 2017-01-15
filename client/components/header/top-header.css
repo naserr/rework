@@ -11,13 +11,16 @@ ul.navbar_nav_list li.nvabar_item {
 }
 
 ul.navbar_nav_list li.nvabar_item.sidebar_toggler a {
-  width: 36px;
+  width: 24px;
   height: 24px;
   margin-right: 6px;
   display: inline-block;
   background: url('../../assets/icons/icons.png') -388px -38px;
 }
 
+ul.navbar_nav_list li.nvabar_item.sidebar_toggler.open i {
+  display: none;
+}
 ul.navbar_nav_list li.nvabar_item.sidebar_toggler i {
   width: 10px;
   height: 23px;
@@ -98,7 +101,7 @@ ul.navbar_nav_list li.nvabar_item.project_name button i {
   background: #edeff2;
   border: none;
   margin-top: 9px;
-  width: 250px;
+  width: 170px;
   color: #0e1a35;
   font-size: 12px;
 }
