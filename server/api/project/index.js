@@ -15,6 +15,7 @@ router.post('/selectBoard', auth.isAuthenticated(), controller.selectBoard);
 router.put('/:id', auth.isAuthenticated(), controller.upsert);
 router.patch('/:id', auth.isAuthenticated(), controller.patch);
 router.put('/updateCards/:id', auth.isAuthenticated(), controller.updateCards);
+router.put('/newUser/:id', auth.isAuthenticated(), controller.newUser);
 router.patch('/patchTasks/:id', auth.isAuthenticated(), controller.patchTasks);
 router.put('/toggleTaskVisited/:id', auth.isAuthenticated(), controller.toggleTaskVisited);
 router.delete('/:id', auth.isAuthenticated(), controller.destroy);

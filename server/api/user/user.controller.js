@@ -30,6 +30,17 @@ export function index(req, res) {
 }
 
 /**
+ * Get list of users by email
+ * restriction: 'admin'
+ */
+export function findByEmail(req, res) {
+  let reg = new RegExp(`.*${req.params.q}.*`, 'i');
+  return User.find({email: reg}, '-salt -password').exec()
+    .then(users => res.status(200).json(users))
+    .catch(handleError(res));
+}
+
+/**
  * Get list of users in a project
  * restriction: 'admin'
  */

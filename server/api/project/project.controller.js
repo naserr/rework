@@ -139,6 +139,37 @@ export function join(req, res) {
     .catch(handleError(res, 400));
 }
 
+// join a Project with a key
+export function newUser(req, res) {
+  /**
+   * find project with provided key and deactivated it
+   * if requested user isn't already a project member then
+   * add user to project members with provided role
+   **/
+
+  return Project.findById(req.params.id).exec()
+    .then(checkIsValid)
+    .then(respondWithResult(res))
+    .catch(handleError(res, 400));
+
+  function checkIsValid(project) {
+    let activeKey = project.keys.find(k => k.active === true);
+    if(activeKey) {
+      project.users.push({
+        _id: req.body._id,
+        name: req.body.name,
+        email: req.body.email,
+        role: constants.roleNames.user
+      });
+
+      activeKey.active = false;
+
+      return project.save()
+    }
+    return Promise.reject('اجازه افزودن کاربر جدید ندارید، پلن خود را ارتقا دهید');
+  }
+}
+
 // add a board to a Project
 export function selectBoard(req, res) {
   return Project.findById(req.body.id).exec()
@@ -293,7 +324,7 @@ function hasDestroyAuthorization(res, user) {
 function initFreeProject(newProject) {
   newProject.keys.push(newProject.generateKey(constants.roleNames.user));
   newProject.keys.push(newProject.generateKey(constants.roleNames.user));
-  newProject.keys.push(newProject.generateKey(constants.roleNames.guest));
+  newProject.keys.push(newProject.generateKey(constants.roleNames.user));
 
   return newProject.save();
 }
@@ -319,7 +350,7 @@ function joinProject(key, user) {
       _id: user._id,
       name: user.name,
       email: user.email,
-      role
+      role: constants.roleNames.user
     });
     return project.save();
   };
