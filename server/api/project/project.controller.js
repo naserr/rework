@@ -76,7 +76,7 @@ export function index(req, res) {
 
 // Gets a single Project from the DB
 export function show(req, res) {
-  return Project.findById(req.params.id, '-keys').exec()
+  return Project.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(hasGetAuthorization(res, req.user._id))
     .then(hasExpired(res))
@@ -100,6 +100,7 @@ export function create(req, res) {
     users: [{
       _id: req.user._id,
       name: req.user.name,
+      email: req.user.email,
       role: constants.roleNames.admin
     }]
   });
@@ -317,6 +318,7 @@ function joinProject(key, user) {
     project.users.push({
       _id: user._id,
       name: user.name,
+      email: user.email,
       role
     });
     return project.save();

@@ -59,7 +59,11 @@ export default function($stateProvider) {
       authenticate: true,
       views: {
         '@project': {
-          template: '<project-manage project="$resolve.project.data"></project-manage>'
+          resolve: {
+            /*ngInject*/
+            users: ($http, $stateParams) => $http.get(`api/users/projectUsers/${$stateParams.id}`)
+          },
+          template: '<project-manage project="$resolve.project.data" users="$resolve.users.data"></project-manage>'
         }
       }
     })
