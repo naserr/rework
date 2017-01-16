@@ -1,6 +1,7 @@
 'use strict';
 
 import User from './user.model';
+import Project from '../project/project.model';
 import config from '../../config/environment';
 import jwt from 'jsonwebtoken';
 
@@ -26,6 +27,21 @@ export function index(req, res) {
   return User.find({}, '-salt -password').exec()
     .then(users => res.status(200).json(users))
     .catch(handleError(res));
+}
+
+/**
+ * Get list of users in a project
+ * restriction: 'admin'
+ */
+export function projectUsers(req, res) {
+  return Project.findById(req.params.id, '-keys').exec()
+    .then(findUsers)
+    .then(users => res.status(200).json(users))
+    .catch(handleError(res));
+
+  function findUsers(project) {
+    return User.find({_id: {$in: project.users.map(u => u._id)}}, '-salt -password').exec();
+  }
 }
 
 /**

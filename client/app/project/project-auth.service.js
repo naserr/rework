@@ -11,8 +11,7 @@ export default function ProjectAuthService(Auth, appConfig) {
     if(_.isArray(project)) {
       project = project[0];
     }
-    let tempUser = _.find(project.users, {_id: user._id});
-    console.log('user > ', tempUser, tempUser.role);
+    let tempUser = _.find(project.users, {_id: user._id}) || {};
     return tempUser.role || 0;
   }
 

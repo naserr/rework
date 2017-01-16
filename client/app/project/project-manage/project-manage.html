@@ -2,7 +2,8 @@
     <div class="col-md-10 clearfix">
         <div class="form_one_line clearfix">
             <label for='companyName'> نام شرکت/ استارتاپ:</label>
-            <input type='text' name="teamManagement" id="companyName" placeholder='نام انتخابی'/>
+            <input type='text' name="teamManagement" id="companyName" placeholder="نام انتخابی"
+                   ng-model="vm.project.name" disabled/>
         </div>
         <div class="form_one_line clearfix">
             <label for='url'>آدرس وبسایت:</label>
@@ -23,85 +24,31 @@
                 <thead>
                 <tr>
                     <th>نام</th>
-                    <th>نام کاربری</th>
                     <th class="text_center">ایمیل</th>
                     <th>نقش کاربری</th>
                     <th>حذف</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr ng-repeat="user in vm.project.users">
                     <td class="cell_img_container clearfix">
-                        <img src="assets/img/teamProfile.jpg" alt="profileImage" title="bradlyCopper">
-                        <p>بردلی کوپر</p>
+                        <img ng-src="data:image/jpeg;base64,{{vm.getUser(user._id).avatar.base64}}" alt="{{user.name}}"
+                             title="{{user.name}}">
+                        <p>{{user.name}}</p>
                     </td>
-                    <td>bradly</td>
-                    <td class="text_center">bradly@gmail.com</td>
+                    <td class="text_center">{{vm.getUser(user._id).email}}</td>
                     <td>
-                        <select>
-                            <option>مدیر</option>
-                            <option>عضو تیم</option>
-                        </select>
+                        <select ng-model="user.role" ng-options="role.value as role.name for role in vm.roles"
+                                disabled></select>
                     </td>
                     <td>
-                        <button class="delete_btn"><i></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="cell_img_container clearfix">
-                        <img src="assets/img/teamProfile2.jpg" alt="profileImage" title="bradlyCopper">
-                        <p>بردلی کوپر</p>
-                    </td>
-                    <td>bradly</td>
-                    <td class="text_center">bradly@gmail.com</td>
-                    <td>
-                        <select>
-                            <option>مدیر</option>
-                            <option>عضو تیم</option>
-                        </select>
-                    </td>
-                    <td>
-                        <button class="delete_btn"><i></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="cell_img_container clearfix">
-                        <img src="assets/img/teamProfile.jpg" alt="profileImage" title="bradlyCopper">
-                        <p>بردلی کوپر</p>
-                    </td>
-                    <td>bradly</td>
-                    <td class="text_center">bradly@gmail.com</td>
-                    <td>
-                        <select>
-                            <option>مدیر</option>
-                            <option>عضو تیم</option>
-                        </select>
-                    </td>
-                    <td>
-                        <button class="delete_btn"><i></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="cell_img_container clearfix">
-                        <img src="assets/img/teamProfile2.jpg" alt="profileImage" title="bradlyCopper">
-                        <p>بردلی کوپر</p>
-                    </td>
-                    <td>bradly</td>
-                    <td class="text_center">bradly@gmail.com</td>
-                    <td>
-                        <select>
-                            <option>مدیر</option>
-                            <option>عضو تیم</option>
-                        </select>
-                    </td>
-                    <td>
-                        <button class="delete_btn"><i></i></button>
+                        <button class="delete_btn" ng-click="vm.removeUser(user)"><i></i></button>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </div>
-        <div>
+        <!--<div>
             <label class="label_team_management">افزودن همکار جدید</label>
             <ul class="list_striiped">
                 <li class="clearfix">
@@ -117,31 +64,59 @@
                     <button class="add_btn pull-left"><i></i></button>
                 </li>
             </ul>
+        </div>-->
+        <div>
+            <label class="label_team_management">اطلاعات کلید ها</label>
+            <table class="table table-striped rework-table col-md-4">
+                <thead>
+                <tr>
+                    <th>کلید</th>
+                    <th class="text_center">وضعیت</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="key in vm.project.keys">
+                    <td class="cell_img_container clearfix">
+                        <p ng-if="key.active">{{key.value}}</p>
+                        <s ng-if="!key.active">{{key.value}}</s>
+                    </td>
+                    <td class="text_center">{{key.active ? 'قابل استفاده' : 'استفاده شده'}}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-    <aside class='aside_team_management_wrapper'>
+    <aside class='aside_team_management_wrapper' ng-class="{'blur': vm.project.owner.type === 'free'}">
         <div class="last_tasks_team_management clearfix">
             <h3 class="header_aside_team_management text-center">آخرین فعالیت ها</h3>
             <ul class="work_list">
                 <li class="work_list_item clearfix">
-                    <img src="assets/img/teamProfile2.jpg" alt="profileImage" title="bradlyCopper">
-                    <p>بردلی کوپر</p>
-                    <p>شروع کارت۳</p>
+                    <img ng-src="data:image/jpeg;base64,{{vm.getUser(vm.project.users[0]._id).avatar.base64}}"
+                         alt="profileImage" title="bradlyCopper">
+                    <p>{{vm.project.users[0].name}}</p>
+                    <p>شروع کارت 3</p>
                 </li>
                 <li class="work_list_item clearfix">
-                    <img src="assets/img/teamProfile.jpg" alt="profileImage" title="bradlyCopper">
-                    <p>بردلی کوپر</p>
-                    <p>شروع کارت۳</p>
+                    <img ng-src="data:image/jpeg;base64,{{vm.getUser(vm.project.users[1]._id).avatar.base64}}"
+                         alt="profileImage" title="bradlyCopper">
+                    <p>{{vm.project.users[1].name}}</p>
+                    <p>شروع کارت 2</p>
                 </li>
                 <li class="work_list_item clearfix">
-                    <img src="assets/img/teamProfile2.jpg" alt="profileImage" title="bradlyCopper">
-                    <p>بردلی کوپر</p>
-                    <p>شروع کارت۳</p>
+                    <img ng-src="data:image/jpeg;base64,{{vm.getUser(vm.project.users[0]._id).avatar.base64}}"
+                         alt="profileImage" title="bradlyCopper">
+                    <p>{{vm.project.users[0].name}}</p>
+                    <p>شروع کارت 1</p>
                 </li>
             </ul>
             <div class="work_link_more_wrapper clearfix">
                 <a class="work_link_more">بیشتر ببینید ...</a>
             </div>
+        </div>
+    </aside>
+    <aside class='aside_team_management_wrapper' style="height: 0" ng-if="vm.project.owner.type === 'free'">
+        <div class="last_tasks_team_management clearfix">
+            <h3 class="header_aside_team_management text-center">آخرین فعالیت ها</h3>
         </div>
     </aside>
 </section>
