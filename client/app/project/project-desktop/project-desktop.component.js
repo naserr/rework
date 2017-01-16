@@ -64,16 +64,16 @@ export class projectDesktopComponent {
 
     let newTaskListener = $rootScope.$on('NEW_TASK', function() {
       ngDialog.openConfirm({
-          template: require('../project-tasks/new-task.html'),
-          plain: true,
-          controller: 'TaskController',
-          controllerAs: 'vm',
-          showClose: false,
-          data: project,
-          closeByDocument: false,
-          closeByEscape: false/*,
+        template: require('../project-tasks/new-task.html'),
+        plain: true,
+        controller: 'TaskController',
+        controllerAs: 'vm',
+        showClose: false,
+        data: project,
+        closeByDocument: false,
+        closeByEscape: false/*,
         width: 600*/
-        })
+      })
         .then(result => {
           let newTask = _.last(result.tasks);
           newTask.created = new Date();
