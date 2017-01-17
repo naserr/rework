@@ -55,15 +55,15 @@
                 <li class="clearfix">
                     <p>
                         <input type="email" class="form-control" ng-model="vm.newUser" placeholder="email"
-                               uib-typeahead="user as user.email for user in vm.getUsers($viewValue)"
+                               uib-typeahead="user as user.email for user in vm.findUsers($viewValue)"
                                typeahead-wait-ms="2000"
                                typeahead-loading="vm.loadingLocations" typeahead-no-results="vm.noResults"
                                style="margin-top: 5px; text-align: left; width:300px; direction: ltr">
                         <i ng-show="vm.loadingLocations" class="glyphicon glyphicon-refresh"></i>
-                    <div ng-show="vm.noResults">
-                        <i class="glyphicon glyphicon-remove"></i> No Results Found
-                    </div>
                     </p>
+                    <div ng-show="vm.noResults">
+                        <i class="glyphicon glyphicon-remove"></i> نتیجه ای پیدا نشد
+                    </div>
                     <button class="add_btn pull-left" ng-click="vm.addNewUser(vm.newUser)"><i></i></button>
                 </li>
             </ul>

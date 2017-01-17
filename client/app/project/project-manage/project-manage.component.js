@@ -2,6 +2,7 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import typeahead from 'angular-ui-bootstrap/src/typeahead';
+import tooltip from 'angular-ui-bootstrap/src/tooltip';
 
 export class projectManageComponent {
   roles = [
@@ -37,7 +38,8 @@ export class projectManageComponent {
     return undefined;
   }
 
-  getUsers(val) {
+  findUsers(val) {
+    console.log('........');
     return this.$http.get(`api/users/findByEmail/${val}`).then(function(response) {
       return response.data;
     });
@@ -79,7 +81,7 @@ export class projectManageComponent {
   }
 }
 
-export default angular.module('reworkApp.project.manage', [uiRouter, typeahead])
+export default angular.module('reworkApp.project.manage', [uiRouter, typeahead, tooltip])
   .component('projectManage', {
     template: require('./project-manage.html'),
     bindings: {
