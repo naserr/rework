@@ -56,7 +56,7 @@ export class projectManageComponent {
     ];
     this.$http.patch(`api/projects/${this.project._id}`, patches)
       .then(project => {
-        this.project.users = project.users;
+        this.project.users = project.data.users;
       });
   }
 

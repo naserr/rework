@@ -37,7 +37,7 @@
                              title="{{user.name}}">
                         <p>{{user.name}}</p>
                     </td>
-                    <td class="text_center">{{user.email}}</td>
+                    <td class="text_center">{{vm.getUser(user._id).email}}</td>
                     <td>
                         <select ng-model="user.role" ng-options="role.value as role.name for role in vm.roles"
                                 disabled></select>
