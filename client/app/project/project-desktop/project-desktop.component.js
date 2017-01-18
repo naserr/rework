@@ -17,6 +17,12 @@ export class projectDesktopComponent {
     orange: '',
     green: ''
   };
+  filter = {
+    blue: false,
+    pink: false,
+    orange: false,
+    green: false
+  };
 
   constructor($scope, $rootScope, $state, $stateParams, $http, Auth, socket, ngDialog, $log) {
     'ngInject';
@@ -39,6 +45,7 @@ export class projectDesktopComponent {
       newTaskListener();
       zoomListener();
       saveListener();
+      filterListener();
     });
 
     let project = this.project;
@@ -62,18 +69,22 @@ export class projectDesktopComponent {
       this.onSaveBoard(saveAs);
     });
 
+    let filterListener = $rootScope.$on('CHANGE_FILTER', (e, filter) => {
+      this.filter = filter;
+    });
+
     let newTaskListener = $rootScope.$on('NEW_TASK', function() {
       ngDialog.openConfirm({
-        template: require('../project-tasks/new-task.html'),
-        plain: true,
-        controller: 'TaskController',
-        controllerAs: 'vm',
-        showClose: false,
-        data: project,
-        closeByDocument: false,
-        closeByEscape: false/*,
+          template: require('../project-tasks/new-task.html'),
+          plain: true,
+          controller: 'TaskController',
+          controllerAs: 'vm',
+          showClose: false,
+          data: project,
+          closeByDocument: false,
+          closeByEscape: false/*,
         width: 600*/
-      })
+        })
         .then(result => {
           let newTask = _.last(result.tasks);
           newTask.created = new Date();
@@ -162,6 +173,26 @@ export class projectDesktopComponent {
         }
       }
     });
+  }
+
+  filterCards() {
+    let cards = [];
+    if(this.filter.blue) {
+      cards = cards.concat(_.filter(this.project.cards, {type: 'blue'}));
+    }
+    if(this.filter.pink) {
+      cards = cards.concat(_.filter(this.project.cards, {type: 'pink'}));
+    }
+    if(this.filter.orange) {
+      cards = cards.concat(_.filter(this.project.cards, {type: 'orange'}));
+    }
+    if(this.filter.green) {
+      cards = cards.concat(_.filter(this.project.cards, {type: 'green'}));
+    }
+    if(!(this.filter.blue || this.filter.pink || this.filter.orange || this.filter.green)) {
+      cards = this.project.cards;
+    }
+    return cards;
   }
 
   focus(event) {

@@ -4,6 +4,12 @@ import angular from 'angular';
 
 class SidebarComponent {
   user;
+  cardFilters = {
+    blue: false,
+    pink: false,
+    orange: false,
+    green: false
+  };
 
   constructor($rootScope, $state, Auth, ProjectAuth) {
     'ngInject';
@@ -35,6 +41,10 @@ class SidebarComponent {
 
   saveBoard(saveAs) {
     this.$rootScope.$broadcast('SAVE_BOARD', saveAs);
+  }
+
+  changeFilter(filter) {
+    this.$rootScope.$broadcast('CHANGE_FILTER', filter);
   }
 
   accordion(event) {
