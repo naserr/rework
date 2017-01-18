@@ -142,7 +142,6 @@
           <li data-target="#myCarousel" data-slide-to="1"></li>
         </ol>
       </div>
-
     </div>
   </section>
   <section id='makeVideo' class="main_page_section video_section clearfix">
@@ -320,51 +319,61 @@
     //animate for cards
     $('#tools').bind('mousewheel', function (e) {
       if (e.originalEvent.wheelDelta < 0) {
+        var width=$('.board_wrapper').width();
+        var height=$('.board_wrapper').height();
+        var subtractWidth=1600-width;
+        var subtractHeight=800-height;
+        var ratio_x=(subtractWidth/100)*20;
+        var ratio_y=(subtractHeight/100)*20;
+        ratio_x=-ratio_x;
+        ratio_y=-ratio_y;
+        console.log('width'+width,'ratio_x'+ratio_x,'height'+height);
+//        width<1600?ratio_x=-ratio_x:ratio_x;
         $('.card_wrapper_top .card_yellow').animate({
-          top: '120',
-          left: '300',
+          top: JSON.stringify(ratio_y+120),
+          right: JSON.stringify(ratio_x+720),
         }, '200');
         $('.card_wrapper_top .card_pink').animate({
-          top: '350',
-          left: '700',
+          top: JSON.stringify(ratio_y+350),
+          right: JSON.stringify(ratio_x+720),
         }, '1000');
 
         $('.card_wrapper_left .card_pink').animate({
-          top: '125',
-          left: '200',
+          top: JSON.stringify(ratio_y+125),
+          left: JSON.stringify(ratio_x+200),
         }, '200');
         $('.card_wrapper_left .card_green').animate({
-          top: '318',
-          left: '150',
+          top: JSON.stringify(ratio_y+318),
+          left: JSON.stringify(ratio_x+150),
         }, '200');
         $('.card_wrapper_left .card_brown').animate({
-          top: '90',
-          left: '400',
+          top:  JSON.stringify(ratio_y+90),
+          left: JSON.stringify(ratio_x+420),
         }, '600');
         $('.card_wrapper_left .card_green_bottom').animate({
-          top: '520',
-          left: '250',
+          top: JSON.stringify(ratio_y+600),
+          left: JSON.stringify(ratio_x+350),
         }, '2000');
         $('.card_wrapper_left .card_green_bottom2').animate({
-          top: '535',
-          left: '390',
+          top: JSON.stringify(ratio_y+600),
+          left: JSON.stringify(ratio_x+560),
         }, '2000');
 
         $('.card_wrapper_right .card_gray').animate({
-          top: '125',
-          right: '200',
+          top: JSON.stringify(ratio_y+125),
+          right: JSON.stringify(ratio_x+200),
         }, '400');
         $('.card_wrapper_right .card_purple').animate({
-          top: '100',
-          right: '400',
+          top: JSON.stringify(ratio_y+120),
+          right: JSON.stringify(ratio_x+450),
         }, '100');
         $('.card_wrapper_right .card_purple_bottom').animate({
-          top: '520',
-          right: '250',
+          top: JSON.stringify(ratio_y+590),
+          right: JSON.stringify(ratio_x+250),
         }, '2000');
         $('.card_wrapper_right .card_purple_bottom2').animate({
-          top: '520',
-          right: '450',
+          top:  JSON.stringify(ratio_y+590),
+          right:  JSON.stringify(ratio_y+450),
         }, '2000');
       }
     });

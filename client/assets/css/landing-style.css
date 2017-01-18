@@ -437,11 +437,11 @@ div.slider_controller button.active {
 }
 
 .card_wrapper_left .card {
-  left: -200px;
+  left: 0;
 }
 
 .card_wrapper_right .card {
-  right: -200px;
+  right: 0;
 }
 
 .card_wrapper_top .card {
@@ -450,7 +450,7 @@ div.slider_controller button.active {
 }
 
 .card {
-  top: 0;
+  top: 600px;
   position: absolute;
   opacity: .4;
 }
