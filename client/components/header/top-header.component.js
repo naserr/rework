@@ -11,6 +11,8 @@ class HeaderController {
     this.currUser = Auth.getCurrentUserSync();
     this.isOwner = ProjectAuth.hasAccess(this.project, 'admin');
 
+    console.log('projects', this.myProjects);
+
     $rootScope.$on('AVATAR_CHANGED', (e, u) => this.currUser.avatar = u.avatar);
   }
 
@@ -52,7 +54,10 @@ export default angular.module('directives.header', [])
     require: {
       projectComponent: '^project'
     },
-    bindings: {project: '='},
+    bindings: {
+      project: '=',
+      myProjects: '='
+    },
     template: require('./top-header.html'),
     controller: HeaderController,
     controllerAs: 'vm'

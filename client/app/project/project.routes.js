@@ -7,10 +7,11 @@ export default function($stateProvider) {
       url: '/{id:[0-9a-fA-F]{24}}',
       abstract: true,
       authenticate: true,
-      template: '<project project="$resolve.project.data"></project>',
+      template: '<project project="$resolve.project.data" my-projects="$resolve.myProjects.data"></project>',
       resolve: {
         /*@ngInject*/
-        project: ($http, $stateParams) => $http.get(`/api/projects/${$stateParams.id}`)
+        project: ($http, $stateParams) => $http.get(`/api/projects/${$stateParams.id}`),
+        myProjects: $http => $http.get('/api/projects/me')
       }
     })
     .state('project.boards', {

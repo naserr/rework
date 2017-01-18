@@ -198,7 +198,7 @@ export function newUser(req, res) {
 export function selectBoard(req, res) {
   return Project.findById(req.body.id).exec()
     .then(handleEntityNotFound(res))
-    .then(hasGetAuthorization(res, req.user._id))
+    .then(hasGetAuthorization(res, req.user._id, constants.roleNames.admin, req.body.board))
     .then(setDefaultBoard(req.user, req.body.board))
     .then(addBoard(req.body.board))
     .then(respondWithResult(res))
@@ -308,7 +308,7 @@ export function destroy(req, res) {
     .catch(handleError(res));
 }
 
-function hasGetAuthorization(res, userId) {
+function hasGetAuthorization(res, userId, requiredRole = constants.roleNames.guest, board) {
   return function(project) {
     if(project) {
       let user = project.users.id(userId);
@@ -317,7 +317,11 @@ function hasGetAuthorization(res, userId) {
         res.status(403).end('شما عضو این پروژه نیستید');
         return null;
       }
-      else if(user.role !== constants.roleNames.admin) {
+      let theBoard = project.boards.find(b => b.name === board);
+      if(theBoard) {
+        return project;
+      }
+      else if(user.role < requiredRole) {
         res.status(403).end('فقط مدیر پروژه میتواند ابزار انتخاب کند');
         return null;
       }

@@ -16,7 +16,7 @@ export class projectComponent {
 
   constructor($rootScope) {
     'ngInject';
-    
+
     if(_.isArray(this.project)) {
       this.project = this.project[0];
     }
@@ -27,7 +27,8 @@ export default angular.module('reworkApp.project', [uiRouter, boardList, boardPr
   .component('project', {
     template: require('./project.html'),
     bindings: {
-      project: '='
+      project: '=',
+      myProjects: '='
     },
     controller: projectComponent
   })
