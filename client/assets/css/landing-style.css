@@ -351,6 +351,7 @@ div.logo {
 
 main.main_block {
   position: relative;
+  z-index: 50;
 }
 
 
@@ -411,6 +412,7 @@ footer.main_footer div.slider_controller {
   display: inline-block;
 }
 
+
 /*div.slider_controller button {
     width: 10px;
     height: 10px;
@@ -434,11 +436,35 @@ div.slider_controller button.active {
   float: right;
 }
 
+.card_wrapper_left .card {
+  left: -200px;
+}
+
+.card_wrapper_right .card {
+  right: -200px;
+}
+
+.card_wrapper_top .card {
+  right: 600px;
+  top:-200px;
+}
+
+.card {
+  top: 0;
+  position: absolute;
+  opacity: .4;
+}
+
+.board_wrapper {
+  position: relative;
+}
+
 
 /*******ToolsSection********/
 
 section.main_page_section {
   position: relative;
+  overflow: hidden;
 }
 
 
@@ -504,6 +530,7 @@ div.consolation_management_section_context div.lead_intro_container a.lead_link 
 .myCarousel_tools li {
   border: 1px solid #00e0d0;
 }
+
 
 /*******MakeVideo********/
 

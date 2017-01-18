@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('reworkApp.landing', ['toastr', 'duScroll'])
+  .value('duScrollBottomSpy', true)
   .config(function(toastrConfig) {
     //noinspection ES6ModulesDependencies
     angular.extend(toastrConfig, {

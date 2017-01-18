@@ -10,7 +10,7 @@
 </head>
 
 <body ng-app="reworkApp.landing" ng-controller="LandingController as vm">
-<main id="carousel_home" class="main_block carousel clearfix" data-ride="carousel">
+  <main id="carousel_home" class="main_block carousel clearfix" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carousel_home" data-slide-to="0" class="active"></li>
       <li data-target="#carousel_home" data-slide-to="1"></li>
@@ -74,7 +74,41 @@
     </div>
   </main>
   <section id="tools" class="main_page_section tools_section clearfix">
-    <img class="cover_BG" src="assets/img/mainToolsBG.jpg" alt="mainToolsBG" />
+    <div class="board_wrapper clearfix">
+      <img class="cover_BG" src="assets/img/mainToolsBG.jpg" alt="mainToolsBG" />
+      <div class="cards_wrapper clearfix">
+        <div class="card_wrapper_top clearfix">
+          <img class="card card_purple" src="assets/icons/purpleCard.png">
+          <img class="card card_pink" src="assets/icons/pinkCard.png">
+          <img class="card card_gray" src="assets/icons/grayCard.png">
+          <img class="card card_green" src="assets/icons/greenCard.png">
+          <img class="card card_brown" src="assets/icons/brownCard.png">
+          <img class="card card_yellow" src="assets/icons/yellowCard.png">
+          <img class="card card_green_bottom" src="assets/icons/greenCard.png">
+          <img class="card card_green_bottom2" src="assets/icons/greenCard.png">
+        </div>
+        <div class="card_wrapper_left clearfix">
+          <img class="card card_purple" src="assets/icons/purpleCard.png">
+          <img class="card card_pink" src="assets/icons/pinkCard.png">
+          <img class="card card_gray" src="assets/icons/grayCard.png">
+          <img class="card card_green" src="assets/icons/greenCard.png">
+          <img class="card card_brown" src="assets/icons/brownCard.png">
+          <img class="card card_yellow" src="assets/icons/yellowCard.png">
+          <img class="card card_green_bottom" src="assets/icons/greenCard.png">
+          <img class="card card_green_bottom2" src="assets/icons/greenCard.png">
+        </div>
+        <div class="card_wrapper_right clearfix">
+          <img class="card card_purple" src="assets/icons/purpleCard.png">
+          <img class="card card_pink" src="assets/icons/pinkCard.png">
+          <img class="card card_gray" src="assets/icons/grayCard.png">
+          <img class="card card_green" src="assets/icons/greenCard.png">
+          <img class="card card_brown" src="assets/icons/brownCard.png">
+          <img class="card card_yellow" src="assets/icons/yellowCard.png">
+          <img class="card card_purple_bottom" src="assets/icons/purpleCard.png">
+          <img class="card card_purple_bottom2" src="assets/icons/purpleCard.png">
+        </div>
+      </div>
+    </div>
     <div class="main_page_section_bg tools_section_bg clearfix">
       <div id="myCarousel" class="main_page_section_context carousel slide tools_section_context">
         <div class="carousel-inner">
@@ -85,11 +119,9 @@
             </div>
             <div class="lead_intro_container">
               <p class="lead_intro">
-                لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و
-                طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصرففی از ترکیب بندی برای پر کردن صفحه و
-                ارایه اولیه شکل ظاهری و کلی طرح سفارششود. طراح گرافیک از این متن به عنوان عنصری
+                لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصرففی از ترکیب بندی برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارششود. طراح گرافیک از این متن به عنوان عنصری
               </p>
-                <a class="lead_link" href="/login">شروع کنید</a>
+              <a class="lead_link" href="/login">شروع کنید</a>
             </div>
           </div>
           <div class="item">
@@ -99,11 +131,9 @@
             </div>
             <div class="lead_intro_container">
               <p class="lead_intro">
-                لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و
-                طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصرففی از ترکیب بندی برای پر کردن صفحه و
-                ارایه اولیه شکل ظاهری و کلی طرح سفارششود. طراح گرافیک از این متن به عنوان عنصری
+                لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصرففی از ترکیب بندی برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارششود. طراح گرافیک از این متن به عنوان عنصری
               </p>
-                <a class="lead_link" href="/login">شروع کنید</a>
+              <a class="lead_link" href="/login">شروع کنید</a>
             </div>
           </div>
         </div>
@@ -134,7 +164,7 @@
       </div>
     </div>
   </section>
-<section id='consult' data-ride="carousel" class="main_page_section consolation_management_section clearfix">
+  <section id='consult' data-ride="carousel" class="main_page_section consolation_management_section clearfix">
     <img class="cover_BG" src="assets/img/consulationManagementBG.jpg" alt="mainToolsBG" />
     <div class="main_page_section_bg consolation_management_section_bg clearfix">
       <div class="main_page_section_context consolation_management_section_context">
@@ -274,48 +304,141 @@
   <script type="text/javascript" src="assets/vendor/angular/angular.min.js"></script>
   <script type="text/javascript" src="assets/vendor/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
   <script type="text/javascript" src="app/landing/landing.app.js"></script>
-<!--  <script type="text/javascript" src="app/landing/scroll-on-click.directive.js"></script>-->
+  <!--  <script type="text/javascript" src="app/landing/scroll-on-click.directive.js"></script>-->
   <script type="text/javascript" src="assets/vendor/angular-scroll/angular-scroll.min.js"></script>
-<script>
-  $('#carousel_home').carousel({
-    interval: 5000,
-    pause: null
-  });
+  <script>
+    $('#carousel_home').carousel({
+      interval: 5000,
+      pause: null
+    });
 
-  // invoke the carousel
-  $('#myCarousel').carousel({
-    interval: 3000
-  });
+    // invoke the carousel
+    $('#myCarousel').carousel({
+      interval: 3000
+    });
 
-  $('#myCarousel').bind('mousewheel', function (e) {
-    if (e.originalEvent.wheelDelta / 120 > 0) {
-      $(this).carousel('next');
-    } else {
-      $(this).carousel('prev');
+    //animate for cards
+    $('#tools').bind('mousewheel', function (e) {
+      if (e.originalEvent.wheelDelta < 0) {
+        $('.card_wrapper_top .card_yellow').animate({
+          top: '120',
+          left: '300',
+        }, '200');
+        $('.card_wrapper_top .card_pink').animate({
+          top: '350',
+          left: '700',
+        }, '1000');
+
+        $('.card_wrapper_left .card_pink').animate({
+          top: '125',
+          left: '200',
+        }, '200');
+        $('.card_wrapper_left .card_green').animate({
+          top: '318',
+          left: '150',
+        }, '200');
+        $('.card_wrapper_left .card_brown').animate({
+          top: '90',
+          left: '400',
+        }, '600');
+        $('.card_wrapper_left .card_green_bottom').animate({
+          top: '520',
+          left: '250',
+        }, '2000');
+        $('.card_wrapper_left .card_green_bottom2').animate({
+          top: '535',
+          left: '390',
+        }, '2000');
+
+        $('.card_wrapper_right .card_gray').animate({
+          top: '125',
+          right: '200',
+        }, '400');
+        $('.card_wrapper_right .card_purple').animate({
+          top: '100',
+          right: '400',
+        }, '100');
+        $('.card_wrapper_right .card_purple_bottom').animate({
+          top: '520',
+          right: '250',
+        }, '2000');
+        $('.card_wrapper_right .card_purple_bottom2').animate({
+          top: '520',
+          right: '450',
+        }, '2000');
+      }
+    });
+
+    //change slider with scroll
+    $('#myCarousel').bind('mousewheel', function (e) {
+      if (e.originalEvent.wheelDelta / 120 > 0) {
+
+        $(this).carousel('next');
+      } else {
+        $(this).carousel('prev');
+      }
+    });
+
+    //for scroll with low speed
+    /*if (window.addEventListener) {window.addEventListener('DOMMouseScroll', wheel, false);
+                                  window.onmousewheel = document.onmousewheel = wheel;}
+
+    function wheel(event) {
+      var delta = 0;
+      if (event.wheelDelta) delta = (event.wheelDelta)/120 ;
+      else if (event.detail) delta = -(event.detail)/3;
+
+      handle(delta);
+      if (event.preventDefault) event.preventDefault();
+      event.returnValue = false;
     }
-  });
+
+    function handle(sentido) {
+      var inicial = document.body.scrollTop;
+      var time = 1000;
+      var distance = 200;
+      animate({
+        delay: 0,
+        duration: time,
+        delta: function(p) {return p;},
+        step: function(delta) {
+          window.scrollTo(0, inicial-distance*delta*sentido);
+        }
+      });
+    }
+
+    function animate(opts) {
+      var start = new Date();
+      var id = setInterval(function() {
+        var timePassed = new Date() - start;
+        var progress = (timePassed / opts.duration);
+        if (progress > 1) {progress = 1;}
+        var delta = opts.delta(progress);
+        opts.step(delta);
+        if (progress == 1) {clearInterval(id);}}, opts.delay || 10);
+    }*/
 
 
-  /* SLIDE ON CLICK */
+    /* SLIDE ON CLICK */
 
-  $('.carousel-linked-nav > li > a').click(function () {
+    $('.carousel-linked-nav > li > a').click(function () {
 
-    // grab href, remove pound sign, convert to number
-    var item = Number($(this).attr('href').substring(1));
+      // grab href, remove pound sign, convert to number
+      var item = Number($(this).attr('href').substring(1));
 
-    // slide to number -1 (account for zero indexing)
-    $('#myCarousel').carousel(item - 1);
+      // slide to number -1 (account for zero indexing)
+      $('#myCarousel').carousel(item - 1);
 
-    // remove current active class
-    $('.carousel-linked-nav .active').removeClass('active');
+      // remove current active class
+      $('.carousel-linked-nav .active').removeClass('active');
 
-    // add active class to just clicked on item
-    $(this).parent().addClass('active');
+      // add active class to just clicked on item
+      $(this).parent().addClass('active');
 
-    // don't follow the link
-    return false;
-  });
-</script>
+      // don't follow the link
+      return false;
+    });
+  </script>
 </body>
 
 </html>
