@@ -31,14 +31,12 @@ export default class SignupController {
         }, null)
         .then(() => {
           this.Auth.getCurrentUser().then(user => {
-            if(user.isFresh) {
-              this.$state.go('getStart');
-            } else if(user.defaultBoard) {
+            if(user.defaultBoard) {
               this.$state.go('project.desktop', {id: user.defaultProject, board: user.defaultBoard});
             } else if(user.defaultProject) {
               this.$state.go('project.boards.list', {id: user.defaultProject});
             } else {
-              this.$state.go('projects.list');
+              this.$state.go('getStart');
             }
           });
         })

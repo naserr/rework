@@ -39,7 +39,6 @@ export class projectManageComponent {
   }
 
   findUsers(val) {
-    console.log('........');
     return this.$http.get(`api/users/findByEmail/${val}`).then(function(response) {
       return response.data;
     });
@@ -59,6 +58,7 @@ export class projectManageComponent {
     this.$http.patch(`api/projects/${this.project._id}`, patches)
       .then(project => {
         this.project.users = project.data.users;
+        this.$http.post('api/projects/updateDefaultProject', user);
       });
   }
 

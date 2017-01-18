@@ -76,7 +76,7 @@ export function index(req, res) {
 
 // Gets a single Project from the DB
 export function show(req, res) {
-  return Project.findById(req.params.id).exec()
+  return Project.findById(req.params.id, '-keys').exec()
     .then(handleEntityNotFound(res))
     .then(hasGetAuthorization(res, req.user._id))
     .then(hasExpired(res))
@@ -90,6 +90,30 @@ export function me(req, res) {
   return Project.find({'users._id': req.user._id}, '-keys').exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
+}
+
+// Gets a list of user Projects
+export function updateDefaultProject(req, res) {
+  return Project.find({'users._id': req.body._id}).exec()
+    .then(process)
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+
+  function process(projects) {
+    let defProjectId = null;
+
+    if(projects.length) {
+      defProjectId = _.last(projects)._id;
+    }
+    return updateUser(defProjectId);
+  }
+
+  function updateUser(projectId) {
+    return User.update({_id: req.body._id}, {
+      defaultProject: projectId,
+      defaultBoard: null
+    }).exec();
+  }
 }
 
 // Creates a new Project in the DB
@@ -293,6 +317,10 @@ function hasGetAuthorization(res, userId) {
         res.status(403).end('شما عضو این پروژه نیستید');
         return null;
       }
+      else if(user.role !== constants.roleNames.admin) {
+        res.status(403).end('فقط مدیر پروژه میتواند ابزار انتخاب کند');
+        return null;
+      }
       return project;
     }
     return project;
@@ -326,7 +354,10 @@ function initFreeProject(newProject) {
   newProject.keys.push(newProject.generateKey(constants.roleNames.user));
   newProject.keys.push(newProject.generateKey(constants.roleNames.user));
 
-  return newProject.save();
+  return User.update({_id: newProject.owner._id}, {
+    isFresh: false
+  }).exec()
+    .then(() => newProject.save());
 }
 
 function joinProject(key, user) {
@@ -361,8 +392,7 @@ function setDefaultProject(user) {
     if(project) {
       return User.update({_id: user._id}, {
         defaultProject: project._id,
-        // defaultBoard: null,
-        isFresh: false
+        defaultBoard: null
       }).exec()
         .then(() => project);
     }
