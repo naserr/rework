@@ -36,6 +36,7 @@ export class projectDesktopComponent {
     }
 
     socket.syncUpdates('project', [], (event, item, array) => {
+      this.justRemoved = false;
       this.project.cards = item.cards;
       this.project.tasks = item.tasks;
     });
@@ -58,7 +59,10 @@ export class projectDesktopComponent {
           top: `${instance.position.y}px`
         }
       };
-      $http.put(`api/projects/updateCards/${project._id}`, updateCard);
+      let pos = project.cards[index].position;
+      if(pos.left != updateCard.position.left && pos.top != updateCard.position.top) {
+        $http.put(`api/projects/updateCards/${project._id}`, updateCard);
+      }
     });
 
     let zoomListener = $rootScope.$on('ZOOM_CHANGED', (e, zoomType) => {
@@ -115,7 +119,7 @@ export class projectDesktopComponent {
           board: this.boardName,
           position: {
             left: '1px',
-            top: '1px'
+            top: '45px'
           },
           type,
           content: `${this.newContent[type]}`
@@ -193,6 +197,18 @@ export class projectDesktopComponent {
       cards = this.project.cards;
     }
     return cards;
+  }
+
+  removeCard(card) {
+    let index = _.findIndex(this.project.cards, {_id: card._id});
+    let patches = [
+      {
+        op: 'remove',
+        path: `/cards/${index}`
+      }
+    ];
+    this.$http.patch(`api/projects/${this.project._id}`, patches)
+      .then(() => this.justRemoved = false);
   }
 
   focus(event) {

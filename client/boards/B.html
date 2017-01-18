@@ -80,29 +80,29 @@
              style="position: absolute;"
              ng-style="{'left': card.position.left, 'top': card.position.top}" draggie-events="end">
             <!--<p style="direction: rtl; text-align: right" ng-bind-html="card.content"></p>-->
-            <textarea style="cursor: default">{{card.content}}</textarea>
-            <!--<ul class="cart_menu">
+            <textarea style="cursor: default" ng-mouseover="card.hover=true" ng-mouseleave="card.hover=false">{{card.content}}</textarea>
+            <ul class="cart_menu" ng-show="card.hover" ng-mouseover="card.hover=true">
+                <!--<li class="cart_menu_item">
+                     <a class="color_cart" href="#" ng-click=""></a>
+                     <ul class="dropdown-menu" role="menu">
+                         <li><a href="">5%</a></li>
+                         <li><a href="">25%</a></li>
+                         <li><a href="">50%</a></li>
+                         <li><a href="">100%</a></li>
+                     </ul>
+                 </li>
+                 <li class="cart_menu_item">
+                     <a class="size" href="">اندازه</a>
+                 </li>
+                 <li class="cart_menu_item">
+                     <a class="shape" href="">شکل</a>
+                 </li>-->
                 <li class="cart_menu_item">
-                    <a class="color_cart" href="#" ng-click=""></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="">5%</a></li>
-                        <li><a href="">25%</a></li>
-                        <li><a href="">50%</a></li>
-                        <li><a href="">100%</a></li>
-                    </ul>
-                </li>
-                <li class="cart_menu_item">
-                    <a class="size" href="">اندازه</a>
-                </li>
-                <li class="cart_menu_item">
-                    <a class="shape" href="">شکل</a>
-                </li>
-                <li class="cart_menu_item">
-                    <a class="remove" href="">
-                        <i class="remove_icon"></i>
+                    <a class="remove" href="" ng-click="vm.justRemoved=true;vm.removeCard(card)">
+                        <i class="fa fa-trash-o fa-lg"></i>
                     </a>
                 </li>
-            </ul>-->
+            </ul>
         </div>
     </div>
 </div>

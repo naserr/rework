@@ -184,7 +184,8 @@ ul.sub_menu_desktop li.sub_menu_desktop_item label {
   cursor: pointer;
 }
 
-ul.sub_menu_desktop li.sub_menu_desktop_item input[type=radio] {
+ul.sub_menu_desktop li.sub_menu_desktop_item input[type=radio],
+ul.sub_menu_desktop li.sub_menu_desktop_item input[type=checkbox] {
   /*  display: none;*/
   position: absolute;
   left: 23%;
@@ -195,6 +196,7 @@ ul.sub_menu_desktop li.sub_menu_desktop_item input[type=radio] {
   opacity: 0;
 }
 
+ul.sub_menu_desktop li.sub_menu_desktop_item input[type=checkbox] + i,
 ul.sub_menu_desktop li.sub_menu_desktop_item input[type=radio] + i {
   float: left;
   position: relative;
@@ -206,14 +208,17 @@ ul.sub_menu_desktop li.sub_menu_desktop_item input[type=radio] + i {
   background: url('../../assets/icons/icons.png');
 }
 
+ul.sub_menu_desktop li.sub_menu_desktop_item input[type='checkbox'] + i,
 ul.sub_menu_desktop li.sub_menu_desktop_item input[type='radio'] + i {
   background-position: -602px -80px;
 }
 
+ul.sub_menu_desktop li.sub_menu_desktop_item input[type='checkbox']:checked + i,
 ul.sub_menu_desktop li.sub_menu_desktop_item input[type='radio']:checked + i {
   background-position: -576px -80px;
 }
 
+ul.sub_menu_desktop li.sub_menu_desktop_item input[type='checkbox']:disabled + i,
 ul.sub_menu_desktop li.sub_menu_desktop_item input[type='radio']:disabled + i {
   background-position: -627px -80px;
 }
