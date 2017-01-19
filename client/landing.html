@@ -321,7 +321,7 @@
         var scroll = $(window).scrollTop();
         var offset = $('#tools').offset().top;
         // Do something
-        if(scroll > (offset + 10)) {
+        if(scroll >= offset) {
           //          var width=$('.board_wrapper').width();
           //          var height=$('.board_wrapper').height();
           var width = window.screen.availWidth;

@@ -700,13 +700,13 @@ footer ul.list_social_network li.social_network_item {
 
 footer ul.list_social_network li.social_network_item a {
   display: inline-block;
-  width: 35px;
-  height: 35px;
+  width: 34px;
+  height: 34px;
   float: right;
   border: 1px solid white;
   border-radius: 50%;
-  margin-left: 5px;
-  background: url('../icons/icons.png');
+  margin-left: 10px;
+  background: url(../icons/icons.png);
 }
 
 footer ul.list_social_network li.social_network_item.youTube a {
@@ -734,7 +734,7 @@ footer ul.list_social_network li.social_network_item.tweiter a {
 }
 
 footer ul.list_social_network li.social_network_item.facebook a {
-  background-position: -253px -4px;
+  background-position: -252px -4px;
 }
 
 footer div.web_list_wrapper {
