@@ -316,15 +316,133 @@
       interval: 3000
     });
 
+    $(document).ready(function () {
+      $(window).scroll(function (event) {
+        var scroll = $(window).scrollTop();
+        var offset = $('#tools').offset().top;
+        // Do something
+        if (scroll => offset) {
+          //          var width=$('.board_wrapper').width();
+          //          var height=$('.board_wrapper').height();
+          var width = window.screen.availWidth;
+          var height = window.screen.availHeight;
+          var subtractWidth = 1600 - width;
+          var subtractHeight = 800 - height;
+          var ratio_x = (subtractWidth / 100) * 20;
+          var ratio_y = (subtractHeight / 100) * 100;
+          ratio_x = -ratio_x;
+          ratio_y = -ratio_y;
+          if (width == '1080' && height == '720') {
+            $('.card_wrapper_top .card_yellow').animate({
+              top: 80,
+              right: 470,
+            }, '2000');
+            $('.card_wrapper_top .card_pink').animate({
+              top: 230,
+              right: 470,
+            }, '3000');
+
+            $('.card_wrapper_left .card_pink').animate({
+              top: 80,
+              left: 130,
+            }, '2000');
+            $('.card_wrapper_left .card_green').animate({
+              top: 220,
+              left: 130,
+            }, '2600');
+            $('.card_wrapper_left .card_brown').animate({
+              top: 80,
+              left: 270,
+            }, '3500');
+            $('.card_wrapper_left .card_green_bottom').animate({
+              top: 400,
+              left: 200,
+            }, '3700');
+            $('.card_wrapper_left .card_green_bottom2').animate({
+              top: 400,
+              left: 360,
+            }, '4000');
+
+            $('.card_wrapper_right .card_gray').animate({
+              top: 85,
+              right: 140,
+            }, '2000');
+            $('.card_wrapper_right .card_purple').animate({
+              top: 85,
+              right: 300,
+            }, '1700');
+            $('.card_wrapper_right .card_purple_bottom').animate({
+              top: 400,
+              right: 140,
+            }, '2500');
+            $('.card_wrapper_right .card_purple_bottom2').animate({
+              top: 400,
+              right: 300,
+            }, '2000');
+          }
+          //        width<1600?ratio_x=-ratio_x:ratio_x;
+          else {
+            $('.card_wrapper_top .card_yellow').animate({
+              top: JSON.stringify(ratio_y + 120),
+              right: JSON.stringify(ratio_x + 700),
+            }, '2000');
+            $('.card_wrapper_top .card_pink').animate({
+              top: JSON.stringify(ratio_y + 350),
+              right: JSON.stringify(ratio_x + 700),
+            }, '3000');
+
+            $('.card_wrapper_left .card_pink').animate({
+              top: JSON.stringify(ratio_y + 125),
+              left: JSON.stringify(ratio_x + 200),
+            }, '2000');
+            $('.card_wrapper_left .card_green').animate({
+              top: JSON.stringify(ratio_y + 318),
+              left: JSON.stringify(ratio_x + 170),
+            }, '2600');
+            $('.card_wrapper_left .card_brown').animate({
+              top: JSON.stringify(ratio_y + 120),
+              left: JSON.stringify(ratio_x + 420),
+            }, '3500');
+            $('.card_wrapper_left .card_green_bottom').animate({
+              top: JSON.stringify((ratio_y - 70) + 680),
+              left: JSON.stringify(ratio_x + 350),
+            }, '3700');
+            $('.card_wrapper_left .card_green_bottom2').animate({
+              top: JSON.stringify((ratio_y - 70) + 680),
+              left: JSON.stringify(ratio_x + 560),
+            }, '4000');
+
+            $('.card_wrapper_right .card_gray').animate({
+              top: JSON.stringify(ratio_y + 125),
+              right: JSON.stringify(ratio_x + 200),
+            }, '2000');
+            $('.card_wrapper_right .card_purple').animate({
+              top: JSON.stringify(ratio_y + 120),
+              right: JSON.stringify(ratio_x + 450),
+            }, '1700');
+            $('.card_wrapper_right .card_purple_bottom').animate({
+              top: JSON.stringify((ratio_y - 70) + 680),
+              right: JSON.stringify(ratio_x + 250),
+            }, '2500');
+            $('.card_wrapper_right .card_purple_bottom2').animate({
+              top: JSON.stringify((ratio_y - 70) + 680),
+              right: JSON.stringify(ratio_y + 450),
+            }, '2000');
+          }
+        }
+      });
+    })
+
+
     //animate for cards
-    $('#tools').bind('mousewheel', function (e) {
+    /*$('#tools').bind('mousewheel', function (e) {
       if (e.originalEvent.wheelDelta < 0) {
         var width=$('.board_wrapper').width();
         var height=$('.board_wrapper').height();
         var subtractWidth=1600-width;
         var subtractHeight=800-height;
         var ratio_x=(subtractWidth/100)*20;
-        var ratio_y=(subtractHeight/100)*20;
+     var ratio_y=(subtractHeight/100)*57;
         ratio_x=-ratio_x;
         ratio_y=-ratio_y;
         console.log('width'+width,'ratio_x'+ratio_x,'height'+height);
@@ -332,24 +450,24 @@
         $('.card_wrapper_top .card_yellow').animate({
           top: JSON.stringify(ratio_y+120),
           right: JSON.stringify(ratio_x+720),
-        }, '200');
+     }, '1000');
         $('.card_wrapper_top .card_pink').animate({
           top: JSON.stringify(ratio_y+350),
           right: JSON.stringify(ratio_x+720),
-        }, '1000');
+     }, '1700');
 
         $('.card_wrapper_left .card_pink').animate({
           top: JSON.stringify(ratio_y+125),
           left: JSON.stringify(ratio_x+200),
-        }, '200');
+     }, '900');
         $('.card_wrapper_left .card_green').animate({
           top: JSON.stringify(ratio_y+318),
-          left: JSON.stringify(ratio_x+150),
-        }, '200');
+     left: JSON.stringify(ratio_x+170),
+     }, '1700');
         $('.card_wrapper_left .card_brown').animate({
           top:  JSON.stringify(ratio_y+90),
           left: JSON.stringify(ratio_x+420),
-        }, '600');
+     }, '3000');
         $('.card_wrapper_left .card_green_bottom').animate({
           top: JSON.stringify(ratio_y+600),
           left: JSON.stringify(ratio_x+350),
@@ -357,16 +475,16 @@
         $('.card_wrapper_left .card_green_bottom2').animate({
           top: JSON.stringify(ratio_y+600),
           left: JSON.stringify(ratio_x+560),
-        }, '2000');
+     }, '4000');
 
         $('.card_wrapper_right .card_gray').animate({
           top: JSON.stringify(ratio_y+125),
           right: JSON.stringify(ratio_x+200),
-        }, '400');
+     }, '900');
         $('.card_wrapper_right .card_purple').animate({
           top: JSON.stringify(ratio_y+120),
           right: JSON.stringify(ratio_x+450),
-        }, '100');
+     }, '1500');
         $('.card_wrapper_right .card_purple_bottom').animate({
           top: JSON.stringify(ratio_y+590),
           right: JSON.stringify(ratio_x+250),
@@ -376,7 +494,7 @@
           right:  JSON.stringify(ratio_y+450),
         }, '2000');
       }
-    });
+     });*/
 
     //change slider with scroll
     $('#myCarousel').bind('mousewheel', function (e) {
