@@ -23,7 +23,7 @@ main.main_sign_Up_section {
 figure.signUp_Image_container {
     display: inline-block;
     padding-right: 16px;
-    width: 65%;
+    width: 56%;
     float: left;
     border-right: 1px solid #ededed;
 }
@@ -36,6 +36,7 @@ main.main_sign_Up_section div.sign_Up_container {
     float: right;
     width: 35%;
     padding-left: 1%;
+    margin-right: 5%;
 }
 
 main.main_sign_Up_section h1.main_sign_Up_header {
