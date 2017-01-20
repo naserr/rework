@@ -378,16 +378,20 @@ button.btn_google_pluse i {
 }
 
 button.btn_linkedIn {
-    background: #0086b6;
-    font-weight: bold;
-    font-size: 12px;
+  background: #0086b6;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 12px;
+  width: 44%;
 }
 
 button.btn_google_pluse {
-    background: #dc4e41;
-    font-weight: bold;
-    font-size: 12px;
-    margin-right: 10px;
+  background: #dc4e41;
+  font-weight: bold;
+  font-size: 12px;
+  margin-right: 2%;
+  width: 50%;
+  display: inline-block;
 }
 
 button.delete_btn i {
