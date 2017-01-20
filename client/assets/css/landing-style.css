@@ -450,7 +450,7 @@ div.slider_controller button.active {
 }
 
 .card {
-  top: 900px;
+  top: 1300px;
   position: absolute;
   opacity: .4;
 }
@@ -787,6 +787,18 @@ ul.navigation_list li.navigation_list_item a span {
   color: #fff;
   text-shadow: -2px -1px rgba(0, 0, 0, 1);
   width: 300px;
+}
+
+/*mediaQueries*/
+
+@media (min-width: 2400px) and (max-width: 3000px) {
+  .card {
+    width: 200px;
+  }
+
+  .card {
+    top: 1500px;
+  }
 }
 
 
