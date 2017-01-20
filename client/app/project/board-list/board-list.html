@@ -11,8 +11,11 @@
                             <img ng-src="{{b.iconPath}}" width="300" height="200">
                             <figcaption class="board_hover_wrapper">
                                 <p>{{b.description | limitTo: 93}}</p>
-                                <a ui-sref="project.boards.list.preview({board: b.name})" class="board_view">نمایش
-                                    برد</a>
+                                <a ui-sref="project.boards.list.preview({board: b.name})" ng-hide="vm.onlyProjectBoards"
+                                   class="board_view">نمایش برد</a>
+                                <a ui-sref="project.desktop({id: vm.project._id, board: b.name})"
+                                   ng-show="vm.onlyProjectBoards"
+                                   class="board_view">شروع</a>
                             </figcaption>
                         </figure>
                     </div>

@@ -31,10 +31,8 @@ export default class LoginController {
         .then(() => {
           //noinspection Eslint
           let user = this.Auth.getCurrentUserSync();
-          if(user.defaultBoard) {
-            this.$state.go('project.desktop', {id: user.defaultProject, board: user.defaultBoard});
-          } else if(user.defaultProject) {
-            this.$state.go('project.boards.list', {id: user.defaultProject});
+          if(user.defaultProject) {
+            this.$state.go('project.boards.privateList', {id: user.defaultProject});
           } else {
             this.$state.go('getStart');
           }

@@ -1,22 +1,22 @@
 <a class="desktop_work_logo" href=""><img src="/assets/icons/logodesktop.png"></a>
 <ul class="list_menu_desktop">
-    <li class="list_menu_desktop_item desktop_item clearfix" ui-sref-active="active">
-        <a href="" ng-click="$ctrl.goToDesktop()">
+    <li class="list_menu_desktop_item desktop_item clearfix">
+        <a ui-sref="project.boards.privateList({id: $ctrl.project._id})" ui-sref-active="active">
             <i></i>میزکار
         </a>
     </li>
-    <li class="list_menu_desktop_item tools_item clearfix" ui-sref-active="active">
-        <a ui-sref="project.boards.list({id: $ctrl.project._id})"><i></i>ابزارها</a>
+    <li class="list_menu_desktop_item tools_item clearfix">
+        <a ui-sref="project.boards.list({id: $ctrl.project._id})" ui-sref-active="active"><i></i>ابزارها</a>
     </li>
-    <li class="list_menu_desktop_item managment_team_item clearfix" ui-sref-active="active">
-        <a ui-sref="project.manage({id: $ctrl.project._id})"><i></i>مدیریت تیم</a>
+    <li class="list_menu_desktop_item managment_team_item clearfix">
+        <a ui-sref="project.manage({id: $ctrl.project._id})" ui-sref-active="active"><i></i>مدیریت تیم</a>
     </li>
-    <li class="list_menu_desktop_item settings_profile_item clearfix" ui-sref-active="active">
-        <a ui-sref="project.profile({id: $ctrl.project._id})"><i></i>تنظیمات پروفایل</a>
+    <li class="list_menu_desktop_item settings_profile_item clearfix">
+        <a ui-sref="project.profile({id: $ctrl.project._id})" ui-sref-active="active"><i></i>تنظیمات پروفایل</a>
     </li>
-    <li class="list_menu_desktop_item cart_filter_item clearfix" ui-sref-active="active"
+    <li class="list_menu_desktop_item cart_filter_item clearfix"
         ng-show="$ctrl.$state.current.name === 'project.desktop'">
-        <a href="" ng-click="$ctrl.accordion($event)"><i></i>فیلتر کارت ها</a>
+        <a href="" ng-click="$ctrl.accordion($event)" ui-sref-active="active"><i></i>فیلتر کارت ها</a>
         <ul class="sub_menu_desktop">
             <li class="sub_menu_desktop_item clearfix">
                 <label for="green">آبی</label>
@@ -44,9 +44,9 @@
             </li>
         </ul>
     </li>
-    <li class="list_menu_desktop_item duties_item clearfix" ui-sref-active="active"
+    <li class="list_menu_desktop_item duties_item clearfix"
         ng-show="$ctrl.$state.current.name === 'project.desktop'">
-        <a href="" ng-click="$ctrl.accordion($event)"><i></i>وظایف</a>
+        <a href="" ng-click="$ctrl.accordion($event)" ui-sref-active="active"><i></i>وظایف</a>
         <ul class="sub_menu_desktop">
             <li class="sub_menu_desktop_item clearfix" ng-show="$ctrl.isOwner">
                 <a href="" ng-click="$ctrl.newTask()">ایجاد وظیفه</a>

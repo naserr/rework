@@ -199,7 +199,6 @@ export function selectBoard(req, res) {
   return Project.findById(req.body.id).exec()
     .then(handleEntityNotFound(res))
     .then(hasGetAuthorization(res, req.user._id, constants.roleNames.admin, req.body.board))
-    .then(setDefaultBoard(req.user, req.body.board))
     .then(addBoard(req.body.board))
     .then(respondWithResult(res))
     .catch(handleError(res, 400));
@@ -397,18 +396,6 @@ function setDefaultProject(user) {
       return User.update({_id: user._id}, {
         defaultProject: project._id,
         defaultBoard: null
-      }).exec()
-        .then(() => project);
-    }
-    return project;
-  };
-}
-
-function setDefaultBoard(user, board) {
-  return function(project) {
-    if(project) {
-      return User.update({_id: user._id}, {
-        defaultBoard: board
       }).exec()
         .then(() => project);
     }

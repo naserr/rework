@@ -12,17 +12,11 @@ export class BoardPreviewComponent {
   }
 
   selectBoard() {
-    // this.project.defaultBoard = this.board.name;
-    // let patches = [{
-    //   op: 'replace',
-    //   path: '/defaultBoard',
-    //   value: this.board.name
-    // }];
     this.$http.post('api/projects/selectBoard', {
       id: this.project._id,
-      board: this.board.name
+      board: this.board.name,
+      category: this.board.category
     }).then(result => {
-      this.Auth.setDefaultBoard(this.board.name);
       this.project.boards = result.data.boards;
       this.$state.go('project.desktop', {
         id: this.project._id,

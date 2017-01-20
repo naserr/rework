@@ -20,11 +20,11 @@ export default function($stateProvider) {
       authenticate: true
     })
     .state('project.boards.list', {
-      url: '/list',
+      url: '/all',
       authenticate: true,
       views: {
         '@project': {
-          template: '<board-list project="$resolve.project.data"></board-list>'
+          template: '<board-list project="$resolve.project.data" only-project-boards="false"></board-list>'
         }
       }
     })
@@ -34,6 +34,15 @@ export default function($stateProvider) {
       views: {
         '@project': {
           template: '<board-preview project="$resolve.project.data"></board-preview>'
+        }
+      }
+    })
+    .state('project.boards.privateList', {
+      url: '/list',
+      authenticate: true,
+      views: {
+        '@project': {
+          template: '<board-list project="$resolve.project.data" only-project-boards="true"></board-list>'
         }
       }
     })

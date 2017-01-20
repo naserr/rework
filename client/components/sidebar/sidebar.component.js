@@ -27,14 +27,6 @@ class SidebarComponent {
     this.$rootScope.$broadcast('NEW_TASK');
   }
 
-  goToDesktop() {
-    this.boardName = this.user.defaultBoard;
-    this.$state.go('project.desktop', {
-      id: this.project._id,
-      board: this.boardName
-    });
-  }
-
   chaneZoom(zoom) {
     this.$rootScope.$broadcast('ZOOM_CHANGED', zoom);
   }
