@@ -7,10 +7,11 @@ export default function($stateProvider) {
       url: '/{id:[0-9a-fA-F]{24}}',
       abstract: true,
       authenticate: true,
-      template: '<project project="$resolve.project.data" my-projects="$resolve.myProjects.data"></project>',
+      template: '<project project="$resolve.project.data" my-projects="$resolve.myProjects.data" users="$resolve.users.data"></project>',
       resolve: {
         /*@ngInject*/
         project: ($http, $stateParams) => $http.get(`/api/projects/${$stateParams.id}`),
+        users: ($http, $stateParams) => $http.get(`api/users/projectUsers/${$stateParams.id}`),
         myProjects: $http => $http.get('/api/projects/me')
       }
     })
@@ -51,7 +52,7 @@ export default function($stateProvider) {
       authenticate: true,
       views: {
         '@project': {
-          template: '<project-desktop project="$resolve.project.data"></project-desktop>'
+          template: '<project-desktop project="$resolve.project.data"users="$resolve.users.data"></project-desktop>'
         }
       }
     })
@@ -69,10 +70,6 @@ export default function($stateProvider) {
       authenticate: true,
       views: {
         '@project': {
-          resolve: {
-            /*ngInject*/
-            users: ($http, $stateParams) => $http.get(`api/users/projectUsers/${$stateParams.id}`)
-          },
           template: '<project-manage project="$resolve.project.data" users="$resolve.users.data"></project-manage>'
         }
       }

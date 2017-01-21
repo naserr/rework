@@ -14,12 +14,30 @@ import routes from './project.routes';
 export class projectComponent {
   isOpen = true;
 
-  constructor($rootScope) {
+  constructor($http) {
     'ngInject';
-
+    this.$http = $http;
     if(_.isArray(this.project)) {
       this.project = this.project[0];
     }
+  }
+
+  getUser(id) {
+    return _.find(this.users, {_id: id});
+  }
+
+  getUserAvatar(id) {
+    let userAvatar = this.getUser(id).avatar;
+    if(userAvatar) {
+      return userAvatar.base64;
+    }
+    return undefined;
+  }
+
+  findUsers(val) {
+    return this.$http.get(`api/users/findByEmail/${val}`).then(function(response) {
+      return response.data;
+    });
   }
 }
 
@@ -28,7 +46,8 @@ export default angular.module('reworkApp.project', [uiRouter, boardList, boardPr
     template: require('./project.html'),
     bindings: {
       project: '=',
-      myProjects: '='
+      myProjects: '=',
+      users: '='
     },
     controller: projectComponent
   })

@@ -73,7 +73,7 @@ export class projectManageComponent {
         this.project.users = response.data.users;
         this.newUser = null;
       })
-      .catch((err, a, b, c, d) => {
+      .catch((err) => {
         if(err.status === 400) {
           return this.$log.error(err.data);
         }
@@ -84,6 +84,9 @@ export class projectManageComponent {
 export default angular.module('reworkApp.project.manage', [uiRouter, typeahead, tooltip])
   .component('projectManage', {
     template: require('./project-manage.html'),
+    require: {
+      parentCom: '^project'
+    },
     bindings: {
       project: '=',
       users: '<'

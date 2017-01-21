@@ -17,10 +17,19 @@ class SidebarComponent {
     this.ProjectAuth = ProjectAuth;
     this.$state = $state;
     this.$rootScope = $rootScope;
-    this.isDesktopMode = false;
 
     this.user = Auth.getCurrentUserSync();
     this.isOwner = ProjectAuth.hasAccess(this.project, 'admin');
+  }
+
+  // ui-sref="project.manage({id: $ctrl.project._id})"
+  goToManageTeam() {
+    if(this.$state.current.name === 'project.desktop') {
+      this.$rootScope.$broadcast('MANAGE_BOARD_USER');
+    }
+    else {
+      this.$state.go('project.manage', {id: this.project._id});
+    }
   }
 
   newTask() {

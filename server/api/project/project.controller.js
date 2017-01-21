@@ -188,9 +188,51 @@ export function newUser(req, res) {
 
       activeKey.active = false;
 
-      return project.save()
+      return project.save();
     }
     return Promise.reject('اجازه افزودن کاربر جدید ندارید، پلن خود را ارتقا دهید');
+  }
+}
+
+// join a Project with a key
+export function newBoardUser(req, res) {
+  /**
+   * find project with provided key and deactivated it
+   * if requested user isn't already a project member then
+   * add user to project members with provided role
+   **/
+
+  return Project.findById(req.params.id).exec()
+    .then(checkIsValid)
+    .then(respondWithResult(res))
+    .catch(handleError(res, 400));
+
+  function checkIsValid(project) {
+    let oldUser = _.find(project.users, u => u._id.toString() === req.body.user._id);
+    if(!oldUser) {
+      let activeKey = project.keys.find(k => k.active === true);
+      if(activeKey) {
+        project.users.push({
+          _id: req.body.user._id,
+          name: req.body.user.name,
+          email: req.body.user.email,
+          role: constants.roleNames.user
+        });
+        activeKey.active = false;
+      }
+      else {
+        return Promise.reject('اجازه افزودن کاربر جدید ندارید، پلن خود را ارتقا دهید');
+      }
+    }
+    project.boards[req.body.boardIndex].users.push({
+      _id: req.body.user._id,
+      name: req.body.user.name,
+      email: req.body.user.email,
+      role: constants.roleNames.user
+    });
+
+    project.markModified('boards');
+    return project.save();
   }
 }
 
@@ -410,7 +452,8 @@ function addBoard(board) {
       if(!theBoard) {
         project.boards.push({
           name: board,
-          added: new Date()
+          added: new Date(),
+          users: []
         });
         return project.save();
       }

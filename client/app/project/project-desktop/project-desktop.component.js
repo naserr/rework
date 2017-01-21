@@ -23,11 +23,29 @@ export class projectDesktopComponent {
     orange: false,
     green: false
   };
+  roles = [
+    {
+      name: 'مدیر',
+      value: 2
+    },
+    {
+      name: 'عضو تیم',
+      value: 1
+    },
+    {
+      name: 'مهمان',
+      value: 0
+    }
+  ];
 
-  constructor($scope, $rootScope, $state, $stateParams, $http, Auth, socket, ngDialog, $log) {
+  constructor($scope, $rootScope, $state, $stateParams, $http, Auth, ProjectAuth, socket, ngDialog, $log) {
     'ngInject';
     this.$http = $http;
     this.Auth = Auth;
+    this.$scope = $scope;
+    this.ngDialog = ngDialog;
+    this.ProjectAuth = ProjectAuth;
+    this.$log = $log;
     this.boardName = $stateParams.board.toUpperCase();
     this.board = this.project.boards.find(b => b.name.toUpperCase() === this.boardName);
     if(!this.board) {
@@ -39,6 +57,8 @@ export class projectDesktopComponent {
       this.justRemoved = false;
       this.project.cards = item.cards;
       this.project.tasks = item.tasks;
+      this.project.users = item.users;
+      this.project.boards = item.boards;
     });
 
     $scope.$on('$destroy', function() {
@@ -47,6 +67,7 @@ export class projectDesktopComponent {
       zoomListener();
       saveListener();
       filterListener();
+      teamListener();
     });
 
     let project = this.project;
@@ -65,6 +86,10 @@ export class projectDesktopComponent {
       }
     });
 
+    let teamListener = $rootScope.$on('MANAGE_BOARD_USER', (e) => {
+      this.manageUsers();
+    });
+
     let zoomListener = $rootScope.$on('ZOOM_CHANGED', (e, zoomType) => {
       this.onZoomChanged(zoomType);
     });
@@ -78,7 +103,8 @@ export class projectDesktopComponent {
     });
 
     let newTaskListener = $rootScope.$on('NEW_TASK', function() {
-      ngDialog.openConfirm({
+      ngDialog.openConfirm(
+        {
           template: require('../project-tasks/new-task.html'),
           plain: true,
           controller: 'TaskController',
@@ -211,6 +237,50 @@ export class projectDesktopComponent {
       .then(() => this.justRemoved = false);
   }
 
+  manageUsers() {
+    this.ngDialog.openConfirm(
+      {
+        template: require('./board-users.html'),
+        plain: true,
+        // controller: 'TaskController',
+        // controllerAs: 'vm',
+        scope: this.$scope,
+        showClose: false,
+        data: this.project/*,
+        closeByDocument: false,
+        closeByEscape: false,
+        width: 600*/
+      });
+  }
+
+  addUserToBoard(newUser) {
+    if(this.ProjectAuth.getUserRole(this.project) === 2) {
+      let oldUser = _.find(this.board.users, {_id: newUser._id});
+      if(oldUser) {
+        return this.$log.error('این کاربر قبلا اضافه شده است');
+      }
+      let u = _.pick(newUser, ['_id', 'name', 'email', 'role']);
+      let index = _.findIndex(this.project.boards, b => b.name === this.board.name);
+      this.$http.put(`api/projects/newBoardUser/${this.project._id}`,
+        {
+          boardIndex: index,
+          user: u
+        })
+        .then(response => {
+          this.board.users.push(u);
+          this.newUser = null;
+        })
+        .catch((err) => {
+          if(err.status === 400) {
+            return this.$log.error(err.data);
+          }
+        });
+    }
+    else {
+      this.$log.warn('فقط مدیر میتواند کاربر اضافه کند');
+    }
+  }
+
   focus(event) {
     var parent = null;
     if($(event.target).is('input')) {
@@ -239,7 +309,13 @@ export class projectDesktopComponent {
 export default angular.module('reworkApp.project.desktop', [uiRouter, ngDialog, 'ngTagsInput'])
   .component('projectDesktop', {
     template: require('./project-desktop.html'),
-    bindings: {project: '='},
+    require: {
+      projectCom: '^project'
+    },
+    bindings: {
+      project: '=',
+      users: '<'
+    },
     controller: projectDesktopComponent,
     controllerAs: 'vm'
   })

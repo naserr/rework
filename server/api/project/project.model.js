@@ -27,6 +27,7 @@ var ProjectSchema = new mongoose.Schema({
   users: [{
     _id: mongoose.Schema.Types.ObjectId,
     name: String,
+    email: String,
     role: {
       type: Number,
       enum: [0, 1, 2]
