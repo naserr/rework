@@ -11,7 +11,7 @@ export class boardListComponent {
       let isAdmin = ProjectAuth.hasAccess(this.project, 'admin');
       let lookup = _.keyBy(this.project.boards, b => b.name);
       if(!isAdmin) {
-        lookup = _.filter(this.project.boards, b => _.includes(b.users, currentUser._id));
+        lookup = _.filter(this.project.boards, b => _.findIndex(b.users, {_id: currentUser._id}) > -1);
         lookup = _.keyBy(lookup, b => b.name);
       }
       this.allBoards = _.filter(this.allBoards, b => lookup[b.name] !== undefined);

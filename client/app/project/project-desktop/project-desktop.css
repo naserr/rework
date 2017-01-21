@@ -229,3 +229,7 @@ h5.header_board_cell {
     margin: 10px 10px 0 0;
   }
 }
+
+.ngdialog-content {
+  background-color: #FFFFFF!important;
+}

@@ -20,28 +20,11 @@ export class projectManageComponent {
     }
   ];
 
-  constructor($http, $log) {
+  constructor($http, ProjectAuth, $log) {
     'ngInject';
     this.$http = $http;
     this.$log = $log;
-  }
-
-  getUser(id) {
-    return _.find(this.users, {_id: id});
-  }
-
-  getUserAvatar(id) {
-    let userAvatar = this.getUser(id).avatar;
-    if(userAvatar) {
-      return userAvatar.base64;
-    }
-    return undefined;
-  }
-
-  findUsers(val) {
-    return this.$http.get(`api/users/findByEmail/${val}`).then(function(response) {
-      return response.data;
-    });
+    this.ProjectAuth = ProjectAuth;
   }
 
   removeUser(user) {
@@ -79,13 +62,31 @@ export class projectManageComponent {
         }
       });
   }
+
+  changeRole(user) {
+    if(this.ProjectAuth.getUserRole(this.project) === 2) {
+      let userIndex = _.findIndex(this.project.users, u => u._id === user._id);
+
+      let patches = [
+        {
+          op: 'replace',
+          path: `/users/${userIndex}/role`,
+          value: user.role
+        }
+      ];
+      this.$http.patch(`api/projects/${this.project._id}`, patches);
+    }
+    else {
+      this.$log.warn('فقط مدیر میتواند کاربر حذف کند');
+    }
+  }
 }
 
 export default angular.module('reworkApp.project.manage', [uiRouter, typeahead, tooltip])
   .component('projectManage', {
     template: require('./project-manage.html'),
     require: {
-      parentCom: '^project'
+      projectCom: '^project'
     },
     bindings: {
       project: '=',

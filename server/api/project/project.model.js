@@ -38,7 +38,22 @@ var ProjectSchema = new mongoose.Schema({
     }
   }],
   defaultBoard: {},
-  boards: [{}],
+  boards: [{
+    name: String,
+    added: {
+      type: Date,
+      default: new Date()
+    },
+    users: [{
+      _id: String,
+      name: String,
+      email: String,
+      role: {
+        type: Number,
+        enum: [0, 1, 2]
+      }
+    }]
+  }],
   cards: [{
     /*_id: String,
     user: {},

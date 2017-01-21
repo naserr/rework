@@ -54,11 +54,11 @@ export class projectDesktopComponent {
     }
 
     socket.syncUpdates('project', [], (event, item, array) => {
-      this.justRemoved = false;
       this.project.cards = item.cards;
       this.project.tasks = item.tasks;
       this.project.users = item.users;
       this.project.boards = item.boards;
+      this.board = item.boards.find(b => b.name.toUpperCase() === this.boardName);
     });
 
     $scope.$on('$destroy', function() {
@@ -233,8 +233,7 @@ export class projectDesktopComponent {
         path: `/cards/${index}`
       }
     ];
-    this.$http.patch(`api/projects/${this.project._id}`, patches)
-      .then(() => this.justRemoved = false);
+    this.$http.patch(`api/projects/${this.project._id}`, patches);
   }
 
   manageUsers() {
@@ -246,10 +245,10 @@ export class projectDesktopComponent {
         // controllerAs: 'vm',
         scope: this.$scope,
         showClose: false,
-        data: this.project/*,
+        width: 800/*,
+        data: this.project,
         closeByDocument: false,
-        closeByEscape: false,
-        width: 600*/
+        closeByEscape: false*/
       });
   }
 
@@ -266,10 +265,7 @@ export class projectDesktopComponent {
           boardIndex: index,
           user: u
         })
-        .then(response => {
-          this.board.users.push(u);
-          this.newUser = null;
-        })
+        .then(() => this.newUser = null)
         .catch((err) => {
           if(err.status === 400) {
             return this.$log.error(err.data);
@@ -278,6 +274,43 @@ export class projectDesktopComponent {
     }
     else {
       this.$log.warn('فقط مدیر میتواند کاربر اضافه کند');
+    }
+  }
+
+  removeUser(user) {
+    if(this.ProjectAuth.getUserRole(this.project) === 2) {
+      let boardIndex = _.findIndex(this.project.boards, b => b.name === this.board.name);
+      let userIndex = _.findIndex(this.project.boards[boardIndex].users, u => u._id === user._id);
+
+      let patches = [
+        {
+          op: 'remove',
+          path: `/boards/${boardIndex}/users/${userIndex}`
+        }
+      ];
+      this.$http.patch(`api/projects/${this.project._id}`, patches);
+    }
+    else {
+      this.$log.warn('فقط مدیر میتواند کاربر حذف کند');
+    }
+  }
+
+  changeRole(user) {
+    if(this.ProjectAuth.getUserRole(this.project) === 2) {
+      let boardIndex = _.findIndex(this.project.boards, b => b.name === this.board.name);
+      let userIndex = _.findIndex(this.project.boards[boardIndex].users, u => u._id === user._id);
+
+      let patches = [
+        {
+          op: 'replace',
+          path: `/boards/${boardIndex}/users/${userIndex}/role`,
+          value: user.role
+        }
+      ];
+      this.$http.patch(`api/projects/${this.project._id}`, patches);
+    }
+    else {
+      this.$log.warn('فقط مدیر میتواند کاربر حذف کند');
     }
   }
 
