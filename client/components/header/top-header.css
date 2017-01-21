@@ -100,24 +100,24 @@ ul.navbar_nav_list li.nvabar_item.project_name button i {
 .nvabar_item .dropdown-menu {
   background: #edeff2;
   border: none;
-  margin-top: 9px;
+  margin-top: 18px;
   width: 170px;
   color: #0e1a35;
   font-size: 12px;
 }
 
-.nvabar_item .dropdown-menu > li > a {
+.dropdown-menu > li > a {
   padding: 5px 5px;
   color: #0e1a35;
 }
 
-.nvabar_item .dropdown-menu > li > a > span {
+.dropdown-menu > li > a > span {
   display: block;
   float: right;
 }
 
-.dropdown-menu > li > a:hover,
-.dropdown-menu > li > a:focus {
+.nvabar_item .dropdown-menu > li > a:hover,
+.nvabar_item .dropdown-menu > li > a:focus {
   color: #262626;
   text-decoration: none;
   background-color: #dee1e5;
@@ -143,8 +143,9 @@ li.notification .dropdown-menu:before {
   background: url(../../assets/icons/icons.png) -458px -82px;
 }
 
-.nvabar_item .dropdown-menu .project_management {
-  background: url(../../assets/icons/icons.png) -478px -82px;
+.nvabar_item .dropdown-menu .project_management,
+.nvabar_item li.profile_menu_item.active a:hover i.project_management{
+  background: url(../../assets/icons/icons.png) -761px -79px;
 }
 
 .nvabar_item .dropdown-menu .exit {
@@ -160,4 +161,8 @@ li.notification .dropdown-menu:before {
 .nvabar_item .dropdown-menu .write_task {
   width: 14px;
   background: url(../../assets/icons/icons.png) -525px -82px;
+}
+
+.nvabar_item li.profile_menu_item.active i.project_management{
+  background: url(../../assets/icons/icons.png) -18px -131px;
 }
