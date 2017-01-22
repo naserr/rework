@@ -43,6 +43,7 @@ export class projectDesktopComponent {
     this.$http = $http;
     this.Auth = Auth;
     this.$scope = $scope;
+    this.$state = $state;
     this.ngDialog = ngDialog;
     this.ProjectAuth = ProjectAuth;
     this.$log = $log;
@@ -68,6 +69,7 @@ export class projectDesktopComponent {
       saveListener();
       filterListener();
       teamListener();
+      remBoardListener();
     });
 
     let project = this.project;
@@ -102,6 +104,10 @@ export class projectDesktopComponent {
       this.filter = filter;
     });
 
+    let remBoardListener = $rootScope.$on('REMOVE_BOARD', () => {
+      this.onRemoveBoard();
+    });
+
     let newTaskListener = $rootScope.$on('NEW_TASK', function() {
       ngDialog.openConfirm(
         {
@@ -133,6 +139,7 @@ export class projectDesktopComponent {
   }
 
   newCard(type) {
+    let pos = angular.element('#center-block').position();
     let user = _.pick(this.Auth.getCurrentUserSync(), ['_id', 'name', 'email', 'role']);
     let patches = [
       {
@@ -144,8 +151,8 @@ export class projectDesktopComponent {
           added: new Date(),
           board: this.boardName,
           position: {
-            left: '1px',
-            top: '45px'
+            left: `${pos.left}px`,
+            top: `${pos.top + 45}px`
           },
           type,
           content: `${this.newContent[type]}`
@@ -295,6 +302,24 @@ export class projectDesktopComponent {
     }
   }
 
+  onRemoveBoard() {
+    if(this.ProjectAuth.getUserRole(this.project) === 2) {
+      let boardIndex = _.findIndex(this.project.boards, b => b.name === this.board.name);
+
+      let patches = [
+        {
+          op: 'remove',
+          path: `/boards/${boardIndex}`
+        }
+      ];
+      this.$http.patch(`api/projects/${this.project._id}`, patches)
+        .then(() => this.$state.go('project.boards.privateList'));
+    }
+    else {
+      this.$log.warn('فقط مدیر میتواند ابزار را حذف کند');
+    }
+  }
+
   changeRole(user) {
     if(this.ProjectAuth.getUserRole(this.project) === 2) {
       let boardIndex = _.findIndex(this.project.boards, b => b.name === this.board.name);
@@ -310,7 +335,7 @@ export class projectDesktopComponent {
       this.$http.patch(`api/projects/${this.project._id}`, patches);
     }
     else {
-      this.$log.warn('فقط مدیر میتواند کاربر حذف کند');
+      this.$log.warn('فقط مدیر میتواند نقش کاربر را تغیر دهد');
     }
   }
 

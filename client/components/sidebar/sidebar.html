@@ -21,25 +21,25 @@
             <li class="sub_menu_desktop_item clearfix">
                 <label for="green">آبی</label>
                 <input type="checkbox" name="filter" id="green" value="blue" ng-model="$ctrl.CardFilters.blue"
-                       ng-change="$ctrl.changeFilter($ctrl.CardFilters)">
+                       ng-change="$ctrl.broadcastEvent('CHANGE_FILTER', $ctrl.CardFilters)">
                 <i class="check_icon"></i>
             </li>
             <li class="sub_menu_desktop_item clearfix">
                 <label for="golden">صورتی</label>
                 <input type="checkbox" name="filter" id="golden" value="pink" ng-model="$ctrl.CardFilters.pink"
-                       ng-change="$ctrl.changeFilter($ctrl.CardFilters)">
+                       ng-change="$ctrl.broadcastEvent('CHANGE_FILTER', $ctrl.CardFilters)">
                 <i class="check_icon"></i>
             </li>
             <li class="sub_menu_desktop_item clearfix">
                 <label for="red">نارنجی</label>
                 <input name="filter" type="checkbox" id="red" value="orange" ng-model="$ctrl.CardFilters.orange"
-                       ng-change="$ctrl.changeFilter($ctrl.CardFilters)">
+                       ng-change="$ctrl.broadcastEvent('CHANGE_FILTER', $ctrl.CardFilters)">
                 <i class="check_icon"></i>
             </li>
             <li class="sub_menu_desktop_item clearfix">
                 <label for="blue">سبز</label>
                 <input name="filter" type="checkbox" id="blue" value="green" ng-model="$ctrl.CardFilters.green"
-                       ng-change="$ctrl.changeFilter($ctrl.CardFilters)">
+                       ng-change="$ctrl.broadcastEvent('CHANGE_FILTER', $ctrl.CardFilters)">
                 <i class="check_icon"></i>
             </li>
         </ul>
@@ -49,7 +49,7 @@
         <a href="" ng-click="$ctrl.accordion($event)" ui-sref-active="active"><i></i>وظایف</a>
         <ul class="sub_menu_desktop">
             <li class="sub_menu_desktop_item clearfix" ng-show="$ctrl.isOwner">
-                <a href="" ng-click="$ctrl.newTask()">ایجاد وظیفه</a>
+                <a href="" ng-click="$ctrl.broadcastEvent('NEW_TASK')">ایجاد وظیفه</a>
             </li>
             <li class="sub_menu_desktop_item clearfix">
                 <a ui-sref="project.tasks({id: $ctrl.project._id})">نمایش وظایف</a>
@@ -61,8 +61,8 @@
         <a href="" ng-click="$ctrl.accordion($event)" class="active"><i></i>دانلود بوم</a>
         <ul class="sub_menu_desktop download_art_item" style="display: block">
             <li class="sub_menu_desktop_item clearfix">
-                <a class="link_pdf" href="" ng-click="$ctrl.saveBoard('pdf')">PDF</a>
-                <a class="link_jpg" href="" ng-click="$ctrl.saveBoard('jpg')">PNG</a>
+                <a class="link_pdf" href="" ng-click="$ctrl.broadcastEvent('SAVE_BOARD', 'pdf')">PDF</a>
+                <a class="link_jpg" href="" ng-click="$ctrl.broadcastEvent('SAVE_BOARD', 'jpg')">PNG</a>
             </li>
         </ul>
     </li>
@@ -71,15 +71,15 @@
         <a href="" ng-click="$ctrl.accordion($event)" class="active"><i></i>تغییر اندازه بوم</a>
         <ul class="sub_menu_desktop resize_art_item" style="display: block">
             <li class="sub_menu_desktop_item clearfix">
-                <button ng-click="$ctrl.chaneZoom('ZOOM_IN')" class="zoom_in"><i class="icon_zoom_in"></i></button>
-                <button ng-click="$ctrl.chaneZoom('ZOOM_RES')" class="move"><i class="icon_move"></i></button>
-                <button ng-click="$ctrl.chaneZoom('ZOOM_OUT')" class="zoom_out"><i class="icon_zoom_out"></i></button>
+                <button ng-click="$ctrl.broadcastEvent('ZOOM_CHANGED', 'ZOOM_IN')" class="zoom_in"><i class="icon_zoom_in"></i></button>
+                <button ng-click="$ctrl.broadcastEvent('ZOOM_CHANGED', 'ZOOM_RES')" class="move"><i class="icon_move"></i></button>
+                <button ng-click="$ctrl.broadcastEvent('ZOOM_CHANGED', 'ZOOM_OUT')" class="zoom_out"><i class="icon_zoom_out"></i></button>
             </li>
         </ul>
     </li>
     <li class="list_menu_desktop_item remove_art_item clearfix"
         ng-show="$ctrl.$state.current.name === 'project.desktop'">
-        <a href=""><i></i>حذف بوم</a></li>
+        <a ng-click="$ctrl.broadcastEvent('REMOVE_BOARD')"><i></i>حذف بوم</a></li>
     <li class="list_menu_desktop_item exit_item clearfix">
         <a ui-sref="logout"><i></i>خروج</a>
     </li>

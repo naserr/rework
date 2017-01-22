@@ -32,20 +32,8 @@ class SidebarComponent {
     }
   }
 
-  newTask() {
-    this.$rootScope.$broadcast('NEW_TASK');
-  }
-
-  chaneZoom(zoom) {
-    this.$rootScope.$broadcast('ZOOM_CHANGED', zoom);
-  }
-
-  saveBoard(saveAs) {
-    this.$rootScope.$broadcast('SAVE_BOARD', saveAs);
-  }
-
-  changeFilter(filter) {
-    this.$rootScope.$broadcast('CHANGE_FILTER', filter);
+  broadcastEvent(eventName, data) {
+    this.$rootScope.$broadcast(eventName, data);
   }
 
   accordion(event) {

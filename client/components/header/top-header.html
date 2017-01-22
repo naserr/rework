@@ -23,7 +23,7 @@
                 </li>
                 <li class="profile_menu_item" ng-repeat="pr in vm.myProjects"
                     ng-class="{'active': vm.project._id === pr._id}">
-                    <a class="clearfix" ui-sref="project.boards.list({id: pr._id})">
+                    <a class="clearfix" ui-sref="project.boards.privateList({id: pr._id})">
                         <i class="project_management"></i>{{pr.name}}
                     </a>
                 </li>
