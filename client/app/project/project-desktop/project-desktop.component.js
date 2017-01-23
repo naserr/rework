@@ -74,7 +74,7 @@ export class projectDesktopComponent {
 
     let project = this.project;
     $scope.$on('draggie.end', function($event, instance, originalEvent, pointer) {
-      let index = _.findIndex(project.cards, {key: instance.element.id});
+      let index = _.findIndex(project.cards, {_id: instance.element.id});
       let updateCard = {
         index: `${index}`,
         position: {
@@ -138,28 +138,39 @@ export class projectDesktopComponent {
     });
   }
 
-  newCard(type) {
-    let pos = angular.element('#center-block').position();
+  newCard(cardType, p) {
+    let pos = p || angular.element('#center-block').position();
     let user = _.pick(this.Auth.getCurrentUserSync(), ['_id', 'name', 'email', 'role']);
     let patches = [
       {
         op: 'add',
         path: '/cards/-',
         value: {
-          key: `${this.boardName}${Date.now()}${_.random(1000, 1000000, false)}`,
+          _id: `${this.boardName}${Date.now()}${_.random(1000, 1000000, false)}`,
           user,
           board: this.boardName,
           position: {
             left: `${pos.left}px`,
             top: `${pos.top + 45}px`
           },
-          type,
-          content: `${this.newContent[type]}`
+          cardType,
+          content: `${this.newContent[cardType]}`
         }
       }
     ];
     this.$http.patch(`api/projects/${this.project._id}`, patches)
-      .then(() => this.newContent[type] = '');
+      .then(() => this.newContent[cardType] = '');
+  }
+
+  dbClick(e) {
+    if(this.zoom > 1) {
+      return;
+    }
+    let pos = angular.element('#target').position();
+    this.newCard('blue', {
+      top: e.pageY - (135 + (18 * ((this.zoom - 1) / 0.25))/* * this.zoom*/),
+      left: (e.pageX + (-100 * ((this.zoom - 1) / 0.25))) - (pos.left/* * this.zoom*/) - 10
+    });
   }
 
   onZoomChanged(zoomType) {
@@ -214,16 +225,16 @@ export class projectDesktopComponent {
   filterCards() {
     let cards = [];
     if(this.filter.blue) {
-      cards = cards.concat(_.filter(this.project.cards, {type: 'blue'}));
+      cards = cards.concat(_.filter(this.project.cards, {cardType: 'blue'}));
     }
     if(this.filter.pink) {
-      cards = cards.concat(_.filter(this.project.cards, {type: 'pink'}));
+      cards = cards.concat(_.filter(this.project.cards, {cardType: 'pink'}));
     }
     if(this.filter.orange) {
-      cards = cards.concat(_.filter(this.project.cards, {type: 'orange'}));
+      cards = cards.concat(_.filter(this.project.cards, {cardType: 'orange'}));
     }
     if(this.filter.green) {
-      cards = cards.concat(_.filter(this.project.cards, {type: 'green'}));
+      cards = cards.concat(_.filter(this.project.cards, {cardType: 'green'}));
     }
     if(!(this.filter.blue || this.filter.pink || this.filter.orange || this.filter.green)) {
       cards = this.project.cards;
@@ -232,7 +243,7 @@ export class projectDesktopComponent {
   }
 
   removeCard(card) {
-    let index = _.findIndex(this.project.cards, {key: card.key});
+    let index = _.findIndex(this.project.cards, {_id: card._id});
     let patches = [
       {
         op: 'remove',
@@ -242,13 +253,13 @@ export class projectDesktopComponent {
     this.$http.patch(`api/projects/${this.project._id}`, patches);
   }
 
-  changeColor(card, type) {
-    let index = _.findIndex(this.project.cards, {key: card.key});
+  changeColor(card, cardType) {
+    let index = _.findIndex(this.project.cards, {_id: card._id});
     let patches = [
       {
         op: 'replace',
-        path: `/cards/${index}/type`,
-        value: type
+        path: `/cards/${index}/cardType`,
+        value: cardType
       }
     ];
     this.$http.patch(`api/projects/${this.project._id}`, patches);

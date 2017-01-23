@@ -155,7 +155,7 @@ ul.cart_menu li a {
 ul.cart_menu a.color_cart {
   width: 16px;
   height: 16px;
-  margin-right: 4px;
+  /*margin-right: 4px;*/
   background-color: #93b3f1;
   border-radius: 50%;
 }
