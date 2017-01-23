@@ -55,16 +55,16 @@ var ProjectSchema = new mongoose.Schema({
     }]
   }],
   cards: [{
-    /*_id: String,
-    user: {},
+    key: String,
     added: {
       type: Date,
       default: new Date()
     },
     board: String,
-    left: String,
-    top: String,
-    content: String*/
+    content: {},
+    position: {},
+    type: String,
+    user: {}
   }],
   tasks: [{}]
 });

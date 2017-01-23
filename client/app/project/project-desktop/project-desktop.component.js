@@ -74,7 +74,7 @@ export class projectDesktopComponent {
 
     let project = this.project;
     $scope.$on('draggie.end', function($event, instance, originalEvent, pointer) {
-      let index = _.findIndex(project.cards, {_id: instance.element.id});
+      let index = _.findIndex(project.cards, {key: instance.element.id});
       let updateCard = {
         index: `${index}`,
         position: {
@@ -146,9 +146,8 @@ export class projectDesktopComponent {
         op: 'add',
         path: '/cards/-',
         value: {
-          _id: `${this.boardName}${Date.now()}${_.random(1000, 1000000, false)}`,
+          key: `${this.boardName}${Date.now()}${_.random(1000, 1000000, false)}`,
           user,
-          added: new Date(),
           board: this.boardName,
           position: {
             left: `${pos.left}px`,
@@ -233,11 +232,23 @@ export class projectDesktopComponent {
   }
 
   removeCard(card) {
-    let index = _.findIndex(this.project.cards, {_id: card._id});
+    let index = _.findIndex(this.project.cards, {key: card.key});
     let patches = [
       {
         op: 'remove',
         path: `/cards/${index}`
+      }
+    ];
+    this.$http.patch(`api/projects/${this.project._id}`, patches);
+  }
+
+  changeColor(card, type) {
+    let index = _.findIndex(this.project.cards, {key: card.key});
+    let patches = [
+      {
+        op: 'replace',
+        path: `/cards/${index}/type`,
+        value: type
       }
     ];
     this.$http.patch(`api/projects/${this.project._id}`, patches);
