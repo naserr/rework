@@ -1,0 +1,126 @@
+<!--<div class="tools clearfix">
+<button class="rework_btn btn_info pull-left" ng-click="vm.zoomOut()">-</button>
+<button class="rework_btn btn_info pull-left" ng-click="vm.zoomIn()">+</button>
+<button class="rework_btn btn_info pull-left" ng-click="vm.newCard()">new</button>
+</div>-->
+<div class="board_container clearfix" id="board">
+  <div class="zoom_content"
+       ng-style="{'transform': 'scale(' + vm.zoom + ', ' + vm.zoom + ')'}">
+    <!--ng-dblclick="vm.newCard('green')"-->
+    <div class="board" id="target">
+      <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
+        <div class="title_board_cell clearfix">
+          <h5 class="customer_segments_header text_bold header_board_cell">
+            PROBLEM
+          </h5>
+          <p class="clear pull-left title_describtion text_blur">List your top 1-3 problems</p>
+        </div>
+      </div>
+      <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix" id="center-block">
+        <div class="title_board_cell clearfix">
+          <h5 class="customer_segments_header text_bold header_board_cell">
+            PROBLEM
+          </h5>
+          <p class="clear pull-left title_describtion text_blur">List your top 1-3 problems</p>
+        </div>
+      </div>
+      <div class="board_column reworks-cols-1 border_l three_cells clearfix">
+        <div class="board_cell col-md-12 no_padding border_b two_cells clearfix">
+          <div class="title_board_cell clearfix">
+            <h5 class="customer_segments_header text_bold header_board_cell">
+              PROBLEM
+            </h5>
+            <p class="clear pull-left title_describtion text_blur">List your top 1-3 problems</p>
+          </div>
+        </div>
+        <div class="board_cell col-md-12 no_padding border_b two_cells clearfix">
+          <div class="title_board_cell clearfix">
+            <h5 class="customer_segments_header text_bold header_board_cell">
+              PROBLEM
+            </h5>
+            <p class="clear pull-left title_describtion text_blur">List your top 1-3 problems</p>
+          </div>
+        </div>
+      </div>
+      <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
+        <div class="title_board_cell clearfix">
+          <h5 class="customer_segments_header text_bold header_board_cell">
+            PROBLEM
+          </h5>
+          <p class="clear pull-left title_describtion text_blur">List your top 1-3 problems</p>
+        </div>
+      </div>
+      <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
+        <div class="title_board_cell clearfix">
+          <h5 class="customer_segments_header text_bold header_board_cell">
+            PROBLEM
+          </h5>
+          <p class="clear pull-left title_describtion text_blur">List your top 1-3 problems</p>
+        </div>
+      </div>
+      <div class="one_cell clearfix">
+        <div class="board_cell col-md-3 no_padding border_l four_cells clearfix">
+          <div class="title_board_cell clearfix">
+            <h5 class="customer_segments_header text_bold header_board_cell">
+              PROBLEM
+            </h5>
+            <p class="clear pull-left title_describtion text_blur">List your top 1-3 problems</p>
+          </div>
+        </div>
+        <div class="board_cell col-md-3 no_padding border_l four_cells clearfix">
+          <div class="title_board_cell clearfix">
+            <h5 class="customer_segments_header text_bold header_board_cell">
+              PROBLEM
+            </h5>
+            <p class="clear pull-left title_describtion text_blur">List your top 1-3 problems</p>
+          </div>
+        </div>
+        <div class="board_cell col-md-3 no_padding border_l four_cells clearfix">
+          <div class="title_board_cell clearfix">
+            <h5 class="customer_segments_header text_bold header_board_cell">
+              PROBLEM
+            </h5>
+            <p class="clear pull-left title_describtion text_blur">List your top 1-3 problems</p>
+          </div>
+        </div>
+        <div class="board_cell col-md-3 no_padding four_cells clearfix">
+          <div class="title_board_cell clearfix">
+            <h5 class="customer_segments_header text_bold header_board_cell">
+              PROBLEM
+            </h5>
+            <p class="clear pull-left title_describtion text_blur">List your top 1-3 problems</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div ng-repeat="card in vm.filterCards()" draggabilly class="cart {{card.type}}" id="{{card._id}}"
+         style="position: absolute;"
+         ng-style="{'left': card.position.left, 'top': card.position.top}" draggie-events="end">
+      <!--<p style="direction: rtl; text-align: right" ng-bind-html="card.content"></p>-->
+      <textarea style="cursor: default" ng-mouseover="card.hover=true"
+                ng-mouseleave="card.hover=false">{{card.content}}</textarea>
+      <ul class="cart_menu" ng-show="card.hover" ng-mouseover="card.hover=true">
+        <!--<li class="cart_menu_item">
+<a class="color_cart" href="#" ng-click=""></a>
+<ul class="dropdown-menu" role="menu">
+<li><a href="">5%</a></li>
+<li><a href="">25%</a></li>
+<li><a href="">50%</a></li>
+<li><a href="">100%</a></li>
+</ul>
+</li>
+<li class="cart_menu_item">
+<a class="size" href="">اندازه</a>
+</li>
+<li class="cart_menu_item">
+<a class="shape" href="">شکل</a>
+</li>-->
+        <li class="cart_menu_item">
+          <a class="remove" href="" ng-click="vm.justRemoved=true;vm.removeCard(card)">
+            <i class="fa fa-trash-o fa-lg"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
