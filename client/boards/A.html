@@ -1,137 +1,137 @@
-<!--<div class="tools clearfix">
-<button class="rework_btn btn_info pull-left" ng-click="vm.zoomOut()">-</button>
-<button class="rework_btn btn_info pull-left" ng-click="vm.zoomIn()">+</button>
-<button class="rework_btn btn_info pull-left" ng-click="vm.newCard()">new</button>
-</div>-->
 <div class="board_container customer_board clearfix" id="board">
-  <div class="zoom_content" ng-style="{'transform': 'scale(' + vm.zoom + ', ' + vm.zoom + ')'}">
-    <!--ng-dblclick="vm.newCard('green')"-->
-    <div class="board" id="target">
-      <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
-        <div class="title_board_cell clearfix">
-          <h5 class="customer_segments_header text_bold header_board_cell">
-            CUSTOMER SEGMENTS
-          </h5>
-          <p class="clear pull-left title_describtion text_blur">List your target customers and users.</p>
+    <div class="zoom_content" ng-style="{'transform': 'scale(' + vm.zoom + ', ' + vm.zoom + ')'}">
+        <div class="board" id="target" ng-dblclick="vm.dbClick($event)">
+            <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
+                <div class="title_board_cell clearfix">
+                    <h5 class="customer_segments_header text_bold header_board_cell">
+                        CUSTOMER SEGMENTS
+                    </h5>
+                    <p class="clear pull-left title_describtion text_blur">List your target customers and users.</p>
 
+                </div>
+                <div class="existing_items">
+                    <h6 class="text_bold header_board_cell">EARLY ADOPTERS</h6>
+                    <p class="clear pull-left title_describtion text_blur">List the compremention of your idea
+                        customers</p>
+                </div>
+            </div>
+            <div class="board_column reworks-cols-1 border_l three_cells clearfix">
+                <div class="board_cell no_padding col-md-12 border_b two_cells clearfix">
+                    <div class="title_board_cell clearfix">
+                        <h5 class="customer_relationship_header text_bold header_board_cell">
+                            UNFAIR ADAVATAGE
+                        </h5>
+                        <p class="clear pull-left title_describtion text_blur">Something that cannot exactly be bought
+                            or
+                            copied.</p>
+                    </div>
+                </div>
+                <div class="board_cell no_padding col-md-12 border_b two_cells clearfix">
+                    <div class="title_board_cell clearfix">
+                        <h5 class="channels_header text_bold header_board_cell">
+                            CHANNELS
+                        </h5>
+                        <p class="clear pull-left title_describtion text_blur">List your path to customers inbounds or
+                            outbounds.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix" id="center-block">
+                <div class="title_board_cell clearfix">
+                    <h5 class="customer_segments_header text_bold header_board_cell">
+                        UNIQUE VALUE PROPOSITION
+                    </h5>
+                    <p class="clear pull-left title_describtion text_blur">Single,clear,competing message that state you
+                        are
+                        diffrent and worth paying attention.</p>
+                </div>
+                <div class="existing_items">
+                    <h6 class="text_bold header_board_cell">HIGH-LEVEL CONCEPT</h6>
+                    <p class="clear pull-left title_describtion text_blur">Last your X for Y anatogy e.g YouTube=Flicker
+                        for
+                        videos</p>
+                </div>
+            </div>
+            <div class="board_column reworks-cols-1 border_l three_cells clearfix">
+                <div class="board_cell no_padding col-md-12 border_b two_cells clearfix">
+                    <div class="title_board_cell clearfix">
+                        <h5 class="customer_relationship_header text_bold header_board_cell">
+                            SOLUTION
+                        </h5>
+                        <p class="clear pull-left title_describtion text_blur">Define possible solution for each
+                            problem.</p>
+                    </div>
+                </div>
+                <div class="board_cell no_padding col-md-12 border_b two_cells clearfix">
+                    <div class="title_board_cell clearfix">
+                        <h5 class="channels_header text_bold header_board_cell">
+                            KEY METRICS
+                        </h5>
+                        <p class="clear pull-left title_describtion text_blur">List the key numbers that tell you how
+                            your business
+                            is doing.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
+                <div class="title_board_cell clearfix">
+                    <h5 class="customer_segments_header text_bold header_board_cell">
+                        PROBLEM
+                    </h5>
+                    <p class="clear pull-left title_describtion text_blur">List your top 1-3 problems</p>
+                </div>
+                <div class="existing_items">
+                    <h6 class="text_bold header_board_cell">EXISTING ALTERNATIVES</h6>
+                    <p class="clear pull-left title_describtion text_blur">List how these problems are solved today.</p>
+                </div>
+            </div>
+            <div class="one_cell clearfix">
+                <div class="board_cell col-md-6 no_padding border_l four_cells clearfix">
+                    <div class="title_board_cell clearfix">
+                        <h5 class="revenue_streams_header text_bold header_board_cell">
+                            REVENUE STREAMS
+                        </h5>
+                        <p class="clear pull-left title_describtion text_blur">List your stream of revenue.</p>
+                    </div>
+                </div>
+                <div class="board_cell col-md-6 no_padding  four_cells clearfix">
+                    <div class="title_board_cell clearfix">
+                        <h5 class="cost_structure_header text_bold header_board_cell">
+                            COST STRUCTURE
+                        </h5>
+                        <p class="clear pull-left title_describtion text_blur">List your timed and vanebie costs.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="existing_items">
-          <h6 class="text_bold header_board_cell">EARLY ADOPTERS</h6>
-          <p class="clear pull-left title_describtion text_blur">List the compremention of your idea customers</p>
+        <div ng-repeat="card in vm.filterCards()" draggabilly class="cart {{card.cardType}}" id="{{card._id}}"
+             style="position: absolute;"
+             ng-style="{'left': card.position.left, 'top': card.position.top}" draggie-events="end">
+            <!--<p style="direction: rtl; text-align: right" ng-bind-html="card.content"></p>-->
+            <textarea style="cursor: default" ng-mouseover="card.hover=true" ng-mouseleave="card.hover=false">{{card.content}}</textarea>
+            <ul class="cart_menu" ng-show="card.hover" ng-mouseover="card.hover=true" ng-mouseleave="card.hover=false">
+                <li class="cart_menu_item">
+                    <a class="color_cart" href="#" ng-click="card.subMenu.color = !card.subMenu.color"></a>
+                    <ul class="dropdown-menu" role="menu" ng-mouseleave="card.subMenu.color = false"
+                        ng-style="{'display': card.subMenu.color ? 'block' : 'none'}">
+                        <li><a class="color_cart blue" href="#" ng-click="vm.changeColor(card, 'blue')"></a></li>
+                        <li><a class="color_cart orange" href="#" ng-click="vm.changeColor(card, 'orange')"></a></li>
+                        <li><a class="color_cart pink" href="#" ng-click="vm.changeColor(card, 'pink')"></a></li>
+                        <li><a class="color_cart green" href="#" ng-click="vm.changeColor(card, 'green')"></a></li>
+                    </ul>
+                </li>
+                <li class="cart_menu_item">
+                    <a class="remove" href="" ng-click="vm.justRemoved=true;vm.removeCard(card)">
+                        <i class="fa fa-trash-o fa-lg"></i>
+                    </a>
+                </li>
+                <!--<li class="cart_menu_item">
+                    <a class="size" href="">اندازه</a>
+                </li>
+                <li class="cart_menu_item">
+                    <a class="shape" href="">شکل</a>
+                </li>-->
+            </ul>
         </div>
-      </div>
-      <div class="board_column reworks-cols-1 border_l three_cells clearfix">
-        <div class="board_cell no_padding col-md-12 border_b two_cells clearfix">
-          <div class="title_board_cell clearfix">
-            <h5 class="customer_relationship_header text_bold header_board_cell">
-              UNFAIR ADAVATAGE
-            </h5>
-            <p class="clear pull-left title_describtion text_blur">Something that cannot exactly be bought or
-              copied.</p>
-          </div>
-        </div>
-        <div class="board_cell no_padding col-md-12 border_b two_cells clearfix">
-          <div class="title_board_cell clearfix">
-            <h5 class="channels_header text_bold header_board_cell">
-              CHANNELS
-            </h5>
-            <p class="clear pull-left title_describtion text_blur">List your path to customers inbounds or
-              outbounds.</p>
-          </div>
-        </div>
-      </div>
-      <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
-        <div class="title_board_cell clearfix">
-          <h5 class="customer_segments_header text_bold header_board_cell">
-            UNIQUE VALUE PROPOSITION
-          </h5>
-          <p class="clear pull-left title_describtion text_blur">Single,clear,competing message that state you are
-            diffrent and worth paying attention.</p>
-        </div>
-        <div class="existing_items">
-          <h6 class="text_bold header_board_cell">HIGH-LEVEL CONCEPT</h6>
-          <p class="clear pull-left title_describtion text_blur">Last your X for Y anatogy e.g YouTube=Flicker for
-            videos</p>
-        </div>
-      </div>
-      <div class="board_column reworks-cols-1 border_l three_cells clearfix">
-        <div class="board_cell no_padding col-md-12 border_b two_cells clearfix">
-          <div class="title_board_cell clearfix">
-            <h5 class="customer_relationship_header text_bold header_board_cell">
-              SOLUTION
-            </h5>
-            <p class="clear pull-left title_describtion text_blur">Define possible solution for each problem.</p>
-          </div>
-        </div>
-        <div class="board_cell no_padding col-md-12 border_b two_cells clearfix">
-          <div class="title_board_cell clearfix">
-            <h5 class="channels_header text_bold header_board_cell">
-              KEY METRICS
-            </h5>
-            <p class="clear pull-left title_describtion text_blur">List the key numbers that tell you how your business
-              is doing.</p>
-          </div>
-        </div>
-      </div>
-      <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
-        <div class="title_board_cell clearfix">
-          <h5 class="customer_segments_header text_bold header_board_cell">
-            PROBLEM
-          </h5>
-          <p class="clear pull-left title_describtion text_blur">List your top 1-3 problems</p>
-        </div>
-        <div class="existing_items">
-          <h6 class="text_bold header_board_cell">EXISTING ALTERNATIVES</h6>
-          <p class="clear pull-left title_describtion text_blur">List how these problems are solved today.</p>
-        </div>
-      </div>
-      <div class="one_cell clearfix">
-        <div class="board_cell col-md-6 no_padding border_l four_cells clearfix">
-          <div class="title_board_cell clearfix">
-            <h5 class="revenue_streams_header text_bold header_board_cell">
-              REVENUE STREAMS
-            </h5>
-            <p class="clear pull-left title_describtion text_blur">List your stream of revenue.</p>
-          </div>
-        </div>
-        <div class="board_cell col-md-6 no_padding  four_cells clearfix">
-          <div class="title_board_cell clearfix">
-            <h5 class="cost_structure_header text_bold header_board_cell">
-              COST STRUCTURE
-            </h5>
-            <p class="clear pull-left title_describtion text_blur">List your timed and vanebie costs.</p>
-          </div>
-        </div>
-      </div>
     </div>
-    <div ng-repeat="card in vm.filterCards()" draggabilly class="cart {{card.type}}" id="{{card._id}}"
-         style="position: absolute;" ng-style="{'left': card.position.left, 'top': card.position.top}"
-         draggie-events="end">
-      <!--<p style="direction: rtl; text-align: right" ng-bind-html="card.content"></p>-->
-      <textarea style="cursor: default" ng-mouseover="card.hover=true"
-                ng-mouseleave="card.hover=false">{{card.content}}</textarea>
-      <ul class="cart_menu" ng-show="card.hover" ng-mouseover="card.hover=true">
-        <!--<li class="cart_menu_item">
-<a class="color_cart" href="#" ng-click=""></a>
-<ul class="dropdown-menu" role="menu">
-<li><a href="">5%</a></li>
-<li><a href="">25%</a></li>
-<li><a href="">50%</a></li>
-<li><a href="">100%</a></li>
-</ul>
-</li>
-<li class="cart_menu_item">
-<a class="size" href="">اندازه</a>
-</li>
-<li class="cart_menu_item">
-<a class="shape" href="">شکل</a>
-</li>-->
-        <li class="cart_menu_item">
-          <a class="remove" href="" ng-click="vm.justRemoved=true;vm.removeCard(card)">
-            <i class="fa fa-trash-o fa-lg"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
 </div>

@@ -6,7 +6,7 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngDialog from 'ng-dialog';
 import 'ng-tags-input';
-import html2canvas from 'html2canvas';
+import html2canvas from 'html2canvas/dist/html2canvas.min';
 import jsPDF from 'jspdf';
 
 export class projectDesktopComponent {

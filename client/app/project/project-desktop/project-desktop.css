@@ -185,7 +185,7 @@ h6.header_board_cell {
   float: left;
   width: 45%;
   text-align: left;
-  margin: 14px 0 0 4px;
+  margin: 4px 0 0 2px;
   line-height: 1.10;
 }
 
@@ -295,5 +295,21 @@ h4.strengths_header {
     display: inline-flex;
     width: 20px;
     height: 20px;
+}
+
+.blue {
+    background-color: #93b3f1!important;
+}
+
+.orange {
+    background-color: #ffcd6a!important;
+}
+
+.pink {
+    background-color: #fe909b!important;
+}
+
+.green {
+    background-color: #88efe4!important;
 }
 
