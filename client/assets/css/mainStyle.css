@@ -273,6 +273,10 @@ button {
   font-weight: bold;
 }
 
+.white_border {
+  border-color: white !important;
+}
+
 .pull_right {
   float: right;
 }
