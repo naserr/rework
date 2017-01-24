@@ -261,9 +261,59 @@ p.title_describtion {
 
 /*board D with 4 cells*/
 h4.strengths_header {
-    position: absolute;
-    left: 100px;
-    top: 100px;
+  position: relative;
+  margin: 30px auto 0;
+  width: 110px;
+  font-size: 32px;
+  color: #fff;
+}
+
+div.strengths_cell {
+  background-color: #c0504e;
+  border-width: 4px;
+}
+
+h4.opportunities_header {
+  position: relative;
+  margin: 150px auto 0;
+  width: 190px;
+  font-size: 32px;
+  color: #fff;
+}
+
+div.opportunities_cell {
+  background-color: #8064a1;
+  border-width: 4px;
+}
+
+h4.threats_header {
+  position: relative;
+  margin: 150px auto 0;
+  width: 110px;
+  font-size: 32px;
+  color: #fff;
+}
+
+div.threats_cell {
+  background-color: #9bbb58;
+  border-width: 4px;
+}
+
+h4.weakness_header {
+  position: relative;
+  margin: 30px auto 0;
+  width: 110px;
+  font-size: 32px;
+  color: #fff;
+}
+
+div.weakness_cell {
+  background-color: #9bbb58;
+  border-width: 4px;
+}
+
+div.board.four_cells .board_column {
+  border-width: 4px !important;
 }
 
 @media (min-width: 1200px) and (max-width: 1400px) {
