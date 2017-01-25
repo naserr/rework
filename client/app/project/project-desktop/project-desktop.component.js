@@ -448,7 +448,7 @@ export class projectDesktopComponent {
       parent = $(event.target);
     }
     if(parent.css('bottom') == '-27px') {
-      parent.animate({bottom: '150px'}, 'fast');
+      parent.animate({bottom: '210px'}, 'fast');
     }
 
   }

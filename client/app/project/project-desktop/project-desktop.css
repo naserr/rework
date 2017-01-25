@@ -419,6 +419,7 @@ div.center_cell {
 .chat_wrapper {
   width: 300px;
   float: left;
+  height: 300px;
   margin-left: 25px;
   position: relative;
   bottom: -27px;
@@ -456,23 +457,26 @@ div.center_cell {
 }
 
 .content_chat_wrapper {
-  height: 175px;
+  height: 80%;
   background-color: #eee;
 }
 
 .previous_chat {
-  height: 80%;
   overflow: auto;
   margin-bottom: 4px;
   border-bottom: 1px solid #fff;
 }
 
 .content_chat_wrapper textarea {
-  width: 98%;
+  position: absolute;
+  bottom: 32px;
   background-color: #fff;
-  border-top: 1px solid #efefef;
-  margin: 0 auto;
-  display: table;
+  border-top: 1px solid #eee;
+  right: 5px;
+  left: 5px;
+  width: 290px;
+  resize: none;
+  padding: 4px;
 }
 
 /*------------------------------*/
