@@ -154,7 +154,7 @@ export class projectDesktopComponent {
             top: `${pos.top + 45}px`
           },
           cardType,
-          content: `${this.newContent[cardType]}`
+          content: `${this.newContent[cardType].trim()}`
         }
       }
     ];
@@ -225,19 +225,31 @@ export class projectDesktopComponent {
   filterCards() {
     let cards = [];
     if(this.filter.blue) {
-      cards = cards.concat(_.filter(this.project.cards, {cardType: 'blue'}));
+      cards = cards.concat(_.filter(this.project.cards, {
+        board: this.boardName,
+        cardType: 'blue'
+      }));
     }
     if(this.filter.pink) {
-      cards = cards.concat(_.filter(this.project.cards, {cardType: 'pink'}));
+      cards = cards.concat(_.filter(this.project.cards, {
+        board: this.boardName,
+        cardType: 'pink'
+      }));
     }
     if(this.filter.orange) {
-      cards = cards.concat(_.filter(this.project.cards, {cardType: 'orange'}));
+      cards = cards.concat(_.filter(this.project.cards, {
+        board: this.boardName,
+        cardType: 'orange'
+      }));
     }
     if(this.filter.green) {
-      cards = cards.concat(_.filter(this.project.cards, {cardType: 'green'}));
+      cards = cards.concat(_.filter(this.project.cards, {
+        board: this.boardName,
+        cardType: 'green'
+      }));
     }
     if(!(this.filter.blue || this.filter.pink || this.filter.orange || this.filter.green)) {
-      cards = this.project.cards;
+      cards = _.filter(this.project.cards, {board: this.boardName});
     }
     return cards;
   }
@@ -260,6 +272,18 @@ export class projectDesktopComponent {
         op: 'replace',
         path: `/cards/${index}/cardType`,
         value: cardType
+      }
+    ];
+    this.$http.patch(`api/projects/${this.project._id}`, patches);
+  }
+
+  changeCardScale(card, scale) {
+    let index = _.findIndex(this.project.cards, {_id: card._id});
+    let patches = [
+      {
+        op: 'replace',
+        path: `/cards/${index}/scale`,
+        value: scale
       }
     ];
     this.$http.patch(`api/projects/${this.project._id}`, patches);
@@ -361,6 +385,26 @@ export class projectDesktopComponent {
     }
   }
 
+  focusTextArea(event, card) {
+    card.oldContent = card.content;
+    $(event.target).focus();
+  }
+
+  saveContent(card) {
+    if(card.oldContent == card.content) {
+      return;
+    }
+    let index = _.findIndex(this.project.cards, {_id: card._id});
+    let patches = [
+      {
+        op: 'replace',
+        path: `/cards/${index}/content`,
+        value: card.content
+      }
+    ];
+    this.$http.patch(`api/projects/${this.project._id}`, patches);
+  }
+
   focus(event) {
     var parent = null;
     if($(event.target).is('input')) {
@@ -376,7 +420,7 @@ export class projectDesktopComponent {
       parent.animate({bottom: '70px'}, 'fast');
     }
     else {
-      //      $('.new_cart_wrapper .cart').animate({bottom: '0'}, 'fast');
+      // $('.new_cart_wrapper .cart').animate({bottom: '0'}, 'fast');
       parent.animate({bottom: 0}, 'fast');
     }
   }

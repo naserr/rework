@@ -86,5 +86,60 @@
                 </div>
             </div>
         </div>
+        <div ng-repeat="card in vm.filterCards()" draggabilly class="cart {{card.cardType}}" id="{{card._id}}"
+             style="position: absolute;" ng-click="vm.focusTextArea($event, card)"
+             ng-style="{'left': card.position.left, 'top': card.position.top, 'width': 100 * card.scale + 'px', 'height': 100 * card.scale + 'px'}"
+             draggie-events="end">
+        <textarea style="cursor: default; overflow: hidden" ng-mouseover="card.hover=true" ng-mouseleave="card.hover=false"
+                  ng-model="card.content" ng-blur="vm.saveContent(card)"></textarea>
+            <ul class="cart_menu" ng-show="card.hover" ng-mouseover="card.hover=true" ng-mouseleave="card.hover=false" ng-style="{'left': 100 * card.scale + 'px'}">
+                <li class="cart_menu_item">
+                    <a class="color_cart" href="#" ng-click="card.subMenu.color = !card.subMenu.color"></a>
+                    <ul class="dropdown-menu" role="menu" ng-mouseleave="card.subMenu.color = false"
+                        ng-style="{'display': card.subMenu.color ? 'block' : 'none'}">
+                        <li><a ng-class="{'bordered': card.cardType === 'blue'}" class="color_cart blue" href="#"
+                               ng-click="vm.changeColor(card, 'blue')"></a></li>
+                        <li><a ng-class="{'bordered': card.cardType === 'orange'}" class="color_cart orange" href="#"
+                               ng-click="vm.changeColor(card, 'orange')"></a></li>
+                        <li><a ng-class="{'bordered': card.cardType === 'pink'}" class="color_cart pink" href="#"
+                               ng-click="vm.changeColor(card, 'pink')"></a></li>
+                        <li><a ng-class="{'bordered': card.cardType === 'green'}" class="color_cart green" href="#"
+                               ng-click="vm.changeColor(card, 'green')"></a></li>
+                    </ul>
+                </li>
+                <li class="cart_menu_item">
+                    <a class="size" href="#" ng-click="card.subMenu.scale = !card.subMenu.scale">
+                        <i class="fa fa-arrows-alt fa-lg"></i>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" ng-mouseleave="card.subMenu.scale = false"
+                        ng-style="{'display': card.subMenu.scale ? 'block' : 'none'}">
+                        <li>
+                            <a ng-class="{'bordered': card.scale == '1'}" class="size_cart real" href="#"
+                               ng-click="vm.changeCardScale(card, '1')"></a>
+                        </li>
+                        <li>
+                            <a ng-class="{'bordered': card.scale == '0.75'}" class="size_cart smaller" href="#"
+                               ng-click="vm.changeCardScale(card, '0.75')"></a>
+                        </li>
+                        <li>
+                            <a ng-class="{'bordered': card.scale == '0.5'}" class="size_cart half-small" href="#"
+                               ng-click="vm.changeCardScale(card, '0.5')"></a>
+                        </li>
+                        <li>
+                            <a ng-class="{'bordered': card.scale == '0.25'}" class="size_cart xx-small" href="#"
+                               ng-click="vm.changeCardScale(card, '0.25')"></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="cart_menu_item">
+                    <a class="remove" href="" ng-click="vm.removeCard(card)">
+                        <i class="fa fa-trash-o fa-lg"></i>
+                    </a>
+                </li>
+                <!--<li class="cart_menu_item">
+                    <a class="shape" href="">شکل</a>
+                </li>-->
+            </ul>
+        </div>
     </div>
 </div>

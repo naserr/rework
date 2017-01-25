@@ -89,9 +89,9 @@ div.cart.green {
 
 div.cart textarea {
   resize: none;
-  height: 90%;
+  height: 100%;
   width: 100%;
-  padding: 5px 10px;
+  padding: 3px 4px 0 4px;
   color: #222;
 }
 
@@ -368,6 +368,35 @@ div.center_cell {
   display: inline-flex;
   width: 20px;
   height: 20px;
+}
+
+.cart_menu .dropdown-menu > li > a.size_cart {
+  border-radius: 0;
+  background-color: #93b3f1;
+}
+
+.xx-small {
+  width: 10px!important;
+  height: 10px!important;
+}
+
+.half-small {
+  width: 15px!important;
+  height: 15px!important;
+}
+
+.smaller {
+  width: 20px!important;
+  height: 20px!important;
+}
+
+.real {
+  width: 25px!important;
+  height: 25px!important;
+}
+
+.bordered {
+  border: solid 1px black!important;
 }
 
 .blue {

@@ -70,6 +70,11 @@ var ProjectSchema = new mongoose.Schema({
       top: String,
       left: String
     },
+    scale: {
+      type: String,
+      default: '1',
+      enum: ['1', '0.75', '0.5', '0.25']
+    },
     cardType: String,
     content: String,
     added: {
