@@ -417,7 +417,7 @@ div.center_cell {
 
 /*chat*/
 .chat_wrapper {
-  width: 260px;
+  width: 300px;
   float: left;
   margin-left: 25px;
   position: relative;
@@ -462,6 +462,7 @@ div.center_cell {
 
 .previous_chat {
   height: 80%;
+  overflow: auto;
   margin-bottom: 4px;
 }
 
