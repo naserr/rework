@@ -80,7 +80,8 @@
     </div>
     <div class="chat_wrapper clearfix" tabindex="5" ng-click="vm.focusChat($event)">
         <div class="header_chat_wrapper clearfix">
-            <h6><i class="massage_icon"></i>پنل چت<i class="group_icon"></i><i class="minimize_icon"></i></h6>
+            <h6><i class="massage_icon"></i>پنل چت<i class="group_icon"></i><i ng-click="vm.blurChat($event)"
+                                                                               class="minimize_icon"></i></h6>
         </div>
         <div class="content_chat_wrapper clearfix">
             <div class="previous_chat"></div>
