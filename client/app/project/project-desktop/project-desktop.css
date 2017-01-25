@@ -5,39 +5,39 @@ div.content_wrapper {
 }
 
 div.zoom_content {
-    width: 1000px;
-    height: 450px;
-    transform-origin: right top 0;
-    transition: 0.1s ease-out;
+  width: 1000px;
+  height: 450px;
+  transform-origin: right top 0;
+  transition: 0.1s ease-out;
 }
 
 div.board_container {
-    height: 80vh;
-    width: 100%;
-    overflow: auto;
+  height: 80vh;
+  width: 100%;
+  overflow: auto;
 }
 
 div.board {
-    width: 100%;
-    height: 100%;
-    float: right;
-    margin: 20px 20px 0 0;
-    overflow: visible;
-    border: 4px solid #000;
-    position: relative;
-    z-index: 20;
+  width: 100%;
+  height: 100%;
+  float: right;
+  margin: 20px 20px 0 0;
+  overflow: visible;
+  border: 4px solid #000;
+  position: relative;
+  z-index: 20;
 }
 
 div.cart {
-    float: right;
-    width: 100px;
-    height: 100px;
-    background-color: greenyellow;
-    position: relative;
-    bottom: 0;
-    z-index: 50;
-    display: flex;
-    display: -webkit-flex;
+  float: right;
+  width: 100px;
+  height: 100px;
+  background-color: greenyellow;
+  position: relative;
+  bottom: 0;
+  z-index: 50;
+  display: flex;
+  display: -webkit-flex;
 }
 
 div.cart p {
@@ -126,6 +126,7 @@ div.cart textarea:-ms-input-placeholder {
   color: #222;
 }
 
+
 /*cart_menu*/
 
 ul.cart_menu {
@@ -167,9 +168,11 @@ ul.cart_menu i.remove_icon {
   background: url(../../../assets/icons/icons.png) -561px -80px;
 }
 
+
 /*end cart_menu*/
 
 /*board*/
+
 .board_cell {
   float: right;
   position: relative;
@@ -260,6 +263,7 @@ p.title_describtion {
 }
 
 /*board D with 4 cells*/
+
 /*board D with 4 cells*/
 
 h4.strengths_header {
@@ -335,7 +339,16 @@ div.center_cell {
   text-align: center;
 }
 
+/*board E*/
+
+.circle {
+  border: 1px solid #000;
+  border-radius: 50%;
+}
+
+
 /*dialog*/
+
 .ngdialog-content {
   background-color: #FFFFFF!important;
 }
@@ -377,13 +390,7 @@ div.center_cell {
   div.content_wrapper {
     height: 85.5vh;
   }
-
   div.board {
     margin: 10px 10px 0 0;
   }
 }
-
-
-
-
-

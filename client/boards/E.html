@@ -1,0 +1,100 @@
+<div class="board_container clearfix" id="board">
+  <div class="zoom_content" ng-style="{'transform': 'scale(' + vm.zoom + ', ' + vm.zoom + ')'}">
+    <div class="board" id="target">
+      <div class="customer_container four_cells col-xs-6 clearfix">
+        <h4>Custumer</h4>
+        <div class="circle clearfix four_cells">
+          <div class="board_column col-md-6 no_padding border_l four_cells clearfix">
+            <div class="board_cell  col-md-12 no_padding four_cells clearfix">
+              <div class="title_board_cell clearfix">
+                <h4 class=" text_bold header_board_cell">
+                  Experience
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div class="board_column col-md-6 no_padding four_cells clearfix">
+            <div class="board_cell col-md-12 no_padding border_b two_cells clearfix">
+              <div class="title_board_cell clearfix">
+                <h4 class="text_bold header_board_cell">
+                  Benfits
+                </h4>
+              </div>
+            </div>
+            <div class="board_cell col-md-12 no_padding two_cells clearfix">
+              <div class="title_board_cell clearfix">
+                <h4 class="text_bold header_board_cell">
+                  Features
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="product_container four_cells col-xs-6 clearfix">
+        <h4 class="clearfix">Product</h4>
+        <div class="board_column col-md-6 no_padding border_l four_cells clearfix">
+          <div class="board_cell  col-md-12 no_padding border_b border_r border_t four_cells clearfix">
+            <div class="title_board_cell clearfix">
+              <h4 class=" text_bold header_board_cell">
+                Experience
+              </h4>
+            </div>
+          </div>
+        </div>
+        <div class="board_column col-md-6 no_padding border_l border_t four_cells clearfix">
+          <div class="board_cell col-md-12 no_padding border_b two_cells clearfix">
+            <div class="title_board_cell clearfix">
+              <h4 class="text_bold header_board_cell">
+                Benfits
+              </h4>
+            </div>
+          </div>
+          <div class="board_cell col-md-12 no_padding border_b two_cells clearfix">
+            <div class="title_board_cell clearfix">
+              <h4 class="text_bold header_board_cell">
+                Features
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-repeat="card in vm.filterCards()" draggabilly class="cart {{card.cardType}}" id="{{card._id}}"
+           style="position: absolute;" ng-style="{'left': card.position.left, 'top': card.position.top}"
+           draggie-events="end">
+        <!--<p style="direction: rtl; text-align: right" ng-bind-html="card.content"></p>-->
+        <textarea style="cursor: default" ng-mouseover="card.hover=true" ng-mouseleave="card.hover=false">{{card.content}}</textarea>
+        <ul class="cart_menu" ng-show="card.hover" ng-mouseover="card.hover=true" ng-mouseleave="card.hover=false">
+          <li class="cart_menu_item">
+            <a class="color_cart" href="#" ng-click="card.subMenu.color = !card.subMenu.color"></a>
+            <ul class="dropdown-menu" role="menu" ng-mouseleave="card.subMenu.color = false"
+                ng-style="{'display': card.subMenu.color ? 'block' : 'none'}">
+              <li>
+                <a class="color_cart blue" href="#" ng-click="vm.changeColor(card, 'blue')"></a>
+              </li>
+              <li>
+                <a class="color_cart orange" href="#" ng-click="vm.changeColor(card, 'orange')"></a>
+              </li>
+              <li>
+                <a class="color_cart pink" href="#" ng-click="vm.changeColor(card, 'pink')"></a>
+              </li>
+              <li>
+                <a class="color_cart green" href="#" ng-click="vm.changeColor(card, 'green')"></a>
+              </li>
+            </ul>
+          </li>
+          <li class="cart_menu_item">
+            <a class="remove" href="" ng-click="vm.justRemoved=true;vm.removeCard(card)">
+              <i class="fa fa-trash-o fa-lg"></i>
+            </a>
+          </li>
+          <!--<li class="cart_menu_item">
+<a class="size" href="">اندازه</a>
+</li>
+<li class="cart_menu_item">
+<a class="shape" href="">شکل</a>
+</li>-->
+        </ul>
+      </div>
+    </div>
+  </div>
