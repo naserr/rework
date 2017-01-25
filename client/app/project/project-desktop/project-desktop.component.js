@@ -428,6 +428,34 @@ export class projectDesktopComponent {
   blur() {
     $('.new_cart_wrapper .cart').animate({bottom: '0'}, 'fast');
   }
+
+  focusChat(event) {
+    var parent = null;
+    console.log($(event.target));
+    if($(event.target).is('div.header_chat_wrapper')) {
+      parent = $(event.target).parent();
+    }
+    else if($(event.target).is('h6')) {
+      parent = $(event.target).parent().parent();
+    }
+    else if($(event.target).is('i') && $(event.target).hasClass('group_icon')) {
+      parent = $(event.target).parent().parent().parent();
+    }
+    else if($(event.target).is('i') && $(event.target).hasClass('massage_icon')) {
+      parent = $(event.target).parent().parent().parent();
+    }
+    else {
+      parent = $(event.target);
+    }
+    if(parent.css('bottom') == '-27px') {
+      parent.animate({bottom: '150px'}, 'fast');
+    }
+
+  }
+
+  blurChat() {
+    $('.chat_wrapper').animate({bottom: '-27'}, 'fast');
+  }
 }
 
 export default angular.module('reworkApp.project.desktop', [uiRouter, ngDialog, 'ngTagsInput'])

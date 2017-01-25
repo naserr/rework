@@ -50,8 +50,8 @@ div.cart p {
 div.new_cart_wrapper {
   position: absolute;
   bottom: -70px;
-  left: 0;
-  right: 0;
+  left: 727px;
+  right: 20px;
 }
 
 div.new_cart_wrapper .cart {
@@ -415,6 +415,66 @@ div.center_cell {
   background-color: #88efe4 !important;
 }
 
+/*chat*/
+.chat_wrapper {
+  width: 260px;
+  float: left;
+  margin-left: 25px;
+  position: relative;
+  bottom: -27px;
+}
+
+.header_chat_wrapper {
+  background-color: #293b5a;
+  color: #88efe4;
+  padding: 7px 5px 14px;
+  cursor: pointer;
+}
+
+.header_chat_wrapper i.massage_icon,
+.header_chat_wrapper i.group_icon,
+.header_chat_wrapper i.minimize_icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin: 0 0 -13px 7px;
+}
+
+.header_chat_wrapper i.massage_icon {
+  background: url(../../../assets/icons/icons.png) -52px -132px;
+}
+
+.header_chat_wrapper i.group_icon {
+  background: url(../../../assets/icons/icons.png) -87px -129px;
+  float: left;
+}
+
+.header_chat_wrapper i.minimize_icon {
+  background: url(../../../assets/icons/icons.png) -156px -129px;
+  margin-top: 5px;
+  float: left;
+}
+
+.content_chat_wrapper {
+  height: 175px;
+  background-color: #eee;
+}
+
+.previous_chat {
+  height: 80%;
+  margin-bottom: 4px;
+}
+
+.content_chat_wrapper textarea {
+  width: 98%;
+  background-color: #fff;
+
+  border-top: 1px solid #efefef;
+  margin: 0 auto;
+  display: table;
+}
+
+/*------------------------------*/
 @media (min-width: 1200px) and (max-width: 1400px) {
   div.content_wrapper {
     height: 85.5vh;
