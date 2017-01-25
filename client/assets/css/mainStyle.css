@@ -38,7 +38,7 @@
 @font-face {
   font-family: 'iran';
   src: url('../fonts/iran-sans/IRANSans-Light-web.eot');
-  src: url('../fonts/iran-sans/IRANSans-Light-web.eot?#iefix') format('eot'), url('../fonts/iran-sans/IRANSans-light-web.woff') format('woff');
+  src: url('../fonts/iran-sans/IRANSans-Light-web.eot?#iefix') format('eot'), url('../fonts/iran-sans/IRANSans-Light-web.woff') format('woff');
   font-weight: lighter;
 }
 
@@ -569,6 +569,9 @@ ul.list_striiped li:nth-of-type(even) {
   border-bottom: 1px solid #000;
 }
 
+.border_t {
+  border-top: 1px solid #000;
+}
 .no_border {
   border: none;
 }
@@ -576,6 +579,11 @@ ul.list_striiped li:nth-of-type(even) {
 .border_l {
   border-left: 1px solid #000;
 }
+
+.border_r {
+  border-right: 1px solid #000;
+}
+
 
 /*dropDown*/
 
