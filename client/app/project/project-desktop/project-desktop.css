@@ -464,12 +464,12 @@ div.center_cell {
   height: 80%;
   overflow: auto;
   margin-bottom: 4px;
+  border-bottom: 1px solid #fff;
 }
 
 .content_chat_wrapper textarea {
   width: 98%;
   background-color: #fff;
-
   border-top: 1px solid #efefef;
   margin: 0 auto;
   display: table;
