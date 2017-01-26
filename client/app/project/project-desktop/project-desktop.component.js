@@ -64,11 +64,11 @@ export class projectDesktopComponent {
     socket.socket.on('MSG_CREATED', data => this.msgArr.push(data));
 
     socket.syncUpdates('project', [], (event, item, array) => {
-      console.log('socketIO > ', event);
       this.project.cards = item.cards;
       this.project.tasks = item.tasks;
       this.project.users = item.users;
       this.project.boards = item.boards;
+      this.users = this.project.users;
       this.board = item.boards.find(b => b.name.toUpperCase() === this.boardName);
     });
 
@@ -316,6 +316,9 @@ export class projectDesktopComponent {
   }
 
   addUserToBoard(newUser) {
+    if(!newUser) {
+      return;
+    }
     if(this.ProjectAuth.getUserRole(this.project) === 2) {
       let oldUser = _.find(this.board.users, {_id: newUser._id});
       if(oldUser) {
@@ -416,6 +419,9 @@ export class projectDesktopComponent {
   }
 
   sendMessage(msg) {
+    if(!msg) {
+      return;
+    }
     let data = {
       projectId: this.project._id,
       user: this.Auth.getCurrentUserSync(),
@@ -488,7 +494,7 @@ export default angular.module('reworkApp.project.desktop', [uiRouter, ngDialog, 
     },
     bindings: {
       project: '=',
-      users: '<'
+      users: '='
     },
     controller: projectDesktopComponent,
     controllerAs: 'vm'

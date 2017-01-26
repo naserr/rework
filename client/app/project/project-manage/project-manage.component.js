@@ -46,6 +46,9 @@ export class projectManageComponent {
   }
 
   addNewUser(newUser) {
+    if(!newUser) {
+      return;
+    }
     let oldUser = _.find(this.project.users, {_id: newUser._id});
     if(oldUser) {
       return this.$log.error('این کاربر قبلا عضو شده است');
@@ -90,7 +93,7 @@ export default angular.module('reworkApp.project.manage', [uiRouter, typeahead, 
     },
     bindings: {
       project: '=',
-      users: '<'
+      users: '='
     },
     controller: projectManageComponent,
     controllerAs: 'vm'

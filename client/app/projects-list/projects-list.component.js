@@ -24,7 +24,7 @@ export class projectsListComponent {
 export default angular.module('reworkApp.projects.list', [uiRouter])
   .component('projectsList', {
     template: require('./projects-list.html'),
-    bindings: {projects: '<'},
+    bindings: {projects: '='},
     controller: projectsListComponent,
     controllerAs: 'vm'
   })

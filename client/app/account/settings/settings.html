@@ -43,10 +43,9 @@
             </div>
         </div>
         <div class="col-md-3">
-          <figure class="profile_image">
-                <img ng-hide="vm.user.avatar" src="./assets/img/defualtProfile.jpg">
-            <img class="img_uploaded" ng-show="vm.user.avatar" ng-src="data:image/jpeg;base64,{{vm.user.avatar.base64}}"
-                 width="117" height="117">
+            <figure class="profile_image">
+                <img class="img_uploaded" ng-src="data:image/jpeg;base64,{{vm.user.avatar.base64}}"
+                     width="117" height="117">
             </figure>
             <label for="file" class="change_profile_img">تغییر تصویر پروفایل</label>
             <input type="file" name="file" id="file" class="inputfile" ng-model="vm.user.avatar" base-sixty-four-input
