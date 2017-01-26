@@ -38,6 +38,7 @@ function Socket(socketFactory) {
        * Syncs item creation/updates on 'model:save'
        */
       socket.on(`${modelName}:save`, function(item) {
+        console.log('socketio >>> ', `${modelName}:save`);
         var oldItem = _.find(array, {
           _id: item._id
         });

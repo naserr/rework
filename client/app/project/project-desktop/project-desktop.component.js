@@ -37,6 +37,7 @@ export class projectDesktopComponent {
       value: 0
     }
   ];
+  msgArr = [];
 
   constructor($scope, $rootScope, $state, $stateParams, $http, Auth, ProjectAuth, socket, ngDialog, $log) {
     'ngInject';
@@ -46,6 +47,7 @@ export class projectDesktopComponent {
     this.$state = $state;
     this.ngDialog = ngDialog;
     this.ProjectAuth = ProjectAuth;
+    this.socket = socket;
     this.$log = $log;
     this.boardName = $stateParams.board.toUpperCase();
     this.board = this.project.boards.find(b => b.name.toUpperCase() === this.boardName);
@@ -54,7 +56,15 @@ export class projectDesktopComponent {
       $state.go('project.boards.list');
     }
 
+    socket.socket.emit('NEW_PROJECT', {
+      projectId: this.project._id,
+      user: Auth.getCurrentUserSync()
+    });
+
+    socket.socket.on('MSG_CREATED', data => this.msgArr.push(data));
+
     socket.syncUpdates('project', [], (event, item, array) => {
+      console.log('socketIO > ', event);
       this.project.cards = item.cards;
       this.project.tasks = item.tasks;
       this.project.users = item.users;
@@ -403,6 +413,18 @@ export class projectDesktopComponent {
       }
     ];
     this.$http.patch(`api/projects/${this.project._id}`, patches);
+  }
+
+  sendMessage(msg) {
+    let data = {
+      projectId: this.project._id,
+      user: this.Auth.getCurrentUserSync(),
+      msg
+    };
+    this.socket.socket.emit('NEW_MSG', data);
+    data.class = 'right';
+    this.msgArr.push(data);
+    this.message = '';
   }
 
   focus(event) {
