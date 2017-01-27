@@ -59,12 +59,12 @@
             </div>
         </div>
     </div>-->
- <!-- <div class="users_wrapper clearfix" class="col-md-3">
+  <div class="users_wrapper col-md-4 clearfix" ng-style="{'bottom': vm.chat.isCollapsed ? '25px' : '323px'}" ng-show="vm.chat.user" ng-init="vm.chat.user=false">
     <div class="panel panel-primary">
       <div class="panel-heading header_chat_wrapper clearfix">
         <h6>
           <i class="massage_icon"></i>کاربران تیم
-          <i class="return_icon"></i>
+          <i class="return_icon" ng-click="vm.chat.user = false;"></i>
         </h6>
       </div>
       <div class="panel-body content_chat_wrapper clearfix">
@@ -96,13 +96,15 @@
         </ul>
       </div>
     </div>
-  </div>-->
-  <div class="chat_wrapper clearfix col-md-4" ng-style="{'bottom': vm.chat.isCollapsed ? '-325px' : '-25px'}" ng-init="vm.chat.isCollapsed = false">
+  </div>
+  <div class="chat_wrapper clearfix col-md-4" ng-style="{'bottom': vm.chat.isCollapsed ? '-325px' : '-25px'}" ng-init="vm.chat.isCollapsed = true">
     <div class="panel panel-primary">
       <div class="panel-heading header_chat_wrapper clearfix" ng-click="vm.chat.isCollapsed= vm.chat.isCollapsed == true ? false : true">
         <h6>
-            <i class="massage_icon"></i>پنل چت
-            <i class="group_icon"></i>
+            <i class="massage_icon"></i>
+          {{vm.chat.user}}vm.chat.isCollapsed{{vm.chat.isCollapsed}}
+            پنل چت
+          <i class="group_icon" ng-click="vm.chat.user = true;"></i>
         </h6>
       </div>
       <div class="panel-body content_chat_wrapper clearfix">
