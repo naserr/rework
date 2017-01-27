@@ -102,9 +102,8 @@
       <div class="panel-heading header_chat_wrapper clearfix" ng-click="vm.chat.isCollapsed= vm.chat.isCollapsed == true ? false : true">
         <h6>
             <i class="massage_icon"></i>
-          {{vm.chat.user}}vm.chat.isCollapsed{{vm.chat.isCollapsed}}
             پنل چت
-          <i class="group_icon" ng-click="vm.chat.user = true;"></i>
+          <i class="group_icon" ng-click="vm.chat.user = vm.chat.user == true ? false : true;$event.stopPropagation();"></i>
         </h6>
       </div>
       <div class="panel-body content_chat_wrapper clearfix">
