@@ -1,29 +1,21 @@
 <div class="content_wrapper">
-    <div ng-include="'/boards/' + vm.boardName + '.html'"></div>
+  <div ng-include="'/boards/' + vm.boardName + '.html'"></div>
 
-    <div class="new_cart_wrapper clearfix">
-        <div class="cart blue" contentEditable ng-focus="vm.focus($event)" ng-blur="vm.blur()"
-             ng-enter="vm.newCard('blue')">
-            <textarea rows="6" ng-focus="vm.focus($event)" ng-blur="vm.blur()"
-                      ng-model="vm.newContent.blue"></textarea>
-        </div>
-        <div class="cart pink" contentEditable ng-focus="vm.focus($event)" ng-blur="vm.blur()"
-             ng-enter="vm.newCard('pink')">
-                <textarea rows="6" ng-focus="vm.focus($event)" ng-blur="vm.blur()"
-                          ng-model="vm.newContent.pink"></textarea>
-        </div>
-        <div class="cart orange" contentEditable ng-focus="vm.focus($event)" ng-blur="vm.blur()"
-             ng-enter="vm.newCard('orange')">
-                <textarea rows="6" ng-focus="vm.focus($event)" ng-blur="vm.blur()"
-                          ng-model="vm.newContent.orange"></textarea>
-        </div>
-        <div class="cart green" contentEditable ng-focus="vm.focus($event)" ng-blur="vm.blur()"
-             ng-enter="vm.newCard('green')">
-                <textarea rows="6" ng-focus="vm.focus($event)" ng-blur="vm.blur()"
-                          ng-model="vm.newContent.green"></textarea>
-        </div>
+  <div class="new_cart_wrapper clearfix">
+    <div class="cart blue" contentEditable ng-focus="vm.focus($event)" ng-blur="vm.blur()" ng-enter="vm.newCard('blue')">
+      <textarea rows="6" ng-focus="vm.focus($event)" ng-blur="vm.blur()" ng-model="vm.newContent.blue"></textarea>
     </div>
-    <div class="col-md-3" style="position: absolute; left: 0;"
+    <div class="cart pink" contentEditable ng-focus="vm.focus($event)" ng-blur="vm.blur()" ng-enter="vm.newCard('pink')">
+      <textarea rows="6" ng-focus="vm.focus($event)" ng-blur="vm.blur()" ng-model="vm.newContent.pink"></textarea>
+    </div>
+    <div class="cart orange" contentEditable ng-focus="vm.focus($event)" ng-blur="vm.blur()" ng-enter="vm.newCard('orange')">
+      <textarea rows="6" ng-focus="vm.focus($event)" ng-blur="vm.blur()" ng-model="vm.newContent.orange"></textarea>
+    </div>
+    <div class="cart green" contentEditable ng-focus="vm.focus($event)" ng-blur="vm.blur()" ng-enter="vm.newCard('green')">
+      <textarea rows="6" ng-focus="vm.focus($event)" ng-blur="vm.blur()" ng-model="vm.newContent.green"></textarea>
+    </div>
+  </div>
+  <!-- <div class="col-md-3" style="position: absolute; left: 0;"
          ng-style="{'bottom': vm.chat.isCollapsed ? '-320px' : '-15px'}" ng-init="vm.chat.isCollapsed = true">
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -45,9 +37,9 @@
                         <div class="chat-body clearfix">
                             <div class="header">
                                 <strong class="primary-font">{{msg.user.name}}</strong>
-                                <!--<small class="pull-right text-muted">
+                                <small class="pull-right text-muted">
                                     <span class="glyphicon glyphicon-time"></span>12 mins ago
-                                </small>-->
+                                </small>
                             </div>
                             <p>{{msg.msg}}</p>
                         </div>
@@ -66,33 +58,64 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <!--<div class="chat_wrapper clearfix" tabindex="5" ng-click="vm.focusChat($event)">
-        <div class="header_chat_wrapper clearfix">
-            <h6>
-                <i class="massage_icon"></i>پنل چت
-                <i class="group_icon"></i>
-                <i ng-click="vm.blurChat($event)" class="minimize_icon"></i>
-            </h6>
-        </div>
-        <div class="content_chat_wrapper clearfix">
-            <div class="previous_chat">
-                <div class="msg_container base_sent">
-                    <div class="col-md-2 col-xs-2 avatar">
-                        <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg"
-                             class=" img-responsive ">
-                    </div>
-                    <div class="col-md-10 col-xs-10">
-                        <div class="messages msg_sent">
-                            <p>that mongodb thing looks good, huh?
-                                tiny master db, and huge document store</p>
-                            <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <textarea rows="4"></textarea>
-        </div>
     </div>-->
+  <div class="users_wrapper clearfix" class="col-md-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading header_chat_wrapper clearfix">
+        <h6>
+          <i class="massage_icon"></i>کاربران تیم
+          <i class="return_icon"></i>
+        </h6>
+      </div>
+      <div class="panel-body content_chat_wrapper clearfix">
+        <ul class="list_user_team">
+          <li class="list_user_team_item clearfix">
+            <img src="assets/img/profile.jpg"
+                 alt="profileImage" title="profileName">
+            <p>profileName</p>
+          </li>
+          <li class="list_user_team_item clearfix">
+            <img src="assets/img/teamProfile.jpg"                                               alt="profileImage" title="profileName">
+            <p>profileName</p>
+            </li>
+          <li class="list_user_team_item clearfix">
+            <img src="assets/img/teamProfile2.jpg"                                               alt="profileImage" title="profileName">
+            <p>profileName</p>
+          </li>
+          <li class="list_user_team_item clearfix">
+            <img src="assets/img/teamProfile.jpg"                                               alt="profileImage" title="profileName">
+            <p>profileName</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="chat_wrapper clearfix" class="col-md-3" ng-style="{'bottom': vm.chat.isCollapsed ? '-325px' : '-25px'}" ng-init="vm.chat.isCollapsed = true">
+    <div class="panel panel-primary">
+      <div class="panel-heading header_chat_wrapper clearfix" ng-click="vm.chat.isCollapsed= vm.chat.isCollapsed == true ? false : true">
+        <h6>
+            <i class="massage_icon"></i>پنل چت
+            <i class="group_icon"></i>
+        </h6>
+      </div>
+      <div class="panel-body content_chat_wrapper clearfix">
+        <div class="previous_chat">
+          <div class="msg_container base_sent">
+            <div class="col-md-2 col-xs-2 avatar">
+              <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+            </div>
+            <div class="col-md-10 col-xs-10">
+              <div class="messages msg_sent">
+                <p>that mongodb thing looks good, huh? tiny master db, and huge document store</p>
+                <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="panel_footer">
+        <textarea rows="4"></textarea>
+      </footer>
+    </div>
+  </div>
 </div>
