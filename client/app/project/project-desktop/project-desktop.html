@@ -23,50 +23,8 @@
                           ng-model="vm.newContent.green"></textarea>
         </div>
     </div>
-    <div class="col-md-3" style="position: absolute; left: 0;"
-         ng-style="{'bottom': vm.chat.isCollapsed ? '-320px' : '-15px'}" ng-init="vm.chat.isCollapsed = true">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <span class="glyphicon glyphicon-comment"></span> گفتگو
-                <div class="pull-left" style="cursor: pointer">
-                    <i class="fa fa-chevron-down" ng-show="!vm.chat.isCollapsed"
-                       ng-click="vm.chat.isCollapsed = true"></i>
-                    <i class="fa fa-chevron-up" ng-show="vm.chat.isCollapsed"
-                       ng-click="vm.chat.isCollapsed = false"></i>
-                </div>
-            </div>
-            <div class="panel-body">
-                <ul class="chat">
-                    <li class="clearfix" ng-repeat="msg in vm.msgArr" ng-class="msg.class">
-                        <span class="chat-img pull-{{msg.class}}">
-                            <img ng-src="data:image/jpeg;base64,{{vm.projectCom.getUserAvatar(msg.user._id)}}"
-                                 style="width: 50px;height: 50px" alt="{{msg.user.name}}" class="img-circle">
-                        </span>
-                        <div class="chat-body clearfix">
-                            <div class="header">
-                                <strong class="primary-font">{{msg.user.name}}</strong>
-                                <!--<small class="pull-right text-muted">
-                                    <span class="glyphicon glyphicon-time"></span>12 mins ago
-                                </small>-->
-                            </div>
-                            <p>{{msg.msg}}</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="panel-footer">
-                <div class="input-group" style="direction: ltr">
-                    <input id="btn-input" type="text" class="form-control input-sm"
-                           ng-enter="vm.sendMessage(vm.message)"
-                           placeholder="اینجا تایپ کنید..." ng-model="vm.message">
-                    <span class="input-group-btn">
-                        <button class="btn btn-warning btn-sm" id="btn-chat" ng-disabled="!vm.message"
-                                ng-click="vm.sendMessage(vm.message)">ارسال</button>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    <project-chat project="vm.project" board="vm.board"></project-chat>
 
     <!--<div class="chat_wrapper clearfix" tabindex="5" ng-click="vm.focusChat($event)">
         <div class="header_chat_wrapper clearfix">

@@ -4,20 +4,40 @@
 
 'use strict';
 
+import _ from 'lodash';
 import ProjectEvents from './project.events';
+import * as msgController from './message.controller';
+import constants from '../../config/environment/shared';
 
 // Model events to emit
 var events = ['save', 'remove'];
 
 export function register(socket, io) {
-  socket.on('NEW_PROJECT', function(data) {
-    socket.join(data.projectId);
+  socket.on('JOIN', function(data) {
+    socket.user = data.user;
+    // io.in(data.roomId).emit('NEW_USER', data);
+    socket.join(data.roomId);
+    socket.broadcast.to(data.roomId).emit('NEW_USER', {
+      user: data,
+      users: getUsersInRoom(io, data.roomId)
+    });
+    msgController.recentMessages(data.roomId, 20)
+      .then(messages => socket.emit('INIT', messages))
+      .catch(err => console.log('errrr > ', err));
+  });
+
+  socket.on('LEAVE', function(data) {
+    socket.leave(data.roomId);
+    socket.broadcast.to(data.roomId).emit('LEAVE', {
+      user: data,
+      users: getUsersInRoom(io, data.roomId)
+    });
   });
 
   socket.on('NEW_MSG', function(data) {
-    // io.in(data.projectId).emit('MSG_CREATED', data);
-    data.class = 'left';
-    socket.broadcast.to(data.projectId).emit('MSG_CREATED', data);
+    msgController.save(data)
+      .then(msg => io.in(data.roomId).emit('MSG_CREATED', msg))
+      .catch(err => console.log('err > ', err));
   });
 
   // Bind model events to socket events
@@ -33,7 +53,8 @@ export function register(socket, io) {
 function createListener(event, socket, io) {
   return function(doc) {
     console.log('socketio > ', event, doc._id);
-    io.in(doc._id).emit(event, doc);
+    _.each(constants.boards, b => io.in(`${doc._id}${b.name}`).emit(event, doc));
+    // io.in(doc._id).emit(event, doc);
   };
 }
 
@@ -41,4 +62,19 @@ function removeListener(event, listener) {
   return function() {
     ProjectEvents.removeListener(event, listener);
   };
+}
+
+function getUsersInRoom(io, roomId) {
+  let room = io.sockets.adapter.rooms[roomId];
+  if(!room) {
+    return [];
+  }
+  let clients = room.sockets;
+  let users = [];
+  for(var clientId in clients) {
+    if(clients.hasOwnProperty(clientId)) {
+      users.push(io.sockets.connected[clientId].user);
+    }
+  }
+  return users;
 }

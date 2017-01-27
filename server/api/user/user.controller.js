@@ -35,7 +35,8 @@ export function index(req, res) {
  */
 export function findByEmail(req, res) {
   let reg = new RegExp(`.*${req.params.q}.*`, 'i');
-  return User.find({email: reg}, '-salt -password').limit(20).exec()
+  return User.find({email: reg}, '-salt -password')
+    .limit(20).exec()
     .then(users => res.status(200).json(users))
     .catch(handleError(res));
 }

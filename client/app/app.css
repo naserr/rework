@@ -22,6 +22,7 @@
 @import 'get-start/get-start.css';
 @import 'project/board-list/board-list.css';
 @import 'project/board-preview/board-preview.css';
+@import 'project/project-chat/project-chat.css';
 @import 'project/project-desktop/chat-window.css';
 @import 'project/project-desktop/project-desktop.css';
 @import 'project/project-manage/project-manage.css';

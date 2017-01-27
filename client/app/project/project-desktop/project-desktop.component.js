@@ -8,6 +8,7 @@ import ngDialog from 'ng-dialog';
 import 'ng-tags-input';
 import html2canvas from 'html2canvas/dist/html2canvas.min';
 import jsPDF from 'jspdf';
+import projectChat from '../project-chat/project-chat.component';
 
 export class projectDesktopComponent {
   zoom = 1;
@@ -37,7 +38,6 @@ export class projectDesktopComponent {
       value: 0
     }
   ];
-  msgArr = [];
 
   constructor($scope, $rootScope, $state, $stateParams, $http, Auth, ProjectAuth, socket, ngDialog, $log) {
     'ngInject';
@@ -51,28 +51,22 @@ export class projectDesktopComponent {
     this.$log = $log;
     this.boardName = $stateParams.board.toUpperCase();
     this.board = this.project.boards.find(b => b.name.toUpperCase() === this.boardName);
+    this.currUser = Auth.getCurrentUserSync();
+    let project = this.project;
     if(!this.board) {
       $log.error('دسترسی غیر مجاز');
       $state.go('project.boards.list');
     }
-
-    socket.socket.emit('NEW_PROJECT', {
-      projectId: this.project._id,
-      user: Auth.getCurrentUserSync()
-    });
-
-    socket.socket.on('MSG_CREATED', data => this.msgArr.push(data));
 
     socket.syncUpdates('project', [], (event, item, array) => {
       this.project.cards = item.cards;
       this.project.tasks = item.tasks;
       this.project.users = item.users;
       this.project.boards = item.boards;
-      this.users = this.project.users;
       this.board = item.boards.find(b => b.name.toUpperCase() === this.boardName);
     });
 
-    $scope.$on('$destroy', function() {
+    $scope.$on('$destroy', () => {
       socket.unsyncUpdates('project');
       newTaskListener();
       zoomListener();
@@ -82,9 +76,9 @@ export class projectDesktopComponent {
       remBoardListener();
     });
 
-    let project = this.project;
-    $scope.$on('draggie.end', function($event, instance, originalEvent, pointer) {
-      let index = _.findIndex(project.cards, {_id: instance.element.id});
+    // let project = this.project;
+    $scope.$on('draggie.end', ($event, instance, originalEvent, pointer) => {
+      let index = _.findIndex(this.project.cards, {_id: instance.element.id});
       let updateCard = {
         index: `${index}`,
         position: {
@@ -92,13 +86,13 @@ export class projectDesktopComponent {
           top: `${instance.position.y}px`
         }
       };
-      let pos = project.cards[index].position;
+      let pos = this.project.cards[index].position;
       if(pos.left != updateCard.position.left && pos.top != updateCard.position.top) {
-        $http.put(`api/projects/updateCards/${project._id}`, updateCard);
+        $http.put(`api/projects/updateCards/${this.project._id}`, updateCard);
       }
     });
 
-    let teamListener = $rootScope.$on('MANAGE_BOARD_USER', (e) => {
+    let teamListener = $rootScope.$on('MANAGE_BOARD_USER', () => {
       this.manageUsers();
     });
 
@@ -118,7 +112,7 @@ export class projectDesktopComponent {
       this.onRemoveBoard();
     });
 
-    let newTaskListener = $rootScope.$on('NEW_TASK', function() {
+    let newTaskListener = $rootScope.$on('NEW_TASK', () => {
       ngDialog.openConfirm(
         {
           template: require('../project-tasks/new-task.html'),
@@ -126,15 +120,15 @@ export class projectDesktopComponent {
           controller: 'TaskController',
           controllerAs: 'vm',
           showClose: false,
-          data: project,
+          data: this.project,
           closeByDocument: false,
-          closeByEscape: false/*,
-        width: 600*/
+          closeByEscape: false
+          //, width: 600
         })
         .then(result => {
           let newTask = _.last(result.tasks);
           newTask.created = new Date();
-          newTask.createdBy = _.pick(Auth.getCurrentUserSync(), ['_id', 'name', 'email', 'role']);
+          newTask.createdBy = _.pick(this.currUser, ['_id', 'name', 'email', 'role']);
           newTask.isVisited = false;
           let patches = [
             {
@@ -143,14 +137,14 @@ export class projectDesktopComponent {
               value: newTask
             }
           ];
-          $http.patch(`api/projects/${project._id}`, patches);
+          $http.patch(`api/projects/${this.project._id}`, patches);
         });
     });
   }
 
   newCard(cardType, p) {
     let pos = p || angular.element('#center-block').position();
-    let user = _.pick(this.Auth.getCurrentUserSync(), ['_id', 'name', 'email', 'role']);
+    let user = _.pick(this.currUser, ['_id', 'name', 'email', 'role']);
     let patches = [
       {
         op: 'add',
@@ -331,7 +325,13 @@ export class projectDesktopComponent {
           boardIndex: index,
           user: u
         })
-        .then(() => this.newUser = null)
+        .then(() => {
+          oldUser = _.find(this.project.users, {_id: newUser._id});
+          if(!oldUser) {
+            this.users.push(newUser);
+          }
+          this.newUser = null;
+        })
         .catch((err) => {
           if(err.status === 400) {
             return this.$log.error(err.data);
@@ -418,21 +418,6 @@ export class projectDesktopComponent {
     this.$http.patch(`api/projects/${this.project._id}`, patches);
   }
 
-  sendMessage(msg) {
-    if(!msg) {
-      return;
-    }
-    let data = {
-      projectId: this.project._id,
-      user: this.Auth.getCurrentUserSync(),
-      msg
-    };
-    this.socket.socket.emit('NEW_MSG', data);
-    data.class = 'right';
-    this.msgArr.push(data);
-    this.message = '';
-  }
-
   focus(event) {
     var parent = null;
     if($(event.target).is('input')) {
@@ -456,37 +441,9 @@ export class projectDesktopComponent {
   blur() {
     $('.new_cart_wrapper .cart').animate({bottom: '0'}, 'fast');
   }
-
-  focusChat(event) {
-    var parent = null;
-    console.log($(event.target));
-    if($(event.target).is('div.header_chat_wrapper')) {
-      parent = $(event.target).parent();
-    }
-    else if($(event.target).is('h6')) {
-      parent = $(event.target).parent().parent();
-    }
-    else if($(event.target).is('i') && $(event.target).hasClass('group_icon')) {
-      parent = $(event.target).parent().parent().parent();
-    }
-    else if($(event.target).is('i') && $(event.target).hasClass('massage_icon')) {
-      parent = $(event.target).parent().parent().parent();
-    }
-    else {
-      parent = $(event.target);
-    }
-    if(parent.css('bottom') == '-27px') {
-      parent.animate({bottom: '210px'}, 'fast');
-    }
-
-  }
-
-  blurChat() {
-    $('.chat_wrapper').animate({bottom: '-27'}, 'fast');
-  }
 }
 
-export default angular.module('reworkApp.project.desktop', [uiRouter, ngDialog, 'ngTagsInput'])
+export default angular.module('reworkApp.project.desktop', [projectChat, uiRouter, ngDialog, 'ngTagsInput'])
   .component('projectDesktop', {
     template: require('./project-desktop.html'),
     require: {
