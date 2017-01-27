@@ -59,7 +59,7 @@
             </div>
         </div>
     </div>-->
-  <div class="users_wrapper clearfix" class="col-md-3">
+ <!-- <div class="users_wrapper clearfix" class="col-md-3">
     <div class="panel panel-primary">
       <div class="panel-heading header_chat_wrapper clearfix">
         <h6>
@@ -70,27 +70,34 @@
       <div class="panel-body content_chat_wrapper clearfix">
         <ul class="list_user_team">
           <li class="list_user_team_item clearfix">
-            <img src="assets/img/profile.jpg"
-                 alt="profileImage" title="profileName">
+            <figure>
+              <img src="assets/img/profile.jpg" alt="profileImage" title="profileName">
+            </figure>
             <p>profileName</p>
           </li>
           <li class="list_user_team_item clearfix">
-            <img src="assets/img/teamProfile.jpg"                                               alt="profileImage" title="profileName">
-            <p>profileName</p>
-            </li>
-          <li class="list_user_team_item clearfix">
-            <img src="assets/img/teamProfile2.jpg"                                               alt="profileImage" title="profileName">
+            <figure>
+              <img src="assets/img/teamProfile.jpg" alt="profileImage" title="profileName">
+            </figure>
             <p>profileName</p>
           </li>
           <li class="list_user_team_item clearfix">
-            <img src="assets/img/teamProfile.jpg"                                               alt="profileImage" title="profileName">
+            <figure>
+              <img src="assets/img/teamProfile2.jpg" alt="profileImage" title="profileName">
+            </figure>
+            <p>profileName</p>
+          </li>
+          <li class="list_user_team_item clearfix">
+            <figure>
+              <img src="assets/img/teamProfile.jpg" alt="profileImage" title="profileName">
+            </figure>
             <p>profileName</p>
           </li>
         </ul>
       </div>
     </div>
-  </div>
-  <div class="chat_wrapper clearfix" class="col-md-3" ng-style="{'bottom': vm.chat.isCollapsed ? '-325px' : '-25px'}" ng-init="vm.chat.isCollapsed = true">
+  </div>-->
+  <div class="chat_wrapper clearfix col-md-4" ng-style="{'bottom': vm.chat.isCollapsed ? '-325px' : '-25px'}" ng-init="vm.chat.isCollapsed = false">
     <div class="panel panel-primary">
       <div class="panel-heading header_chat_wrapper clearfix" ng-click="vm.chat.isCollapsed= vm.chat.isCollapsed == true ? false : true">
         <h6>
@@ -99,19 +106,37 @@
         </h6>
       </div>
       <div class="panel-body content_chat_wrapper clearfix">
-        <div class="previous_chat">
-          <div class="msg_container base_sent">
-            <div class="col-md-2 col-xs-2 avatar">
-              <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
-            </div>
-            <div class="col-md-10 col-xs-10">
-              <div class="messages msg_sent">
-                <p>that mongodb thing looks good, huh? tiny master db, and huge document store</p>
-                <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+        <button class="rework_btn histoey_btn">تاریخچه پیام ها</button>
+        <ul class="chat">
+          <li class="chat_item chat_owner clearfix">
+            <figure class="user_image clearfix">
+              <img src="assets/img/profile.jpg" alt="profileImage" title="profileName">
+            </figure>
+            <div class="chat_body clearfix">
+              <div class="header">
+                <strong>User Name</strong>
+              </div>
+              <p>User's massage</p>
+              <div class="date_massage">
+                <p>22 خرداد،<span class="clock">10:20</span></p>
               </div>
             </div>
-          </div>
-        </div>
+          </li>
+          <li class="chat_item chat_audience clearfix">
+            <figure class="user_image clearfix">
+              <img src="assets/img/teamProfile2.jpg" alt="profileImage" title="profileName">
+            </figure>
+            <div class="chat_body clearfix">
+              <div class="header">
+                <strong>User Name</strong>
+              </div>
+              <p>User's massage</p>
+              <div class="date_massage">
+                <p>22 خرداد،<span class="clock">10:20</span></p>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
       <footer class="panel_footer">
         <textarea rows="4"></textarea>
