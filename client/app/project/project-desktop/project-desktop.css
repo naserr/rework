@@ -347,13 +347,6 @@ div.center_cell {
     text-align: center;
 }
 
-.product_board_cell {
-    width: 80px;
-    height: 80px;
-    border: 1px solid #000;
-    background-color: #fff;
-    z-index: 5;
-}
 /*board E*/
 
 .customer_product_board .product_container,
@@ -370,13 +363,17 @@ div.customer_product_board {
     font-size: 30px;
     text-align: center;
 }
+div.product_container,
+div.customer_container {
+  width: calc(50% - 15px);
+}
 
 .pie {
     position: relative;
-    margin: 1em auto;
-    border: 1px solid black;
+    margin: 0 auto;
+    border: 1px solid #7c7c7c;
     padding: 0;
-    width: 84%;
+    width: 97%;
     height: 100%;
     border-radius: 50%;
     list-style: none;
@@ -439,13 +436,13 @@ div.customer_product_board {
 
 .inner-pie {
     position: absolute;
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    border: 1px solid black;
+    border: 1px solid #7c7c7c;
     background: white;
 }
 
@@ -463,6 +460,60 @@ div.product_board .header_board_cell {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+div.product_board_cell i.glass_icon,
+li.inner-pie i.brain_icon,
+div.arrow_cotainer i.arrow_left
+{
+  width: 50px;
+  height: 55px;
+  display: inline-block;
+}
+
+div.product_board_cell i.glass_icon{
+  background: url(../../../assets/icons/icons.png) -192px -120px;
+  margin: 9px -6px 0 0;
+}
+
+li.inner-pie i.brain_icon{
+  background: url(../../../assets/icons/icons.png) -251px -120px;
+  margin: 6px 3px 0 0;
+  width: 75px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+div.product_board .border_l,
+div.product_board .border_b,
+ul.pie .border_b,
+ul.pie .border_l{
+  border-color: #7c7c7c;
+}
+
+.product_board_cell {
+  width: 80px;
+  height: 80px;
+  border: 1px solid #7c7c7c;
+  background-color: #fff;
+  z-index: 5;
+}
+
+div.arrow_cotainer{
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+div.arrow_cotainer{
+  float: right;
+  width: 30px;
+}
+div.arrow_cotainer i.arrow_left{
+  background: url(../../../assets/icons/icons.png) -343px -134px;
+  margin: 51px 3px 0 0;
+  width: 20px;
+  height: 43px;
 }
 
 /*dialog*/
