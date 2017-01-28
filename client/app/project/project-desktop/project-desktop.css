@@ -172,8 +172,11 @@ ul.cart_menu i.remove_icon {
 /*end cart_menu*/
 
 
-/*board*/
-
+/*board B*/
+.board [class^="col"],
+.board [class*="col"] {
+  padding: 0;
+}
 .board_cell {
   float: right;
   position: relative;
@@ -189,7 +192,7 @@ h6.header_board_cell {
   float: left;
   width: 45%;
   text-align: left;
-  margin: 4px 0 0 2px;
+  margin: 4px 0 0 4px;
   line-height: 1.10;
 }
 
@@ -238,7 +241,7 @@ p.title_describtion {
 }
 
 .channels_img {
-  width: 45px;
+  width: 50px;
   background: url(../../../assets/icons/icons.png) -242px -62px;
 }
 
@@ -247,8 +250,12 @@ p.title_describtion {
 }
 
 .key_activities_img {
-  background: url(../../../assets/icons/icons.png) -150px -62px;
   width: 40px;
+  background: url(../../../assets/icons/icons.png) -150px -62px;
+}
+
+.key_resources_img {
+  background: url(../../../assets/icons/icons.png) -286px -62px;
 }
 
 .key_partners_img {
@@ -256,7 +263,7 @@ p.title_describtion {
 }
 
 .cost_structure_img {
-  background: url(../../../assets/icons/icons.png) -330px -62px;
+  background: url(../../../assets/icons/icons.png) -337px -62px;
 }
 
 .revenue_streams_img {
@@ -453,6 +460,7 @@ div.center_cell {
   padding: 7px 5px 14px;
   cursor: pointer;
   border-radius: 0;
+  border-color:#293b5a;
 }
 
 .panel-primary {
@@ -516,6 +524,7 @@ div.center_cell {
 li.list_user_team_item {
   padding: 7px 4px;
   border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
 }
 
 li.list_user_team_item:last-of-type {
