@@ -21,7 +21,7 @@ export class projectChatComponent {
     leave: 'LEAVE',
     newMsg: 'NEW_MSG'
   };
-  msgArr = [];
+  messages = [];
   users = [];
 
   constructor($scope, Auth, socket) {
@@ -36,22 +36,23 @@ export class projectChatComponent {
     });
 
     socket.socket.on(this.SERVER_EVENTS.init, data => {
-      this.msgArr = _.reverse(data);
+      this.messages = _.reverse(data.messages);
+      this.users = data.users;
     });
 
     socket.socket.on(this.SERVER_EVENTS.newUser, data => {
-      console.log('NEW_USER > ', data);
+      // console.log('NEW_USER>>>>>>', data 321);
       // $log.info(`<b>${data.user.user.name}</b> وارد ابزار شد`);
       this.users = data.users;
     });
 
     socket.socket.on(this.SERVER_EVENTS.leave, data => {
-      console.log('LEAVE > ', data);
-      // $log.info(`<b>${data.user.user.name}</b> ابزار را ترک کرد `);
+      // console.log('LEAVE>>>>>>>>>>', dataaaa);
+      // $log.info(`<b>${data.user.user.name}</b> دددددددابزار را ترک کرد `);
       this.users = data.users;
     });
 
-    socket.socket.on(this.SERVER_EVENTS.msgCreated, data => this.msgArr.push(data));
+    socket.socket.on(this.SERVER_EVENTS.msgCreated, data => this.messages.push(data));
 
     $scope.$on('$destroy', () => {
       socket.socket.emit(this.CLIENT_EVENTS.leave, {
@@ -61,10 +62,10 @@ export class projectChatComponent {
       _.each(_.values(this.SERVER_EVENTS), e => socket.socket.removeAllListeners(e));
     });
 
-    $scope.$watchCollection(() => this.msgArr, () => {
+    $scope.$watchCollection(() => this.messages, () => {
       var $list = $('#messages');
       var scrollHeight = $list.prop('scrollHeight');
-      $list.animate({scrollTop: scrollHeight + 500}, 500);
+      $list.animate({scrollTop: scrollHeight + 1000}, 500);
     });
   }
 
@@ -83,7 +84,6 @@ export class projectChatComponent {
 
   focusChat(event) {
     var parent = null;
-    console.log($(event.target));
     if($(event.target).is('div.header_chat_wrapper')) {
       parent = $(event.target).parent();
     }

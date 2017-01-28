@@ -4,15 +4,17 @@
 
 'use strict';
 
-import _ from 'lodash';
 import ProjectEvents from './project.events';
 import * as msgController from './message.controller';
-import constants from '../../config/environment/shared';
+// import _ from 'lodash';
+// import constants from '../../config/environment/shared';
 
 // Model events to emit
 var events = ['save', 'remove'];
 
 export function register(socket, io) {
+  socket.on('LOGIN', projectId => socket.join(projectId));
+
   socket.on('JOIN', function(data) {
     socket.user = data.user;
     // io.in(data.roomId).emit('NEW_USER', data);
@@ -22,7 +24,10 @@ export function register(socket, io) {
       users: getUsersInRoom(io, data.roomId)
     });
     msgController.recentMessages(data.roomId, 20)
-      .then(messages => socket.emit('INIT', messages))
+      .then(messages => socket.emit('INIT', {
+        messages,
+        users: getUsersInRoom(io, data.roomId)
+      }))
       .catch(err => console.log('errrr > ', err));
   });
 
@@ -52,9 +57,8 @@ export function register(socket, io) {
 
 function createListener(event, socket, io) {
   return function(doc) {
-    console.log('socketio > ', event, doc._id);
-    _.each(constants.boards, b => io.in(`${doc._id}${b.name}`).emit(event, doc));
-    // io.in(doc._id).emit(event, doc);
+    // _.each(constants.boards, b => io.in(`${doc._id}${b.name}`).emit(event, doc));
+    io.in(doc._id).emit(event, doc);
   };
 }
 

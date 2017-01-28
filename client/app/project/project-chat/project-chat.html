@@ -1,4 +1,4 @@
-<div class="users_wrapper col-md-4 clearfix" ng-style="{'bottom': vm.chat.isCollapsed ? '25px' : '323px'}"
+<div class="users_wrapper clearfix col-md-3" ng-style="{'bottom': vm.chat.isCollapsed ? '25px' : '323px'}"
      ng-show="vm.chat.user" ng-init="vm.chat.user=false">
     <div class="panel panel-primary">
         <div class="panel-heading header_chat_wrapper clearfix">
@@ -9,13 +9,14 @@
         </div>
         <div class="panel-body content_chat_wrapper clearfix">
             <ul class="list_user_team">
-                <li class="list_user_team_item clearfix">
+                <li class="list_user_team_item clearfix" ng-repeat="user in vm.users">
                     <figure>
-                        <img src="assets/img/profile.jpg" alt="profileImage" title="profileName">
+                        <img ng-src="data:image/jpeg;base64,{{vm.projectCom.getUserAvatar(user._id)}}"
+                             alt="{{user.name}}" title="{{user.name}}">
                     </figure>
-                    <p>profileName</p>
+                    <p>{{user.name}}</p>
                 </li>
-                <li class="list_user_team_item clearfix">
+                <!--<li class="list_user_team_item clearfix">
                     <figure>
                         <img src="assets/img/teamProfile.jpg" alt="profileImage" title="profileName">
                     </figure>
@@ -32,7 +33,7 @@
                         <img src="assets/img/teamProfile.jpg" alt="profileImage" title="profileName">
                     </figure>
                     <p>profileName</p>
-                </li>
+                </li>-->
             </ul>
         </div>
     </div>
@@ -52,66 +53,28 @@
         <div class="panel-body content_chat_wrapper clearfix" id="messages">
             <button class="rework_btn histoey_btn">تاریخچه پیام ها</button>
             <ul class="chat">
-                <li class="chat_item chat_owner clearfix">
+                <li class="chat_item clearfix {{msg.user._id == vm.currUser._id ? 'chat_owner' : 'chat_audience'}}"
+                    ng-repeat="msg in vm.messages">
                     <figure class="user_image clearfix">
-                        <img src="assets/img/profile.jpg" alt="profileImage" title="profileName">
+                        <img ng-src="data:image/jpeg;base64,{{vm.projectCom.getUserAvatar(msg.user._id)}}"
+                             alt="{{msg.user.name}}" title="{{msg.user.name}}">
                     </figure>
                     <div class="chat_body clearfix">
                         <div class="header">
-                            <strong>User Name</strong>
+                            <strong>{{msg.user.name}}</strong>
                         </div>
-                        <p>User's massage</p>
+                        <p>{{msg.content}}</p>
                         <small class="date_massage">
-                            <p>22 خرداد،<span class="clock">10:20</span></p>
+                            <!--<small>22 خرداد،<span class="clock">10:20</span></small>-->
+                            <small>{{msg.created | jalaaliDate : 'jDD jMMMM HH:mm'}}</small>
                         </small>
-                    </div>
-                </li>
-                <li class="chat_item chat_owner clearfix">
-                    <figure class="user_image clearfix">
-                        <img src="assets/img/profile.jpg" alt="profileImage" title="profileName">
-                    </figure>
-                    <div class="chat_body clearfix">
-                        <div class="header">
-                            <strong>User Name</strong>
-                        </div>
-                        <p>User's massage</p>
-                        <small class="date_massage">
-                            <p>22 خرداد،<span class="clock">10:20</span></p>
-                        </small>
-                    </div>
-                </li>
-                <li class="chat_item chat_audience clearfix">
-                    <figure class="user_image clearfix">
-                        <img src="assets/img/teamProfile2.jpg" alt="profileImage" title="profileName">
-                    </figure>
-                    <div class="chat_body clearfix">
-                        <div class="header">
-                            <strong>User Name</strong>
-                        </div>
-                        <p>User's massage</p>
-                        <div class="date_massage">
-                            <p>22 خرداد،<span class="clock">10:20</span></p>
-                        </div>
-                    </div>
-                </li>
-                <li class="chat_item chat_audience clearfix">
-                    <figure class="user_image clearfix">
-                        <img src="assets/img/teamProfile2.jpg" alt="profileImage" title="profileName">
-                    </figure>
-                    <div class="chat_body clearfix">
-                        <div class="header">
-                            <strong>User Name</strong>
-                        </div>
-                        <p>User's massage</p>
-                        <div class="date_massage">
-                            <p>22 خرداد،<span class="clock">10:20</span></p>
-                        </div>
                     </div>
                 </li>
             </ul>
         </div>
         <footer class="panel_footer">
-            <textarea rows="4"></textarea>
+            <textarea rows="2" ng-enter="vm.sendMessage(vm.message)" placeholder="اینجا تایپ کنید..."
+                      ng-model="vm.message"></textarea>
         </footer>
     </div>
 </div>
@@ -132,7 +95,7 @@
         <div class="panel-body" id="messages">
             <ul class="chat">
                 <li class="clearfix {{msg.user._id == vm.currUser._id ? 'right' : 'left'}}"
-                    ng-repeat="msg in vm.msgArr">
+                    ng-repeat="msg in vm.messages">
                         <span class="chat-img pull-{{msg.user._id == vm.currUser._id ? 'right' : 'left'}}">
                             <img ng-src="data:image/jpeg;base64,{{vm.projectCom.getUserAvatar(msg.user._id)}}"
                                  style="width: 50px;height: 50px" alt="{{msg.user.name}}" class="img-circle">
@@ -152,8 +115,7 @@
         <div class="panel-footer">
             <div class="input-group" style="direction: ltr">
                 <input id="btn-input" type="text" class="form-control input-sm"
-                       ng-enter="vm.sendMessage(vm.message)"
-                       placeholder="اینجا تایپ کنید..." ng-model="vm.message">
+                       ng-enter="vm.sendMessage(vm.message)" placeholder="اینجا تایپ کنید..." ng-model="vm.message">
                     <span class="input-group-btn">
                         <button class="btn btn-warning btn-sm" id="btn-chat" ng-disabled="!vm.message"
                                 ng-click="vm.sendMessage(vm.message)">ارسال</button>

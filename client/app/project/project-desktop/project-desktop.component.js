@@ -67,7 +67,7 @@ export class projectDesktopComponent {
     });
 
     $scope.$on('$destroy', () => {
-      socket.unsyncUpdates('project');
+      // socket.unsyncUpdates('project');
       newTaskListener();
       zoomListener();
       saveListener();

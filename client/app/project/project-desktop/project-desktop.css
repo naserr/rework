@@ -612,7 +612,7 @@ li.list_user_team_item p {
 /*chat_body*/
 
 li.chat_item {
-  width: 60%;
+  width: 100%;
   margin-bottom: 10px;
 }
 
@@ -622,6 +622,7 @@ li.chat_item.chat_owner {
 
 li.chat_item.chat_audience {
   float: left;
+  text-align: left;
 }
 
 li.chat_item.chat_owner figure.user_image {

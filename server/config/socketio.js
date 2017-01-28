@@ -6,7 +6,15 @@
 // import config from './environment';
 
 // When the user disconnects.. perform this
-function onDisconnect(/*socket*/) {}
+function onDisconnect(socket, io) {
+  console.log('*** disconnected***');
+  var rooms = io.sockets.adapter.rooms;
+  for(var room in rooms) {
+    if(rooms.hasOwnProperty(room)) {
+      socket.leave(room);
+    }
+  }
+}
 
 // When the user connects.. perform this
 function onConnect(socket, socketio) {
@@ -46,7 +54,7 @@ export default function(socketio) {
 
     // Call onDisconnect.
     socket.on('disconnect', () => {
-      onDisconnect(socket);
+      onDisconnect(socket, socketio);
       socket.log('DISCONNECTED');
     });
 

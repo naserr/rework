@@ -14,12 +14,25 @@ import routes from './project.routes';
 export class projectComponent {
   isOpen = true;
 
-  constructor($http) {
+  constructor($http, $scope, socket) {
     'ngInject';
     this.$http = $http;
     if(_.isArray(this.project)) {
       this.project = this.project[0];
     }
+
+    socket.socket.emit('LOGIN', this.project._id);
+
+    socket.syncUpdates('project', [], (event, item, array) => {
+      this.project.cards = item.cards;
+      this.project.tasks = item.tasks;
+      this.project.users = item.users;
+      this.project.boards = item.boards;
+    });
+
+    $scope.$on('$destroy', () => {
+      socket.unsyncUpdates('project');
+    });
   }
 
   getUser(id) {

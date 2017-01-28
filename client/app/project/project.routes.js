@@ -52,7 +52,7 @@ export default function($stateProvider) {
       authenticate: true,
       views: {
         '@project': {
-          template: '<project-desktop project="$resolve.project.data"users="$resolve.users.data"></project-desktop>'
+          template: '<project-desktop project="$resolve.project.data" users="$resolve.users.data"></project-desktop>'
         }
       }
     })
@@ -75,7 +75,7 @@ export default function($stateProvider) {
       }
     })
     .state('project.profile', {
-      url: '^/profile',
+      url: '/profile',
       authenticate: true,
       views: {
         '@project': {

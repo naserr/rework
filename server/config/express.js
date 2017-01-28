@@ -40,8 +40,8 @@ export default function(app) {
   app.engine('html', require('ejs').renderFile);
   app.set('view engine', 'html');
   app.use(shrinkRay());
-  app.use(bodyParser.urlencoded({ limit: '200kb', extended: false }));
-  app.use(bodyParser.json({limit: '200kb'}));
+  app.use(bodyParser.urlencoded({ limit: '250kb', extended: false }));
+  app.use(bodyParser.json({limit: '250kb'}));
   app.use(methodOverride());
   app.use(cookieParser());
   app.use(passport.initialize());

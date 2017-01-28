@@ -11,7 +11,13 @@ class HeaderController {
     this.currUser = Auth.getCurrentUserSync();
     this.isOwner = ProjectAuth.hasAccess(this.project, 'admin');
 
-    $rootScope.$on('AVATAR_CHANGED', (e, u) => this.currUser.avatar = u.avatar);
+    $rootScope.$on('AVATAR_CHANGED', (e, u) => {
+      let user = _.find(this.projectComponent.users, {_id: u._id});
+      if(user) {
+        user.avatar = u.avatar;
+      }
+      this.currUser.avatar = u.avatar;
+    });
   }
 
   isVisible(task) {
