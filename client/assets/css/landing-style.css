@@ -792,12 +792,19 @@ ul.navigation_list li.navigation_list_item a span {
 /*mediaQueries*/
 
 @media (min-width: 2400px) and (max-width: 3000px) {
+
   .card {
     width: 200px;
   }
 
   .card {
     top: 1500px;
+  }
+}
+
+@media (min-width: 1400px) and (max-width: 1700px) {
+    body {
+        background-color: #000;
   }
 }
 

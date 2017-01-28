@@ -40,7 +40,7 @@
 </div>
 <div class="chat_wrapper clearfix col-md-3" ng-style="{'bottom': vm.chat.isCollapsed ? '-325px' : '-25px'}"
      ng-init="vm.chat.isCollapsed = true">
-    <div class="panel panel-primary">
+    <div class="panel panel-primary clearfix">
         <div class="panel-heading header_chat_wrapper clearfix"
              ng-click="vm.chat.isCollapsed= vm.chat.isCollapsed == true ? false : true">
             <h6>
@@ -52,7 +52,7 @@
         </div>
         <div class="panel-body content_chat_wrapper clearfix" id="messages">
             <button class="rework_btn histoey_btn">تاریخچه پیام ها</button>
-            <ul class="chat">
+            <ul class="chat clearfix">
                 <li class="chat_item clearfix {{msg.user._id == vm.currUser._id ? 'chat_owner' : 'chat_audience'}}"
                     ng-repeat="msg in vm.messages">
                     <figure class="user_image clearfix">
