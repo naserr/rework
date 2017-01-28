@@ -171,6 +171,7 @@ ul.cart_menu i.remove_icon {
 
 /*end cart_menu*/
 
+
 /*board*/
 
 .board_cell {
@@ -262,7 +263,9 @@ p.title_describtion {
   background: url(../../../assets/icons/icons.png) -400px -65px;
 }
 
+
 /*board D with 4 cells*/
+
 
 /*board D with 4 cells*/
 
@@ -338,6 +341,7 @@ div.center_cell {
   border-radius: 16px;
   text-align: center;
 }
+
 
 /*board E*/
 
@@ -415,26 +419,50 @@ div.center_cell {
   background-color: #88efe4 !important;
 }
 
+
 /*chat*/
-.chat_wrapper {
-  width: 300px;
+
+.chat_wrapper,
+.users_wrapper {
   float: left;
-  height: 300px;
   margin-left: 25px;
-  position: relative;
-  bottom: -27px;
+  position: absolute;
+  bottom: -25px;
+  left: 0;
 }
 
-.header_chat_wrapper {
+.users_wrapper {
+  bottom: 25px;
+}
+
+.users_wrapper .panel-primary > .panel-heading.header_chat_wrapper {
+  cursor: default;
+}
+
+.panel-body {
+  padding: 5px;
+}
+
+.users_wrapper .panel-body {
+  padding: 3px;
+}
+
+.panel-primary > .panel-heading.header_chat_wrapper {
   background-color: #293b5a;
   color: #88efe4;
   padding: 7px 5px 14px;
   cursor: pointer;
+  border-radius: 0;
+}
+
+.panel-primary {
+  border-color: #e0e0e0;
+  border: none;
 }
 
 .header_chat_wrapper i.massage_icon,
 .header_chat_wrapper i.group_icon,
-.header_chat_wrapper i.minimize_icon {
+.header_chat_wrapper i.return_icon {
   display: inline-block;
   width: 24px;
   height: 24px;
@@ -450,41 +478,166 @@ div.center_cell {
   float: left;
 }
 
-.header_chat_wrapper i.minimize_icon {
-  background: url(../../../assets/icons/icons.png) -156px -129px;
-  margin-top: 5px;
+.header_chat_wrapper i.return_icon {
+  background: url(../../../assets/icons/icons.png) -162px -129px;
+  margin-left: 5px;
   float: left;
 }
 
 .content_chat_wrapper {
-  height: 80%;
-  background-color: #eee;
-}
-
-.previous_chat {
-  overflow: auto;
-  margin-bottom: 4px;
-  border-bottom: 1px solid #fff;
-}
-
-.content_chat_wrapper textarea {
-  position: absolute;
-  bottom: 32px;
+  overflow-y: auto;
+  height: 230px;
   background-color: #fff;
-  border-top: 1px solid #eee;
-  right: 5px;
-  left: 5px;
-  width: 290px;
+}
+
+.users_wrapper .content_chat_wrapper {
+  height: 160px;
+}
+
+.panel_footer {
+  padding: 10px 15px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.panel_footer {
+  padding: 0;
+}
+
+.panel_footer textarea {
+  width: 100%;
   resize: none;
-  padding: 4px;
+  padding: 8px;
+  background-color: #fff;
+}
+
+li.list_user_team_item {
+  padding: 7px 4px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+li.list_user_team_item:last-of-type {
+  border: none;
+}
+
+li.list_user_team_item img,
+figure.user_image img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  float: right;
+}
+
+li.list_user_team_item p {
+  margin-right: 5px;
+  display: inline-block;
+}
+
+.header_chat_wrapper i.return_icon {
+  cursor: pointer;
+}
+
+
+/*chat_body*/
+
+li.chat_item {
+  width: 60%;
+  margin-bottom: 10px;
+}
+
+li.chat_item.chat_owner {
+  float: right;
+}
+
+li.chat_item.chat_audience {
+  float: left;
+}
+
+li.chat_item.chat_owner figure.user_image {
+  float: right;
+}
+
+li.chat_item.chat_audience figure.user_image {
+  float: left;
+}
+
+li.chat_item.chat_owner figure.user_image img {
+  margin-top: 18px;
+}
+
+li.chat_item.chat_owner div.chat_body,
+li.chat_item.chat_audience div.chat_body {
+  position: relative;
+  width: 70%;
+  padding: 2px 6px;
+}
+
+li.chat_item.chat_owner div.chat_body {
+  background-color: #dbfaf7;
+  float: right;
+  margin: 0 5px 0 0;
+}
+
+li.chat_item.chat_audience div.chat_body {
+  background-color: #fefefe;
+  float: left;
+  margin: 0 0 0 5px;
+}
+
+li.chat_item.chat_owner div.chat_body:before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 0px;
+  right: -18px;
+  border-top: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-left: 10px solid #dbfaf7;
+  border-bottom: 0px solid transparent;
+}
+
+li.chat_item.chat_audience div.chat_body:before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0px;
+  left: -17px;
+  border-top: 0 solid transparent;
+  border-right: 10px solid #fefefe;
+  border-left: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+div.date_massage span.clock {
+  margin-right: 3px;
+}
+
+button.histoey_btn {
+  border: 1px dashed #efefef;
+  border-radius: 5px;
+  color: #888;
+  padding: 8px;
+  margin: 0 auto 6px;
+  display: table;
 }
 
 /*------------------------------*/
+
 @media (min-width: 1200px) and (max-width: 1400px) {
   div.content_wrapper {
     height: 86.2vh;
   }
   div.board {
     margin: 10px 10px 0 0;
+  }
+}
+
+@media (min-width: 1600px) and (max-width: 1900px) {
+  .users_wrapper .content_chat_wrapper {
+    height: 210px;
   }
 }

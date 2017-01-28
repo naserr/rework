@@ -1,3 +1,122 @@
+<div class="users_wrapper col-md-4 clearfix" ng-style="{'bottom': vm.chat.isCollapsed ? '25px' : '323px'}"
+     ng-show="vm.chat.user" ng-init="vm.chat.user=false">
+    <div class="panel panel-primary">
+        <div class="panel-heading header_chat_wrapper clearfix">
+            <h6>
+                <i class="massage_icon"></i>کاربران تیم
+                <i class="return_icon" ng-click="vm.chat.user = false;"></i>
+            </h6>
+        </div>
+        <div class="panel-body content_chat_wrapper clearfix">
+            <ul class="list_user_team">
+                <li class="list_user_team_item clearfix">
+                    <figure>
+                        <img src="assets/img/profile.jpg" alt="profileImage" title="profileName">
+                    </figure>
+                    <p>profileName</p>
+                </li>
+                <li class="list_user_team_item clearfix">
+                    <figure>
+                        <img src="assets/img/teamProfile.jpg" alt="profileImage" title="profileName">
+                    </figure>
+                    <p>profileName</p>
+                </li>
+                <li class="list_user_team_item clearfix">
+                    <figure>
+                        <img src="assets/img/teamProfile2.jpg" alt="profileImage" title="profileName">
+                    </figure>
+                    <p>profileName</p>
+                </li>
+                <li class="list_user_team_item clearfix">
+                    <figure>
+                        <img src="assets/img/teamProfile.jpg" alt="profileImage" title="profileName">
+                    </figure>
+                    <p>profileName</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="chat_wrapper clearfix col-md-3" ng-style="{'bottom': vm.chat.isCollapsed ? '-325px' : '-25px'}"
+     ng-init="vm.chat.isCollapsed = true">
+    <div class="panel panel-primary">
+        <div class="panel-heading header_chat_wrapper clearfix"
+             ng-click="vm.chat.isCollapsed= vm.chat.isCollapsed == true ? false : true">
+            <h6>
+                <i class="massage_icon"></i>
+                پنل چت
+                <i class="group_icon"
+                   ng-click="vm.chat.user = vm.chat.user == true ? false : true;$event.stopPropagation();"></i>
+            </h6>
+        </div>
+        <div class="panel-body content_chat_wrapper clearfix" id="messages">
+            <button class="rework_btn histoey_btn">تاریخچه پیام ها</button>
+            <ul class="chat">
+                <li class="chat_item chat_owner clearfix">
+                    <figure class="user_image clearfix">
+                        <img src="assets/img/profile.jpg" alt="profileImage" title="profileName">
+                    </figure>
+                    <div class="chat_body clearfix">
+                        <div class="header">
+                            <strong>User Name</strong>
+                        </div>
+                        <p>User's massage</p>
+                        <small class="date_massage">
+                            <p>22 خرداد،<span class="clock">10:20</span></p>
+                        </small>
+                    </div>
+                </li>
+                <li class="chat_item chat_owner clearfix">
+                    <figure class="user_image clearfix">
+                        <img src="assets/img/profile.jpg" alt="profileImage" title="profileName">
+                    </figure>
+                    <div class="chat_body clearfix">
+                        <div class="header">
+                            <strong>User Name</strong>
+                        </div>
+                        <p>User's massage</p>
+                        <small class="date_massage">
+                            <p>22 خرداد،<span class="clock">10:20</span></p>
+                        </small>
+                    </div>
+                </li>
+                <li class="chat_item chat_audience clearfix">
+                    <figure class="user_image clearfix">
+                        <img src="assets/img/teamProfile2.jpg" alt="profileImage" title="profileName">
+                    </figure>
+                    <div class="chat_body clearfix">
+                        <div class="header">
+                            <strong>User Name</strong>
+                        </div>
+                        <p>User's massage</p>
+                        <div class="date_massage">
+                            <p>22 خرداد،<span class="clock">10:20</span></p>
+                        </div>
+                    </div>
+                </li>
+                <li class="chat_item chat_audience clearfix">
+                    <figure class="user_image clearfix">
+                        <img src="assets/img/teamProfile2.jpg" alt="profileImage" title="profileName">
+                    </figure>
+                    <div class="chat_body clearfix">
+                        <div class="header">
+                            <strong>User Name</strong>
+                        </div>
+                        <p>User's massage</p>
+                        <div class="date_massage">
+                            <p>22 خرداد،<span class="clock">10:20</span></p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <footer class="panel_footer">
+            <textarea rows="4"></textarea>
+        </footer>
+    </div>
+</div>
+
+<!--
 <div class="col-md-3" style="position: absolute; left: 0;"
      ng-style="{'bottom': vm.chat.isCollapsed ? '-320px' : '-15px'}" ng-init="vm.chat.isCollapsed = true">
     <div class="panel panel-primary">
@@ -21,9 +140,9 @@
                     <div class="chat-body clearfix">
                         <div class="header">
                             <strong class="primary-font">{{msg.user.name}}</strong>
-                            <!--<small class="pull-right text-muted">
+                            &lt;!&ndash;<small class="pull-right text-muted">
                                 <span class="glyphicon glyphicon-time"></span>12 mins ago
-                            </small>-->
+                            </small>&ndash;&gt;
                         </div>
                         <p>{{msg.content}}</p>
                     </div>
@@ -42,4 +161,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
