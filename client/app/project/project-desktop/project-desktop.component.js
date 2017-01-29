@@ -130,6 +130,7 @@ export class projectDesktopComponent {
           newTask.created = new Date();
           newTask.createdBy = _.pick(this.currUser, ['_id', 'name', 'email', 'role']);
           newTask.isVisited = false;
+          newTask.board = this.boardName;
           let patches = [
             {
               op: 'add',
