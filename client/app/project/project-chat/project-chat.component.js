@@ -42,7 +42,7 @@ export class projectChatComponent {
     });
 
     socket.socket.on(this.SERVER_EVENTS.newUser, data => {
-      // console.log('NEW_USER>>>>>>', data 321);
+      // console.log('KOONI Test SHOTOR MOSALAM>>>>', data 321);
       // $log.info(`<b>${data.user.user.name}</b> وارد ابزار شد`);
       this.users = data.users;
     });

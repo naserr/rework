@@ -1,4 +1,4 @@
-<div class="users_wrapper clearfix col-md-3" ng-style="{'bottom': vm.chat.isCollapsed ? '25px' : '323px'}"
+<div class="users_wrapper clearfix col-md-3" style="bottom: 0"
      ng-show="vm.chat.user" ng-init="vm.chat.user=false">
     <div class="panel panel-primary">
         <div class="panel-heading header_chat_wrapper clearfix">
@@ -39,14 +39,14 @@
     </div>
 </div>
 <div class="chat_wrapper clearfix col-md-3" ng-style="{'bottom': vm.chat.isCollapsed ? '-325px' : '-25px'}"
-     ng-init="vm.chat.isCollapsed = true">
+     ng-hide="vm.chat.user" ng-init="vm.chat.isCollapsed = true">
     <div class="panel panel-primary clearfix">
         <div class="panel-heading header_chat_wrapper clearfix"
              ng-click="vm.chat.isCollapsed= vm.chat.isCollapsed == true ? false : true">
             <h6>
                 <i class="massage_icon"></i>
                 پنل چت
-                <i class="group_icon"
+                <i class="group_icon" ng-hide="vm.chat.isCollapsed"
                    ng-click="vm.chat.user = vm.chat.user == true ? false : true;$event.stopPropagation();"></i>
             </h6>
         </div>
