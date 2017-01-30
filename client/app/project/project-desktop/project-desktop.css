@@ -50,13 +50,13 @@ div.cart p {
 div.new_cart_wrapper {
     position: absolute;
     bottom: -70px;
-    left: 470px;
+    left: 400px;
     right: 20px;
 }
 
 div.new_cart_wrapper .cart {
     margin-right: 2%;
-    width: 140px;
+    width: 120px;
 }
 
 div.new_cart_wrapper .cart:first-child {
