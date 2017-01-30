@@ -1,32 +1,33 @@
 <div class="content_wrapper">
-    <div ng-include="'/boards/' + vm.boardName + '.html'"></div>
+  <div ng-include="'/boards/' + vm.boardName + '.html'"></div>
 
-    <div class="new_cart_wrapper clearfix">
-        <div class="cart blue" contentEditable ng-focus="vm.focus($event)" ng-blur="vm.blur()"
-             ng-enter="vm.newCard('blue')">
-            <textarea rows="6" ng-focus="vm.focus($event)" ng-blur="vm.blur()"
-                      ng-model="vm.newContent.blue"></textarea>
-        </div>
-        <div class="cart pink" contentEditable ng-focus="vm.focus($event)" ng-blur="vm.blur()"
-             ng-enter="vm.newCard('pink')">
-                <textarea rows="6" ng-focus="vm.focus($event)" ng-blur="vm.blur()"
-                          ng-model="vm.newContent.pink"></textarea>
-        </div>
-        <div class="cart orange" contentEditable ng-focus="vm.focus($event)" ng-blur="vm.blur()"
-             ng-enter="vm.newCard('orange')">
-                <textarea rows="6" ng-focus="vm.focus($event)" ng-blur="vm.blur()"
-                          ng-model="vm.newContent.orange"></textarea>
-        </div>
-        <div class="cart green" contentEditable ng-focus="vm.focus($event)" ng-blur="vm.blur()"
-             ng-enter="vm.newCard('green')">
-                <textarea rows="6" ng-focus="vm.focus($event)" ng-blur="vm.blur()"
-                          ng-model="vm.newContent.green"></textarea>
-        </div>
+  <div class="new_cart_wrapper clearfix">
+
+    <div class="cart blue" ng-style="{'bottom': vm.cart.blue.isCollapsed ? '-10px' : '40px'}"
+         ng-init="vm.cart.blue.isCollapsed = true" ng-enter="vm.newCard('blue')">
+      <textarea rows="6" ng-focus="vm.cart.blue.isCollapsed =false" ng-blur="vm.cart.blue.isCollapsed =true"
+                ng-model="vm.newContent.blue"></textarea>
     </div>
+    <div class="cart pink" ng-style="{'bottom': vm.cart.pink.isCollapsed ? '-10px' : '40px'}"
+         ng-init="vm.cart.pink.isCollapsed = true" ng-enter="vm.newCard('pink')">
+      <textarea rows="6" ng-focus="vm.cart.pink.isCollapsed=false" ng-blur="vm.cart.pink.isCollapsed=true"
+                ng-model="vm.newContent.pink"></textarea>
+    </div>
+    <div class="cart orange" ng-style="{'bottom': vm.cart.orange.isCollapsed ? '-10px' : '40px'}"
+         ng-init="vm.cart.orange.isCollapsed = true" ng-enter="vm.newCard('orange')">
+      <textarea rows="6" ng-focus="vm.cart.orange.isCollapsed=false" ng-blur="vm.cart.orange.isCollapsed=true"
+                ng-model="vm.newContent.orange"></textarea>
+    </div>
+    <div class="cart green" ng-style="{'bottom': vm.cart.green.isCollapsed ? '-10px' : '40px'}"
+         ng-init="vm.cart.green.isCollapsed = true" ng-enter="vm.newCard('green')">
+      <textarea rows="6" ng-focus="vm.cart.green.isCollapsed=false" ng-blur="vm.cart.green.isCollapsed=true"
+                ng-model="vm.newContent.green"></textarea>
+    </div>
+  </div>
 
-    <project-chat project="vm.project" board="vm.board"></project-chat>
+  <project-chat project="vm.project" board="vm.board"></project-chat>
 
-    <!--<div class="chat_wrapper clearfix" tabindex="5" ng-click="vm.focusChat($event)">
+  <!--<div class="chat_wrapper clearfix" tabindex="5" ng-click="vm.focusChat($event)">
         <div class="header_chat_wrapper clearfix">
             <h6>
                 <i class="massage_icon"></i>پنل چت

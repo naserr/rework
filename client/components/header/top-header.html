@@ -5,12 +5,13 @@
             <a href=""></a>
         </li>
         <li class="nvabar_item profile_image_wrapper clearfix">
-            <a href="#" class="profile_image clearfix" placement="bottom-right" data-animation="am-flip-x" bs-dropdown
-               aria-haspopup="true" aria-expanded="false">
+          <button href="#" class="profile_image clearfix" placement="bottom-right" data-animation="am-flip-x"
+                  bs-dropdown
+                  aria-haspopup="true" aria-expanded="false">
                 <img ng-src="data:image/jpeg;base64,{{vm.currUser.avatar.base64}}"
                      alt="{{vm.currUser.name}}"
                      title="{{vm.currUser.name}}"/>
-            </a>
+          </button>
             <ul class="profile_menu dropdown-menu" role="menu">
                 <li class="profile_menu_item">
                     <a class="clearfix" ui-sref="project.profile({id: vm.project._id})">
@@ -31,13 +32,13 @@
             </ul>
         </li>
         <li class="nvabar_item notification clearfix">
-            <a href="#" class="notification_item clearfix" placement="bottom-right" data-animation="am-flip-x"
-               bs-dropdown
-               aria-haspopup="true" aria-expanded="false">
+          <button href="#" class="notification_item clearfix" placement="bottom-right" data-animation="am-flip-x"
+                  bs-dropdown
+                  aria-haspopup="true" aria-expanded="false">
                 <span class="notification_num"
                       ng-show="vm.myUnVisitedTasks()">
                     {{vm.myUnVisitedTasks()}}</span>
-            </a>
+          </button>
             <ul class="profile_menu dropdown-menu" role="menu"
                 ng-show="vm.myUnVisitedTasks()">
                 <!--<li class="profile_menu_item">
