@@ -78,5 +78,9 @@ export function setTokenCookie(req, res) {
   }
   var token = signToken(req.user._id, req.user.role);
   res.cookie('token', token);
-  return res.redirect('/main');
+  console.log('\nuser> ', req.user, '\n');
+  if(req.user.defaultProject) {
+    return res.redirect(`/${req.user.defaultProject}/boards/list`);
+  }
+  return res.redirect('/start');
 }

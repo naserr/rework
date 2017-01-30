@@ -23,7 +23,7 @@ export function register(socket, io) {
       user: data,
       users: getUsersInRoom(io, data.roomId)
     });
-    msgController.recentMessages(data.roomId, 20)
+    msgController.recentMessages(data.roomId, 100)
       .then(messages => socket.emit('INIT', {
         messages,
         users: getUsersInRoom(io, data.roomId)

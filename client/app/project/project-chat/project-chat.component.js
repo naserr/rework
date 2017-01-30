@@ -24,9 +24,10 @@ export class projectChatComponent {
   messages = [];
   users = [];
 
-  constructor($scope, Auth, socket) {
+  constructor($scope, $http, Auth, socket) {
     'ngInject';
     this.socket = socket;
+    this.$http = $http;
     this.currUser = Auth.getCurrentUserSync();
     this.roomId = `${this.project._id}${this.board.name}`;
 
@@ -81,6 +82,13 @@ export class projectChatComponent {
     this.socket.socket.emit(this.CLIENT_EVENTS.newMsg, data);
     this.message = '';
   }
+
+  // getHistory() {
+  //   this.$http.get(`api/projects/chatHistory/${this.project._id}/${this.board.name}`)
+  //     .then(res => {
+  //       this.messages = res.data.concat(this.messages);
+  //     });
+  // }
 
   focusChat(event) {
     var parent = null;

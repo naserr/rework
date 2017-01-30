@@ -5,7 +5,7 @@ mongoose.Promise = require('bluebird');
 import mongoose, {Schema} from 'mongoose';
 import * as constants from '../../config/environment/shared';
 
-const authTypes = ['github', 'twitter', 'facebook', 'google'];
+const authTypes = ['github', 'twitter', 'facebook', 'google', 'linkedin'];
 
 //noinspection Eslint
 export var UserSchema = new Schema({
@@ -41,10 +41,10 @@ export var UserSchema = new Schema({
   twitter: {},
   google: {},
   github: {},
+  linkedin: {},
   defaultProject: {
     type: Schema.Types.ObjectId
   },
-  defaultBoard: {},
   type: {
     type: String,
     default: constants.plans.free.name,

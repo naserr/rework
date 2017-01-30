@@ -2,6 +2,7 @@
 
 var express = require('express');
 var controller = require('./project.controller');
+var msgController = require('./message.controller');
 import * as auth from '../../auth/auth.service';
 
 var router = express.Router();
@@ -21,5 +22,6 @@ router.put('/newBoardUser/:id', auth.isAuthenticated(), controller.newBoardUser)
 router.patch('/patchTasks/:id', auth.isAuthenticated(), controller.patchTasks);
 router.put('/toggleTaskVisited/:id', auth.isAuthenticated(), controller.toggleTaskVisited);
 router.delete('/:id', auth.isAuthenticated(), controller.destroy);
+router.get('/chatHistory/:id/:board', auth.isAuthenticated(), msgController.history);
 
 module.exports = router;

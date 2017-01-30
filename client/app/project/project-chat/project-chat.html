@@ -51,7 +51,7 @@
             </h6>
         </div>
         <div class="panel-body content_chat_wrapper clearfix" id="messages">
-            <button class="rework_btn histoey_btn">تاریخچه پیام ها</button>
+            <!--<button class="rework_btn histoey_btn" ng-click="vm.getHistory()">پیام های قبلی</button>-->
             <ul class="chat clearfix">
                 <li class="chat_item clearfix {{msg.user._id == vm.currUser._id ? 'chat_owner' : 'chat_audience'}}"
                     ng-repeat="msg in vm.messages">
