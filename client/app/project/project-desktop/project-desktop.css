@@ -596,13 +596,5 @@ div.arrow_cotainer i.arrow_left{
     }
 }
 
-@media (min-width: 1400px) and (max-width: 1700px) {
-    .users_wrapper .content_chat_wrapper {
-        height: 210px;
-    }
 
-    div.board_container {
-        height: 82vh;
-    }
-}
 
