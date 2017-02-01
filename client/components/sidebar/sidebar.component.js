@@ -11,12 +11,17 @@ class SidebarComponent {
     green: false
   };
 
-  constructor($rootScope, $state, Auth, ProjectAuth) {
+  constructor($rootScope, $state, $stateParams, Auth, ProjectAuth) {
     'ngInject';
     this.Auth = Auth;
     this.ProjectAuth = ProjectAuth;
     this.$state = $state;
+    this.boardName = ($stateParams.board || '').toUpperCase();
     this.$rootScope = $rootScope;
+
+    $rootScope.$on('$stateChangeSuccess', () => {
+      this.boardName = ($stateParams.board || '').toUpperCase();
+    });
 
     this.user = Auth.getCurrentUserSync();
     this.isOwner = ProjectAuth.hasAccess(this.project, 'admin');

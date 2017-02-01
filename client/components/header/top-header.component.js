@@ -4,10 +4,14 @@
 import angular from 'angular';
 
 class HeaderController {
-  constructor($http, $rootScope, Auth, ProjectAuth) {
+  constructor($http, $rootScope, $scope, $state, $stateParams, Auth, ProjectAuth, ngDialog) {
     'ngInject';
     this.Auth = Auth;
     this.$http = $http;
+    this.$scope = $scope;
+    this.$state = $state;
+    this.ngDialog = ngDialog;
+    this.$stateParams = $stateParams;
     this.currUser = Auth.getCurrentUserSync();
     this.isOwner = ProjectAuth.hasAccess(this.project, 'admin');
 
@@ -49,6 +53,31 @@ class HeaderController {
     })
       .then(pr => {
         this.project.tasks = pr.data.tasks;
+        this.showTask(task);
+      });
+  }
+
+  showTask(task) {
+    let boardName = this.$stateParams.board.toUpperCase();
+    if(task.board !== boardName) {
+      this.$state.go('project.desktop', {
+        id: this.project._id,
+        board: task.board
+      });
+    }
+    this.selectedTask = task;
+    this.ngDialog.openConfirm(
+      {
+        template: require('./show-task-dialog.html'),
+        plain: true,
+        // controller: 'TaskController',
+        // controllerAs: 'vm',
+        scope: this.$scope,
+        showClose: false,
+        width: 800/*,
+        data: this.project,
+        closeByDocument: false,
+        closeByEscape: false*/
       });
   }
 }

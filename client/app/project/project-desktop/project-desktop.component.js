@@ -50,12 +50,13 @@ export class projectDesktopComponent {
     this.socket = socket;
     this.$log = $log;
     this.boardName = $stateParams.board.toUpperCase();
-    this.board = this.project.boards.find(b => b.name.toUpperCase() === this.boardName);
     this.currUser = Auth.getCurrentUserSync();
+    this.board = this.project.boards.find(b => b.name.toUpperCase() === this.boardName);
     let project = this.project;
-    if(!this.board) {
+    let isMember = _.findIndex(this.board.users, u => u._id === this.currUser._id) > -1;
+    if(!this.board || (this.project.owner._id !== this.currUser._id && !isMember)) {
       $log.error('دسترسی غیر مجاز');
-      $state.go('project.boards.list');
+      $state.go('project.boards.privateList');
     }
 
     socket.syncUpdates('project', [], (event, item, array) => {
@@ -430,7 +431,7 @@ export class projectDesktopComponent {
     else {
       parent = $(event.target);
     }
-    if (parent.css('bottom') == '-10px') {
+    if(parent.css('bottom') == '-10px') {
       parent.animate({bottom: '60px'}, 'fast');
     }
     else {

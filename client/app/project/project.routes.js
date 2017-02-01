@@ -57,7 +57,7 @@ export default function($stateProvider) {
       }
     })
     .state('project.tasks', {
-      url: '/tasks',
+      url: '/{board:[a-fA-F]{1}}/tasks',
       authenticate: true,
       views: {
         '@project': {

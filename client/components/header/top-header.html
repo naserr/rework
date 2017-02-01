@@ -48,7 +48,8 @@
                 </li>-->
                 <li class="profile_menu_item" ng-repeat="task in vm.project.tasks | orderBy : '-created'"
                     ng-show="vm.isVisible(task)">
-                    <a class="clearfix" ui-sref="project.tasks({id: vm.project._id})" ng-click="vm.setVisited(task)">
+                    <!-- ui-sref="project.tasks({id: vm.project._id})"-->
+                    <a class="clearfix" ng-click="vm.showTask(task)">
                         <i class="write_task"></i>
                         {{task.createdBy.name}} وظیفه {{task.title}} را اضافه کرد
                     </a>

@@ -2,14 +2,14 @@
     <div style="margin-top: 50px;">
         <div class="col-md-offset-1">&nbsp;</div>
         <div class="col-md-10">
-            <h2>وظیفه ها</h2>
+            <h4 style="margin: 10px 0">وظیفه ها</h4>
         </div>
     </div>
     <div style="margin-top: 20px;">
         <div class="col-md-offset-1">&nbsp;</div>
         <div class="col-md-5">
             <div class="list-group">
-                <a href="" class="list-group-item" ng-repeat="task in vm.project.tasks"
+                <a href="" class="list-group-item" ng-repeat="task in vm.project.tasks | filter:{board: vm.boardName}"
                    ng-class="{'active': task == vm.selectedTask, 'list-group-item-success': vm.isVisited(task)}"
                    ng-click="vm.onTaskClicked(task)" ng-show="vm.isOwner || vm.isVisible(task)">
                     <h4 class="list-group-item-heading">{{task.title}}</h4>
@@ -34,6 +34,7 @@
                                                 on-tag-adding="vm.addUser($tag)"
                                                 ng-disabled="!vm.projectUsers.length || !vm.isOwner"
                                                 placeholder="{{vm.projectUsers.length ? 'کاربر' : 'کاربری وجود ندارد'}}"
+                                                on-tag-removing="vm.isOwner ? true : false"
                                                 add-from-autocomplete-only="true">
                                         <auto-complete source="vm.users()" min-length="1"></auto-complete>
                                     </tags-input>

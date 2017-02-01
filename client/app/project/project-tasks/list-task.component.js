@@ -6,11 +6,12 @@ class ListTaskComponent {
   project;
   errors = {};
 
-  constructor($scope, $q, $http, Auth, ProjectAuth) {
+  constructor($scope, $q, $http, $stateParams, Auth, ProjectAuth) {
     'ngInject';
     this.$scope = $scope;
     this.$q = $q;
     this.$http = $http;
+    this.boardName = $stateParams.board.toUpperCase();
     this.projectUsers = _.filter(this.project.users, user => this.project.owner._id !== user._id);
 
     this.user = Auth.getCurrentUserSync();
