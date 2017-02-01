@@ -430,8 +430,8 @@ export class projectDesktopComponent {
     else {
       parent = $(event.target);
     }
-    if(parent.css('bottom') == '0px') {
-      parent.animate({bottom: '70px'}, 'fast');
+    if (parent.css('bottom') == '-10px') {
+      parent.animate({bottom: '60px'}, 'fast');
     }
     else {
       // $('.new_cart_wrapper .cart').animate({bottom: '0'}, 'fast');

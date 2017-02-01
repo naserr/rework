@@ -34,7 +34,6 @@ div.cart {
     height: 100px;
     background-color: greenyellow;
     position: relative;
-    bottom: 0;
     z-index: 50;
     display: flex;
     display: -webkit-flex;
@@ -48,15 +47,15 @@ div.cart p {
 }
 
 div.new_cart_wrapper {
-    position: absolute;
-    bottom: -70px;
-    left: 400px;
-    right: 20px;
+  position: absolute;
+  margin-right: 7px;
+  width: 70%;
 }
 
 div.new_cart_wrapper .cart {
     margin-right: 2%;
-    width: 120px;
+    width: 140px;
+  bottom: -10px;
 }
 
 div.new_cart_wrapper .cart:first-child {
@@ -584,212 +583,6 @@ div.arrow_cotainer i.arrow_left{
     background-color: #88efe4 !important;
 }
 
-/*chat*/
-
-.chat_wrapper,
-.users_wrapper {
-    float: left;
-    margin-left: 25px;
-    position: absolute;
-    bottom: -25px;
-    left: 0;
-}
-
-.users_wrapper {
-    bottom: 25px;
-}
-
-.users_wrapper .panel-primary > .panel-heading.header_chat_wrapper {
-    cursor: default;
-}
-
-.panel-body {
-    padding: 5px;
-}
-
-.users_wrapper .panel-body {
-    padding: 3px;
-}
-
-.panel-primary > .panel-heading.header_chat_wrapper {
-    background-color: #293b5a;
-    color: #88efe4;
-    padding: 7px 5px 14px;
-    cursor: pointer;
-    border-radius: 0;
-    border-color: #293b5a;
-}
-
-.panel-primary {
-    border: none;
-}
-
-.header_chat_wrapper i.massage_icon,
-.header_chat_wrapper i.group_icon,
-.header_chat_wrapper i.return_icon {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    margin: 0 0 -13px 7px;
-}
-
-.header_chat_wrapper i.massage_icon {
-    background: url(../../../assets/icons/icons.png) -52px -132px;
-}
-
-.header_chat_wrapper i.group_icon {
-    background: url(../../../assets/icons/icons.png) -87px -129px;
-    float: left;
-}
-
-.header_chat_wrapper i.return_icon {
-    background: url(../../../assets/icons/icons.png) -162px -129px;
-    margin-left: 5px;
-    float: left;
-}
-
-.content_chat_wrapper {
-    overflow-y: auto;
-    height: 230px;
-    background-color: #fff;
-}
-
-.users_wrapper .content_chat_wrapper {
-    height: 274px;
-}
-
-.panel_footer {
-    padding: 10px 15px;
-    background-color: #f5f5f5;
-    border-top: 1px solid #ddd;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-}
-
-.panel_footer {
-    padding: 0;
-}
-
-.panel_footer textarea {
-    width: 100%;
-    resize: none;
-    padding: 8px;
-    background-color: #fff;
-    height: 65px;
-}
-
-li.list_user_team_item {
-    padding: 7px 4px;
-    border-bottom: 1px solid #e0e0e0;
-    cursor: pointer;
-}
-
-li.list_user_team_item:last-of-type {
-    border: none;
-}
-
-li.list_user_team_item img,
-figure.user_image img {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    float: right;
-}
-
-li.list_user_team_item p {
-    margin-right: 5px;
-    display: inline-block;
-}
-
-.header_chat_wrapper i.return_icon {
-    cursor: pointer;
-}
-
-/*chat_body*/
-
-li.chat_item {
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-li.chat_item.chat_owner {
-    float: right;
-}
-
-li.chat_item.chat_audience {
-    float: left;
-    text-align: left;
-}
-
-li.chat_item.chat_owner figure.user_image {
-    float: right;
-}
-
-li.chat_item.chat_audience figure.user_image {
-    float: left;
-}
-
-li.chat_item.chat_owner figure.user_image img {
-    margin-top: 18px;
-}
-
-li.chat_item.chat_owner div.chat_body,
-li.chat_item.chat_audience div.chat_body {
-    position: relative;
-    width: 70%;
-    padding: 2px 6px;
-}
-
-li.chat_item.chat_owner div.chat_body {
-    background-color: #dbfaf7;
-    float: right;
-    margin: 0 5px 0 0;
-}
-
-li.chat_item.chat_audience div.chat_body {
-    background-color: #fefefe;
-    float: left;
-    margin: 0 0 0 5px;
-}
-
-li.chat_item.chat_owner div.chat_body:before {
-    content: "";
-    width: 0;
-    height: 0;
-    position: absolute;
-    bottom: 0px;
-    right: -18px;
-    border-top: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-left: 10px solid #dbfaf7;
-    border-bottom: 0px solid transparent;
-}
-
-li.chat_item.chat_audience div.chat_body:before {
-    content: "";
-    width: 0;
-    height: 0;
-    position: absolute;
-    top: 0px;
-    left: -17px;
-    border-top: 0 solid transparent;
-    border-right: 10px solid #fefefe;
-    border-left: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-}
-
-div.date_massage span.clock {
-    margin-right: 3px;
-}
-
-button.histoey_btn {
-    border: 1px dashed #efefef;
-    border-radius: 5px;
-    color: #888;
-    padding: 8px;
-    margin: 0 auto 6px;
-    display: table;
-}
 
 /*------------------------------*/
 
@@ -803,13 +596,5 @@ button.histoey_btn {
     }
 }
 
-@media (min-width: 1400px) and (max-width: 1700px) {
-    .users_wrapper .content_chat_wrapper {
-        height: 210px;
-    }
 
-    div.board_container {
-        height: 82vh;
-    }
-}
 

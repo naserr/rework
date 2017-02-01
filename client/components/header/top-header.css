@@ -29,7 +29,14 @@ ul.navbar_nav_list li.nvabar_item.sidebar_toggler i {
   background: url(../../assets/icons/icons.png) -417px -40px;
 }
 
-ul.navbar_nav_list li.nvabar_item.profile_image_wrapper a.profile_image img {
+li.nvabar_item.profile_image_wrapper button.profile_image {
+  width: 48px;
+  height: 48px;
+  margin-top: -7px;
+  display: inherit;
+}
+
+ul.navbar_nav_list li.nvabar_item.profile_image_wrapper button.profile_image img {
   width: 48px;
   height: 48px;
   overflow: hidden;
@@ -39,11 +46,11 @@ ul.navbar_nav_list li.nvabar_item.profile_image_wrapper a.profile_image img {
   display: inline-block;
 }
 
-ul.navbar_nav_list li.nvabar_item.profile_image a img {
+ul.navbar_nav_list li.nvabar_item.profile_image button img {
   float: right;
 }
 
-ul.navbar_nav_list li.nvabar_item.notification a.notification_item {
+ul.navbar_nav_list li.nvabar_item.notification button.notification_item {
   position: relative;
   width: 20px;
   height: 31px;
@@ -51,7 +58,7 @@ ul.navbar_nav_list li.nvabar_item.notification a.notification_item {
   background: url(../../assets/icons/icons.png) -445px -37px;
 }
 
-li.nvabar_item.notification a.notification_item span.notification_num {
+li.nvabar_item.notification button.notification_item span.notification_num {
   position: absolute;
   top: -13px;
   background: #5584ff;
