@@ -1,133 +1,85 @@
 <div class="board_container clearfix" id="board">
-  <div class="zoom_content" ng-style="{'transform': 'scale(' + vm.zoom + ', ' + vm.zoom + ')'}">
-    <div class="board" id="target" ng-dblclick="vm.dbClick($event)">
-      <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
-        <div class="title_board_cell clearfix">
-          <i class="customer_segments_img board_cell_img"></i>
-          <h5 class="customer_segments_header header_board_cell">
+    <div class="zoom_content" ng-style="{'transform': 'scale(' + vm.zoom + ', ' + vm.zoom + ')'}">
+        <div class="board" id="target" ng-dblclick="vm.dbClick($event)">
+            <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
+                <div class="title_board_cell clearfix">
+                    <i class="customer_segments_img board_cell_img"></i>
+                    <h5 class="customer_segments_header header_board_cell">
                         Customer Segments
                     </h5>
-        </div>
-      </div>
-      <div class="board_column reworks-cols-1 border_l three_cells clearfix">
-        <div class="board_cell col-md-12 border_b two_cells clearfix">
-          <div class="title_board_cell clearfix">
-            <i class="customer_relationship_img board_cell_img"></i>
-            <h5 class="customer_relationship_header header_board_cell">
+                </div>
+            </div>
+            <div class="board_column reworks-cols-1 border_l three_cells clearfix">
+                <div class="board_cell col-md-12 border_b two_cells clearfix">
+                    <div class="title_board_cell clearfix">
+                        <i class="customer_relationship_img board_cell_img"></i>
+                        <h5 class="customer_relationship_header header_board_cell">
                             Customer Relationships
                         </h5>
-          </div>
-        </div>
-        <div class="board_cell col-md-12 border_b two_cells clearfix">
-          <div class="title_board_cell clearfix">
-            <i class="channels_img board_cell_img"></i>
-            <h5 class="channels_header header_board_cell">
+                    </div>
+                </div>
+                <div class="board_cell col-md-12 border_b two_cells clearfix">
+                    <div class="title_board_cell clearfix">
+                        <i class="channels_img board_cell_img"></i>
+                        <h5 class="channels_header header_board_cell">
                             Channels
                         </h5>
-          </div>
-        </div>
-      </div>
-      <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix" id="center-block">
-        <div class="title_board_cell clearfix">
-          <i class="value_positions_img board_cell_img"></i>
-          <h5 class="value_positions_header header_board_cell">
+                    </div>
+                </div>
+            </div>
+            <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix" id="center-block">
+                <div class="title_board_cell clearfix">
+                    <i class="value_positions_img board_cell_img"></i>
+                    <h5 class="value_positions_header header_board_cell">
                         Value Positions
                     </h5>
-        </div>
-      </div>
-      <div class="board_column reworks-cols-1 border_l three_cells clearfix">
-        <div class="board_cell col-md-12 border_b two_cells clearfix">
-          <div class="title_board_cell clearfix">
-            <i class="key_activities_img board_cell_img"></i>
-            <h5 class="key_activities_header header_board_cell">
-              Key Activities
-            </h5>
-          </div>
-        </div>
-        <div class="board_cell col-md-12 border_b two_cells clearfix">
-          <div class="title_board_cell clearfix">
-            <i class="key_resources_img board_cell_img"></i>
-            <h5 class="key_resources_header header_board_cell">
-              Key Resources
-            </h5>
-          </div>
-        </div>
-      </div>
-      <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
-        <div class="title_board_cell clearfix">
-          <i class="key_partners_img board_cell_img"></i>
-          <h5 class="key_partners_header header_board_cell">
+                </div>
+            </div>
+            <div class="board_column reworks-cols-1 border_l three_cells clearfix">
+                <div class="board_cell col-md-12 border_b two_cells clearfix">
+                    <div class="title_board_cell clearfix">
+                        <i class="key_activities_img board_cell_img"></i>
+                        <h5 class="key_activities_header header_board_cell">
+                            Key Activities
+                        </h5>
+                    </div>
+                </div>
+                <div class="board_cell col-md-12 border_b two_cells clearfix">
+                    <div class="title_board_cell clearfix">
+                        <i class="key_resources_img board_cell_img"></i>
+                        <h5 class="key_resources_header header_board_cell">
+                            Key Resources
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
+                <div class="title_board_cell clearfix">
+                    <i class="key_partners_img board_cell_img"></i>
+                    <h5 class="key_partners_header header_board_cell">
                         Key Partners
                     </h5>
-        </div>
-      </div>
-      <div class="one_cell clearfix">
-        <div class="board_cell col-md-6 border_l four_cells clearfix">
-          <div class="title_board_cell clearfix">
-            <i class="revenue_streams_img board_cell_img"></i>
-            <h5 class="revenue_streams_header header_board_cell">
+                </div>
+            </div>
+            <div class="one_cell clearfix">
+                <div class="board_cell col-md-6 border_l four_cells clearfix">
+                    <div class="title_board_cell clearfix">
+                        <i class="revenue_streams_img board_cell_img"></i>
+                        <h5 class="revenue_streams_header header_board_cell">
                             Revenue Streams
                         </h5>
-          </div>
-        </div>
-        <div class="board_cell col-md-6  four_cells clearfix">
-          <div class="title_board_cell clearfix">
-            <i class="cost_structure_img board_cell_img"></i>
-            <h5 class="cost_structure_header header_board_cell">
+                    </div>
+                </div>
+                <div class="board_cell col-md-6  four_cells clearfix">
+                    <div class="title_board_cell clearfix">
+                        <i class="cost_structure_img board_cell_img"></i>
+                        <h5 class="cost_structure_header header_board_cell">
                             Cost Structure
                         </h5>
-          </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+        <div ng-include="'app/project/project-desktop/cards.html'"></div>
     </div>
-    <div ng-repeat="card in vm.filterCards()" draggabilly class="cart {{card.cardType}}" id="{{card._id}}" style="position: absolute;" ng-click="vm.focusTextArea($event, card)" ng-style="{'left': card.position.left, 'top': card.position.top, 'width': 100 * card.scale + 'px', 'height': 100 * card.scale + 'px'}" draggie-events="end">
-      <textarea style="cursor: default; overflow: hidden" ng-mouseover="card.hover=true" ng-mouseleave="card.hover=false" ng-model="card.content" ng-blur="vm.saveContent(card)"></textarea>
-      <ul class="cart_menu" ng-show="card.hover" ng-mouseover="card.hover=true" ng-mouseleave="card.hover=false" ng-style="{'left': 100 * card.scale + 'px'}">
-        <li class="cart_menu_item">
-          <a class="color_cart" href="#" ng-click="card.subMenu.color = !card.subMenu.color"></a>
-          <ul class="dropdown-menu" role="menu" ng-mouseleave="card.subMenu.color = false" ng-style="{'display': card.subMenu.color ? 'block' : 'none'}">
-            <li>
-              <a ng-class="{'bordered': card.cardType === 'blue'}" class="color_cart blue" href="#" ng-click="vm.changeColor(card, 'blue')"></a>
-            </li>
-            <li>
-              <a ng-class="{'bordered': card.cardType === 'orange'}" class="color_cart orange" href="#" ng-click="vm.changeColor(card, 'orange')"></a>
-            </li>
-            <li>
-              <a ng-class="{'bordered': card.cardType === 'pink'}" class="color_cart pink" href="#" ng-click="vm.changeColor(card, 'pink')"></a>
-            </li>
-            <li>
-              <a ng-class="{'bordered': card.cardType === 'green'}" class="color_cart green" href="#" ng-click="vm.changeColor(card, 'green')"></a>
-            </li>
-          </ul>
-        </li>
-        <li class="cart_menu_item">
-          <a class="size" href="#" ng-click="card.subMenu.scale = !card.subMenu.scale">
-            <i class="fa fa-arrows-alt fa-lg"></i>
-          </a>
-          <ul class="dropdown-menu" role="menu" ng-mouseleave="card.subMenu.scale = false" ng-style="{'display': card.subMenu.scale ? 'block' : 'none'}">
-            <li>
-              <a ng-class="{'bordered': card.scale == '1'}" class="size_cart real" href="#" ng-click="vm.changeCardScale(card, '1')"></a>
-            </li>
-            <li>
-              <a ng-class="{'bordered': card.scale == '0.75'}" class="size_cart smaller" href="#" ng-click="vm.changeCardScale(card, '0.75')"></a>
-            </li>
-            <li>
-              <a ng-class="{'bordered': card.scale == '0.5'}" class="size_cart half-small" href="#" ng-click="vm.changeCardScale(card, '0.5')"></a>
-            </li>
-            <li>
-              <a ng-class="{'bordered': card.scale == '0.25'}" class="size_cart xx-small" href="#" ng-click="vm.changeCardScale(card, '0.25')"></a>
-            </li>
-          </ul>
-        </li>
-        <li class="cart_menu_item">
-          <a class="remove" href="" ng-click="vm.removeCard(card)">
-            <i class="fa fa-trash-o fa-lg"></i>
-          </a>
-        </li>
-        <!--<li class="cart_menu_item">
-                    <a class="shape" href="">شکل</a>
-                </li>-->
-      </ul>
-    </div>
-  </div>
 </div>
