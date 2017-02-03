@@ -621,7 +621,7 @@ div.arrow_cotainer i.arrow_left{
 
 @media (min-width: 1200px) and (max-width: 1400px) {
     div.content_wrapper {
-        height: 86.2vh;
+      height: 85vh;
     }
 
     div.board {
