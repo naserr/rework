@@ -1,6 +1,6 @@
 <div class="board_container clearfix" id="board">
     <div class="zoom_content" ng-style="{'transform': 'scale(' + vm.zoom + ', ' + vm.zoom + ')'}">
-        <div class="board four_cells white_border" id="target">
+        <div class="board four_cells white_border" id="target" ng-dblclick="vm.dbClick($event)">
             <div class="board_column col-md-6 no_padding border_l white_border four_cells clearfix">
                 <div class="board_cell weakness_cell col-md-12 no_padding border_b white_border two_cells clearfix"
                      id="center-block">
@@ -37,6 +37,6 @@
             </div>
             <div class="center_cell SWOT">SWOT</div>
         </div>
-        <div ng-include="'app/project/project-desktop/cards.html'"></div>
+        <div ng-include="'/boards/cards.html'"></div>
     </div>
 </div>

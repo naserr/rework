@@ -1,6 +1,6 @@
 <div class="board_container clearfix" id="board">
     <div class="zoom_content" ng-style="{'transform': 'scale(' + vm.zoom + ', ' + vm.zoom + ')'}">
-        <div class="board customer_product_board" id="target">
+        <div class="board customer_product_board" id="target" ng-dblclick="vm.dbClick($event)">
             <div class="customer_container four_cells col-xs-6 clearfix">
                 <h4 class="header_customer_product_board text_bold">Customer</h4>
                 <ul class="pie">
@@ -66,6 +66,6 @@
                 </div>
             </div>
         </div>
-        <div ng-include="'app/project/project-desktop/cards.html'"></div>
+        <div ng-include="'/boards/cards.html'"></div>
     </div>
 </div>
