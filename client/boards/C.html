@@ -1,91 +1,111 @@
 <div class="board_container clearfix" id="board">
-    <div class="zoom_content" ng-style="{'transform': 'scale(' + vm.zoom + ', ' + vm.zoom + ')'}">
-        <div class="board" id="target" ng-dblclick="vm.dbClick($event)">
-            <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
-                <div class="title_board_cell clearfix">
-                    <h5 class="customer_segments_header text_bold header_board_cell">
-                        PROBLEM
-                    </h5>
-                    <p class="clear pull-left title_describtion text_blur">List your top 1-3 problems</p>
-                </div>
-            </div>
-            <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
-                <div class="title_board_cell clearfix">
-                    <h5 class="customer_segments_header text_bold header_board_cell">
-                        PROBLEM
-                    </h5>
-                    <p class="clear pull-left title_describtion text_blur">List your top 1-3 problems</p>
-                </div>
-            </div>
-            <div class="board_column user_column reworks-cols-1 border_l three_cells clearfix" id="center-block">
-                <div class="board_cell col-md-12 no_padding border_b two_cells clearfix">
-                    <div class="title_board_cell clearfix">
-                        <h5 class="customer_segments_header text_bold header_board_cell">
-                            PROBLEM
-                        </h5>
-                        <p class="clear pull-left title_describtion text_blur">List your top 1-3 problems</p>
-                    </div>
-                </div>
-                <div class="board_cell col-md-12 no_padding border_b two_cells clearfix">
-                    <div class="title_board_cell clearfix">
-                        <h5 class="customer_segments_header text_bold header_board_cell">
-                            PROBLEM
-                        </h5>
-                        <p class="clear pull-left title_describtion text_blur">List your top 1-3 problems</p>
-                    </div>
-                </div>
-            </div>
-            <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
-                <div class="title_board_cell clearfix">
-                    <h5 class="customer_segments_header text_bold header_board_cell">
-                        PROBLEM
-                    </h5>
-                    <p class="clear pull-left title_describtion text_blur">List your top 1-3 problems</p>
-                </div>
-            </div>
-            <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
-                <div class="title_board_cell clearfix">
-                    <h5 class="customer_segments_header text_bold header_board_cell">
-                        PROBLEM
-                    </h5>
-                    <p class="clear pull-left title_describtion text_blur">List your top 1-3 problems</p>
-                </div>
-            </div>
-            <div class="one_cell clearfix">
-                <div class="board_cell col-md-3 no_padding border_l four_cells clearfix">
-                    <div class="title_board_cell clearfix">
-                        <h5 class="customer_segments_header text_bold header_board_cell">
-                            PROBLEM
-                        </h5>
-                        <p class="clear pull-left title_describtion text_blur">List your top 1-3 problems</p>
-                    </div>
-                </div>
-                <div class="board_cell col-md-3 no_padding border_l four_cells clearfix">
-                    <div class="title_board_cell clearfix">
-                        <h5 class="customer_segments_header text_bold header_board_cell">
-                            PROBLEM
-                        </h5>
-                        <p class="clear pull-left title_describtion text_blur">List your top 1-3 problems</p>
-                    </div>
-                </div>
-                <div class="board_cell col-md-3 no_padding border_l four_cells clearfix">
-                    <div class="title_board_cell clearfix">
-                        <h5 class="customer_segments_header text_bold header_board_cell">
-                            PROBLEM
-                        </h5>
-                        <p class="clear pull-left title_describtion text_blur">List your top 1-3 problems</p>
-                    </div>
-                </div>
-                <div class="board_cell col-md-3 no_padding four_cells clearfix">
-                    <div class="title_board_cell clearfix">
-                        <h5 class="customer_segments_header text_bold header_board_cell">
-                            PROBLEM
-                        </h5>
-                        <p class="clear pull-left title_describtion text_blur">List your top 1-3 problems</p>
-                    </div>
-                </div>
-            </div>
+  <div class="zoom_content" ng-style="{'transform': 'scale(' + vm.zoom + ', ' + vm.zoom + ')'}">
+    <div class="board" id="target" ng-dblclick="vm.dbClick($event)">
+      <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
+        <div class="title_board_cell clearfix">
+          <h5 class="customer_segments_header text_bold header_board_cell">
+            Assumptions
+          </h5>
+          <p class="clear pull-left title_describtion text_blur">Include the general assumptions the team is making
+            about the project and solutions. If possible list the riskist assumption first.</p>
         </div>
-        <div ng-include="'app/project/project-desktop/cards.html'"></div>
+      </div>
+      <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
+        <div class="title_board_cell clearfix">
+          <h5 class="customer_segments_header text_bold header_board_cell">
+            Activties & Deliverables
+          </h5>
+          <p class="clear pull-left title_describtion text_blur">List the types of tasks and actions the team will take
+            to reach project goals. for each,indicate the outcomes and documents that will result from activity. This
+            does not include working documents project plan and similar.</p>
+        </div>
+      </div>
+      <div class="board_column user_column reworks-cols-1 border_l three_cells clearfix" id="center-block">
+        <div class="board_cell col-md-12 no_padding border_b two_cells clearfix">
+          <div class="title_board_cell clearfix">
+            <h5 class="customer_segments_header text_bold header_board_cell">
+              Users
+            </h5>
+            <p class="clear pull-left title_describtion text_blur">List the users of the product or service as target
+              groups or segments. Also indicate more specific information about users,such as persona names,if
+              available</p>
+
+          </div>
+        </div>
+        <div class="board_cell col-md-12 no_padding border_b two_cells clearfix">
+          <div class="title_board_cell clearfix">
+            <h5 class="customer_segments_header text_bold header_board_cell">
+              User Benefits
+            </h5>
+            <p class="clear pull-left title_describtion text_blur">Show the value proposition and benfit users will get
+              after the project is sucessfully compeleted.</p>
+          </div>
+        </div>
+      </div>
+      <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
+        <div class="title_board_cell clearfix">
+          <h5 class="customer_segments_header text_bold header_board_cell">
+            Goals
+          </h5>
+          <p class="clear pull-left title_describtion text_blur">Indicate the primary objectives of the project,
+            including success metrics. Ditinguish between program goals and project goals in seperate lists,if
+            necessary.</p>
+        </div>
+      </div>
+      <div class="board_cell reworks-cols-1 border_l border_b three_cells clearfix">
+        <div class="title_board_cell clearfix">
+          <h5 class="customer_segments_header text_bold header_board_cell">
+            Participants
+          </h5>
+          <p class="clear pull-left title_describtion text_blur">
+            List the teammembers,stackholders and third parties involved in project, Indicate their
+            names,titles and role on the project.You can also show depedencies.
+          </p>
+        </div>
+      </div>
+      <div class="one_cell clearfix">
+        <div class="board_cell col-md-3 no_padding border_l four_cells clearfix">
+          <div class="title_board_cell clearfix">
+            <h5 class="customer_segments_header text_bold header_board_cell">
+              Scope
+            </h5>
+            <p class="clear pull-left title_describtion text_blur">Indicate he breadth of the product or service
+              cosideration for this project including what is out of scope.</p>
+          </div>
+        </div>
+        <div class="board_cell col-md-3 no_padding border_l four_cells clearfix">
+          <div class="title_board_cell clearfix">
+            <h5 class="customer_segments_header text_bold header_board_cell">
+              Constaints
+            </h5>
+            <p class="clear pull-left title_describtion text_blur">
+              Identify the limits and conditionals requirements that directly affect the deliverables,actvities or
+              project as a whole.
+            </p>
+          </div>
+        </div>
+        <div class="board_cell col-md-3 no_padding border_l four_cells clearfix">
+          <div class="title_board_cell clearfix">
+            <h5 class="customer_segments_header text_bold header_board_cell">
+              Milestons
+            </h5>
+            <p class="clear pull-left title_describtion text_blur">List the key dates and events that frame the ovrall
+              time line of the project.</p>
+          </div>
+        </div>
+        <div class="board_cell col-md-3 no_padding four_cells clearfix">
+          <div class="title_board_cell clearfix">
+            <h5 class="customer_segments_header text_bold header_board_cell">
+              Risks
+            </h5>
+            <p class="clear pull-left title_describtion text_blur">
+              Identify possible future events without unknown outcomes that could have negative impact on the
+              project,Also indicate miligation measures for each,if possible.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
+    <div ng-include="'app/project/project-desktop/cards.html'"></div>
+  </div>
 </div>
