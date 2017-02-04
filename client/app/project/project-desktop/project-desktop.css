@@ -353,9 +353,9 @@ div.center_cell {
     height: calc(100% - 40px);
 }
 
-div.customer_product_board {
+/*div.customer_product_board {
     border: 0;
-}
+}*/
 
 .header_customer_product_board {
     padding-top: 3px;
