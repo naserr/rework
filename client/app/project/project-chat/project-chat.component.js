@@ -77,7 +77,8 @@ export class projectChatComponent {
     let data = {
       roomId: this.roomId,
       user: this.currUser,
-      content: msg
+      content: msg,
+      created: new Date()
     };
     this.socket.socket.emit(this.CLIENT_EVENTS.newMsg, data);
     this.message = '';

@@ -7,7 +7,7 @@ import uiRouter from 'angular-ui-router';
 import ngDialog from 'ng-dialog';
 import 'ng-tags-input';
 import html2canvas from 'html2canvas/dist/html2canvas';
-// import * as FileServer from 'file-saver';
+import * as FileServer from 'file-saver';
 import jsPDF from 'jspdf';
 import projectChat from '../project-chat/project-chat.component';
 
@@ -200,12 +200,10 @@ export class projectDesktopComponent {
     let bName = this.boardName;
     let zoom = this.zoom;
     let boardElement = angular.element('#board');
+    let $timeout = this.$timeout;
     html2canvas(boardElement, {
+      background: '#FFFFFF',
       onrendered(canvas) {
-        // canvas.toBlob(function(blob) {
-        //   FileServer.saveAs(blob, 'Dashboard.png');
-        // }, 'image/png');
-
         let width = canvas.width * zoom + 10;
         let height = canvas.height * zoom + 10;
         let canvas2 = document.createElement('canvas');
@@ -221,12 +219,18 @@ export class projectDesktopComponent {
             orientation: 'landscape'
           });
           doc.addImage(img, 'JPEG', 0, 0);
-          doc.save(`board-${bName}`);
+          let browser = navigator.userAgent.toLowerCase();
+          console.log('>>>> ', browser);
+          // doc.save(`board-${bName}`);
+          doc.output('datauri');
         } else if(format === 'jpg') {
-          var a = document.createElement('a');
-          a.href = img;
-          a.download = `board-${bName}`;
-          a.click();
+          canvas.toBlob(function(blob) {
+            FileServer.saveAs(blob, `board-${bName}`);
+          }, 'image/png');
+          // var a = document.createElement('a');
+          // a.href = img;
+          // a.download = `board-${bName}`;
+          // a.click();
         }
       }
     });
