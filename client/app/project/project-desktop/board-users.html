@@ -70,6 +70,7 @@
                            uib-typeahead="user as user.email for user in vm.projectCom.findUsers($viewValue)"
                            typeahead-wait-ms="2000"
                            typeahead-loading="vm.loadingLocations" typeahead-no-results="vm.noResults"
+                           ng-enter="vm.addUserToBoard(vm.newUser)"
                            style="margin-top: 5px; text-align: left; width:300px; direction: ltr">
                     <i ng-show="vm.loadingLocations" class="glyphicon glyphicon-refresh"></i>
                 </p>

@@ -338,7 +338,7 @@ export class projectDesktopComponent {
           }
           this.newUser = null;
         })
-        .catch((err) => {
+        .catch(err => {
           if(err.status === 400) {
             return this.$log.error(err.data);
           }
