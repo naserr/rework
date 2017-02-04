@@ -67,7 +67,7 @@ export function interceptorConfig($httpProvider) {
             errorMessage = 'دسترسی غیرمجاز';
           }
         }
-        if(typeof error === 'object' && !_.isEmpty(error)) {
+        else if(typeof error === 'object' && !_.isEmpty(error)) {
           if(error.errors && typeof error.errors === 'object' && !_.isEmpty(error.errors)) {
             for(var errKey in error.errors) {
               if(error.errors.hasOwnProperty(errKey)) {

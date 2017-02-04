@@ -2,7 +2,6 @@
   <div ng-include="'/boards/' + vm.boardName + '.html'"></div>
 
   <div class="new_cart_wrapper clearfix">
-
     <div class="cart blue" ng-style="{'bottom': vm.cart.blue.isCollapsed ? '-10px' : '40px'}"
          ng-init="vm.cart.blue.isCollapsed = true" ng-enter="vm.newCard('blue')">
       <textarea rows="6" ng-focus="vm.cart.blue.isCollapsed =false" ng-blur="vm.cart.blue.isCollapsed =true"
@@ -26,32 +25,4 @@
   </div>
 
   <project-chat project="vm.project" board="vm.board"></project-chat>
-
-  <!--<div class="chat_wrapper clearfix" tabindex="5" ng-click="vm.focusChat($event)">
-        <div class="header_chat_wrapper clearfix">
-            <h6>
-                <i class="massage_icon"></i>پنل چت
-                <i class="group_icon"></i>
-                <i ng-click="vm.blurChat($event)" class="minimize_icon"></i>
-            </h6>
-        </div>
-        <div class="content_chat_wrapper clearfix">
-            <div class="previous_chat">
-                <div class="msg_container base_sent">
-                    <div class="col-md-2 col-xs-2 avatar">
-                        <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg"
-                             class=" img-responsive ">
-                    </div>
-                    <div class="col-md-10 col-xs-10">
-                        <div class="messages msg_sent">
-                            <p>that mongodb thing looks good, huh?
-                                tiny master db, and huge document store</p>
-                            <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <textarea rows="4"></textarea>
-        </div>
-    </div>-->
 </div>

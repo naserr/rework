@@ -6,7 +6,8 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngDialog from 'ng-dialog';
 import 'ng-tags-input';
-import html2canvas from 'html2canvas/dist/html2canvas.min';
+import html2canvas from 'html2canvas/dist/html2canvas';
+// import * as FileServer from 'file-saver';
 import jsPDF from 'jspdf';
 import projectChat from '../project-chat/project-chat.component';
 
@@ -195,30 +196,33 @@ export class projectDesktopComponent {
     }
   }
 
-  onSaveBoard(saveAs) {
+  onSaveBoard(format) {
     let bName = this.boardName;
     let zoom = this.zoom;
-    html2canvas(angular.element('#board'), {
-      onrendered: function(canvas) {
-        let width = canvas.width * zoom;
-        let height = canvas.height * zoom;
+    let boardElement = angular.element('#board');
+    html2canvas(boardElement, {
+      onrendered(canvas) {
+        // canvas.toBlob(function(blob) {
+        //   FileServer.saveAs(blob, 'Dashboard.png');
+        // }, 'image/png');
+
+        let width = canvas.width * zoom + 10;
+        let height = canvas.height * zoom + 10;
         let canvas2 = document.createElement('canvas');
         let ctx = canvas2.getContext('2d');
         ctx.canvas.width = width;
         ctx.canvas.height = height;
         ctx.fillStyle = '#FFFFFF';
         ctx.fillRect(0, 0, width, height);
-        ctx.drawImage(canvas, 0, 0, width, height);
+        ctx.drawImage(canvas, -10, 0, width - 10, height);
         let img = canvas2.toDataURL('image/png');
-        if(saveAs === 'pdf') {
+        if(format === 'pdf') {
           let doc = new jsPDF({
-            unit: 'px',
-            format: 'a3'
+            orientation: 'landscape'
           });
           doc.addImage(img, 'JPEG', 0, 0);
           doc.save(`board-${bName}`);
-        }
-        else if(saveAs === 'jpg') {
+        } else if(format === 'jpg') {
           var a = document.createElement('a');
           a.href = img;
           a.download = `board-${bName}`;
@@ -334,7 +338,7 @@ export class projectDesktopComponent {
           }
           this.newUser = null;
         })
-        .catch((err) => {
+        .catch(err => {
           if(err.status === 400) {
             return this.$log.error(err.data);
           }

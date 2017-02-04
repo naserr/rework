@@ -4,6 +4,7 @@
 @import '~angular-toastr/dist/angular-toastr.min.css';
 @import '~ng-dialog/css/ngDialog.min.css';
 @import '~ng-dialog/css/ngDialog-theme-default.min.css';
+@import '~angular-loading-bar/build/loading-bar.min.css';
 @import '/assets/css/mainStyle.css';
 
 .browserupgrade {
@@ -23,7 +24,6 @@
 @import 'project/board-list/board-list.css';
 @import 'project/board-preview/board-preview.css';
 @import 'project/project-chat/project-chat.css';
-@import 'project/project-desktop/chat-window.css';
 @import 'project/project-desktop/project-desktop.css';
 @import 'project/project-manage/project-manage.css';
 @import 'project/project.css';

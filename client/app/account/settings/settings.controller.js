@@ -16,13 +16,18 @@ export default class SettingsController {
   submitted = false;
 
   /*@ngInject*/
-  constructor(Auth, $rootScope) {
+  constructor(Auth, $rootScope, $http) {
     this.Auth = Auth;
+    this.$http = $http;
     this.$rootScope = $rootScope;
     moment.loadPersian();
     this.user.expire = moment(this.user.expire).fromNow();
     merge(this.user, Auth.getCurrentUserSync());
     this.action = `/api/users/${this.user._id}/settings`;
+  }
+
+  resetProfile() {
+    this.$http.patch(`api/users/${this.user._id}/`);
   }
 
   saveSettings(form) {

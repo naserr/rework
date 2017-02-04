@@ -7,6 +7,7 @@ import ngSanitize from 'angular-sanitize';
 import 'angular-socket-io';
 import toastr from 'angular-toastr';
 import uiRouter from 'angular-ui-router';
+import 'angular-loading-bar/build/loading-bar.min';
 import 'angular-strap';
 // import 'angular-strap/dist/angular-strap.tpl.min';
 // import ngAnimate from 'angular-animate';
@@ -31,8 +32,8 @@ import projectsList from './projects-list/projects-list.component';
 
 import './app.css';
 
-angular.module('reworkApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io', 'draggabilly', /*'oc.lazyLoad',*/
-  'naif.base64', uiRouter, toastr, _Auth, account, admin, constants, socket, util, header, sidebar, 'ngAnimate', 'mgcrea.ngStrap',
+angular.module('reworkApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io', 'draggabilly', 'angular-loading-bar', /*'oc.lazyLoad',*/
+    'naif.base64', uiRouter, toastr, _Auth, account, admin, constants, socket, util, header, sidebar, 'ngAnimate', 'mgcrea.ngStrap',
     getStart, project, projectsList
   ])
   .config(appConfig.routeConfig)
