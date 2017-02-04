@@ -180,8 +180,10 @@ ul.sub_menu_desktop li {
 }
 
 ul.sub_menu_desktop li.sub_menu_desktop_item label {
-  color: #fff;
+    color: #a3abbe;
   cursor: pointer;
+    font-weight: lighter;
+    font-size: 14px;
 }
 
 ul.sub_menu_desktop li.sub_menu_desktop_item input[type=radio],
