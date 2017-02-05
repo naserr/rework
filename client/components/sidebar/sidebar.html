@@ -52,7 +52,8 @@
                 <a href="" ng-click="$ctrl.broadcastEvent('NEW_TASK')">ایجاد وظیفه</a>
             </li>
             <li class="sub_menu_desktop_item clearfix">
-                <a ui-sref="project.tasks({id: $ctrl.project._id, board: $ctrl.boardName})">نمایش وظایف</a>
+                <!--<a ui-sref="project.tasks({id: $ctrl.project._id, board: $ctrl.boardName})">نمایش وظایف</a>-->
+                <a ng-click="$ctrl.showTasks()">نمایش وظایف</a>
             </li>
         </ul>
     </li>

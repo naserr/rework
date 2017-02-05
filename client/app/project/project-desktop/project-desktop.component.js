@@ -213,16 +213,31 @@ export class projectDesktopComponent {
         ctx.fillStyle = '#FFFFFF';
         ctx.fillRect(0, 0, width, height);
         ctx.drawImage(canvas, -10, 0, width - 10, height);
-        let img = canvas2.toDataURL('image/png');
         if(format === 'pdf') {
+          // window.frames["print_frame"].document.body.innerHTML = document.getElementById('board').innerHTML;
+          // window.frames["print_frame"].window.focus();
+          // window.frames["print_frame"].window.print();
+
+          let img = canvas2.toDataURL('image/png');
           let doc = new jsPDF({
             orientation: 'landscape'
           });
-          doc.addImage(img, 'JPEG', 0, 0);
-          let browser = navigator.userAgent.toLowerCase();
-          console.log('>>>> ', browser);
-          // doc.save(`board-${bName}`);
-          doc.output('datauri');
+          doc.addImage(img, 'PNG', 0, 0);
+
+          var isChrome = !!window.chrome && !!window.chrome.webstore;
+          var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+          var isFirefox = typeof InstallTrigger !== 'undefined';
+          var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0 || (function(p) {
+              return p.toString() === "[object SafariRemoteNotification]";
+            })(!window['safari'] || safari.pushNotification);
+          var isIE = /*@cc_on!@ false || */ !!document.documentMode;
+          var isEdge = !isIE && !!window.StyleMedia;
+          var isBlink = (isChrome || isOpera) && !!window.CSS;
+
+          if(isFirefox) {
+            return doc.output('dataurlnewwindow');
+          }
+          doc.save(`board-${bName}`);
         } else if(format === 'jpg') {
           canvas.toBlob(function(blob) {
             FileServer.saveAs(blob, `board-${bName}`);
