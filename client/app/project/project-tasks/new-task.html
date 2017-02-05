@@ -1,9 +1,9 @@
 <section>
     <form>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 tasks_dialogue">
                 <div class="form-group" ng-class="{'has-error': vm.errors.users}">
-                    <label>کاربران این وظیفه</label>
+                    <h6 class="tasks_dialogue_header clearfix"> : مسئولان این وظیفه</h6>
                     <tags-input ng-model="vm.newTask.users" display-property="name" on-tag-adding="vm.addUser($tag)"
                                 ng-disabled="!vm.projectUsers.length"
                                 placeholder="{{vm.projectUsers.length ? 'کاربر' : 'کاربری وجود ندارد'}}"
@@ -14,8 +14,8 @@
                 </div>
                 <div class="form-group" ng-class="{'has-error': vm.errors.title}">
                     <!--<label for="desc">&nbsp;</label>-->
-                    <input type="text" class="form-control" ng-model="vm.newTask.title"
-                              placeholder="عنوان" ng-change="vm.errors.title = false"></input>
+                    <input type="text" class="form-control title_task" ng-model="vm.newTask.title"
+                           placeholder="عنوان" ng-change="vm.errors.title = false">
                     <small class="help-block" ng-show="vm.errors.title">عنوان وظیفه را بنویسید</small>
                 </div>
                 <div class="form-group" ng-class="{'has-error': vm.errors.description}">
