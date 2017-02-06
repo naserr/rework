@@ -349,6 +349,21 @@ export function destroy(req, res) {
     .catch(handleError(res));
 }
 
+export function removeCards(req, res) {
+  console.log(req.params.id, req.body.board);
+  return Project.findById(req.params.id).exec()
+    .then(handleEntityNotFound(res))
+    .then(removeCards2)
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+
+  function removeCards2(project) {
+    _.remove(project.cards, {board: req.body.board});
+    project.markModified('cards');
+    return project.save();
+  }
+}
+
 function hasGetAuthorization(res, userId, requiredRole = constants.roleNames.guest, board) {
   return function(project) {
     if(project) {
@@ -453,7 +468,7 @@ function addBoard(board) {
         project.boards.push({
           name: board,
           added: new Date(),
-          users: []
+          users: project.users
         });
         return project.save();
       }

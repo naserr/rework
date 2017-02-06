@@ -22,6 +22,7 @@ router.put('/newBoardUser/:id', auth.isAuthenticated(), controller.newBoardUser)
 router.patch('/patchTasks/:id', auth.isAuthenticated(), controller.patchTasks);
 router.put('/toggleTaskVisited/:id', auth.isAuthenticated(), controller.toggleTaskVisited);
 router.delete('/:id', auth.isAuthenticated(), controller.destroy);
+router.put('/removeCards/:id', auth.isAuthenticated(), controller.removeCards);
 router.get('/chatHistory/:id/:board', auth.isAuthenticated(), msgController.history);
 
 module.exports = router;

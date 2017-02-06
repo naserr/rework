@@ -11,17 +11,15 @@ class SidebarComponent {
     green: false
   };
 
-  constructor($rootScope, $state, $stateParams, Auth, ProjectAuth) {
+  constructor($rootScope, $state, $stateParams, $scope, Auth, ProjectAuth, ngDialog) {
     'ngInject';
     this.Auth = Auth;
     this.ProjectAuth = ProjectAuth;
     this.$state = $state;
-    this.boardName = ($stateParams.board || '').toUpperCase();
     this.$rootScope = $rootScope;
-
-    $rootScope.$on('$stateChangeSuccess', () => {
-      this.boardName = ($stateParams.board || '').toUpperCase();
-    });
+    this.$scope = $scope;
+    this.$stateParams = $stateParams;
+    this.ngDialog = ngDialog;
 
     this.user = Auth.getCurrentUserSync();
     this.isOwner = ProjectAuth.hasAccess(this.project, 'admin');
@@ -35,6 +33,24 @@ class SidebarComponent {
     else {
       this.$state.go('project.manage', {id: this.project._id});
     }
+  }
+
+  showTasks() {
+    console.log('mohsen');
+    this.boardName = this.$stateParams.board.toUpperCase();
+    this.ngDialog.openConfirm(
+      {
+        template: require('../../app/project/project-tasks/list-task.html'),
+        plain: true,
+        // controller: 'TaskController',
+        // controllerAs: 'vm',
+        scope: this.$scope,
+        showClose: false/*,
+        width: 800,
+        data: this.project,
+        closeByDocument: false,
+        closeByEscape: false*/
+      });
   }
 
   broadcastEvent(eventName, data) {

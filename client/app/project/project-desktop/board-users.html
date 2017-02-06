@@ -47,15 +47,17 @@
                     <img ng-src="data:image/jpeg;base64,{{vm.projectCom.getUserAvatar(user._id)}}"
                          alt="{{user.name}}"
                          title="{{user.name}}">
-                    <p>{{user.name}}</p>
+                    <p>{{user.name}} <sup ng-show="user._id == vm.project.owner._id">*</sup></p>
                 </td>
                 <td class="text_center">{{user.email}}</td>
                 <td>
                     <select ng-model="user.role" ng-options="role.value as role.name for role in vm.roles"
+                            ng-disabled="vm.userRoleInBoard() != 2 || user._id == vm.project.owner._id"
                             ng-change="vm.changeRole(user)"></select>
                 </td>
                 <td>
-                    <button class="delete_btn" ng-click="vm.removeUser(user)"><i></i></button>
+                    <button class="delete_btn" ng-click="vm.removeUser(user)"
+                            ng-show="vm.userRoleInBoard() == 2 && user._id !== vm.project.owner._id"><i></i></button>
                 </td>
             </tr>
             </tbody>

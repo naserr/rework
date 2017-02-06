@@ -58,13 +58,11 @@ class HeaderController {
   }
 
   showTask(task) {
-    let boardName = this.$stateParams.board.toUpperCase();
-    if(task.board !== boardName) {
-      this.$state.go('project.desktop', {
-        id: this.project._id,
-        board: task.board
-      });
-    }
+    // let boardName = (this.$stateParams.board || task.board).toUpperCase();
+    this.$state.go('project.desktop', {
+      id: this.project._id,
+      board: task.board
+    });
     this.selectedTask = task;
     this.ngDialog.openConfirm(
       {
@@ -73,8 +71,8 @@ class HeaderController {
         // controller: 'TaskController',
         // controllerAs: 'vm',
         scope: this.$scope,
-        showClose: false,
-        width: 800/*,
+        showClose: false/*,
+        width: 800,
         data: this.project,
         closeByDocument: false,
         closeByEscape: false*/
