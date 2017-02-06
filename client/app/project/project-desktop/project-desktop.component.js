@@ -369,6 +369,9 @@ export class projectDesktopComponent {
   }
 
   removeUser(user) {
+    if(user._id === this.project.owner._id) {
+      return this.$log.warn('مالک پروژه نمیتواند حذف شود');
+    }
     if(this.ProjectAuth.getUserRole(this.project) === 2) {
       let boardIndex = _.findIndex(this.project.boards, b => b.name === this.board.name);
       let userIndex = _.findIndex(this.project.boards[boardIndex].users, u => u._id === user._id);
@@ -387,6 +390,8 @@ export class projectDesktopComponent {
   }
 
   onRemoveBoard() {
+    console.log('mohsen');
+    let board = this.board.name;
     if(this.ProjectAuth.getUserRole(this.project) === 2) {
       let boardIndex = _.findIndex(this.project.boards, b => b.name === this.board.name);
 
@@ -396,8 +401,10 @@ export class projectDesktopComponent {
           path: `/boards/${boardIndex}`
         }
       ];
+
       this.$http.patch(`api/projects/${this.project._id}`, patches)
-        .then(() => this.$state.go('project.boards.privateList'));
+        .then(() => this.$http.put(`api/projects/removeCards/${this.project._id}`, {board})
+          .then(() => this.$state.go('project.boards.privateList')));
     }
     else {
       this.$log.warn('فقط مدیر میتواند ابزار را حذف کند');
@@ -465,6 +472,11 @@ export class projectDesktopComponent {
 
   blur() {
     $('.new_cart_wrapper .cart').animate({bottom: '0'}, 'fast');
+  }
+
+  userRoleInBoard() {
+    let u = _.find(this.board.users, {_id: this.currUser._id});
+    return (u || {}).role || 0;
   }
 }
 
