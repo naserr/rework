@@ -577,6 +577,9 @@ div.customer_product_board {
     border: none;
 }
 
+li.tag-item{
+  background: url(../../../assets/icons/icons.png) -343px -134px;
+}
 input.title_task.form-control {
     border: none;
 }
