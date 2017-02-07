@@ -1,59 +1,58 @@
 <section>
-    <form>
-        <div class="row">
-            <div class="col-md-12 tasks_dialogue">
-                <div class="form-group" ng-class="{'has-error': vm.errors.users}">
-                    <h6 class="tasks_dialogue_header clearfix"> : مسئولان این وظیفه</h6>
-                    <tags-input ng-model="vm.newTask.users" display-property="name" on-tag-adding="vm.addUser($tag)"
-
-                                add-from-autocomplete-only="true">
-                    <!--  ng-disabled="!vm.projectUsers.length"
-                      placeholder="{{vm.projectUsers.length ? 'کاربر' : 'کاربری وجود ندارد'}}"-->
-                      <ul class="tag-list"><!-- ngRepeat: tag in tagList.items track by track(tag) --><li class="tag-item ng-scope" ng-repeat="tag in tagList.items track by track(tag)" ng-class="getTagClass(tag, $index)" ng-click="eventHandlers.tag.click(tag)"><ti-tag-item scope="templateScope" data="::tag" class="ng-isolate-scope"><!-- ngInclude: --><ng-include src="$$template" class="ng-scope"><span ng-bind="$getDisplayText()" class="ng-binding ng-scope">naser</span> <a class="remove-button ng-binding ng-scope" ng-click="$removeTag()" ng-bind="::$$removeTagSymbol">×</a></ng-include></ti-tag-item></li><!-- end ngRepeat: tag in tagList.items track by track(tag) --></ul>
-                        <auto-complete source="vm.users()" min-length="1"></auto-complete>
-                    </tags-input>
-                    <small class="help-block" ng-show="vm.errors.users">کاربر (های) مسئول این وظیفه را انتخاب کنید</small>
-                </div>
-                <div class="form-group" ng-class="{'has-error': vm.errors.title}">
-                    <!--<label for="desc">&nbsp;</label>-->
-                    <input type="text" class="form-control title_task" ng-model="vm.newTask.title"
-                           placeholder="عنوان" ng-change="vm.errors.title = false">
-                    <small class="help-block" ng-show="vm.errors.title">عنوان وظیفه را بنویسید</small>
-                </div>
-                <div class="form-group" ng-class="{'has-error': vm.errors.description}">
-                    <!--<label for="desc">&nbsp;</label>-->
-                    <textarea class="form-control" id="desc" ng-model="vm.newTask.description"
-                              placeholder="شرح وظیفه" ng-change="vm.errors.description = false"></textarea>
-                    <small class="help-block" ng-show="vm.errors.description">شرح وظیفه را بنویسید</small>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" ng-model="vm.newTask.hasDate">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        انتخاب تاریخ
-                    </label>
-                </div>
-               <!-- <div class="row" ng-show="vm.newTask.hasDate">
-                    <div class="form-group col-md-4">
-                        <span>از </span>
-                        <input date-picker="vm.newTask.startDate" type="text" class="form-control input-sm"
-                               id="startDate" readonly placeholder="از تاریخ">
-                        {{vm.newTask.startDate | jalaaliDate: 'jDD jMMMM'}}
-                    </div>
-                    <div class="form-group col-md-4">
-                        <span>تا </span>
-                        <input date-picker="vm.newTask.endDate" type="text" class="form-control input-sm"
-                               id="endDate" readonly placeholder="تا تاریخ">
-                    </div>
-                </div>-->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group text-center">
-                            <button type="button" class="btn btn-primary" ng-click="closeThisDialog()">انصراف</button>
-                            <button type="button" class="btn btn-success" ng-click="vm.saveTask()">ذخیره</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <form>
+    <div class="row">
+      <div class="col-md-12 tasks_dialogue">
+        <div class="form-group" ng-class="{'has-error': vm.errors.users}">
+          <h6 class="tasks_dialogue_header clearfix"> : مسئولان این وظیفه</h6>
+          <tags-input class="user_tag" ng-model="vm.newTask.users" display-property="name" on-tag-adding="vm.addUser($tag)" ng-disabled="!vm.projectUsers.length" placeholder="{{vm.projectUsers.length ? 'کاربر' : 'کاربری وجود ندارد'}}" add-from-autocomplete-only="true">
+            <ul class="tag-list">
+              <li class="tag-item ng-scope" ng-repeat="tag in tagList.items track by track(tag)" ng-class="getTagClass(tag, $index)" ng-click="eventHandlers.tag.click(tag)">
+                <ti-tag-item scope="templateScope" data="::tag" class="ng-isolate-scope">
+                  <!-- ngInclude: -->
+                  <ng-include src="$$template" class="ng-scope">
+                  </ng-include>
+                </ti-tag-item>
+              </li>
+              <!-- end ngRepeat: tag in tagList.items track by track(tag) -->
+            </ul>
+            <auto-complete source="vm.users()" min-length="1"></auto-complete>
+          </tags-input>
+          <small class="help-block" ng-show="vm.errors.users">کاربر (های) مسئول این وظیفه را انتخاب کنید</small>
         </div>
-    </form>
+        <div class="form-group task_popUp" ng-class="{'has-error': vm.errors.title}">
+          <!--<label for="desc">&nbsp;</label>-->
+          <input type="text" class="form-control" ng-model="vm.newTask.title" placeholder="عنوان" ng-change="vm.errors.title = false">
+          <small class="help-block" ng-show="vm.errors.title">عنوان وظیفه را بنویسید</small>
+        </div>
+        <div class="form-group task_popUp" ng-class="{'has-error': vm.errors.description}">
+          <!--<label for="desc">&nbsp;</label>-->
+          <textarea class="form-control" id="desc" ng-model="vm.newTask.description" placeholder="شرح وظیفه" ng-change="vm.errors.description = false"></textarea>
+          <small class="help-block" ng-show="vm.errors.description">شرح وظیفه را بنویسید</small>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" ng-model="vm.newTask.hasDate">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; انتخاب تاریخ
+          </label>
+        </div>
+        <div class="row" ng-show="vm.newTask.hasDate">
+          <div class="form-group col-md-4">
+            <span>از </span>
+            <input date-picker="vm.newTask.startDate" type="text" class="form-control input-sm" id="startDate" readonly placeholder="از تاریخ"> {{vm.newTask.startDate | jalaaliDate: 'jDD jMMMM'}}
+          </div>
+          <div class="form-group col-md-4">
+            <span>تا </span>
+            <input date-picker="vm.newTask.endDate" type="text" class="form-control input-sm" id="endDate" readonly placeholder="تا تاریخ">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group text-center">
+              <button type="button" class="btn btn-primary" ng-click="closeThisDialog()">انصراف</button>
+              <button type="button" class="btn btn-success" ng-click="vm.saveTask()">ذخیره</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 </section>
