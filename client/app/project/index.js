@@ -14,7 +14,7 @@ import routes from './project.routes';
 export class projectComponent {
   isOpen = true;
 
-  constructor($http, $scope, socket) {
+  constructor($http, $rootScope, $scope, socket) {
     'ngInject';
     this.$http = $http;
     if(_.isArray(this.project)) {

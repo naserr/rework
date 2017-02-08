@@ -66,10 +66,23 @@ export class projectDesktopComponent {
       this.project.users = item.users;
       this.project.boards = item.boards;
       this.board = item.boards.find(b => b.name.toUpperCase() === this.boardName);
+
+      $rootScope.$broadcast('PROJECT_UPDATED', this.project);
+
+      if(!this.board) {
+        $log.error('این ابزار از پروژه حذف شد');
+        return $state.go('project.boards.privateList');
+      }
+
+      let u = _.find(this.board.users, {_id: this.currUser._id});
+      if(!u) {
+        $log.error('شما از این ابزار حذف شده اید');
+        return $state.go('project.boards.privateList');
+      }
     });
 
     $scope.$on('$destroy', () => {
-      // socket.unsyncUpdates('project');
+      socket.unsyncUpdates('project');
       newTaskListener();
       zoomListener();
       saveListener();
@@ -390,7 +403,6 @@ export class projectDesktopComponent {
   }
 
   onRemoveBoard() {
-    console.log('mohsen');
     let board = this.board.name;
     if(this.ProjectAuth.getUserRole(this.project) === 2) {
       let boardIndex = _.findIndex(this.project.boards, b => b.name === this.board.name);
