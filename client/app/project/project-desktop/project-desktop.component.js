@@ -67,7 +67,7 @@ export class projectDesktopComponent {
       this.project.boards = item.boards;
       this.board = item.boards.find(b => b.name.toUpperCase() === this.boardName);
 
-      $rootScope.$broadcast('PROJECT_UPDATED', this.project);
+      // $rootScope.$broadcast('PROJECT_UPDATED', this.project);
 
       if(!this.board) {
         $log.error('این ابزار از پروژه حذف شد');

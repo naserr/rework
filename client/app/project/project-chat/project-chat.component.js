@@ -42,14 +42,10 @@ export class projectChatComponent {
     });
 
     socket.socket.on(this.SERVER_EVENTS.newUser, data => {
-      // console.log('KOONI Test SHOTOR MOSALAM>>>>', data 321);
-      // $log.info(`<b>${data.user.user.name}</b> وارد ابزار شد`);
       this.users = data.users;
     });
 
     socket.socket.on(this.SERVER_EVENTS.leave, data => {
-      // console.log('LEAVE>>>>>>>>>>', dataaaa);
-      // $log.info(`<b>${data.user.user.name}</b> دددددددابزار را ترک کرد `);
       this.users = data.users;
     });
 
